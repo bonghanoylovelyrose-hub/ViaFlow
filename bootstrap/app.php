@@ -16,7 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        Authenticate::redirectUsing(static fn () => route('login'));
+    $middleware->trustProxies(
+        at: '*',
+        headers: Request::HEADER_X_FORWARDED_PROTO
+    );
+
+    Authenticate::redirectUsing(static fn () => route('login'));
 
         RedirectIfAuthenticated::redirectUsing(static function (Request $request): string {
             /** @var User|null $user */

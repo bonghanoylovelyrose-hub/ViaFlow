@@ -1,0 +1,3610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --wb-primary: #0f6e8c;
+            --wb-text: #1f2a37;
+            --wb-surface: #ffffff;
+            --wb-primary-dark: var(--wb-primary);
+            --wb-accent: var(--wb-primary);
+            --wb-bg: var(--wb-surface);
+            --wb-muted: color-mix(in srgb, var(--wb-text) 62%, var(--wb-surface));
+            --wb-border: color-mix(in srgb, var(--wb-primary) 18%, var(--wb-surface));
+            --wb-danger: var(--wb-primary);
+            --wb-warning: var(--wb-primary);
+            --wb-success: var(--wb-primary);
+            --wb-info: var(--wb-primary);
+            --sidebar-width: 244px;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            color: var(--wb-text);
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .auth-wrapper { min-height: 100vh; }
+        .auth-card, .dashboard-card, .panel-card, .announcement-card {
+            background: var(--wb-surface);
+            border: 1px solid var(--wb-border);
+            border-radius: 1rem;
+            box-shadow: none;
+        }
+
+        .app-shell {
+            min-height: 100vh;
+            overflow-x: clip;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1035;
+            width: var(--sidebar-width);
+            max-width: var(--sidebar-width);
+            height: 100vh;
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .app-shell.sidebar-collapsed .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-brand { color: var(--wb-surface); text-decoration: none; }
+        .sidebar .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 78%, var(--wb-primary));
+            border-radius: 0.8rem;
+            padding: 0.68rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: translateX(2px);
+        }
+
+        .sidebar .feature-icon,
+        .sidebar .nav-link i {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .sidebar-nav-row {
+            display: flex;
+            align-items: center;
+            border-radius: 0.8rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-nav-row > .nav-link {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .sidebar-nav-row:hover,
+        .sidebar-nav-row.active {
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: translateX(2px);
+        }
+
+        .sidebar-nav-row > .nav-link:hover,
+        .sidebar-nav-row > .nav-link.active {
+            background: transparent;
+            transform: none;
+        }
+
+        .sidebar-submenu-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 0.65rem;
+            background: transparent;
+            color: var(--wb-surface);
+            padding: 0.55rem 0.7rem;
+        }
+
+        .sidebar-submenu-toggle:hover,
+        .sidebar-submenu-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, transparent);
+        }
+
+        .sidebar-submenu-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-submenu-toggle .bi {
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar-submenu-toggle[aria-expanded="true"] .bi {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 2.25rem;
+            height: 2.25rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-radius: 0.65rem;
+            background: color-mix(in srgb, var(--wb-surface) 8%, transparent);
+            color: var(--wb-surface);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .sidebar-nav-toggle:hover,
+        .sidebar-nav-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 16%, transparent);
+            border-color: color-mix(in srgb, var(--wb-surface) 38%, transparent);
+        }
+
+        .sidebar-nav-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-nav-toggle .bi {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-reopen-toggle {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            z-index: 1034;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 3rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-left: 0;
+            border-radius: 0 0.65rem 0.65rem 0;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-0.5rem);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            cursor: pointer;
+        }
+
+        .app-shell.sidebar-collapsed .sidebar-reopen-toggle {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .sidebar-reopen-toggle:hover,
+        .sidebar-reopen-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary));
+        }
+
+        .sidebar-reopen-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: -4px;
+        }
+
+        .sidebar-reopen-toggle .bi {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1030;
+            background: rgba(15, 23, 42, 0.42);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .sidebar-subnav {
+            gap: 0.15rem;
+            margin: 0.3rem 0 0 2.35rem;
+            padding-left: 0.65rem;
+            border-left: 1px solid color-mix(in srgb, var(--wb-surface) 22%, transparent);
+        }
+
+        .sidebar-subnav .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 72%, var(--wb-primary));
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.45rem 0.65rem;
+        }
+
+        .sidebar-subnav .nav-link:hover,
+        .sidebar-subnav .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 18%, var(--wb-primary));
+            transform: none;
+        }
+
+        .sidebar-footer {
+            background: color-mix(in srgb, var(--wb-surface) 10%, var(--wb-primary));
+            border-radius: 0.9rem;
+        }
+
+        .main-content {
+            flex: 1 1 auto;
+            min-width: 0;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 0.3s ease;
+        }
+
+        .app-shell.sidebar-collapsed .main-content {
+            margin-left: 0;
+        }
+        .topbar {
+            background: var(--wb-surface);
+            border-bottom: 1px solid var(--wb-border);
+        }
+
+        .topbar .container-fluid {
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .content-wrapper { padding: 1.5rem; }
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-heading h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+        }
+
+        .page-heading p { color: var(--wb-muted); margin-bottom: 0; }
+        .metric-icon, .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .metric-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .feature-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .section-title { font-size: 1rem; font-weight: 800; margin-bottom: 1rem; }
+        .table thead th {
+            color: var(--wb-muted);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            border-bottom-width: 1px;
+        }
+
+        .table td, .table th { vertical-align: middle; }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        img,
+        svg,
+        canvas,
+        iframe {
+            max-width: 100%;
+        }
+
+        .row > * {
+            min-width: 0;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .announcement-card,
+        .modal-content,
+        .card {
+            min-width: 0;
+        }
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface));
+            border: 1px solid color-mix(in srgb, var(--wb-primary) 20%, var(--wb-surface));
+            color: var(--wb-primary);
+            font-weight: 800;
+        }
+
+        .chart-bars { display: flex; align-items: end; gap: 0.75rem; height: 220px; }
+        .chart-bar {
+            flex: 1;
+            border-radius: 1rem 1rem 0.45rem 0.45rem;
+            background: var(--wb-primary);
+            position: relative;
+        }
+
+        .chart-label {
+            display: block;
+            margin-top: 0.65rem;
+            text-align: center;
+            color: var(--wb-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 0.9rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--wb-border);
+        }
+
+        .timeline-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+        .danger-strip { border-left: 4px solid var(--wb-primary); }
+        .avatar-badge {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+
+        .chart-62 { height: 62%; }
+        .chart-68 { height: 68%; }
+        .chart-74 { height: 74%; }
+        .chart-84 { height: 84%; }
+        .chart-88 { height: 88%; }
+        .chart-95 { height: 95%; }
+
+        .notification-menu {
+            width: 340px;
+            max-width: min(340px, calc(100vw - 2rem));
+        }
+
+        .notification-item,
+        .notification-item-body,
+        .notification-item-title,
+        .notification-item-message {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .notification-item-title,
+        .notification-item-message {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .rag-indicator { white-space: nowrap; }
+        .rag-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-sm { width: 0.45rem; height: 0.45rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-lg { width: 0.85rem; height: 0.85rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-green { background: #22c55e; }
+        .rag-amber { background: #f59e0b; }
+        .rag-red { background: #ef4444; }
+        .rag-orange { background: #f97316; }
+        .rag-yellow { background: #eab308; }
+        .rag-blue { background: #3b82f6; }
+        .rag-green-text { color: #16a34a; font-weight: 700; }
+        .rag-amber-text { color: #d97706; font-weight: 700; }
+        .rag-red-text { color: #dc2626; font-weight: 700; }
+        .rag-orange-text { color: #ea580c; font-weight: 700; }
+        .rag-yellow-text { color: #ca8a04; font-weight: 700; }
+        .rag-blue-text { color: #2563eb; font-weight: 700; }
+
+        @media (max-width: 991.98px) {
+            .app-shell {
+                display: block !important;
+            }
+
+            .sidebar {
+                width: min(85vw, var(--sidebar-width));
+                max-width: min(85vw, var(--sidebar-width));
+                min-height: 100vh;
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-collapsed .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar {
+                transform: translateX(0);
+            }
+
+            .main-content,
+            .app-shell.sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-reopen-toggle {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateY(-50%) translateX(0);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-reopen-toggle {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(-50%) translateX(-0.5rem);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-backdrop {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .content-wrapper { padding: 1rem; }
+            .page-heading {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-heading > * {
+                max-width: 100%;
+            }
+
+            .topbar .container-fluid {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar,
+            .main-content,
+            .sidebar-reopen-toggle,
+            .sidebar-backdrop {
+                transition: none;
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bs-primary: var(--wb-primary);
+            --bs-secondary: var(--wb-text);
+            --bs-success: var(--wb-primary);
+            --bs-info: var(--wb-primary);
+            --bs-warning: var(--wb-primary);
+            --bs-danger: var(--wb-primary);
+            --bs-light: var(--wb-surface);
+            --bs-dark: var(--wb-text);
+            --bs-body-color: var(--wb-text);
+            --bs-body-bg: var(--wb-surface);
+            --bs-border-color: var(--wb-border);
+            --bs-link-color: var(--wb-primary);
+            --bs-link-hover-color: var(--wb-primary);
+        }
+
+        body,
+        .main-content,
+        .content-wrapper {
+            color: var(--wb-text);
+        }
+
+        body * {
+            letter-spacing: 0;
+        }
+
+        .page-heading {
+            align-items: end;
+        }
+
+        .page-heading h1 {
+            color: var(--wb-text);
+            font-size: 1.85rem;
+            line-height: 1.15;
+        }
+
+        .page-heading p,
+        .text-secondary,
+        .text-muted,
+        .form-text,
+        .small.text-secondary {
+            color: var(--wb-muted) !important;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card,
+        .modal-content,
+        .card,
+        [class*="summary-card"],
+        [class*="stat-card"],
+        [class*="focus-card"],
+        [class*="preview-card"],
+        [class*="qr-card"],
+        [class*="table-card"],
+        [class*="filter-card"],
+        [class*="indicator"],
+        [class*="open-item"],
+        [class*="history-item"],
+        .role-register-section,
+        [class*="role-card"] {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text);
+        }
+
+        [class*="dropzone"],
+        [class*="upload"],
+        [class*="empty-state"],
+        [class*="workspace"],
+        [class*="summary-row"],
+        [class*="toolbar"],
+        [class*="topline"],
+        [class*="meter-phone-frame"],
+        [class*="receipt-phone-frame"],
+        [class*="org-qr-box"],
+        [class*="password-indicator"],
+        [class*="chart"] {
+            border-color: var(--wb-border) !important;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        [class*="icon"],
+        [class*="avatar"],
+        .status-dot {
+            background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)) !important;
+            color: var(--wb-primary) !important;
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        button.btn,
+        a.btn {
+            min-height: 2.6rem;
+            border-radius: 0.8rem !important;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .btn-sm {
+            min-height: 2.25rem;
+            border-radius: 0.7rem !important;
+        }
+
+        .btn-primary,
+        .btn-success,
+        .btn-danger,
+        .btn-warning,
+        .btn-info {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light,
+        .btn-close,
+        .minimal-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light {
+            background: var(--wb-surface) !important;
+        }
+
+        .btn:hover,
+        .minimal-link:hover {
+            filter: none;
+            opacity: 0.92;
+        }
+
+        .form-control,
+        .form-select,
+        .input-group-text,
+        textarea {
+            min-height: 2.7rem;
+            border-color: var(--wb-border) !important;
+            border-radius: 0.8rem !important;
+            color: var(--wb-text) !important;
+            background-color: var(--wb-surface) !important;
+            font-weight: 600;
+        }
+
+        .input-group .form-control,
+        .input-group .form-select,
+        .input-group .input-group-text {
+            border-radius: 0.8rem !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus,
+        textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .alert,
+        .alert-success,
+        .alert-danger,
+        .alert-warning,
+        .alert-info {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            color: var(--wb-text) !important;
+            font-weight: 700;
+        }
+
+        .alert-success {
+            background: color-mix(in srgb, #16a34a 11%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #16a34a 34%, var(--wb-surface)) !important;
+            color: #166534 !important;
+        }
+
+        .alert-success i {
+            color: #16a34a !important;
+        }
+
+        .alert-danger {
+            background: color-mix(in srgb, #ef4444 10%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #991b1b !important;
+        }
+
+        .alert-danger i {
+            color: #dc2626 !important;
+        }
+
+        .badge,
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .badge-soft-success {
+            background: color-mix(in srgb, #16a34a 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #16a34a 32%, var(--wb-surface)) !important;
+            color: #15803d !important;
+        }
+
+        .badge-soft-warning {
+            background: color-mix(in srgb, #f59e0b 14%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #f59e0b 36%, var(--wb-surface)) !important;
+            color: #b45309 !important;
+        }
+
+        .badge-soft-danger {
+            background: color-mix(in srgb, #ef4444 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #dc2626 !important;
+        }
+
+        .badge-soft-info {
+            background: color-mix(in srgb, #3b82f6 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #3b82f6 32%, var(--wb-surface)) !important;
+            color: #2563eb !important;
+        }
+
+        .badge-soft-neutral {
+            background: color-mix(in srgb, #64748b 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #64748b 32%, var(--wb-surface)) !important;
+            color: #475569 !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .consumer-service-status {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.28rem;
+            line-height: 1.1;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            line-height: 1;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge i {
+            font-size: 0.95em;
+            line-height: 1;
+        }
+
+        .consumer-status-sub {
+            display: inline-block;
+            padding-left: 0.1rem;
+            color: var(--wb-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .consumer-status-sub-success {
+            color: #15803d;
+        }
+
+        .consumer-status-sub-neutral {
+            color: #64748b;
+        }
+
+        .consumer-status-sub-warning {
+            color: #b45309;
+        }
+
+        .consumer-status-sub-danger {
+            color: #b91c1c;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            line-height: 1;
+        }
+
+        .status-badge::before {
+            content: "";
+            width: 0.48rem;
+            height: 0.48rem;
+            border-radius: 50%;
+            background: currentColor;
+            flex: 0 0 auto;
+        }
+
+        .table {
+            color: var(--wb-text);
+        }
+
+        .table thead th {
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+            font-weight: 800;
+        }
+
+        .table tbody td,
+        .table tbody th {
+            border-color: var(--wb-border) !important;
+        }
+
+        .text-danger,
+        .text-warning,
+        .text-warning-emphasis,
+        .text-success,
+        .text-info,
+        .text-primary {
+            color: var(--wb-primary) !important;
+        }
+
+        .bg-white,
+        .bg-light,
+        .dropdown-menu,
+        .list-group-item {
+            background-color: var(--wb-surface) !important;
+        }
+
+        .bg-primary,
+        .bg-secondary,
+        .bg-success,
+        .bg-danger,
+        .bg-warning,
+        .bg-info,
+        .bg-dark,
+        .bg-body-tertiary {
+            background-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .table-primary,
+        .table-secondary,
+        .table-success,
+        .table-danger,
+        .table-warning,
+        .table-info,
+        .table-light {
+            --bs-table-bg: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            --bs-table-color: var(--wb-text);
+            --bs-table-border-color: var(--wb-border);
+        }
+
+        .progress,
+        .progress-stacked {
+            background: color-mix(in srgb, var(--wb-primary) 8%, var(--wb-surface)) !important;
+        }
+
+        .progress-bar,
+        .password-indicator-fill,
+        .password-indicator-fill.is-fair,
+        .password-indicator-fill.is-good,
+        .password-indicator-fill.is-strong {
+            background: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .link-primary,
+        .link-secondary,
+        .link-success,
+        .link-danger,
+        .link-warning,
+        .link-info,
+        a {
+            color: var(--wb-primary);
+        }
+
+        .border-primary,
+        .border-secondary,
+        .border-success,
+        .border-danger,
+        .border-warning,
+        .border-info {
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        .badge,
+        .alert,
+        .form-control,
+        .form-select,
+        .input-group-text,
+        .modal-content,
+        .dropdown-menu,
+        .list-group-item,
+        .table,
+        .card,
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card {
+            --bs-primary-rgb: 15, 110, 140;
+            --bs-secondary-rgb: 31, 42, 55;
+            --bs-success-rgb: 15, 110, 140;
+            --bs-info-rgb: 15, 110, 140;
+            --bs-warning-rgb: 15, 110, 140;
+            --bs-danger-rgb: 15, 110, 140;
+            --bs-light-rgb: 255, 255, 255;
+            --bs-dark-rgb: 31, 42, 55;
+        }
+
+        .border,
+        .border-top,
+        .border-bottom,
+        .border-start,
+        .border-end {
+            border-color: var(--wb-border) !important;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: var(--wb-border) !important;
+        }
+
+        .pagination {
+            gap: 0.3rem;
+        }
+
+        .page-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 0.7rem !important;
+            font-weight: 800;
+        }
+
+        .active > .page-link,
+        .page-link.active {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-page,
+        .role-login-page,
+        .role-register-page,
+        .register-step-page,
+        .auth-wrapper {
+            position: relative;
+            isolation: isolate;
+            background: linear-gradient(135deg, rgba(6, 37, 49, 0.52), rgba(15, 110, 140, 0.18)) !important;
+            overflow: hidden;
+        }
+
+        .role-select-page::before,
+        .role-login-page::before,
+        .role-register-page::before,
+        .register-step-page::before,
+        .auth-wrapper::before {
+            content: "";
+            position: fixed;
+            inset: -0.75rem;
+            z-index: -1;
+            background: url('http://127.0.0.1:8000/images/BGfinal.jpg') center/cover no-repeat;
+            filter: blur(2px);
+            transform: scale(1.02);
+        }
+
+        .role-select-shell,
+        .role-login-shell,
+        .role-register-shell,
+        .register-step-shell {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-visual,
+        .role-login-visual {
+            background: var(--wb-primary) !important;
+        }
+
+        .role-select-visual::before,
+        .role-login-visual::before {
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text)) !important;
+            backdrop-filter: none !important;
+        }
+
+        .role-select-visual-copy,
+        .role-login-visual-copy,
+        .role-select-visual-copy p,
+        .role-login-visual-copy p {
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-visual-logo,
+        .role-login-visual-logo {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary)) !important;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, var(--wb-primary)) !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-panel,
+        .role-login-panel,
+        .role-register-panel {
+            background: var(--wb-surface) !important;
+        }
+
+        .role-select-card h2,
+        .role-login-card h2,
+        .role-register-card h1,
+        .register-step-head h1,
+        .role-register-section-title,
+        .register-section-title,
+        .register-step-title,
+        .role-register-progress-title,
+        .role-select-label,
+        .role-login-label,
+        .role-register-label {
+            color: var(--wb-text) !important;
+        }
+
+        .role-select-subtitle,
+        .role-login-subtitle,
+        .role-login-remember,
+        .role-register-subtitle,
+        .role-register-section-copy,
+        .register-step-copy,
+        .register-section-copy,
+        .register-step-meta {
+            color: var(--wb-muted) !important;
+        }
+
+        .role-select-primary,
+        .role-login-primary,
+        .role-register-primary,
+        .register-step-primary {
+            background: var(--wb-primary) !important;
+            border: 1px solid var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .role-register-secondary {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-select-input,
+        .role-login-input,
+        .role-login-password,
+        .role-login-toggle,
+        .role-register-input,
+        .role-register-select,
+        .role-register-textarea {
+            border-color: var(--wb-border) !important;
+            background: var(--wb-surface) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-input:focus,
+        .role-login-input:focus,
+        .role-login-password:focus,
+        .role-register-input:focus,
+        .role-register-select:focus,
+        .role-register-textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .role-login-badge,
+        .role-register-step-pill,
+        .role-register-badge,
+        .register-step-pill {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-login-change,
+        .role-login-footer-link,
+        .role-register-change,
+        .role-register-footer-link {
+            color: var(--wb-primary) !important;
+        }
+
+        .role-register-section,
+        .register-section,
+        .register-step-card,
+        .register-choice-card {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text) !important;
+        }
+
+        .role-register-section.is-borderless {
+            border: 0 !important;
+            background: var(--wb-surface) !important;
+            padding-inline: 0 !important;
+        }
+
+        .register-step-option:checked + .register-step-card,
+        .register-choice-input:checked + .register-choice-card {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;
+        }
+
+        .role-register-progress::before {
+            background: var(--wb-border) !important;
+        }
+
+        .role-register-progress-fill,
+        .role-register-progress-item.is-active .role-register-progress-marker,
+        .role-register-progress-item.is-complete .role-register-progress-marker {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+        }
+
+        .role-register-progress-marker {
+            background: var(--wb-surface) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+        }
+
+        @media (max-width: 767.98px) {
+            html {
+                font-size: 15px;
+            }
+
+            .content-wrapper {
+                padding: 0.85rem;
+            }
+
+            .page-heading h1 {
+                font-size: 1.55rem;
+            }
+
+            .page-heading .btn,
+            .page-heading button.btn,
+            .page-heading a.btn {
+                width: 100%;
+            }
+
+            .topbar {
+                padding-inline: 0.75rem !important;
+            }
+
+            .topbar .container-fluid > div:first-of-type {
+                min-width: 0;
+                flex: 1 1 0;
+            }
+
+            .topbar .container-fluid > .d-flex.ms-auto {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.5rem !important;
+                margin-left: 0 !important;
+            }
+
+            .topbar .dropdown {
+                min-width: 0;
+            }
+
+            .topbar .dropdown > .btn {
+                max-width: 100%;
+            }
+
+            .btn,
+            button.btn,
+            a.btn {
+                white-space: normal;
+            }
+
+            .panel-card,
+            .dashboard-card,
+            .announcement-card,
+            .modal-content,
+            .card {
+                border-radius: 0.9rem !important;
+            }
+
+            .table {
+                min-width: 640px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .content-wrapper {
+                padding: 0.75rem;
+            }
+
+            .topbar .container-fluid,
+            .topbar .row,
+            .topbar .col,
+            .topbar .d-flex {
+                min-width: 0;
+            }
+        }
+    </style>
+        <style>
+    .billing-page {
+        --billing-primary: #0f6e8c;
+        --billing-teal: #13a07a;
+        --billing-ink: #1f2a37;
+        --billing-surface: #ffffff;
+        --billing-bg: #f5f7fa;
+        --billing-border: #e4eaf1;
+        --billing-muted: color-mix(in srgb, var(--billing-ink) 55%, var(--billing-surface));
+        color: var(--billing-ink);
+    }
+
+    .billing-page * {
+        letter-spacing: 0;
+    }
+
+    .billing-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1rem;
+        align-items: end;
+        margin-bottom: 1rem;
+    }
+
+    /* â”€â”€ Consumer Hero (Snapshot Banner) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .cons-hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.25rem;
+        background: linear-gradient(130deg, #0a4d63 0%, #0f6e8c 40%, #10917a 75%, #13a07a 100%);
+        padding: 2.25rem 2.5rem 2rem;
+        color: #fff;
+        margin-bottom: 1.25rem;
+    }
+
+    .cons-hero::after {
+        content: '';
+        position: absolute;
+        right: -4rem;
+        bottom: -4rem;
+        width: 18rem;
+        height: 18rem;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.07);
+        pointer-events: none;
+    }
+
+    .cons-hero::before {
+        content: '';
+        position: absolute;
+        right: 5rem;
+        bottom: -6rem;
+        width: 24rem;
+        height: 24rem;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        pointer-events: none;
+    }
+
+    .cons-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        background: rgba(255,255,255,0.14);
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 999px;
+        padding: 0.3rem 0.85rem;
+        color: rgba(255,255,255,0.92);
+        margin-bottom: 1.1rem;
+    }
+
+    .cons-hero-layout {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 3rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cons-balance-label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.68);
+        margin-bottom: 0.35rem;
+    }
+
+    .cons-balance-amount {
+        font-size: 3.2rem;
+        font-weight: 800;
+        line-height: 1.05;
+        color: #fff;
+        margin-bottom: 0.4rem;
+    }
+
+    .cons-balance-note {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.6);
+        font-weight: 500;
+        margin-bottom: 1.4rem;
+    }
+
+    .cons-hero-actions {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .cons-btn-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0 1.4rem;
+        height: 2.55rem;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all 0.18s ease;
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+    }
+
+    .cons-btn-pill:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    }
+
+    .cons-btn-white {
+        background: rgba(255,255,255,0.92);
+        color: var(--billing-ink);
+    }
+
+    .cons-btn-ghost {
+        background: rgba(255,255,255,0.12);
+        border: 1.5px solid rgba(255,255,255,0.35);
+        color: #fff;
+    }
+
+    /* Right side account meta in 2-col grid */
+    .cons-hero-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem 2.25rem;
+    }
+
+    .cons-hero-meta-label {
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: rgba(255,255,255,0.55);
+        margin-bottom: 0.22rem;
+    }
+
+    .cons-hero-meta-value {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .cons-hero-meta-wide {
+        grid-column: 1 / -1;
+    }
+
+    /* â”€â”€ Consumer Billing Overview Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .cons-overview-card {
+        background: var(--billing-surface);
+        border: 1px solid var(--billing-border);
+        border-radius: 1.15rem;
+        padding: 1.75rem 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .cons-overview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .cons-section-label {
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--billing-muted);
+        margin-bottom: 0.2rem;
+    }
+
+    .cons-section-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin: 0;
+        color: var(--billing-ink);
+    }
+
+    .cons-stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .cons-stat-tile {
+        background: var(--billing-bg);
+        border: 1px solid var(--billing-border);
+        border-radius: 0.9rem;
+        padding: 1.1rem 1.25rem;
+    }
+
+    .cons-stat-tile-label {
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--billing-muted);
+        margin-bottom: 0.4rem;
+    }
+
+    .cons-stat-tile-value {
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 1.15;
+        color: var(--billing-ink);
+        margin-bottom: 0.2rem;
+    }
+
+    .cons-stat-tile-sub {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--billing-muted);
+    }
+
+    .billing-eyebrow,
+    .billing-label,
+    .billing-table thead th,
+    .billing-meta {
+        color: color-mix(in srgb, var(--billing-ink) 62%, var(--billing-surface));
+    }
+
+    .billing-eyebrow,
+    .billing-label,
+    .billing-table thead th {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .billing-title {
+        margin: 0.25rem 0 0;
+        font-size: 1.85rem;
+        font-weight: 800;
+        line-height: 1.15;
+    }
+
+    .billing-copy {
+        margin: 0.5rem 0 0;
+        max-width: 62rem;
+        color: color-mix(in srgb, var(--billing-ink) 68%, var(--billing-surface));
+        font-weight: 500;
+    }
+
+    .billing-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .billing-button,
+    .billing-button-outline,
+    .billing-icon-button {
+        border-radius: 0.8rem;
+        font-weight: 800;
+        min-height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    .billing-button {
+        border: 1px solid var(--billing-primary);
+        background: var(--billing-primary);
+        color: var(--billing-surface);
+    }
+
+    .billing-button:hover {
+        color: var(--billing-surface);
+        background: color-mix(in srgb, var(--billing-primary) 86%, var(--billing-ink));
+        border-color: color-mix(in srgb, var(--billing-primary) 86%, var(--billing-ink));
+    }
+
+    .billing-button-outline,
+    .billing-icon-button {
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 30%, var(--billing-surface));
+        background: var(--billing-surface);
+        color: var(--billing-primary);
+    }
+
+    .billing-button-outline:hover,
+    .billing-icon-button:hover {
+        color: var(--billing-primary);
+        background: color-mix(in srgb, var(--billing-primary) 8%, var(--billing-surface));
+    }
+
+    .billing-icon-button {
+        width: 2.4rem;
+        min-height: 2.4rem;
+        border-radius: 0.75rem;
+    }
+
+    .billing-card {
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 18%, var(--billing-surface));
+        border-radius: 1rem;
+        background: color-mix(in srgb, var(--billing-primary) 3%, var(--billing-surface));
+        width: 100%;
+        min-width: 0;
+    }
+
+    .billing-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .billing-card-head > * {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .billing-section-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    .billing-section-copy,
+    .billing-meta {
+        margin: 0.25rem 0 0;
+        font-size: 0.88rem;
+        font-weight: 600;
+    }
+
+    .billing-stat-row {
+        margin-bottom: 1rem;
+    }
+
+    .billing-filter {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.8fr) minmax(160px, 0.9fr) minmax(220px, 1.2fr) auto;
+        gap: 0.75rem;
+        align-items: end;
+        margin-bottom: 1rem;
+    }
+
+    .billing-field label {
+        margin-bottom: 0.35rem;
+    }
+
+    .billing-field .form-control,
+    .billing-field .form-select,
+    .billing-modal .form-control,
+    .billing-modal .form-select,
+    .billing-modal textarea {
+        min-height: 2.75rem;
+        border-radius: 0.8rem;
+        border-color: color-mix(in srgb, var(--billing-primary) 20%, var(--billing-surface));
+        color: var(--billing-ink);
+        font-weight: 600;
+    }
+
+    .billing-field .form-control:focus,
+    .billing-field .form-select:focus,
+    .billing-modal .form-control:focus,
+    .billing-modal .form-select:focus,
+    .billing-modal textarea:focus {
+        border-color: var(--billing-primary);
+        box-shadow: none;
+    }
+
+    .billing-filter-actions {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+
+    .billing-filter-actions .billing-button,
+    .billing-filter-actions .billing-button-outline {
+        width: 6.5rem;
+        padding-inline: 1rem;
+    }
+
+    .billing-table-card {
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 15%, var(--billing-surface));
+        border-radius: 0.95rem;
+        background: var(--billing-surface);
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .billing-table-card .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .billing-table {
+        margin-bottom: 0;
+    }
+
+    .billing-table thead th {
+        padding: 0.9rem 1rem;
+        border-bottom: 1px solid color-mix(in srgb, var(--billing-primary) 14%, var(--billing-surface));
+        background: color-mix(in srgb, var(--billing-primary) 5%, var(--billing-surface));
+    }
+
+    .billing-table tbody td {
+        padding: 1rem;
+        border-color: color-mix(in srgb, var(--billing-primary) 10%, var(--billing-surface));
+    }
+
+    .billing-table tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    .billing-name {
+        font-weight: 800;
+        line-height: 1.25;
+    }
+
+    .billing-amount {
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .billing-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 1.8rem;
+        padding: 0.3rem 0.65rem;
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 22%, var(--billing-surface));
+        color: var(--billing-primary);
+        background: color-mix(in srgb, var(--billing-primary) 7%, var(--billing-surface));
+        font-size: 0.76rem;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .billing-badge.is-complete {
+        border-color: color-mix(in srgb, #198754 28%, var(--billing-surface));
+        background: color-mix(in srgb, #198754 12%, var(--billing-surface));
+        color: #198754;
+    }
+
+    .billing-badge.is-urgent {
+        border-color: color-mix(in srgb, #ef4444 34%, var(--billing-surface));
+        background: color-mix(in srgb, #ef4444 12%, var(--billing-surface));
+        color: #dc2626;
+    }
+
+    .billing-badge.is-pending {
+        border-color: color-mix(in srgb, #f59e0b 36%, var(--billing-surface));
+        background: color-mix(in srgb, #f59e0b 14%, var(--billing-surface));
+        color: #b45309;
+    }
+
+    .billing-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .billing-grid > * {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .billing-note {
+        margin-bottom: 1rem;
+        padding: 0.85rem 1rem;
+        border-radius: 0.9rem;
+        color: var(--billing-primary);
+        background: color-mix(in srgb, var(--billing-primary) 8%, var(--billing-surface));
+        font-weight: 700;
+    }
+
+    .billing-empty {
+        padding: 2rem 1rem;
+        text-align: center;
+        color: color-mix(in srgb, var(--billing-ink) 62%, var(--billing-surface));
+        font-weight: 700;
+    }
+
+    .billing-pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .billing-alert {
+        display: flex;
+        gap: 0.65rem;
+        align-items: start;
+        margin-bottom: 1rem;
+        padding: 0.9rem 1rem;
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 18%, var(--billing-surface));
+        border-radius: 0.9rem;
+        color: var(--billing-ink);
+        background: var(--billing-surface);
+        font-weight: 700;
+    }
+
+    .billing-alert-success-icon {
+        color: #198754;
+        background: #fff !important;
+        border-radius: 50%;
+    }
+
+    .billing-modal .modal-content {
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 18%, var(--billing-surface));
+        border-radius: 1rem;
+        color: var(--billing-ink);
+    }
+
+    .billing-modal .modal-footer .billing-button,
+    .billing-modal .modal-footer .billing-button-outline {
+        padding-inline: 1rem;
+        border-width: 1px !important;
+        border-style: solid !important;
+    }
+
+    .billing-modal .modal-footer .billing-button {
+        border-color: var(--billing-primary) !important;
+        color: var(--billing-surface) !important;
+    }
+
+    .billing-modal .modal-footer .billing-button-outline {
+        border-color: color-mix(in srgb, var(--billing-primary) 30%, var(--billing-surface)) !important;
+        color: var(--billing-primary) !important;
+        background: var(--billing-surface) !important;
+    }
+
+    .billing-modal .modal-title {
+        font-weight: 800;
+    }
+
+    @media (max-width: 1199.98px) {
+        .billing-stat-row,
+        .billing-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .billing-filter {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        .billing-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .billing-card-head {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .billing-card-head .billing-button,
+        .billing-card-head .billing-button-outline {
+            width: 100%;
+        }
+
+        .cons-hero-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+        .cons-hero-meta { grid-template-columns: repeat(2, 1fr); }
+        .cons-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 767.98px) {
+        .billing-hero,
+        .billing-card-head,
+        .billing-pagination {
+            grid-template-columns: 1fr;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .billing-actions,
+        .billing-filter-actions {
+            justify-content: stretch;
+        }
+
+        .billing-actions > *,
+        .billing-filter-actions > * {
+            flex: 1 1 auto;
+        }
+
+        .billing-grid,
+        .billing-filter {
+            grid-template-columns: 1fr;
+        }
+
+        .billing-title {
+            font-size: 1.55rem;
+        }
+
+        .billing-table {
+            min-width: 560px;
+        }
+
+        .cons-balance-amount { font-size: 2.4rem; }
+        .cons-hero { padding: 1.5rem; }
+        .cons-overview-card { padding: 1.25rem; }
+        .cons-stats-row { grid-template-columns: 1fr; }
+    }
+
+    /* â”€â”€ Consumer Bill History & Full List Cards â”€â”€â”€â”€ */
+    .cons-card {
+        background: var(--billing-surface);
+        border: 1px solid var(--billing-border);
+        border-radius: 1.15rem;
+        padding: 1.75rem 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .cons-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .cons-card-filter {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .cons-card-filter-label {
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--billing-muted);
+        white-space: nowrap;
+    }
+
+    .cons-card-filter .form-control {
+        height: 2.4rem;
+        border-radius: 0.7rem;
+        border: 1px solid var(--billing-border);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--billing-ink);
+        min-width: 0;
+    }
+
+    .cons-card-filter .form-control:focus {
+        border-color: var(--billing-primary);
+        box-shadow: none;
+    }
+
+    .cons-apply-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        height: 2.4rem;
+        padding: 0 1.1rem;
+        border-radius: 0.7rem;
+        background: var(--billing-primary);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: opacity 0.15s;
+        white-space: nowrap;
+    }
+
+    .cons-apply-btn:hover { opacity: 0.88; }
+
+    /* History rows */
+    .cons-history-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--billing-border);
+        border-radius: 0.85rem;
+        margin-bottom: 0.65rem;
+        background: var(--billing-bg);
+        gap: 1rem;
+    }
+
+    .cons-history-row:last-child { margin-bottom: 0; }
+
+    .cons-history-period {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--billing-ink);
+        margin-bottom: 0.15rem;
+    }
+
+    .cons-history-meta {
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--billing-muted);
+    }
+
+    .cons-history-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.73rem;
+        font-weight: 800;
+        padding: 0.28rem 0.7rem;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--billing-primary) 10%, var(--billing-surface));
+        color: var(--billing-primary);
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 22%, var(--billing-surface));
+        white-space: nowrap;
+    }
+
+    /* Full bill list rows */
+    .cons-bill-row {
+        display: grid;
+        grid-template-columns: auto minmax(150px, 1fr) repeat(6, minmax(100px, auto)) auto;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--billing-border);
+        border-radius: 0.9rem;
+        margin-bottom: 0.65rem;
+        background: var(--billing-surface);
+        transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .cons-bill-row:last-child { margin-bottom: 0; }
+
+    .cons-bill-row:hover {
+        border-color: color-mix(in srgb, var(--billing-primary) 35%, var(--billing-surface));
+        box-shadow: 0 2px 10px rgba(15,110,140,0.07);
+    }
+
+    .cons-bill-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.65rem;
+        background: color-mix(in srgb, var(--billing-primary) 8%, var(--billing-surface));
+        border: 1px solid color-mix(in srgb, var(--billing-primary) 18%, var(--billing-surface));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--billing-primary);
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .cons-bill-period {
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--billing-ink);
+        margin-bottom: 0.1rem;
+    }
+
+    .cons-bill-prn {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--billing-muted);
+    }
+
+    .cons-bill-field-label {
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--billing-muted);
+        margin-bottom: 0.15rem;
+    }
+
+    .cons-bill-field-value {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--billing-ink);
+    }
+
+    .cons-bill-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.4rem;
+    }
+
+    .cons-view-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        padding: 0.4rem 0.9rem;
+        border-radius: 0.6rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--billing-primary);
+        border: 1.5px solid color-mix(in srgb, var(--billing-primary) 30%, var(--billing-surface));
+        background: var(--billing-surface);
+        text-decoration: none;
+        transition: all 0.15s;
+        white-space: nowrap;
+    }
+
+    .cons-view-btn:hover {
+        background: color-mix(in srgb, var(--billing-primary) 8%, var(--billing-surface));
+        color: var(--billing-primary);
+    }
+
+    .cons-bill-empty {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        color: var(--billing-muted);
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .cons-pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--billing-border);
+    }
+
+    .cons-pagination-info {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--billing-muted);
+    }
+
+    @media (max-width: 767.98px) {
+        .cons-bill-row {
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+        }
+
+        .cons-bill-row > *:not(:first-child):not(:nth-child(2)) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .billing-card {
+            padding: 1rem !important;
+        }
+
+        .billing-table {
+            min-width: 520px;
+        }
+
+        .cons-hero-actions { flex-direction: column; }
+        .cons-btn-pill { width: 100%; justify-content: center; }
+        .cons-hero-meta { grid-template-columns: 1fr; }
+        .cons-card { padding: 1.25rem; }
+        .cons-card-filter { flex-wrap: wrap; }
+    }
+</style>
+        <style>
+            html.admin-one-scroll, html.admin-one-scroll body { height: 100%; overflow: hidden; }
+            html.admin-one-scroll.admin-fallback-scroll { scrollbar-gutter: auto; }
+            .admin-scroll-shell { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+            .admin-scroll-shell > .topbar { flex-shrink: 0; }
+            .admin-scroll-path { display: flex !important; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; }
+            .admin-scroll-path > :not(.admin-scroll-path):not(.admin-records-area) { flex-shrink: 0; }
+            .admin-records-area { flex: 1 1 auto; min-height: 0; min-width: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+            .admin-area-first { margin-top: var(--admin-first-top, 0px) !important; margin-left: 0 !important; margin-right: 0 !important; }
+            .admin-area-item {
+                margin-left: calc(var(--admin-item-original-left) - var(--admin-area-original-left)) !important;
+                margin-right: calc(var(--admin-item-original-right) - var(--admin-area-original-right)) !important;
+            }
+            .admin-records-area .admin-natural-records { height: auto !important; max-height: none !important; overflow-y: visible !important; }
+            .admin-records-area .admin-records-surface { padding: 1.5rem !important; border: 1px solid var(--wb-border); border-radius: 1rem; background: var(--wb-surface); min-width: 0; }
+            .admin-records-area .admin-table-viewport { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; }
+            .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-records-area .admin-table-heading th { position: static; }
+            .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-records-area.has-scrolled [data-admin-freeze]::before {
+                content: ''; position: absolute; z-index: -1; pointer-events: none;
+                top: calc(-1 * var(--admin-freeze-cover-top, 0px));
+                left: calc(-1 * var(--admin-freeze-cover-left, 0px));
+                right: calc(-1 * var(--admin-freeze-cover-right, 0px));
+                bottom: calc(-1 * var(--admin-freeze-cover-bottom, 0px));
+                background: var(--admin-freeze-background, var(--wb-surface));
+                border: var(--admin-freeze-border, 0);
+                border-bottom: 0;
+                border-radius: var(--admin-freeze-radius, 0) var(--admin-freeze-radius, 0) 0 0;
+            }
+            .admin-content-scroll .content-wrapper { display: block !important; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
+            .admin-content-scroll > .topbar { margin-right: var(--admin-window-gutter, 0px); }
+            .modal-open .admin-records-area, .modal-open .admin-content-scroll .content-wrapper { overflow-y: hidden; }
+            .admin-content-scroll .content-wrapper .admin-scroll-path { display: var(--admin-path-display, block) !important; flex: initial; min-height: initial; }
+            .admin-content-scroll .admin-records-area { display: contents; }
+            .admin-content-scroll .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+            .admin-content-scroll .admin-area-first {
+                margin-top: var(--admin-original-top) !important;
+                margin-left: var(--admin-original-left) !important;
+                margin-right: var(--admin-original-right) !important;
+            }
+            .admin-content-scroll [data-admin-freeze] { position: static; }
+            .admin-content-scroll .admin-primary-freeze { transform: none; }
+            .admin-content-scroll .admin-table-heading { transform: none; }
+            .admin-content-scroll .admin-record-part { clip-path: none !important; }
+            .admin-content-scroll [data-admin-freeze]::before { display: none; }
+            @media print {
+                html.admin-one-scroll, html.admin-one-scroll body { height: auto; overflow: visible; }
+                .admin-scroll-shell { height: auto; display: block; overflow: visible; }
+                .admin-scroll-path { display: var(--admin-path-display, block) !important; }
+                .admin-records-area { display: contents; }
+                .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+                .admin-area-first { margin-top: var(--admin-original-top) !important; margin-left: var(--admin-original-left) !important; margin-right: var(--admin-original-right) !important; }
+                .admin-records-area [data-admin-freeze] { position: static; }
+                .admin-records-area .admin-primary-freeze { transform: none; }
+                .admin-records-area .admin-table-heading { transform: none; }
+                .admin-record-part { clip-path: none !important; }
+                .admin-records-area [data-admin-freeze]::before { display: none; }
+            }
+        </style>
+    </head>
+<body>
+        <div class="app-shell d-lg-flex billing-page">
+    <aside
+    class="sidebar p-3"
+    id="sidebarMenu"
+    aria-label="Main navigation"
+>
+    <a href="http://127.0.0.1:8000/dashboard" class="sidebar-brand d-flex align-items-center gap-3 mb-4">
+        <span class="feature-icon bg-white text-primary rounded-4">
+            <i class="bi bi-droplet-fill"></i>
+        </span>
+        <span>
+            <span class="d-block fw-bold fs-5">ViaFlow System</span>
+            <span class="small opacity-75">Billing and Loan Suite</span>
+        </span>
+    </a>
+
+    <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+        <div class="small text-uppercase opacity-75 fw-semibold">Main Navigation</div>
+        <button
+            type="button"
+            class="sidebar-nav-toggle"
+            id="sidebarCollapseToggle"
+            aria-expanded="true"
+            aria-controls="sidebarMenu"
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar"
+        >
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                                    <a href="/dashboard" class="nav-link ">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/staff" class="nav-link ">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Staff</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8000/consumers" class="nav-link ">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Consumers</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#consumerSubmenu"
+                            aria-expanded="false"
+                            aria-controls="consumerSubmenu"
+                            aria-label="Toggle consumer categories"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse " id="consumerSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="all"                                     >
+                                        <span>All Consumers</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=pending"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="pending"                                     >
+                                        <span>Pending Accounts</span>
+                                                                                    <span class="badge rounded-pill bg-warning text-dark ms-2" title="2 pending reschedule request(s)">2</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=rejected"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="rejected"                                     >
+                                        <span>Rejected Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=active"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="active"                                     >
+                                        <span>Active Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=inactive"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="inactive"                                     >
+                                        <span>Inactive (Disconnected)</span>
+                                                                            </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/billing" class="nav-link active">
+                        <i class="bi bi-droplet-half"></i>
+                        <span>Billing</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/payments" class="nav-link ">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Payments</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/loans" class="nav-link ">
+                        <i class="bi bi-bank"></i>
+                        <span>Loans</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/incidents" class="nav-link ">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span>Incidents</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/reports" class="nav-link ">
+                        <i class="bi bi-bar-chart-fill"></i>
+                        <span>Reports</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8000/dss/incidents" class="nav-link ">
+                            <i class="bi bi-diagram-3-fill"></i>
+                            <span>DSS</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#dssSubmenu"
+                            aria-expanded="false"
+                            aria-controls="dssSubmenu"
+                            aria-label="Toggle DSS modules"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse " id="dssSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8000/dss/incidents"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Incident DSS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8000/dss/loans"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Loan DSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/announcements" class="nav-link ">
+                        <i class="bi bi-megaphone-fill"></i>
+                        <span>Announcements</span>
+                    </a>
+                            </li>
+            </ul>
+</aside>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+<button
+    type="button"
+    class="sidebar-reopen-toggle"
+    id="sidebarReopenToggle"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Open sidebar"
+    title="Open sidebar"
+>
+    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+</button>
+
+    <main class="main-content flex-grow-1">
+        <nav class="navbar navbar-expand-lg topbar px-3 px-lg-4 sticky-top">
+    <div class="container-fluid p-0">
+        <button class="btn btn-outline-secondary d-lg-none me-2" type="button" id="sidebarMobileToggle" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Open sidebar" title="Open sidebar">
+            <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+
+        <div>
+            <span class="text-uppercase small fw-bold text-secondary">System Overview</span>
+            <div class="fw-semibold">Water Billing and Loan Management</div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            <div class="d-none d-md-flex align-items-center gap-2 text-secondary">
+                <i class="bi bi-calendar3"></i>
+                <span>November 05, 2026</span>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border position-relative" data-bs-toggle="dropdown" type="button">
+                    <i class="bi bi-bell"></i>
+                                    </button>
+                <div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-0 notification-menu">
+                    <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                        <strong>Notifications</strong>
+                                            </div>
+                    <div class="py-2" style="max-height: 340px; overflow-y: auto;">
+                                                    <div class="px-3 py-3 text-secondary small">No notifications yet.</div>
+                                            </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" type="button">
+                    <span class="rounded-circle bg-info-subtle text-info fw-bold d-inline-flex align-items-center justify-content-center avatar-badge">ER</span>
+                    <span class="text-start d-none d-md-block">
+                        <span class="d-block fw-semibold text-dark">Erika Monahan</span>
+                        <span class="small text-secondary">Admin</span>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/profile">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="http://127.0.0.1:8000/logout">
+                            <input type="hidden" name="_token" value="5yT3CPtGBnDlW1Xq8Jntu9PUB2o19ccwcxkFOaZn" autocomplete="off">                            <button type="submit" class="dropdown-item text-danger">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+        <div class="content-wrapper">
+                            
+                <div class="billing-hero">
+                    <div>
+                        <h1 class="billing-title">Billing Center</h1>
+                        <p class="billing-copy">Review billing records, check payment status, and request connection support from one clean workspace.</p>
+                    </div>
+                    <div class="billing-actions">
+                        <button class="billing-button-outline" type="button" data-bs-toggle="modal" data-bs-target="#billingGenerationModal">
+                            <i class="bi bi-gear"></i>Generate Cycle
+                        </button>
+                    </div>
+                </div>
+            
+            
+            
+                        <div class="row g-4 billing-stat-row">
+                <div class="col-md-6 col-xl-3">
+                    <div class="dashboard-card p-4 h-100">
+                        <div class="text-secondary small">Records Found</div>
+                        <h2 class="fw-bold mt-2 mb-1">70</h2>
+                        <span class="badge badge-soft-primary">All records</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="dashboard-card p-4 h-100">
+                        <div class="text-secondary small">Open Bills</div>
+                        <h2 class="fw-bold mt-2 mb-1">70</h2>
+                        <span class="badge badge-soft-warning">Needs follow-up</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="dashboard-card p-4 h-100">
+                        <div class="text-secondary small">Previous Balance Added</div>
+                        <h2 class="fw-bold mt-2 mb-1">P 0.00</h2>
+                        <span class="badge badge-soft-warning">Carried forward</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="dashboard-card p-4 h-100">
+                        <div class="text-secondary small">Balance Due</div>
+                        <h2 class="fw-bold mt-2 mb-1">P 50,785.00</h2>
+                        <span class="badge badge-soft-info">Open exposure</span>
+                    </div>
+                </div>
+            </div>
+            
+                            
+                <div class="panel-card p-4" data-admin-records-root data-admin-freeze-section>
+                    <div class="billing-card-head" data-admin-freeze>
+                        <div>
+                            <h2 class="billing-section-title">Billing Records</h2>
+                            <p class="billing-section-copy">Filter by period, status, or PRN to narrow the current billing list.</p>
+                        </div>
+                        <span class="billing-badge">50,785.00 total amount</span>
+                    </div>
+
+                    <form method="GET" action="http://127.0.0.1:8000/billing" class="billing-filter" data-admin-freeze data-auto-filter data-auto-filter-debounce="450">
+                        <div class="billing-field">
+                            <label class="billing-label" for="billing_filter_period">Period</label>
+                            <input type="month" id="billing_filter_period" name="billing_period" value="" class="form-control">
+                        </div>
+                        <div class="billing-field">
+                            <label class="billing-label" for="billing_filter_status">Status</label>
+                            <select id="billing_filter_status" name="status" class="form-select">
+                                <option value="" selected>All Bills</option>
+                                                                    <option value="Paid" >Paid</option>
+                                                                    <option value="Paid with Balance" >Paid with Balance</option>
+                                                                    <option value="Unpaid" >Unpaid</option>
+                                                                    <option value="Overdue" >Overdue</option>
+                                                            </select>
+                        </div>
+                        <div class="billing-field">
+                            <label class="billing-label" for="billing_filter_prn">PRN</label>
+                            <input type="text" id="billing_filter_prn" name="prn" value="" class="form-control" placeholder="Search PRN">
+                        </div>
+                        <div class="billing-filter-actions">
+                            <a href="http://127.0.0.1:8000/billing" class="billing-button-outline">Reset</a>
+                            <noscript>
+                                <button type="submit" class="billing-button">Apply filters</button>
+                            </noscript>
+                        </div>
+                    </form>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle billing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Consumer</th>
+                                        <th>Billing Period</th>
+                                        <th>PRN</th>
+                                        <th>Previous</th>
+                                        <th>Current</th>
+                                        <th>Consumption</th>
+                                        <th>Rate</th>
+                                        <th>Previous Balance</th>
+                                        <th>Current Charges</th>
+                                        <th>Total Due</th>
+                                        <th>Balance</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Statement</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 010 Sample Resident</div>
+                                                <div class="billing-meta">VV-2026-00010</div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-10</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/5" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 100 Sample Resident</div>
+                                                <div class="billing-meta">VV-2026-00100</div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-100</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/50" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 102 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-102</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/51" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 104 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-104</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/52" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 106 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-106</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/53" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 108 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-108</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/54" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 110 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-110</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/55" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 112 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-112</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/56" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 114 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-114</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/57" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                                                                    <tr>
+                                            <td>
+                                                <div class="billing-name">Consumer 116 Sample Resident</div>
+                                                <div class="billing-meta"></div>
+                                            </td>
+                                            <td>November 2026</td>
+                                            <td><span class="billing-badge">PREVIEW-116</span></td>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                            <td>0.00 m3</td>
+                                            <td>P 20.00</td>
+                                            <td class="billing-amount">P 0.00</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount">P 725.50</td>
+                                            <td class="billing-amount text-danger">P 725.50</td>
+                                            <td>
+                                                                                                <span class="badge badge-soft-warning">Unpaid</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="http://127.0.0.1:8000/billing/58" class="billing-icon-button" aria-label="View billing statement">
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+
+                    <div class="billing-pagination">
+                        <p class="billing-meta mb-0">
+                                                            Showing 1 to 10 of 70 records
+                                                    </p>
+                        <nav class="d-flex justify-items-center justify-content-between">
+        <div class="d-flex justify-content-between flex-fill d-sm-none">
+            <ul class="pagination">
+                                    <li class="page-item disabled" aria-disabled="true">
+                        <span class="page-link">&laquo; Previous</span>
+                    </li>
+                
+                                    <li class="page-item">
+                        <a class="page-link" href="http://127.0.0.1:8000/billing?page=2" rel="next">Next &raquo;</a>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-end">
+            <div>
+                <ul class="pagination">
+                                            <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                            <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                        </li>
+                    
+                                            
+                                                                                                                        <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+                                                                                                                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/billing?page=2">2</a></li>
+                                                                                                                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/billing?page=3">3</a></li>
+                                                                                                                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/billing?page=4">4</a></li>
+                                                                                                                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/billing?page=5">5</a></li>
+                                                                                                                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/billing?page=6">6</a></li>
+                                                                                                                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/billing?page=7">7</a></li>
+                                                                                                        
+                                            <li class="page-item">
+                            <a class="page-link" href="http://127.0.0.1:8000/billing?page=2" rel="next" aria-label="Next &raquo;">&rsaquo;</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+
+                    </div>
+                </div>
+            
+        </div>
+    </main>
+</div>
+
+    <div class="modal fade billing-modal" id="billingGenerationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5">Generate Billing Cycle</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="http://127.0.0.1:8000/billing/generate" id="billingGenerationForm">
+                        <input type="hidden" name="_token" value="5yT3CPtGBnDlW1Xq8Jntu9PUB2o19ccwcxkFOaZn" autocomplete="off">                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label fw-semibold" for="generation_billing_period">Billing Period</label>
+                                <input type="month" class="form-control" id="generation_billing_period" name="billing_period" value="2026-11" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semibold" for="generation_due_date">Due Date</label>
+                                <input type="date" class="form-control" id="generation_due_date" name="due_date" value="2026-11-20" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold" for="base_charge">Base Charge</label>
+                                <input type="number" class="form-control" id="base_charge" name="base_charge" step="0.01" min="0" value="150" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold" for="member_unit_rate">Member Unit Rate</label>
+                                <input type="number" class="form-control" id="member_unit_rate" name="member_unit_rate" step="0.01" min="0" value="18" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold" for="non_member_unit_rate">Non-Member Unit Rate</label>
+                                <input type="number" class="form-control" id="non_member_unit_rate" name="non_member_unit_rate" step="0.01" min="0" value="20" required>
+                            </div>
+                                                        <div class="col-12">
+                                <div class="billing-meta">Member bills use the member rate. Non-member bills use the non-member rate automatically.</div>
+                                <div class="billing-meta mt-1">Each bill total is the previous outstanding balance plus the current month's water charges. Penalty and minimum charges are no longer applied to new bills.</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="billing-button-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="billingGenerationForm" class="billing-button">Generate Bills</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade billing-modal" id="billingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5">Create Billing Record</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="http://127.0.0.1:8000/billing" id="billingCreateForm">
+                        <input type="hidden" name="_token" value="5yT3CPtGBnDlW1Xq8Jntu9PUB2o19ccwcxkFOaZn" autocomplete="off">                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold" for="consumer_id">Consumer</label>
+                                <select class="form-select" id="consumer_id" name="consumer_id" required>
+                                    <option value="">Select consumer</option>
+                                                                            <option value="101" >
+                                             - Consumer 101 Sample Resident
+                                        </option>
+                                                                            <option value="102" >
+                                             - Consumer 102 Sample Resident
+                                        </option>
+                                                                            <option value="103" >
+                                             - Consumer 103 Sample Resident
+                                        </option>
+                                                                            <option value="104" >
+                                             - Consumer 104 Sample Resident
+                                        </option>
+                                                                            <option value="105" >
+                                             - Consumer 105 Sample Resident
+                                        </option>
+                                                                            <option value="106" >
+                                             - Consumer 106 Sample Resident
+                                        </option>
+                                                                            <option value="107" >
+                                             - Consumer 107 Sample Resident
+                                        </option>
+                                                                            <option value="108" >
+                                             - Consumer 108 Sample Resident
+                                        </option>
+                                                                            <option value="109" >
+                                             - Consumer 109 Sample Resident
+                                        </option>
+                                                                            <option value="110" >
+                                             - Consumer 110 Sample Resident
+                                        </option>
+                                                                            <option value="111" >
+                                             - Consumer 111 Sample Resident
+                                        </option>
+                                                                            <option value="112" >
+                                             - Consumer 112 Sample Resident
+                                        </option>
+                                                                            <option value="113" >
+                                             - Consumer 113 Sample Resident
+                                        </option>
+                                                                            <option value="114" >
+                                             - Consumer 114 Sample Resident
+                                        </option>
+                                                                            <option value="115" >
+                                             - Consumer 115 Sample Resident
+                                        </option>
+                                                                            <option value="116" >
+                                             - Consumer 116 Sample Resident
+                                        </option>
+                                                                            <option value="117" >
+                                             - Consumer 117 Sample Resident
+                                        </option>
+                                                                            <option value="118" >
+                                             - Consumer 118 Sample Resident
+                                        </option>
+                                                                            <option value="119" >
+                                             - Consumer 119 Sample Resident
+                                        </option>
+                                                                            <option value="120" >
+                                             - Consumer 120 Sample Resident
+                                        </option>
+                                                                            <option value="1" >
+                                            VV-2026-00001 - Consumer 001 Sample Resident
+                                        </option>
+                                                                            <option value="2" >
+                                            VV-2026-00002 - Consumer 002 Sample Resident
+                                        </option>
+                                                                            <option value="3" >
+                                            VV-2026-00003 - Consumer 003 Sample Resident
+                                        </option>
+                                                                            <option value="4" >
+                                            VV-2026-00004 - Consumer 004 Sample Resident
+                                        </option>
+                                                                            <option value="5" >
+                                            VV-2026-00005 - Consumer 005 Sample Resident
+                                        </option>
+                                                                            <option value="6" >
+                                            VV-2026-00006 - Consumer 006 Sample Resident
+                                        </option>
+                                                                            <option value="7" >
+                                            VV-2026-00007 - Consumer 007 Sample Resident
+                                        </option>
+                                                                            <option value="8" >
+                                            VV-2026-00008 - Consumer 008 Sample Resident
+                                        </option>
+                                                                            <option value="9" >
+                                            VV-2026-00009 - Consumer 009 Sample Resident
+                                        </option>
+                                                                            <option value="10" >
+                                            VV-2026-00010 - Consumer 010 Sample Resident
+                                        </option>
+                                                                            <option value="11" >
+                                            VV-2026-00011 - Consumer 011 Sample Resident
+                                        </option>
+                                                                            <option value="12" >
+                                            VV-2026-00012 - Consumer 012 Sample Resident
+                                        </option>
+                                                                            <option value="13" >
+                                            VV-2026-00013 - Consumer 013 Sample Resident
+                                        </option>
+                                                                            <option value="14" >
+                                            VV-2026-00014 - Consumer 014 Sample Resident
+                                        </option>
+                                                                            <option value="15" >
+                                            VV-2026-00015 - Consumer 015 Sample Resident
+                                        </option>
+                                                                            <option value="16" >
+                                            VV-2026-00016 - Consumer 016 Sample Resident
+                                        </option>
+                                                                            <option value="17" >
+                                            VV-2026-00017 - Consumer 017 Sample Resident
+                                        </option>
+                                                                            <option value="18" >
+                                            VV-2026-00018 - Consumer 018 Sample Resident
+                                        </option>
+                                                                            <option value="19" >
+                                            VV-2026-00019 - Consumer 019 Sample Resident
+                                        </option>
+                                                                            <option value="20" >
+                                            VV-2026-00020 - Consumer 020 Sample Resident
+                                        </option>
+                                                                            <option value="21" >
+                                            VV-2026-00021 - Consumer 021 Sample Resident
+                                        </option>
+                                                                            <option value="22" >
+                                            VV-2026-00022 - Consumer 022 Sample Resident
+                                        </option>
+                                                                            <option value="23" >
+                                            VV-2026-00023 - Consumer 023 Sample Resident
+                                        </option>
+                                                                            <option value="24" >
+                                            VV-2026-00024 - Consumer 024 Sample Resident
+                                        </option>
+                                                                            <option value="25" >
+                                            VV-2026-00025 - Consumer 025 Sample Resident
+                                        </option>
+                                                                            <option value="26" >
+                                            VV-2026-00026 - Consumer 026 Sample Resident
+                                        </option>
+                                                                            <option value="27" >
+                                            VV-2026-00027 - Consumer 027 Sample Resident
+                                        </option>
+                                                                            <option value="28" >
+                                            VV-2026-00028 - Consumer 028 Sample Resident
+                                        </option>
+                                                                            <option value="29" >
+                                            VV-2026-00029 - Consumer 029 Sample Resident
+                                        </option>
+                                                                            <option value="30" >
+                                            VV-2026-00030 - Consumer 030 Sample Resident
+                                        </option>
+                                                                            <option value="31" >
+                                            VV-2026-00031 - Consumer 031 Sample Resident
+                                        </option>
+                                                                            <option value="32" >
+                                            VV-2026-00032 - Consumer 032 Sample Resident
+                                        </option>
+                                                                            <option value="33" >
+                                            VV-2026-00033 - Consumer 033 Sample Resident
+                                        </option>
+                                                                            <option value="34" >
+                                            VV-2026-00034 - Consumer 034 Sample Resident
+                                        </option>
+                                                                            <option value="35" >
+                                            VV-2026-00035 - Consumer 035 Sample Resident
+                                        </option>
+                                                                            <option value="36" >
+                                            VV-2026-00036 - Consumer 036 Sample Resident
+                                        </option>
+                                                                            <option value="37" >
+                                            VV-2026-00037 - Consumer 037 Sample Resident
+                                        </option>
+                                                                            <option value="38" >
+                                            VV-2026-00038 - Consumer 038 Sample Resident
+                                        </option>
+                                                                            <option value="39" >
+                                            VV-2026-00039 - Consumer 039 Sample Resident
+                                        </option>
+                                                                            <option value="40" >
+                                            VV-2026-00040 - Consumer 040 Sample Resident
+                                        </option>
+                                                                            <option value="41" >
+                                            VV-2026-00041 - Consumer 041 Sample Resident
+                                        </option>
+                                                                            <option value="42" >
+                                            VV-2026-00042 - Consumer 042 Sample Resident
+                                        </option>
+                                                                            <option value="43" >
+                                            VV-2026-00043 - Consumer 043 Sample Resident
+                                        </option>
+                                                                            <option value="44" >
+                                            VV-2026-00044 - Consumer 044 Sample Resident
+                                        </option>
+                                                                            <option value="45" >
+                                            VV-2026-00045 - Consumer 045 Sample Resident
+                                        </option>
+                                                                            <option value="46" >
+                                            VV-2026-00046 - Consumer 046 Sample Resident
+                                        </option>
+                                                                            <option value="47" >
+                                            VV-2026-00047 - Consumer 047 Sample Resident
+                                        </option>
+                                                                            <option value="48" >
+                                            VV-2026-00048 - Consumer 048 Sample Resident
+                                        </option>
+                                                                            <option value="49" >
+                                            VV-2026-00049 - Consumer 049 Sample Resident
+                                        </option>
+                                                                            <option value="50" >
+                                            VV-2026-00050 - Consumer 050 Sample Resident
+                                        </option>
+                                                                            <option value="51" >
+                                            VV-2026-00051 - Consumer 051 Sample Resident
+                                        </option>
+                                                                            <option value="52" >
+                                            VV-2026-00052 - Consumer 052 Sample Resident
+                                        </option>
+                                                                            <option value="53" >
+                                            VV-2026-00053 - Consumer 053 Sample Resident
+                                        </option>
+                                                                            <option value="54" >
+                                            VV-2026-00054 - Consumer 054 Sample Resident
+                                        </option>
+                                                                            <option value="55" >
+                                            VV-2026-00055 - Consumer 055 Sample Resident
+                                        </option>
+                                                                            <option value="56" >
+                                            VV-2026-00056 - Consumer 056 Sample Resident
+                                        </option>
+                                                                            <option value="57" >
+                                            VV-2026-00057 - Consumer 057 Sample Resident
+                                        </option>
+                                                                            <option value="58" >
+                                            VV-2026-00058 - Consumer 058 Sample Resident
+                                        </option>
+                                                                            <option value="59" >
+                                            VV-2026-00059 - Consumer 059 Sample Resident
+                                        </option>
+                                                                            <option value="60" >
+                                            VV-2026-00060 - Consumer 060 Sample Resident
+                                        </option>
+                                                                            <option value="61" >
+                                            VV-2026-00061 - Consumer 061 Sample Resident
+                                        </option>
+                                                                            <option value="62" >
+                                            VV-2026-00062 - Consumer 062 Sample Resident
+                                        </option>
+                                                                            <option value="63" >
+                                            VV-2026-00063 - Consumer 063 Sample Resident
+                                        </option>
+                                                                            <option value="64" >
+                                            VV-2026-00064 - Consumer 064 Sample Resident
+                                        </option>
+                                                                            <option value="65" >
+                                            VV-2026-00065 - Consumer 065 Sample Resident
+                                        </option>
+                                                                            <option value="66" >
+                                            VV-2026-00066 - Consumer 066 Sample Resident
+                                        </option>
+                                                                            <option value="67" >
+                                            VV-2026-00067 - Consumer 067 Sample Resident
+                                        </option>
+                                                                            <option value="68" >
+                                            VV-2026-00068 - Consumer 068 Sample Resident
+                                        </option>
+                                                                            <option value="69" >
+                                            VV-2026-00069 - Consumer 069 Sample Resident
+                                        </option>
+                                                                            <option value="70" >
+                                            VV-2026-00070 - Consumer 070 Sample Resident
+                                        </option>
+                                                                            <option value="71" >
+                                            VV-2026-00071 - Consumer 071 Sample Resident
+                                        </option>
+                                                                            <option value="72" >
+                                            VV-2026-00072 - Consumer 072 Sample Resident
+                                        </option>
+                                                                            <option value="73" >
+                                            VV-2026-00073 - Consumer 073 Sample Resident
+                                        </option>
+                                                                            <option value="74" >
+                                            VV-2026-00074 - Consumer 074 Sample Resident
+                                        </option>
+                                                                            <option value="75" >
+                                            VV-2026-00075 - Consumer 075 Sample Resident
+                                        </option>
+                                                                            <option value="76" >
+                                            VV-2026-00076 - Consumer 076 Sample Resident
+                                        </option>
+                                                                            <option value="77" >
+                                            VV-2026-00077 - Consumer 077 Sample Resident
+                                        </option>
+                                                                            <option value="78" >
+                                            VV-2026-00078 - Consumer 078 Sample Resident
+                                        </option>
+                                                                            <option value="79" >
+                                            VV-2026-00079 - Consumer 079 Sample Resident
+                                        </option>
+                                                                            <option value="80" >
+                                            VV-2026-00080 - Consumer 080 Sample Resident
+                                        </option>
+                                                                            <option value="81" >
+                                            VV-2026-00081 - Consumer 081 Sample Resident
+                                        </option>
+                                                                            <option value="82" >
+                                            VV-2026-00082 - Consumer 082 Sample Resident
+                                        </option>
+                                                                            <option value="83" >
+                                            VV-2026-00083 - Consumer 083 Sample Resident
+                                        </option>
+                                                                            <option value="84" >
+                                            VV-2026-00084 - Consumer 084 Sample Resident
+                                        </option>
+                                                                            <option value="85" >
+                                            VV-2026-00085 - Consumer 085 Sample Resident
+                                        </option>
+                                                                            <option value="86" >
+                                            VV-2026-00086 - Consumer 086 Sample Resident
+                                        </option>
+                                                                            <option value="87" >
+                                            VV-2026-00087 - Consumer 087 Sample Resident
+                                        </option>
+                                                                            <option value="88" >
+                                            VV-2026-00088 - Consumer 088 Sample Resident
+                                        </option>
+                                                                            <option value="89" >
+                                            VV-2026-00089 - Consumer 089 Sample Resident
+                                        </option>
+                                                                            <option value="90" >
+                                            VV-2026-00090 - Consumer 090 Sample Resident
+                                        </option>
+                                                                            <option value="91" >
+                                            VV-2026-00091 - Consumer 091 Sample Resident
+                                        </option>
+                                                                            <option value="92" >
+                                            VV-2026-00092 - Consumer 092 Sample Resident
+                                        </option>
+                                                                            <option value="93" >
+                                            VV-2026-00093 - Consumer 093 Sample Resident
+                                        </option>
+                                                                            <option value="94" >
+                                            VV-2026-00094 - Consumer 094 Sample Resident
+                                        </option>
+                                                                            <option value="95" >
+                                            VV-2026-00095 - Consumer 095 Sample Resident
+                                        </option>
+                                                                            <option value="96" >
+                                            VV-2026-00096 - Consumer 096 Sample Resident
+                                        </option>
+                                                                            <option value="97" >
+                                            VV-2026-00097 - Consumer 097 Sample Resident
+                                        </option>
+                                                                            <option value="98" >
+                                            VV-2026-00098 - Consumer 098 Sample Resident
+                                        </option>
+                                                                            <option value="99" >
+                                            VV-2026-00099 - Consumer 099 Sample Resident
+                                        </option>
+                                                                            <option value="100" >
+                                            VV-2026-00100 - Consumer 100 Sample Resident
+                                        </option>
+                                                                            <option value="121" >
+                                            VV-2026-00121 - Consumer 121 Sample Resident
+                                        </option>
+                                                                            <option value="122" >
+                                            VV-2026-00122 - Consumer 122 Sample Resident
+                                        </option>
+                                                                            <option value="123" >
+                                            VV-2026-00123 - Consumer 123 Sample Resident
+                                        </option>
+                                                                            <option value="124" >
+                                            VV-2026-00124 - Consumer 124 Sample Resident
+                                        </option>
+                                                                            <option value="125" >
+                                            VV-2026-00125 - Consumer 125 Sample Resident
+                                        </option>
+                                                                            <option value="126" >
+                                            VV-2026-00126 - Consumer 126 Sample Resident
+                                        </option>
+                                                                            <option value="127" >
+                                            VV-2026-00127 - Consumer 127 Sample Resident
+                                        </option>
+                                                                            <option value="128" >
+                                            VV-2026-00128 - Consumer 128 Sample Resident
+                                        </option>
+                                                                            <option value="129" >
+                                            VV-2026-00129 - Consumer 129 Sample Resident
+                                        </option>
+                                                                            <option value="130" >
+                                            VV-2026-00130 - Consumer 130 Sample Resident
+                                        </option>
+                                                                            <option value="131" >
+                                            VV-2026-00131 - Consumer 131 Sample Resident
+                                        </option>
+                                                                            <option value="132" >
+                                            VV-2026-00132 - Consumer 132 Sample Resident
+                                        </option>
+                                                                            <option value="133" >
+                                            VV-2026-00133 - Consumer 133 Sample Resident
+                                        </option>
+                                                                            <option value="134" >
+                                            VV-2026-00134 - Consumer 134 Sample Resident
+                                        </option>
+                                                                            <option value="135" >
+                                            VV-2026-00135 - Consumer 135 Sample Resident
+                                        </option>
+                                                                            <option value="136" >
+                                            VV-2026-00136 - Consumer 136 Sample Resident
+                                        </option>
+                                                                            <option value="137" >
+                                            VV-2026-00137 - Consumer 137 Sample Resident
+                                        </option>
+                                                                            <option value="138" >
+                                            VV-2026-00138 - Consumer 138 Sample Resident
+                                        </option>
+                                                                            <option value="139" >
+                                            VV-2026-00139 - Consumer 139 Sample Resident
+                                        </option>
+                                                                            <option value="140" >
+                                            VV-2026-00140 - Consumer 140 Sample Resident
+                                        </option>
+                                                                    </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-semibold" for="billing_period">Billing Period</label>
+                                <input type="month" class="form-control" id="billing_period" name="billing_period" value="2026-11" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-semibold" for="due_date">Due Date</label>
+                                <input type="date" class="form-control" id="due_date" name="due_date" value="2026-11-20" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="prn">PRN</label>
+                                <input type="text" class="form-control" id="prn" name="prn" value="" placeholder="PRN-230011" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="amount">Amount</label>
+                                <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0" value="" placeholder="425.00" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="status">Status</label>
+                                <select class="form-select" id="status" name="status" required>
+                                                                            <option value="Paid" >Paid</option>
+                                                                            <option value="Paid with Balance" >Paid with Balance</option>
+                                                                            <option value="Unpaid" selected>Unpaid</option>
+                                                                            <option value="Overdue" >Overdue</option>
+                                                                    </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="months_unpaid">Months Unpaid</label>
+                                <input type="number" class="form-control" id="months_unpaid" name="months_unpaid" min="0" max="24" value="0">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="notice_level">Notice Level</label>
+                                <input type="text" class="form-control" id="notice_level" name="notice_level" value="" placeholder="Final warning">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="request_type">Request Type</label>
+                                <select class="form-select" id="request_type" name="request_type">
+                                    <option value="">None</option>
+                                                                            <option value="New Connection" >New Connection</option>
+                                                                            <option value="Reconnection" >Reconnection</option>
+                                                                    </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold" for="request_status">Request Status</label>
+                                <select class="form-select" id="request_status" name="request_status">
+                                    <option value="">None</option>
+                                                                            <option value="Pending" >Pending</option>
+                                                                            <option value="Approved" >Approved</option>
+                                                                            <option value="Rejected" >Rejected</option>
+                                                                            <option value="Completed" >Completed</option>
+                                                                    </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="billing-button-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="billingCreateForm" class="billing-button">Save Billing Record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('form[data-auto-filter]').forEach(function (form) {
+                let timer = null;
+
+                const clearTimer = function () {
+                    if (timer !== null) {
+                        window.clearTimeout(timer);
+                        timer = null;
+                    }
+                };
+
+                const submit = function () {
+                    clearTimer();
+
+                    if (typeof form.requestSubmit === 'function') {
+                        form.requestSubmit();
+                    } else {
+                        form.submit();
+                    }
+                };
+
+                const scheduleSubmit = function () {
+                    clearTimer();
+
+                    const configuredDelay = Number(form.dataset.autoFilterDebounce);
+                    const delay = Number.isFinite(configuredDelay) && configuredDelay >= 0
+                        ? configuredDelay
+                        : 450;
+
+                    timer = window.setTimeout(submit, delay);
+                };
+
+                form.querySelectorAll('select, input[type="month"], input[type="date"], input[type="week"], input[type="time"], input[type="checkbox"], input[type="radio"]').forEach(function (control) {
+                    control.addEventListener('change', submit);
+                });
+
+                form.querySelectorAll('input[type="search"], input[type="text"]').forEach(function (input) {
+                    input.addEventListener('input', scheduleSubmit);
+                    input.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            submit();
+                        }
+                    });
+                });
+
+                form.addEventListener('submit', clearTimer);
+
+                form.querySelectorAll('a').forEach(function (link) {
+                    link.addEventListener('click', clearTimer);
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!form.contains(event.target)) {
+                        clearTimer();
+                    }
+                }, true);
+
+                window.addEventListener('pagehide', clearTimer);
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const appShell = document.querySelector('.app-shell');
+        const sidebar = document.getElementById('sidebarMenu');
+        const collapseToggle = document.getElementById('sidebarCollapseToggle');
+        const reopenToggle = document.getElementById('sidebarReopenToggle');
+        const mobileToggle = document.getElementById('sidebarMobileToggle');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const mainContent = document.querySelector('.main-content');
+
+        if (!appShell || !sidebar) {
+            return;
+        }
+
+        const mobileQuery = window.matchMedia('(max-width: 991.98px)');
+        const toggles = [collapseToggle, reopenToggle, mobileToggle].filter(Boolean);
+
+        const isMobile = function () {
+            return mobileQuery.matches;
+        };
+
+        const isSidebarOpen = function () {
+            return isMobile()
+                ? appShell.classList.contains('sidebar-mobile-open')
+                : !appShell.classList.contains('sidebar-collapsed');
+        };
+
+        const syncState = function () {
+            const open = isSidebarOpen();
+
+            toggles.forEach(function (toggle) {
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            if (collapseToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                collapseToggle.setAttribute('aria-label', label);
+                collapseToggle.setAttribute('title', label);
+            }
+
+            if (reopenToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                reopenToggle.setAttribute('aria-label', label);
+                reopenToggle.setAttribute('title', label);
+            }
+
+            if (mobileToggle) {
+                const label = open ? 'Close sidebar' : 'Open sidebar';
+
+                mobileToggle.setAttribute('aria-label', label);
+                mobileToggle.setAttribute('title', label);
+            }
+
+            sidebar.toggleAttribute('inert', !open);
+
+            if (mainContent) {
+                mainContent.toggleAttribute('inert', isMobile() && open);
+            }
+        };
+
+        const openSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.add('sidebar-mobile-open');
+            } else {
+                appShell.classList.remove('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const firstLink = sidebar.querySelector('.nav-link:not(.sidebar-subnav-link)')
+                || sidebar.querySelector('.nav-link');
+
+            if (firstLink) {
+                window.setTimeout(function () {
+                    firstLink.focus();
+                }, 0);
+            }
+        };
+
+        const closeSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.remove('sidebar-mobile-open');
+            } else {
+                appShell.classList.add('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const focusTarget = isMobile() && mobileToggle ? mobileToggle : reopenToggle;
+
+            if (focusTarget) {
+                window.setTimeout(function () {
+                    focusTarget.focus();
+                }, 0);
+            }
+        };
+
+        const toggleSidebar = function () {
+            if (isSidebarOpen()) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        };
+
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener('click', toggleSidebar);
+        });
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSidebar);
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && isMobile() && isSidebarOpen()) {
+                closeSidebar();
+            }
+        });
+
+        const handleBreakpointChange = function () {
+            appShell.classList.remove('sidebar-mobile-open', 'sidebar-collapsed');
+            syncState();
+        };
+
+        if (typeof mobileQuery.addEventListener === 'function') {
+            mobileQuery.addEventListener('change', handleBreakpointChange);
+        } else if (typeof mobileQuery.addListener === 'function') {
+            mobileQuery.addListener(handleBreakpointChange);
+        }
+
+        syncState();
+    });
+</script>
+        
+                <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.billing-loan-amount').forEach(function (input) {
+                    const preview = document.getElementById(input.dataset.previewId || '');
+                    const term = Number(input.dataset.loanTerm || 0);
+
+                    if (! preview || ! [3, 6, 12].includes(term)) {
+                        return;
+                    }
+
+                    const formatMoney = function (value) {
+                        return Number(value || 0).toLocaleString('en-PH', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                        });
+                    };
+
+                    const refreshPreview = function () {
+                        const loanAmount = Number(input.value || 0);
+                        const installment = term > 0 ? Math.round((loanAmount / term) * 100) / 100 : 0;
+
+                        preview.innerHTML = `Loan Amount: &#8369;${formatMoney(loanAmount)}<br>Repayment Term: ${term} months<br>Monthly Loan Installment: &#8369;${formatMoney(installment)}`;
+                    };
+
+                    input.addEventListener('input', refreshPreview);
+                    refreshPreview();
+                });
+            });
+        </script>
+    
+    </body>
+</html>

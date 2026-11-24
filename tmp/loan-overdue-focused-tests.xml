@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\waterbillingsystems\phpunit.xml" tests="3" assertions="62" errors="0" failures="0" skipped="0" time="1.230719">
+    <testsuite name="Feature" tests="3" assertions="62" errors="0" failures="0" skipped="0" time="1.230719">
+      <testsuite name="Tests\Feature\LoanOverdueDisconnectionTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanOverdueDisconnectionTest.php" tests="3" assertions="62" errors="0" failures="0" skipped="0" time="1.230719">
+        <testcase name="test_supported_terms_raise_one_notice_only_after_the_final_due_date" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanOverdueDisconnectionTest.php" line="22" class="Tests\Feature\LoanOverdueDisconnectionTest" classname="Tests.Feature.LoanOverdueDisconnectionTest" assertions="31" time="0.861893"/>
+        <testcase name="test_only_verified_full_payment_settles_the_notice" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanOverdueDisconnectionTest.php" line="58" class="Tests\Feature\LoanOverdueDisconnectionTest" classname="Tests.Feature.LoanOverdueDisconnectionTest" assertions="13" time="0.152431"/>
+        <testcase name="test_ready_loan_rows_sort_first_and_combined_notices_get_their_full_grace_period" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanOverdueDisconnectionTest.php" line="82" class="Tests\Feature\LoanOverdueDisconnectionTest" classname="Tests.Feature.LoanOverdueDisconnectionTest" assertions="18" time="0.216396"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,207 @@
+From: ViaFlow Water System <viaflow@example.test>
+To: reconnection-sample@example.test
+Subject: Water Service Reconnection Schedule Confirmation
+Message-ID: <f1607ccfea12841e011f09f7736c4349@example.test>
+MIME-Version: 1.0
+Date: Sun, 22 Nov 2026 18:03:18 +0000
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+    <meta charset=3D"UTF-8"=
+>
+    <title>Water Service Reconnection Schedule Confirmation</title>
+<=
+meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1">=
+
+<style>
+    body { -webkit-text-size-adjust: 100%; -ms-text-size-adjus=
+t: 100%; }
+    img { max-width: 100%; height: auto; }
+    p, td, th, di=
+v, a { overflow-wrap: anywhere; word-wrap: break-word; word-break: break-wo=
+rd; }
+    @media only screen and (max-width: 600px) {
+        body { pa=
+dding: 12px !important; margin: 0 !important; }
+        body > div { padd=
+ing: 18px !important; margin: 0 auto !important; }
+        .container { m=
+argin: 0 auto !important; width: 100% !important; }
+        h1 { font-siz=
+e: 21px !important; line-height: 1.3 !important; }
+        table { max-wi=
+dth: 100% !important; }
+        .email-detail-label, .email-detail-value =
+{ display: block !important; width: auto !important; text-align: left !impo=
+rtant; }
+        .email-detail-value { margin-top: 2px !important; }
+  =
+      a[style*=3D"background"] { display: inline-block !important; padding:=
+ 13px 18px !important; line-height: 1.35 !important; text-align: center !im=
+portant; }
+    }
+</style>
+</head>
+<body style=3D"box-sizing:border-=
+box;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;font-=
+family: Arial, sans-serif; color: #1f2933; line-height: 1.6; margin: 0; pad=
+ding: 24px; background: #f5f7fa;">
+    <div style=3D"box-sizing:border-bo=
+x;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;width:1=
+00%;max-width:600px; margin: 0 auto; background: #ffffff; border: 1px solid=
+ #dbe6ee; border-radius: 12px; padding: 32px;">
+        <h1 style=3D"marg=
+in-top: 0; font-size: 24px;">Your water service reconnection has been sched=
+uled</h1>
+
+        <p>Hello Reconnection Email Sample,</p>
+          =
+          <p>Your Via-Vida Waterworks account is now <strong>Active / Pendi=
+ng Reconnection</strong>. Your reconnection has been scheduled. Please wait=
+ for confirmation that your water service has been restored.</p>
+        =
+
+        <div style=3D"box-sizing:border-box;word-wrap:break-word;overflo=
+w-wrap:anywhere;word-break:break-word;background-color: #f0f7f9; border: 1p=
+x solid #cce4ec; border-radius: 8px; padding: 16px; margin: 20px 0;">
+   =
+         <p style=3D"box-sizing:border-box;word-wrap:break-word;overflow-wr=
+ap:anywhere;word-break:break-word;margin: 0 0 8px; font-size: 15px; color: =
+#102a43;">
+                <strong>Scheduled Reconnection Date:</strong> =
+November 25, 2026
+            </p>
+            <p style=3D"box-sizing:b=
+order-box;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word=
+;margin: 0 0 8px; font-size: 15px; color: #102a43;">
+                <str=
+ong>Scheduled Reconnection Time (Philippine Time):</strong> 9:30 AM
+     =
+       </p>
+                                        <p style=3D"box-sizin=
+g:border-box;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-w=
+ord;margin: 0 0 12px; font-size: 13px; color: #52606d;">
+                =
+    Please ensure that you or an authorized representative is available at =
+the service address during the scheduled reconnection.
+                </=
+p>
+                                        <a href=3D"http://reconnect.ex=
+ample.test:8027/reconnection/1/reschedule?expires=3D1795975398&amp;signatur=
+e=3Df5e18d1dc311f8683f6f4d80dcdff9130dd375ed298242d975b5d2a8c9809cee" targe=
+t=3D"_blank" rel=3D"noopener" style=3D"box-sizing:border-box;word-wrap:brea=
+k-word;overflow-wrap:anywhere;word-break:break-word;display: inline-block; =
+padding: 10px 22px; font-family: Arial, sans-serif; font-size: 14px; font-w=
+eight: 700; color: #0f6e8c; background-color: #ffffff; border: 1px solid #0=
+f6e8c; text-decoration: none; border-radius: 6px; line-height: 1.2;">Reques=
+t for Reschedule</a>
+                <p style=3D"font-size: 13px; color: =
+#52606d; margin: 8px 0 0;">This link expires in seven days. Please keep it =
+private.</p>
+                    </div>
+
+        <p style=3D"box-sizi=
+ng:border-box;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-=
+word;margin-bottom: 8px;"><strong>Your account details</strong></p>
+     =
+   <table style=3D"width: 100%; max-width: 600px; table-layout: fixed; bord=
+er-collapse: collapse; margin-bottom: 16px;">
+                           =
+ <tr>
+                    <td style=3D"box-sizing:border-box;word-wrap:br=
+eak-word;overflow-wrap:anywhere;word-break:break-word;padding:8px 0;border-=
+bottom:1px solid #dbe6ee;"><span class=3D"email-detail-label" style=3D"disp=
+lay:block;">Account Number</span><span class=3D"email-detail-value" style=
+=3D"display:block;word-wrap:break-word;overflow-wrap:anywhere;word-break:br=
+eak-all;"><strong>RECONNECT-EMAIL-SAMPLE</strong></span></td>
+           =
+     </tr>
+                            <tr>
+                    <td sty=
+le=3D"box-sizing:border-box;word-wrap:break-word;overflow-wrap:anywhere;wor=
+d-break:break-word;padding:8px 0;border-bottom:1px solid #dbe6ee;"><span cl=
+ass=3D"email-detail-label" style=3D"display:block;">Meter Number (Username)=
+</span><span class=3D"email-detail-value" style=3D"display:block;word-wrap:=
+break-word;overflow-wrap:anywhere;word-break:break-all;"><strong>RECONNECT-=
+SAMPLE-METER</strong></span></td>
+                </tr>
+               =
+             <tr>
+                    <td style=3D"box-sizing:border-box;=
+word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;padding:8=
+px 0;border-bottom:1px solid #dbe6ee;"><span class=3D"email-detail-label" s=
+tyle=3D"display:block;">Registered Email Address</span><span class=3D"email=
+-detail-value" style=3D"display:block;word-wrap:break-word;overflow-wrap:an=
+ywhere;word-break:break-all;"><strong>reconnection-sample@example.test</str=
+ong></span></td>
+                </tr>
+                                =
+        <tr><td style=3D"padding:8px 0;border-bottom:1px solid #dbe6ee;"><s=
+pan class=3D"email-detail-label" style=3D"display:block;">Temporary Passwor=
+d</span><code style=3D"font-family: Arial, sans-serif; font-weight: bold;">=
+w91Botr9aGdU</code></td></tr>
+                    </table>
+
+         =
+           <p>Sign in with your <strong>meter number</strong> and the tempo=
+rary password above. Please choose a new password after signing in.</p>
+ =
+      =20
+                    <p><a href=3D"http://reconnect.example.test:8=
+027/account/setup-password/2/4URtj2YJMyirR2GJGRTrgU6rK1w8l9OODy5fPvmI71XXBj=
+vuxilbPZIpYb8oU2mT?expires=3D1795374198&amp;signature=3D3b683a17763cf30cb95=
+6748dacc6c9751ae1b4b0f0f80553c5dd487121465cb5" style=3D"box-sizing:border-b=
+ox;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;color:=
+ #0f6e8c; font-weight: bold;">Set / Reset Password Securely</a></p>
+     =
+       <p style=3D"box-sizing:border-box;word-wrap:break-word;overflow-wrap=
+:anywhere;word-break:break-word;font-size: 13px;">The setup link expires in=
+ 60 minutes.</p>
+       =20
+                    <table role=3D"presentati=
+on" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"margin: 24px =
+auto; text-align: center;">
+                <tr>
+                    <t=
+d align=3D"center" style=3D"box-sizing:border-box;word-wrap:break-word;over=
+flow-wrap:anywhere;word-break:break-word;border-radius: 8px; background-col=
+or: #0f6e8c;">
+                        <a href=3D"http://reconnect.exampl=
+e.test:8027/login" target=3D"_blank" rel=3D"noopener" style=3D"box-sizing:b=
+order-box;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word=
+;display: inline-block; padding: 14px 36px; font-family: Arial, sans-serif;=
+ font-size: 16px; font-weight: 700; color: #ffffff; text-decoration: none; =
+border-radius: 8px; line-height: 1.2;">Login Now</a>
+                    =
+</td>
+                </tr>
+            </table>
+            <p style=
+=3D"box-sizing:border-box;word-wrap:break-word;overflow-wrap:anywhere;word-=
+break:break-word;font-size: 13px; color: #6a7d86; word-break: break-all; ma=
+rgin: 0 0 20px;">
+                If the button above does not work, sign=
+ in directly at:<br>
+                <a href=3D"http://reconnect.example.=
+test:8027/login" style=3D"box-sizing:border-box;word-wrap:break-word;overfl=
+ow-wrap:anywhere;word-break:break-word;color: #0f6e8c;">http://reconnect.ex=
+ample.test:8027/login</a>
+            </p>
+       =20
+        <p style=
+=3D"box-sizing:border-box;word-wrap:break-word;overflow-wrap:anywhere;word-=
+break:break-word;font-size: 13px; color: #52606d; margin: 0 0 18px;">
+   =
+         <strong>Customer Support</strong><br>Via Vida Water Billing Office=
+, Via Vida, Panabo City
+                                </p>
+        <p=
+ style=3D"box-sizing:border-box;word-wrap:break-word;overflow-wrap:anywhere=
+;word-break:break-word;margin-bottom: 0;">Thank you.</p>
+    </div>
+</b=
+ody>
+</html>

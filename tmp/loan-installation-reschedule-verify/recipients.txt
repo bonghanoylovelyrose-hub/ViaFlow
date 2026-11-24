@@ -1,0 +1,2 @@
+RCPT TO:<loan-sample@example.test>
+RCPT TO:<loan-sample@example.test>

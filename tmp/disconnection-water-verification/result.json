@@ -1,0 +1,12 @@
+{
+    "notice": 1,
+    "bill": 3,
+    "account": "QA-WATER-001",
+    "meter": "QA-DISC-WATER-001",
+    "name": "Water Notice Development QA",
+    "deadline": "November 22, 2026 5:00 PM",
+    "deadline_ui": "Nov 22, 2026 5:00 PM",
+    "subject": "Disconnection Notice - Immediate Payment Required",
+    "amount": "1,070.00",
+    "inbox": "water-notice-qa@example.test"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\waterbillingsystems\phpunit.xml" tests="5" assertions="37" errors="1" failures="0" skipped="0" time="1.284055">
+    <testsuite name="Feature" tests="5" assertions="37" errors="1" failures="0" skipped="0" time="1.284055">
+      <testsuite name="Tests\Feature\ConsumerManagementTablesTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php" tests="5" assertions="37" errors="1" failures="0" skipped="0" time="1.284055">
+        <testcase name="test_notice_table_precedes_active_table_with_disjoint_account_rows_and_required_columns" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php" line="54" class="Tests\Feature\ConsumerManagementTablesTest" classname="Tests.Feature.ConsumerManagementTablesTest" assertions="13" time="0.927414"/>
+        <testcase name="test_search_and_membership_filters_are_independent_in_both_directions" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php" line="78" class="Tests\Feature\ConsumerManagementTablesTest" classname="Tests.Feature.ConsumerManagementTablesTest" assertions="6" time="0.136186"/>
+        <testcase name="test_each_paginator_and_filter_form_preserves_the_other_table_state" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php" line="98" class="Tests\Feature\ConsumerManagementTablesTest" classname="Tests.Feature.ConsumerManagementTablesTest" assertions="14" time="0.145328"/>
+        <testcase name="test_both_tables_remain_visible_when_empty" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php" line="127" class="Tests\Feature\ConsumerManagementTablesTest" classname="Tests.Feature.ConsumerManagementTablesTest" assertions="4" time="0.036381"/>
+        <testcase name="test_delete_action_removes_only_the_selected_consumer" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php" line="134" class="Tests\Feature\ConsumerManagementTablesTest" classname="Tests.Feature.ConsumerManagementTablesTest" assertions="0" time="0.038746">
+          <error type="Symfony\Component\Routing\Exception\RouteNotFoundException">Tests\Feature\ConsumerManagementTablesTest::test_delete_action_removes_only_the_selected_consumer&#13;
+Symfony\Component\Routing\Exception\RouteNotFoundException: Route [consumers.destroy] not defined.
+&#13;
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Routing\UrlGenerator.php:534
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Foundation\helpers.php:870
+C:\xampp\htdocs\waterbillingsystems\tests\Feature\ConsumerManagementTablesTest.php:139</error>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

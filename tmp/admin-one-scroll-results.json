@@ -1,0 +1,3951 @@
+{
+  "results": [
+    {
+      "name": "consumers-all",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 170,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          }
+        ],
+        "body": 2241
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 2027
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 170,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1242,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 12,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "consumers-active",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Account Number",
+              "Consumer Name",
+              "Meter Number",
+              "Membership",
+              "Outstanding Balance",
+              "Payment Status",
+              "Disconnection Notice Date",
+              "Grace Period / Payment Deadline",
+              "Status / History",
+              "Actions"
+            ],
+            "width": 1228.125,
+            "rowHeight": 225.1875,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          },
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 128,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Manage disconnection notices a",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Disconnection Notice\n                                Accounts with not",
+            "top": 216.625,
+            "left": 294,
+            "width": 1081,
+            "height": 66,
+            "bottom": 282.625
+          },
+          {
+            "text": "Search\n                                    \n                          ",
+            "top": 298.625,
+            "left": 314,
+            "width": 1041,
+            "height": 82.1875,
+            "bottom": 380.8125
+          }
+        ],
+        "body": 4097
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 3882
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Account Number",
+              "Consumer Name",
+              "Meter Number",
+              "Membership",
+              "Outstanding Balance",
+              "Payment Status",
+              "Disconnection Notice Date",
+              "Grace Period / Payment Deadline",
+              "Status / History",
+              "Actions"
+            ],
+            "width": 1228.125,
+            "rowHeight": 225.1875,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          },
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 128,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Manage disconnection notices a",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Disconnection Notice\n                                Accounts with not",
+            "top": 216.625,
+            "left": 294,
+            "width": 1081,
+            "height": 66,
+            "bottom": 282.625
+          },
+          {
+            "text": "Search\n                                    \n                          ",
+            "top": 298.625,
+            "left": 314,
+            "width": 1041,
+            "height": 82.1875,
+            "bottom": 380.8125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Manage disconne",
+            "shift": 0
+          },
+          {
+            "text": "Disconnection Notice\n                                Ac",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                                    \n           ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 3097,
+        "shifts": [
+          {
+            "text": "Disconnection Notice\n                   ",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                                 ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 2,
+            "hrefs": true
+          },
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 4,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "consumers-inactive",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Outstanding Balance",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 170,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          }
+        ],
+        "body": 2531
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 2316
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Outstanding Balance",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 170,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1531,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 4,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "consumers-pending",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 192,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Pending Type:\n                        \n                            All",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 347.40625
+          }
+        ],
+        "body": 2279
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 2064
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 192,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Pending Type:\n                        \n                            All",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 347.40625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Type:\n                        \n                ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1279,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Type:\n                        \n ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 3,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "consumers-rejected",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 170,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          }
+        ],
+        "body": 2197
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 1983
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 170,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1198,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 2,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "dashboard",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Dashboard\n                    Financial, operational, and community me",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 148.375,
+            "bottom": 251.375
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 313.75,
+            "left": 268,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 313.75,
+            "left": 555.25,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "0.0 pts\n                                \n                            \n",
+            "top": 313.75,
+            "left": 842.5,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 313.75,
+            "left": 1129.75,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 268,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 555.25,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 842.5,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 1129.75,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          }
+        ],
+        "body": 1963
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 701.28125,
+          "left": 256,
+          "width": 1172,
+          "height": 274.71875,
+          "bottom": 976,
+          "client": 275,
+          "total": 1237
+        },
+        "tableMetrics": [],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Dashboard\n                    Financial, operational, and community me",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 148.375,
+            "bottom": 251.375
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 313.75,
+            "left": 268,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 313.75,
+            "left": 555.25,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "0.0 pts\n                                \n                            \n",
+            "top": 313.75,
+            "left": 842.5,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 313.75,
+            "left": 1129.75,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 487.515625
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 268,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 555.25,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 842.5,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          },
+          {
+            "text": "No prior comparison\n                                \n                 ",
+            "top": 503.515625,
+            "left": 1129.75,
+            "width": 271.25,
+            "height": 173.765625,
+            "bottom": 677.28125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Dashboard\n                    Financial, operational, a",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          },
+          {
+            "text": "0.0 pts\n                                \n              ",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          },
+          {
+            "text": "No prior comparison\n                                \n  ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 962,
+        "shifts": [],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "staff",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Name",
+              "Email",
+              "Role",
+              "Access Scope"
+            ],
+            "width": 1083,
+            "rowHeight": 42.1875,
+            "font": "600 16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Staff Management\n                    Create and manage admin and staff",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          }
+        ],
+        "body": 1625
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 1411
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Name",
+              "Email",
+              "Role",
+              "Access Scope"
+            ],
+            "width": 1083,
+            "rowHeight": 42.1875,
+            "font": "600 16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Staff Management\n                    Create and manage admin and staff",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Staff Management\n                    Create and manage ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 626,
+        "shifts": [],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "billing",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Consumer",
+              "Billing Period",
+              "PRN",
+              "Previous",
+              "Current",
+              "Consumption",
+              "Rate",
+              "Previous Balance",
+              "Current Charges",
+              "Total Due",
+              "Balance",
+              "Status",
+              "Statement"
+            ],
+            "width": 1344.453125,
+            "rowHeight": 159.21875,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "16px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Records Found\n                        70\n                        All r",
+            "top": 189.03125,
+            "left": 268,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Open Bills\n                        70\n                        Needs fo",
+            "top": 189.03125,
+            "left": 557.25,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Previous Balance Added\n                        P 0.00\n                ",
+            "top": 189.03125,
+            "left": 846.5,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Balance Due\n                        P 50,785.00\n                      ",
+            "top": 189.03125,
+            "left": 1135.75,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Billing Records\n                            Filter by period, status, ",
+            "top": 376.609375,
+            "left": 293,
+            "width": 1083,
+            "height": 44.296875,
+            "bottom": 420.90625
+          },
+          {
+            "text": "Period\n                            \n                        \n         ",
+            "top": 436.90625,
+            "left": 293,
+            "width": 1083,
+            "height": 72.59375,
+            "bottom": 509.5
+          }
+        ],
+        "body": 1979
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 351.609375,
+          "left": 268,
+          "width": 1148,
+          "height": 624.390625,
+          "bottom": 976,
+          "client": 624,
+          "total": 1603
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Consumer",
+              "Billing Period",
+              "PRN",
+              "Previous",
+              "Current",
+              "Consumption",
+              "Rate",
+              "Previous Balance",
+              "Current Charges",
+              "Total Due",
+              "Balance",
+              "Status",
+              "Statement"
+            ],
+            "width": 1344.453125,
+            "rowHeight": 159.21875,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "16px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Records Found\n                        70\n                        All r",
+            "top": 189.03125,
+            "left": 268,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Open Bills\n                        70\n                        Needs fo",
+            "top": 189.03125,
+            "left": 557.25,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Previous Balance Added\n                        P 0.00\n                ",
+            "top": 189.03125,
+            "left": 846.5,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Balance Due\n                        P 50,785.00\n                      ",
+            "top": 189.03125,
+            "left": 1135.75,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 335.609375
+          },
+          {
+            "text": "Billing Records\n                            Filter by period, status, ",
+            "top": 376.609375,
+            "left": 293,
+            "width": 1083,
+            "height": 44.296875,
+            "bottom": 420.90625
+          },
+          {
+            "text": "Period\n                            \n                        \n         ",
+            "top": 436.90625,
+            "left": 293,
+            "width": 1083,
+            "height": 72.59375,
+            "bottom": 509.5
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Records Found\n                        70\n              ",
+            "shift": 0
+          },
+          {
+            "text": "Open Bills\n                        70\n                 ",
+            "shift": 0
+          },
+          {
+            "text": "Previous Balance Added\n                        P 0.00\n ",
+            "shift": 0
+          },
+          {
+            "text": "Balance Due\n                        P 50,785.00\n       ",
+            "shift": 0
+          },
+          {
+            "text": "Billing Records\n                            Filter by p",
+            "shift": 0
+          },
+          {
+            "text": "Period\n                            \n                   ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 979,
+        "shifts": [
+          {
+            "text": "Billing Records\n                        ",
+            "shift": 0
+          },
+          {
+            "text": "Period\n                            \n    ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 7,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "payments",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "PRN",
+              "Consumer",
+              "Balance",
+              "Status"
+            ],
+            "width": 1083,
+            "rowHeight": 62.046875,
+            "font": "700 14px / 21px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "12.48px 8.8px 12.48px 12px"
+          },
+          {
+            "headings": [
+              "Reference",
+              "Consumer",
+              "Billing Period",
+              "Amount Paid",
+              "Remaining Balance",
+              "Status",
+              "Date",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 67.53125,
+            "font": "14px / 21px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "12.48px 8.8px 12.48px 12px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Payment Monitoring\n                    Manage counter and online payme",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 87.625,
+            "bottom": 190.625
+          },
+          {
+            "text": "Pending Verification\n                        20\n                      ",
+            "top": 214.625,
+            "left": 268,
+            "width": 1133,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Pending Verification\n                        20\n                      ",
+            "top": 214.625,
+            "left": 268,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Verified Today\n                        0\n                        Clear",
+            "top": 214.625,
+            "left": 555.25,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Online Submissions\n                        0\n                        D",
+            "top": 214.625,
+            "left": 842.5,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Verified Amount Today\n                        P 0.00\n                 ",
+            "top": 214.625,
+            "left": 1129.75,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Open Bills for Payment\n                                Unpaid and over",
+            "top": 404.40625,
+            "left": 293,
+            "width": 1083,
+            "height": 43.59375,
+            "bottom": 448
+          }
+        ],
+        "body": 2262
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 379.40625,
+          "left": 268,
+          "width": 1148,
+          "height": 596.59375,
+          "bottom": 976,
+          "client": 597,
+          "total": 1858
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "PRN",
+              "Consumer",
+              "Balance",
+              "Status"
+            ],
+            "width": 1083,
+            "rowHeight": 62.046875,
+            "font": "700 14px / 21px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "12.48px 8.8px 12.48px 12px"
+          },
+          {
+            "headings": [
+              "Reference",
+              "Consumer",
+              "Billing Period",
+              "Amount Paid",
+              "Remaining Balance",
+              "Status",
+              "Date",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 67.53125,
+            "font": "14px / 21px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "12.48px 8.8px 12.48px 12px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Payment Monitoring\n                    Manage counter and online payme",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 87.625,
+            "bottom": 190.625
+          },
+          {
+            "text": "Pending Verification\n                        20\n                      ",
+            "top": 214.625,
+            "left": 268,
+            "width": 1133,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Pending Verification\n                        20\n                      ",
+            "top": 214.625,
+            "left": 268,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Verified Today\n                        0\n                        Clear",
+            "top": 214.625,
+            "left": 555.25,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Online Submissions\n                        0\n                        D",
+            "top": 214.625,
+            "left": 842.5,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Verified Amount Today\n                        P 0.00\n                 ",
+            "top": 214.625,
+            "left": 1129.75,
+            "width": 271.25,
+            "height": 144.78125,
+            "bottom": 359.40625
+          },
+          {
+            "text": "Open Bills for Payment\n                                Unpaid and over",
+            "top": 404.40625,
+            "left": 293,
+            "width": 1083,
+            "height": 43.59375,
+            "bottom": 448
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Payment Monitoring\n                    Manage counter a",
+            "shift": 0
+          },
+          {
+            "text": "Pending Verification\n                        20\n       ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Verification\n                        20\n       ",
+            "shift": 0
+          },
+          {
+            "text": "Verified Today\n                        0\n              ",
+            "shift": 0
+          },
+          {
+            "text": "Online Submissions\n                        0\n          ",
+            "shift": 0
+          },
+          {
+            "text": "Verified Amount Today\n                        P 0.00\n  ",
+            "shift": 0
+          },
+          {
+            "text": "Open Bills for Payment\n                                ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1261,
+        "shifts": [
+          {
+            "text": "Open Bills for Payment\n                 ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 2,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "loans",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Applicant Information",
+              "Installation Cost Details",
+              "Paid",
+              "Balance",
+              "Installation Status",
+              "Installation Schedule",
+              "Actions"
+            ],
+            "width": 1087.625,
+            "rowHeight": 86,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          },
+          {
+            "headings": [
+              "Borrower",
+              "Installation Date",
+              "Installation Time",
+              "Installation Notes",
+              "Actions"
+            ],
+            "width": 600.90625,
+            "rowHeight": 73,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "24px 8px"
+          },
+          {
+            "headings": [
+              "Borrower",
+              "Installment",
+              "Billing Period",
+              "Required Amount",
+              "Amount Paid",
+              "Remaining Balance",
+              "Due Date",
+              "Payment Date",
+              "Status"
+            ],
+            "width": 710.8125,
+            "rowHeight": 73,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "24px 8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Loan Management\n                    Capture applications, evaluate con",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Approved Loans0Active portfolio",
+            "top": 197.03125,
+            "left": 268,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Awaiting Installation Schedule30Needs schedule",
+            "top": 197.03125,
+            "left": 557.25,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Eligible Applications30DSS passed",
+            "top": 197.03125,
+            "left": 846.5,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Repayments Due0Next 7 days",
+            "top": 197.03125,
+            "left": 1135.75,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Application Queue\n                                Pending-review appli",
+            "top": 392.609375,
+            "left": 775.078125,
+            "width": 600.90625,
+            "height": 104.1875,
+            "bottom": 496.796875
+          }
+        ],
+        "body": 2085
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 367.609375,
+          "left": 256,
+          "width": 1172,
+          "height": 608.390625,
+          "bottom": 976,
+          "client": 608,
+          "total": 1694
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Applicant Information",
+              "Installation Cost Details",
+              "Paid",
+              "Balance",
+              "Installation Status",
+              "Installation Schedule",
+              "Actions"
+            ],
+            "width": 1087.625,
+            "rowHeight": 86,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          },
+          {
+            "headings": [
+              "Borrower",
+              "Installation Date",
+              "Installation Time",
+              "Installation Notes",
+              "Actions"
+            ],
+            "width": 600.90625,
+            "rowHeight": 73,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "24px 8px"
+          },
+          {
+            "headings": [
+              "Borrower",
+              "Installment",
+              "Billing Period",
+              "Required Amount",
+              "Amount Paid",
+              "Remaining Balance",
+              "Due Date",
+              "Payment Date",
+              "Status"
+            ],
+            "width": 710.8125,
+            "rowHeight": 73,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "24px 8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Loan Management\n                    Capture applications, evaluate con",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Approved Loans0Active portfolio",
+            "top": 197.03125,
+            "left": 268,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Awaiting Installation Schedule30Needs schedule",
+            "top": 197.03125,
+            "left": 557.25,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Eligible Applications30DSS passed",
+            "top": 197.03125,
+            "left": 846.5,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Repayments Due0Next 7 days",
+            "top": 197.03125,
+            "left": 1135.75,
+            "width": 265.25,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Application Queue\n                                Pending-review appli",
+            "top": 392.609375,
+            "left": 775.078125,
+            "width": 600.90625,
+            "height": 104.1875,
+            "bottom": 496.796875
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Loan Management\n                    Capture application",
+            "shift": 0
+          },
+          {
+            "text": "Approved Loans0Active portfolio",
+            "shift": 0
+          },
+          {
+            "text": "Awaiting Installation Schedule30Needs schedule",
+            "shift": 0
+          },
+          {
+            "text": "Eligible Applications30DSS passed",
+            "shift": 0
+          },
+          {
+            "text": "Repayments Due0Next 7 days",
+            "shift": 0
+          },
+          {
+            "text": "Application Queue\n                                Pendi",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1086,
+        "shifts": [
+          {
+            "text": "Application Queue\n                      ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 3,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "incidents",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Reporter",
+              "Category",
+              "Location",
+              "Status",
+              "Reported On",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 83,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Incident Reporting\n                    Capture service issues, track r",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Total Reports30Response Snapshot",
+            "top": 173.03125,
+            "left": 268,
+            "width": 213.796875,
+            "height": 146.578125,
+            "bottom": 319.609375
+          },
+          {
+            "text": "Pending30Awaiting action",
+            "top": 173.03125,
+            "left": 497.796875,
+            "width": 213.796875,
+            "height": 146.578125,
+            "bottom": 319.609375
+          },
+          {
+            "text": "Resolved0Closed reports",
+            "top": 173.03125,
+            "left": 727.59375,
+            "width": 213.796875,
+            "height": 146.578125,
+            "bottom": 319.609375
+          },
+          {
+            "text": "Submitted Reports\n                            \n                       ",
+            "top": 368.609375,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 410.203125
+          },
+          {
+            "text": "Search\n                                \n                            \n ",
+            "top": 418.203125,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 500.390625
+          }
+        ],
+        "body": 1518
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 343.609375,
+          "left": 256,
+          "width": 1172,
+          "height": 632.390625,
+          "bottom": 976,
+          "client": 632,
+          "total": 1150
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Reporter",
+              "Category",
+              "Location",
+              "Status",
+              "Reported On",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 83,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Incident Reporting\n                    Capture service issues, track r",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Total Reports30Response Snapshot",
+            "top": 173.03125,
+            "left": 268,
+            "width": 213.796875,
+            "height": 146.578125,
+            "bottom": 319.609375
+          },
+          {
+            "text": "Pending30Awaiting action",
+            "top": 173.03125,
+            "left": 497.796875,
+            "width": 213.796875,
+            "height": 146.578125,
+            "bottom": 319.609375
+          },
+          {
+            "text": "Resolved0Closed reports",
+            "top": 173.03125,
+            "left": 727.59375,
+            "width": 213.796875,
+            "height": 146.578125,
+            "bottom": 319.609375
+          },
+          {
+            "text": "Submitted Reports\n                            \n                       ",
+            "top": 368.609375,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 410.203125
+          },
+          {
+            "text": "Search\n                                \n                            \n ",
+            "top": 418.203125,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 500.390625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Incident Reporting\n                    Capture service ",
+            "shift": 0
+          },
+          {
+            "text": "Total Reports30Response Snapshot",
+            "shift": 0
+          },
+          {
+            "text": "Pending30Awaiting action",
+            "shift": 0
+          },
+          {
+            "text": "Resolved0Closed reports",
+            "shift": 0
+          },
+          {
+            "text": "Submitted Reports\n                            \n        ",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                                \n               ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 518,
+        "shifts": [
+          {
+            "text": "Submitted Reports\n                      ",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                                \n",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 3,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "reports",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Payment Date",
+              "OR No.",
+              "Reference",
+              "Account No.",
+              "Consumer",
+              "PRN",
+              "Amount",
+              "Method",
+              "Channel",
+              "Verified At",
+              "Verified By"
+            ],
+            "width": 1210,
+            "rowHeight": 166.1875,
+            "font": "12.8px / 19.2px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "48px 4px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Reports Center\n                    One place for operational, financia",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Report\n                                    \n                          ",
+            "top": 190.625,
+            "left": 557.25,
+            "width": 843.75,
+            "height": 124.1875,
+            "bottom": 314.8125
+          },
+          {
+            "text": "Collections Report\n                                    Financial\n     ",
+            "top": 363.8125,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 94.640625,
+            "bottom": 458.453125
+          },
+          {
+            "text": "Verified Collections\n                                    P 0.00\n      ",
+            "top": 478.453125,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 79.25,
+            "bottom": 557.703125
+          }
+        ],
+        "body": 1224
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 256,
+          "width": 1172,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 1009
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Payment Date",
+              "OR No.",
+              "Reference",
+              "Account No.",
+              "Consumer",
+              "PRN",
+              "Amount",
+              "Method",
+              "Channel",
+              "Verified At",
+              "Verified By"
+            ],
+            "width": 1210,
+            "rowHeight": 166.1875,
+            "font": "12.8px / 19.2px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "48px 4px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Reports Center\n                    One place for operational, financia",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Report\n                                    \n                          ",
+            "top": 190.625,
+            "left": 557.25,
+            "width": 843.75,
+            "height": 124.1875,
+            "bottom": 314.8125
+          },
+          {
+            "text": "Collections Report\n                                    Financial\n     ",
+            "top": 363.8125,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 94.640625,
+            "bottom": 458.453125
+          },
+          {
+            "text": "Verified Collections\n                                    P 0.00\n      ",
+            "top": 478.453125,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 79.25,
+            "bottom": 557.703125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Reports Center\n                    One place for operat",
+            "shift": 0
+          },
+          {
+            "text": "Report\n                                    \n           ",
+            "shift": 0
+          },
+          {
+            "text": "Collections Report\n                                    ",
+            "shift": 0
+          },
+          {
+            "text": "Verified Collections\n                                  ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 224,
+        "shifts": [
+          {
+            "text": "Report\n                                 ",
+            "shift": 0
+          },
+          {
+            "text": "Collections Report\n                     ",
+            "shift": 0
+          },
+          {
+            "text": "Verified Collections\n                   ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "reports-billing",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Billing Period",
+              "PRN",
+              "Account No.",
+              "Consumer",
+              "Purok",
+              "Meter No.",
+              "Previous Reading",
+              "Current Reading",
+              "Consumption",
+              "Unit Rate",
+              "Base Charge",
+              "Water Charge",
+              "Arrears",
+              "Penalty",
+              "Loan Installment",
+              "Total Bill",
+              "Verified Paid",
+              "Balance Due",
+              "Status",
+              "Due Date",
+              "Carried Forward To"
+            ],
+            "width": 2310,
+            "rowHeight": 28.953125,
+            "font": "12.8px / 19.2px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "4px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Reports Center\n                    One place for operational, financia",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Report\n                                    \n                          ",
+            "top": 190.625,
+            "left": 557.25,
+            "width": 843.75,
+            "height": 124.1875,
+            "bottom": 314.8125
+          },
+          {
+            "text": "Billing Report\n                                    Financial\n         ",
+            "top": 363.8125,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 152.234375,
+            "bottom": 516.046875
+          },
+          {
+            "text": "Bills Generated\n                                    70\n               ",
+            "top": 536.046875,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 170.5,
+            "bottom": 706.546875
+          }
+        ],
+        "body": 1533
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 256,
+          "width": 1172,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 1434
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Billing Period",
+              "PRN",
+              "Account No.",
+              "Consumer",
+              "Purok",
+              "Meter No.",
+              "Previous Reading",
+              "Current Reading",
+              "Consumption",
+              "Unit Rate",
+              "Base Charge",
+              "Water Charge",
+              "Arrears",
+              "Penalty",
+              "Loan Installment",
+              "Total Bill",
+              "Verified Paid",
+              "Balance Due",
+              "Status",
+              "Due Date",
+              "Carried Forward To"
+            ],
+            "width": 2310,
+            "rowHeight": 28.953125,
+            "font": "12.8px / 19.2px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "4px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Reports Center\n                    One place for operational, financia",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Report\n                                    \n                          ",
+            "top": 190.625,
+            "left": 557.25,
+            "width": 843.75,
+            "height": 124.1875,
+            "bottom": 314.8125
+          },
+          {
+            "text": "Billing Report\n                                    Financial\n         ",
+            "top": 363.8125,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 152.234375,
+            "bottom": 516.046875
+          },
+          {
+            "text": "Bills Generated\n                                    70\n               ",
+            "top": 536.046875,
+            "left": 582.25,
+            "width": 793.75,
+            "height": 170.5,
+            "bottom": 706.546875
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Reports Center\n                    One place for operat",
+            "shift": 0
+          },
+          {
+            "text": "Report\n                                    \n           ",
+            "shift": 0
+          },
+          {
+            "text": "Billing Report\n                                    Fina",
+            "shift": 0
+          },
+          {
+            "text": "Bills Generated\n                                    70\n",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 649,
+        "shifts": [
+          {
+            "text": "Report\n                                 ",
+            "shift": 0
+          },
+          {
+            "text": "Billing Report\n                         ",
+            "shift": 0
+          },
+          {
+            "text": "Bills Generated\n                        ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 3,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "meter-readings",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Consumer",
+              "Meter",
+              "Verified"
+            ],
+            "width": 487.5,
+            "rowHeight": 86,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          },
+          {
+            "headings": [
+              "Consumer",
+              "Current"
+            ],
+            "width": 502.5,
+            "rowHeight": 72.5,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "24px 8px"
+          },
+          {
+            "headings": [
+              "Consumer",
+              "Read Date",
+              "Previous",
+              "Current",
+              "Consumption",
+              "Status"
+            ],
+            "width": 1081,
+            "rowHeight": 120.5,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "48px 8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Meter Reading Workspace\n                    Capture a meter photo, let",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Assigned Accounts\n                        60\n                        T",
+            "top": 197.03125,
+            "left": 268,
+            "width": 361.65625,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Completed Reads\n                        0\n                        Enco",
+            "top": 197.03125,
+            "left": 653.65625,
+            "width": 361.65625,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Pending Uploads\n                        0\n                        Need",
+            "top": 197.03125,
+            "left": 1039.3125,
+            "width": 361.65625,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Reading Cycle\n                            \n                           ",
+            "top": 367.609375,
+            "left": 268,
+            "width": 1133,
+            "height": 101.390625,
+            "bottom": 469
+          }
+        ],
+        "body": 1455
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 367.609375,
+          "left": 256,
+          "width": 1172,
+          "height": 608.390625,
+          "bottom": 976,
+          "client": 608,
+          "total": 5844
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Consumer",
+              "Meter",
+              "Verified"
+            ],
+            "width": 487.5,
+            "rowHeight": 86,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          },
+          {
+            "headings": [
+              "Consumer",
+              "Current"
+            ],
+            "width": 502.5,
+            "rowHeight": 72.5,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "24px 8px"
+          },
+          {
+            "headings": [
+              "Consumer",
+              "Read Date",
+              "Previous",
+              "Current",
+              "Consumption",
+              "Status"
+            ],
+            "width": 1081,
+            "rowHeight": 120.5,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "48px 8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Meter Reading Workspace\n                    Capture a meter photo, let",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Assigned Accounts\n                        60\n                        T",
+            "top": 197.03125,
+            "left": 268,
+            "width": 361.65625,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Completed Reads\n                        0\n                        Enco",
+            "top": 197.03125,
+            "left": 653.65625,
+            "width": 361.65625,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Pending Uploads\n                        0\n                        Need",
+            "top": 197.03125,
+            "left": 1039.3125,
+            "width": 361.65625,
+            "height": 146.578125,
+            "bottom": 343.609375
+          },
+          {
+            "text": "Reading Cycle\n                            \n                           ",
+            "top": 367.609375,
+            "left": 268,
+            "width": 1133,
+            "height": 101.390625,
+            "bottom": 469
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Meter Reading Workspace\n                    Capture a m",
+            "shift": 0
+          },
+          {
+            "text": "Assigned Accounts\n                        60\n          ",
+            "shift": 0
+          },
+          {
+            "text": "Completed Reads\n                        0\n             ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Uploads\n                        0\n             ",
+            "shift": 0
+          },
+          {
+            "text": "Reading Cycle\n                            \n            ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 5236,
+        "shifts": [
+          {
+            "text": "Reading Cycle\n                          ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "announcements",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Announcements\n                    Publish service advisories, billing ",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Visible Announcements\n                        30\n                     ",
+            "top": 190.625,
+            "left": 268,
+            "width": 361.65625,
+            "height": 157.375,
+            "bottom": 348
+          },
+          {
+            "text": "Pinned Posts\n                        0\n                        Priorit",
+            "top": 190.625,
+            "left": 653.65625,
+            "width": 361.65625,
+            "height": 157.375,
+            "bottom": 348
+          },
+          {
+            "text": "Service Advisories\n                        9\n                        O",
+            "top": 190.625,
+            "left": 1039.3125,
+            "width": 361.65625,
+            "height": 157.375,
+            "bottom": 348
+          },
+          {
+            "text": "Announcement Feed\n                    \n                        \n      ",
+            "top": 397,
+            "left": 293,
+            "width": 1083,
+            "height": 43.1875,
+            "bottom": 440.1875
+          }
+        ],
+        "body": 1766
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 372,
+          "left": 268,
+          "width": 1148,
+          "height": 604,
+          "bottom": 976,
+          "client": 604,
+          "total": 1370
+        },
+        "tableMetrics": [],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Announcements\n                    Publish service advisories, billing ",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Visible Announcements\n                        30\n                     ",
+            "top": 190.625,
+            "left": 268,
+            "width": 361.65625,
+            "height": 157.375,
+            "bottom": 348
+          },
+          {
+            "text": "Pinned Posts\n                        0\n                        Priorit",
+            "top": 190.625,
+            "left": 653.65625,
+            "width": 361.65625,
+            "height": 157.375,
+            "bottom": 348
+          },
+          {
+            "text": "Service Advisories\n                        9\n                        O",
+            "top": 190.625,
+            "left": 1039.3125,
+            "width": 361.65625,
+            "height": 157.375,
+            "bottom": 348
+          },
+          {
+            "text": "Announcement Feed\n                    \n                        \n      ",
+            "top": 397,
+            "left": 293,
+            "width": 1083,
+            "height": 43.1875,
+            "bottom": 440.1875
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Announcements\n                    Publish service advis",
+            "shift": 0
+          },
+          {
+            "text": "Visible Announcements\n                        30\n      ",
+            "shift": 0
+          },
+          {
+            "text": "Pinned Posts\n                        0\n                ",
+            "shift": 0
+          },
+          {
+            "text": "Service Advisories\n                        9\n          ",
+            "shift": 0
+          },
+          {
+            "text": "Announcement Feed\n                    \n                ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 766,
+        "shifts": [
+          {
+            "text": "Announcement Feed\n                    \n ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 4,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "dss-loans",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Applicant",
+              "Amount",
+              "Term",
+              "Status",
+              "Risk",
+              "Applied",
+              "Outstanding",
+              "Repayment"
+            ],
+            "width": 1083,
+            "rowHeight": 62,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Loan DSS\n                    Decision support for loan approvals, port",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          }
+        ],
+        "body": 3636
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 688.984375,
+          "left": 256,
+          "width": 1172,
+          "height": 287.015625,
+          "bottom": 976,
+          "client": 287,
+          "total": 2923
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Applicant",
+              "Amount",
+              "Term",
+              "Status",
+              "Risk",
+              "Applied",
+              "Outstanding",
+              "Repayment"
+            ],
+            "width": 1083,
+            "rowHeight": 62,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Loan DSS\n                    Decision support for loan approvals, port",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Loan DSS\n                    Decision support for loan ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 2636,
+        "shifts": [],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "dss-incidents",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Rank",
+              "Purok / Block",
+              "Total",
+              "Open",
+              "Resolved",
+              "Share",
+              "Top category"
+            ],
+            "width": 600.90625,
+            "rowHeight": 47.390625,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Incident DSS\n                    Decision support for incident hotspot",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          }
+        ],
+        "body": 2439
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 568.203125,
+          "left": 256,
+          "width": 1172,
+          "height": 407.796875,
+          "bottom": 976,
+          "client": 408,
+          "total": 1846
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Rank",
+              "Purok / Block",
+              "Total",
+              "Open",
+              "Resolved",
+              "Share",
+              "Top category"
+            ],
+            "width": 600.90625,
+            "rowHeight": 47.390625,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Incident DSS\n                    Decision support for incident hotspot",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Incident DSS\n                    Decision support for i",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 1438,
+        "shifts": [],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "consumers-applications",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 125,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Pending Type:\n                        \n                            All",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 347.40625
+          }
+        ],
+        "body": 1785
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 1570
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 125,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Pending Type:\n                        \n                            All",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 347.40625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 200,
+        "recordShift": -200,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Type:\n                        \n                ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 785,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Type:\n                        \n ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": [
+          {
+            "items": 1,
+            "hrefs": true
+          },
+          {
+            "items": 2,
+            "hrefs": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "consumers-reschedules",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 192,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Pending Type:\n                        \n                            All",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 347.40625
+          }
+        ],
+        "body": 1000
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 785
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 192,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Pending Type:\n                        \n                            All",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 41.59375,
+            "bottom": 347.40625
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 0,
+        "recordShift": 0,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Type:\n                        \n                ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 0,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          },
+          {
+            "text": "Pending Type:\n                        \n ",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": []
+      }
+    },
+    {
+      "name": "consumers-membership",
+      "baseline": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": null,
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 168.1875,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Showing pending membership verifications.\n                        View",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 42,
+            "bottom": 347.8125
+          }
+        ],
+        "body": 1000
+      },
+      "before": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "mode": "records",
+        "area": {
+          "top": 190.625,
+          "left": 268,
+          "width": 1148,
+          "height": 785.375,
+          "bottom": 976,
+          "client": 785,
+          "total": 785
+        },
+        "tableMetrics": [
+          {
+            "headings": [
+              "Application",
+              "Account No",
+              "Membership",
+              "Standing",
+              "Status",
+              "Actions"
+            ],
+            "width": 1083,
+            "rowHeight": 168.1875,
+            "font": "16px / 24px \"Plus Jakarta Sans\", sans-serif",
+            "padding": "8px"
+          }
+        ],
+        "fixed": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Management\n        ",
+            "top": 0,
+            "left": 244,
+            "width": 1181,
+            "height": 79,
+            "bottom": 79
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search, and maintain c",
+            "top": 103,
+            "left": 268,
+            "width": 1133,
+            "height": 63.625,
+            "bottom": 166.625
+          },
+          {
+            "text": "Search\n                        \n                    \n                 ",
+            "top": 207.625,
+            "left": 289,
+            "width": 1091,
+            "height": 82.1875,
+            "bottom": 289.8125
+          },
+          {
+            "text": "Showing pending membership verifications.\n                        View",
+            "top": 305.8125,
+            "left": 293,
+            "width": 1083,
+            "height": 42,
+            "bottom": 347.8125
+          }
+        ],
+        "body": 1000
+      },
+      "differences": [],
+      "movement": {
+        "scroll": 0,
+        "recordShift": 0,
+        "fixedShifts": [
+          {
+            "text": "System Overview\n            Water Billing and Loan Mana",
+            "shift": 0
+          },
+          {
+            "text": "Consumer Management\n                    Browse, search,",
+            "shift": 0
+          },
+          {
+            "text": "Search\n                        \n                    \n  ",
+            "shift": 0
+          },
+          {
+            "text": "Showing pending membership verifications.\n             ",
+            "shift": 0
+          }
+        ],
+        "bodyScroll": 0,
+        "nested": [],
+        "duplicates": []
+      },
+      "deep": {
+        "scroll": 0,
+        "shifts": [
+          {
+            "text": "Search\n                        \n        ",
+            "shift": 0
+          },
+          {
+            "text": "Showing pending membership verifications",
+            "shift": 0
+          }
+        ],
+        "overlaps": [],
+        "pagination": []
+      }
+    }
+  ],
+  "exceptions": []
+}

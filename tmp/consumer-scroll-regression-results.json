@@ -1,0 +1,191 @@
+{
+  "results": [
+    {
+      "viewport": 1440,
+      "mode": "wheel",
+      "before": {
+        "bar": 0,
+        "title": 1381.5625,
+        "filter": 1442.5625,
+        "thead": 1540.75
+      },
+      "mid": {
+        "scroll": 120,
+        "max": 2133,
+        "bar": 0,
+        "title": 1261.5625,
+        "filter": 1322.5625,
+        "thead": 1420.75,
+        "body": 332.6875,
+        "bodyOverflow": "hidden",
+        "areaOverflow": "auto",
+        "mode": false
+      },
+      "bottom": {
+        "scroll": 2133,
+        "max": 2133,
+        "bar": 0,
+        "title": 190.625,
+        "filter": 251.625,
+        "thead": 349.8125,
+        "body": -1680.3125
+      }
+    },
+    {
+      "viewport": 1440,
+      "mode": "drag",
+      "before": {
+        "bar": 0,
+        "title": 190.625,
+        "filter": 251.625,
+        "thead": 349.8125
+      },
+      "mid": {
+        "scroll": 120,
+        "max": 2133,
+        "bar": 0,
+        "title": 1261.5625,
+        "filter": 1322.5625,
+        "thead": 1420.75,
+        "body": 332.6875,
+        "bodyOverflow": "hidden",
+        "areaOverflow": "auto",
+        "mode": false
+      },
+      "bottom": {
+        "scroll": 2133,
+        "max": 2133,
+        "bar": 0,
+        "title": 190.625,
+        "filter": 251.625,
+        "thead": 349.8125,
+        "body": -1680.3125
+      }
+    },
+    {
+      "viewport": 1440,
+      "mode": "touch",
+      "before": {
+        "bar": 0,
+        "title": 190.625,
+        "filter": 251.625,
+        "thead": 349.8125
+      },
+      "mid": {
+        "scroll": 120,
+        "max": 2133,
+        "bar": 0,
+        "title": 1261.5625,
+        "filter": 1322.5625,
+        "thead": 1420.75,
+        "body": 332.6875,
+        "bodyOverflow": "hidden",
+        "areaOverflow": "auto",
+        "mode": false
+      },
+      "bottom": {
+        "scroll": 2133,
+        "max": 2133,
+        "bar": 0,
+        "title": 190.625,
+        "filter": 251.625,
+        "thead": 349.8125,
+        "body": -1680.3125
+      }
+    },
+    {
+      "viewport": 390,
+      "mode": "wheel",
+      "before": {
+        "bar": 0,
+        "title": 1691.984375,
+        "filter": 1768.859375,
+        "thead": 1984.734375
+      },
+      "mid": {
+        "scroll": 120,
+        "max": 3559,
+        "bar": 0,
+        "title": 1571.984375,
+        "filter": 1648.859375,
+        "thead": 1864.734375,
+        "body": 678.109375,
+        "bodyOverflow": "hidden",
+        "areaOverflow": "auto",
+        "mode": false
+      },
+      "bottom": {
+        "scroll": 3559,
+        "max": 3559,
+        "bar": 0,
+        "title": 283.234375,
+        "filter": 360.109375,
+        "thead": 575.984375,
+        "body": -2760.890625
+      }
+    },
+    {
+      "viewport": 390,
+      "mode": "drag",
+      "before": {
+        "bar": 0,
+        "title": 283.234375,
+        "filter": 360.109375,
+        "thead": 575.984375
+      },
+      "mid": {
+        "scroll": 120,
+        "max": 3559,
+        "bar": 0,
+        "title": 1571.984375,
+        "filter": 1648.859375,
+        "thead": 1864.734375,
+        "body": 678.109375,
+        "bodyOverflow": "hidden",
+        "areaOverflow": "auto",
+        "mode": false
+      },
+      "bottom": {
+        "scroll": 3559,
+        "max": 3559,
+        "bar": 0,
+        "title": 283.234375,
+        "filter": 360.109375,
+        "thead": 575.984375,
+        "body": -2760.890625
+      }
+    },
+    {
+      "viewport": 390,
+      "mode": "touch",
+      "before": {
+        "bar": 0,
+        "title": 283.234375,
+        "filter": 360.109375,
+        "thead": 575.984375
+      },
+      "mid": {
+        "scroll": 120,
+        "max": 3559,
+        "bar": 0,
+        "title": 1571.984375,
+        "filter": 1648.859375,
+        "thead": 1864.734375,
+        "body": 678.109375,
+        "bodyOverflow": "hidden",
+        "areaOverflow": "auto",
+        "mode": false
+      },
+      "bottom": {
+        "scroll": 3559,
+        "max": 3559,
+        "bar": 0,
+        "title": 283.234375,
+        "filter": 360.109375,
+        "thead": 575.984375,
+        "body": -2760.890625
+      }
+    }
+  ],
+  "exceptions": []
+}

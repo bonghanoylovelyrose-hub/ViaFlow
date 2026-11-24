@@ -1,0 +1,182 @@
+{
+    "announcements": {
+        "key": "id",
+        "count": 1,
+        "hash": "f76cc9302e9f35d9c17dc7b112e8c216f2b2c501b41e6ce320df8eda4ce4a1aa"
+    },
+    "announcement_deliveries": {
+        "key": "id",
+        "count": 2,
+        "hash": "45d5690292e38baee30dce8569bf60554badb70c84b947f7d26641259e2657a4"
+    },
+    "announcement_recipients": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "bills": {
+        "key": "id",
+        "count": 10,
+        "hash": "ce7245003d68c85c8226b1b17d4ca5353a038f2cc1dfdee85f5170e75df7ec92"
+    },
+    "cache": {
+        "key": "key",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "cache_locks": {
+        "key": "key",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "consumers": {
+        "key": "id",
+        "count": 6,
+        "hash": "dafe43db91ff7f12e4a401997db1a0532d050677bfb1841d014ef39acbe1657f"
+    },
+    "consumer_email_verifications": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "consumer_notification_logs": {
+        "key": "id",
+        "count": 22,
+        "hash": "1d1a4ce09cc35e2036ca0515a3ea058c859c08e036207b63df0a1f4bdd4eca5c"
+    },
+    "consumer_password_setups": {
+        "key": "user_id",
+        "count": 5,
+        "hash": "a072e28d614f4d9c98a310042b683e479c4d1b5c869ceaae3571e74b701df2a8"
+    },
+    "consumer_reconnections": {
+        "key": "id",
+        "count": 1,
+        "hash": "283b93fe738ce9f6bf50badad5a5ebff86d27014c89cb723f13ea7d745c68800"
+    },
+    "disconnection_notices": {
+        "key": "id",
+        "count": 3,
+        "hash": "6b06aa575fb08c5ab316bbd9189b791979ae979e902e7c489fe2a4d585d9c621"
+    },
+    "failed_jobs": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "incidents": {
+        "key": "id",
+        "count": 5,
+        "hash": "7c368dccd2dd12c8a6b06b465827066ddb61e37fdcfeb4deee47b12414a0e30d"
+    },
+    "installation_reschedule_requests": {
+        "key": "id",
+        "count": 2,
+        "hash": "cdc074639a7095647bc9e9c8967cbd6fb0f8c88b275710e7f06d3cd2acd10b97"
+    },
+    "jobs": {
+        "key": "id",
+        "count": 2,
+        "hash": "07b6264d9937205355f3cce42fcdaef4aae28e3d14fa9bbfebf04418b7ae285a"
+    },
+    "job_batches": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "loans": {
+        "key": "id",
+        "count": 5,
+        "hash": "8d8a7f36c7ff010b27e7598507f9a0d0cc2d3170c4a96bcb659a3f0d4704b78f"
+    },
+    "loan_agreements": {
+        "key": "id",
+        "count": 3,
+        "hash": "1b0dd2dfbe487f6351a7af5f523881d89125da2dcbe4297c06456db665f92d2d"
+    },
+    "loan_dss_evaluations": {
+        "key": "id",
+        "count": 5,
+        "hash": "0271b3eeab9102b7a535f7b0a3994a1ae264ec5b46a5d30e1a2642ad180d26c4"
+    },
+    "loan_installments": {
+        "key": "id",
+        "count": 30,
+        "hash": "ef74c6a951135bfb047b2258908bb2aad3ee6a564c7d07ec5285a1028862cdc6"
+    },
+    "loan_material_rates": {
+        "key": "id",
+        "count": 6,
+        "hash": "2c8df6ef6c6933f40a51fd48068f6640d4637f83c1d9bb5e9c992aeb90114d51"
+    },
+    "loan_meters": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "loan_meter_logs": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "loan_pricing_settings": {
+        "key": "id",
+        "count": 1,
+        "hash": "af81e8c15296f43229af07815173fb39308a9a2433232dd6b0ab8b6785e35823"
+    },
+    "loan_repayments": {
+        "key": "id",
+        "count": 1,
+        "hash": "99610d5270818b0b2ec7c08d75f1a1fdb111fb7b26fa3ecb44c91ac1b3a45ef4"
+    },
+    "loan_repayment_allocations": {
+        "key": "id",
+        "count": 2,
+        "hash": "57b38e855b615438940f9c9ac4a0eee3784abaadc61f0013031abe4ea198e975"
+    },
+    "meter_assignments": {
+        "key": "id",
+        "count": 10,
+        "hash": "ae68b8cc57275aabc4086e481cf0d6f3b785663d7bb10523854e3a98bdd0f2f8"
+    },
+    "meter_readings": {
+        "key": "id",
+        "count": 4,
+        "hash": "d3bd0336b5f2fd1bb49f42c2e75e3e77aa647bd797a75162157a98dcad43d784"
+    },
+    "migrations": {
+        "key": "id",
+        "count": 100,
+        "hash": "0f689d4b4d3ac006fef96cabe0cd096eeb000ebd0f557bc09ddd63c23933dd2f"
+    },
+    "notifications": {
+        "key": "id",
+        "count": 54,
+        "hash": "a5f6ab9b4e720a642e227c00c008e22afa70e0661b7ff9236525846ab17335b6"
+    },
+    "password_reset_tokens": {
+        "key": "email",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "payments": {
+        "key": "id",
+        "count": 5,
+        "hash": "0472b368ac0a57fb614330ec6e1d08affc18e77ae819e40337b0a5ef9d1ff7c6"
+    },
+    "service_requests": {
+        "key": "id",
+        "count": 6,
+        "hash": "17d66faf4becb3aa65635b46bb097d41d99615724d6ed27727595e9e7c28f746"
+    },
+    "sessions": {
+        "key": "id",
+        "count": 0,
+        "hash": "35786c7117b4e38d0f169239752ce71158266ae2f6e4aa230fbbb87bd699c0e3"
+    },
+    "users": {
+        "key": "id",
+        "count": 12,
+        "hash": "5cd68b3d7965358681e9c3c83977efb399c395c412ce47f94a83190b624cff25"
+    }
+}

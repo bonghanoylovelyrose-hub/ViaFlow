@@ -1,0 +1,4 @@
+RCPT TO:<reconnection-qa@example.test>
+RCPT TO:<reconnection-qa@example.test>
+RCPT TO:<reconnection-qa@example.test>
+RCPT TO:<reconnection-qa@example.test>

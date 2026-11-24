@@ -1,0 +1,3269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --wb-primary: #0f6e8c;
+            --wb-text: #1f2a37;
+            --wb-surface: #ffffff;
+            --wb-primary-dark: var(--wb-primary);
+            --wb-accent: var(--wb-primary);
+            --wb-bg: var(--wb-surface);
+            --wb-muted: color-mix(in srgb, var(--wb-text) 62%, var(--wb-surface));
+            --wb-border: color-mix(in srgb, var(--wb-primary) 18%, var(--wb-surface));
+            --wb-danger: var(--wb-primary);
+            --wb-warning: var(--wb-primary);
+            --wb-success: var(--wb-primary);
+            --wb-info: var(--wb-primary);
+            --sidebar-width: 244px;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            color: var(--wb-text);
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .auth-wrapper { min-height: 100vh; }
+        .auth-card, .dashboard-card, .panel-card, .announcement-card {
+            background: var(--wb-surface);
+            border: 1px solid var(--wb-border);
+            border-radius: 1rem;
+            box-shadow: none;
+        }
+
+        .app-shell {
+            min-height: 100vh;
+            overflow-x: clip;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1035;
+            width: var(--sidebar-width);
+            max-width: var(--sidebar-width);
+            height: 100vh;
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .app-shell.sidebar-collapsed .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-brand { color: var(--wb-surface); text-decoration: none; }
+        .sidebar .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 78%, var(--wb-primary));
+            border-radius: 0.8rem;
+            padding: 0.68rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: translateX(2px);
+        }
+
+        .sidebar .feature-icon,
+        .sidebar .nav-link i {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .sidebar-nav-row {
+            display: flex;
+            align-items: center;
+            border-radius: 0.8rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-nav-row > .nav-link {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .sidebar-nav-row:hover,
+        .sidebar-nav-row.active {
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: translateX(2px);
+        }
+
+        .sidebar-nav-row > .nav-link:hover,
+        .sidebar-nav-row > .nav-link.active {
+            background: transparent;
+            transform: none;
+        }
+
+        .sidebar-submenu-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 0.65rem;
+            background: transparent;
+            color: var(--wb-surface);
+            padding: 0.55rem 0.7rem;
+        }
+
+        .sidebar-submenu-toggle:hover,
+        .sidebar-submenu-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, transparent);
+        }
+
+        .sidebar-submenu-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-submenu-toggle .bi {
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar-submenu-toggle[aria-expanded="true"] .bi {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 2.25rem;
+            height: 2.25rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-radius: 0.65rem;
+            background: color-mix(in srgb, var(--wb-surface) 8%, transparent);
+            color: var(--wb-surface);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .sidebar-nav-toggle:hover,
+        .sidebar-nav-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 16%, transparent);
+            border-color: color-mix(in srgb, var(--wb-surface) 38%, transparent);
+        }
+
+        .sidebar-nav-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-nav-toggle .bi {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-reopen-toggle {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            z-index: 1034;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 3rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-left: 0;
+            border-radius: 0 0.65rem 0.65rem 0;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-0.5rem);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            cursor: pointer;
+        }
+
+        .app-shell.sidebar-collapsed .sidebar-reopen-toggle {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .sidebar-reopen-toggle:hover,
+        .sidebar-reopen-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary));
+        }
+
+        .sidebar-reopen-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: -4px;
+        }
+
+        .sidebar-reopen-toggle .bi {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1030;
+            background: rgba(15, 23, 42, 0.42);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .sidebar-subnav {
+            gap: 0.15rem;
+            margin: 0.3rem 0 0 2.35rem;
+            padding-left: 0.65rem;
+            border-left: 1px solid color-mix(in srgb, var(--wb-surface) 22%, transparent);
+        }
+
+        .sidebar-subnav .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 72%, var(--wb-primary));
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.45rem 0.65rem;
+        }
+
+        .sidebar-subnav .nav-link:hover,
+        .sidebar-subnav .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 18%, var(--wb-primary));
+            transform: none;
+        }
+
+        .sidebar-footer {
+            background: color-mix(in srgb, var(--wb-surface) 10%, var(--wb-primary));
+            border-radius: 0.9rem;
+        }
+
+        .main-content {
+            flex: 1 1 auto;
+            min-width: 0;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 0.3s ease;
+        }
+
+        .app-shell.sidebar-collapsed .main-content {
+            margin-left: 0;
+        }
+        .topbar {
+            background: var(--wb-surface);
+            border-bottom: 1px solid var(--wb-border);
+        }
+
+        .topbar .container-fluid {
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .content-wrapper { padding: 1.5rem; }
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-heading h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+        }
+
+        .page-heading p { color: var(--wb-muted); margin-bottom: 0; }
+        .metric-icon, .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .metric-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .feature-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .section-title { font-size: 1rem; font-weight: 800; margin-bottom: 1rem; }
+        .table thead th {
+            color: var(--wb-muted);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            border-bottom-width: 1px;
+        }
+
+        .table td, .table th { vertical-align: middle; }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        img,
+        svg,
+        canvas,
+        iframe {
+            max-width: 100%;
+        }
+
+        .row > * {
+            min-width: 0;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .announcement-card,
+        .modal-content,
+        .card {
+            min-width: 0;
+        }
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface));
+            border: 1px solid color-mix(in srgb, var(--wb-primary) 20%, var(--wb-surface));
+            color: var(--wb-primary);
+            font-weight: 800;
+        }
+
+        .chart-bars { display: flex; align-items: end; gap: 0.75rem; height: 220px; }
+        .chart-bar {
+            flex: 1;
+            border-radius: 1rem 1rem 0.45rem 0.45rem;
+            background: var(--wb-primary);
+            position: relative;
+        }
+
+        .chart-label {
+            display: block;
+            margin-top: 0.65rem;
+            text-align: center;
+            color: var(--wb-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 0.9rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--wb-border);
+        }
+
+        .timeline-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+        .danger-strip { border-left: 4px solid var(--wb-primary); }
+        .avatar-badge {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+
+        .chart-62 { height: 62%; }
+        .chart-68 { height: 68%; }
+        .chart-74 { height: 74%; }
+        .chart-84 { height: 84%; }
+        .chart-88 { height: 88%; }
+        .chart-95 { height: 95%; }
+
+        .notification-menu {
+            width: 340px;
+            max-width: min(340px, calc(100vw - 2rem));
+        }
+
+        .notification-item,
+        .notification-item-body,
+        .notification-item-title,
+        .notification-item-message {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .notification-item-title,
+        .notification-item-message {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .rag-indicator { white-space: nowrap; }
+        .rag-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-sm { width: 0.45rem; height: 0.45rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-lg { width: 0.85rem; height: 0.85rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-green { background: #22c55e; }
+        .rag-amber { background: #f59e0b; }
+        .rag-red { background: #ef4444; }
+        .rag-orange { background: #f97316; }
+        .rag-yellow { background: #eab308; }
+        .rag-blue { background: #3b82f6; }
+        .rag-green-text { color: #16a34a; font-weight: 700; }
+        .rag-amber-text { color: #d97706; font-weight: 700; }
+        .rag-red-text { color: #dc2626; font-weight: 700; }
+        .rag-orange-text { color: #ea580c; font-weight: 700; }
+        .rag-yellow-text { color: #ca8a04; font-weight: 700; }
+        .rag-blue-text { color: #2563eb; font-weight: 700; }
+
+        @media (max-width: 991.98px) {
+            .app-shell {
+                display: block !important;
+            }
+
+            .sidebar {
+                width: min(85vw, var(--sidebar-width));
+                max-width: min(85vw, var(--sidebar-width));
+                min-height: 100vh;
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-collapsed .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar {
+                transform: translateX(0);
+            }
+
+            .main-content,
+            .app-shell.sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-reopen-toggle {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateY(-50%) translateX(0);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-reopen-toggle {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(-50%) translateX(-0.5rem);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-backdrop {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .content-wrapper { padding: 1rem; }
+            .page-heading {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-heading > * {
+                max-width: 100%;
+            }
+
+            .topbar .container-fluid {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar,
+            .main-content,
+            .sidebar-reopen-toggle,
+            .sidebar-backdrop {
+                transition: none;
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bs-primary: var(--wb-primary);
+            --bs-secondary: var(--wb-text);
+            --bs-success: var(--wb-primary);
+            --bs-info: var(--wb-primary);
+            --bs-warning: var(--wb-primary);
+            --bs-danger: var(--wb-primary);
+            --bs-light: var(--wb-surface);
+            --bs-dark: var(--wb-text);
+            --bs-body-color: var(--wb-text);
+            --bs-body-bg: var(--wb-surface);
+            --bs-border-color: var(--wb-border);
+            --bs-link-color: var(--wb-primary);
+            --bs-link-hover-color: var(--wb-primary);
+        }
+
+        body,
+        .main-content,
+        .content-wrapper {
+            color: var(--wb-text);
+        }
+
+        body * {
+            letter-spacing: 0;
+        }
+
+        .page-heading {
+            align-items: end;
+        }
+
+        .page-heading h1 {
+            color: var(--wb-text);
+            font-size: 1.85rem;
+            line-height: 1.15;
+        }
+
+        .page-heading p,
+        .text-secondary,
+        .text-muted,
+        .form-text,
+        .small.text-secondary {
+            color: var(--wb-muted) !important;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card,
+        .modal-content,
+        .card,
+        [class*="summary-card"],
+        [class*="stat-card"],
+        [class*="focus-card"],
+        [class*="preview-card"],
+        [class*="qr-card"],
+        [class*="table-card"],
+        [class*="filter-card"],
+        [class*="indicator"],
+        [class*="open-item"],
+        [class*="history-item"],
+        .role-register-section,
+        [class*="role-card"] {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text);
+        }
+
+        [class*="dropzone"],
+        [class*="upload"],
+        [class*="empty-state"],
+        [class*="workspace"],
+        [class*="summary-row"],
+        [class*="toolbar"],
+        [class*="topline"],
+        [class*="meter-phone-frame"],
+        [class*="receipt-phone-frame"],
+        [class*="org-qr-box"],
+        [class*="password-indicator"],
+        [class*="chart"] {
+            border-color: var(--wb-border) !important;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        [class*="icon"],
+        [class*="avatar"],
+        .status-dot {
+            background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)) !important;
+            color: var(--wb-primary) !important;
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        button.btn,
+        a.btn {
+            min-height: 2.6rem;
+            border-radius: 0.8rem !important;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .btn-sm {
+            min-height: 2.25rem;
+            border-radius: 0.7rem !important;
+        }
+
+        .btn-primary,
+        .btn-success,
+        .btn-danger,
+        .btn-warning,
+        .btn-info {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light,
+        .btn-close,
+        .minimal-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light {
+            background: var(--wb-surface) !important;
+        }
+
+        .btn:hover,
+        .minimal-link:hover {
+            filter: none;
+            opacity: 0.92;
+        }
+
+        .form-control,
+        .form-select,
+        .input-group-text,
+        textarea {
+            min-height: 2.7rem;
+            border-color: var(--wb-border) !important;
+            border-radius: 0.8rem !important;
+            color: var(--wb-text) !important;
+            background-color: var(--wb-surface) !important;
+            font-weight: 600;
+        }
+
+        .input-group .form-control,
+        .input-group .form-select,
+        .input-group .input-group-text {
+            border-radius: 0.8rem !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus,
+        textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .alert,
+        .alert-success,
+        .alert-danger,
+        .alert-warning,
+        .alert-info {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            color: var(--wb-text) !important;
+            font-weight: 700;
+        }
+
+        .alert-success {
+            background: color-mix(in srgb, #16a34a 11%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #16a34a 34%, var(--wb-surface)) !important;
+            color: #166534 !important;
+        }
+
+        .alert-success i {
+            color: #16a34a !important;
+        }
+
+        .alert-danger {
+            background: color-mix(in srgb, #ef4444 10%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #991b1b !important;
+        }
+
+        .alert-danger i {
+            color: #dc2626 !important;
+        }
+
+        .badge,
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .badge-soft-success {
+            background: color-mix(in srgb, #16a34a 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #16a34a 32%, var(--wb-surface)) !important;
+            color: #15803d !important;
+        }
+
+        .badge-soft-warning {
+            background: color-mix(in srgb, #f59e0b 14%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #f59e0b 36%, var(--wb-surface)) !important;
+            color: #b45309 !important;
+        }
+
+        .badge-soft-danger {
+            background: color-mix(in srgb, #ef4444 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #dc2626 !important;
+        }
+
+        .badge-soft-info {
+            background: color-mix(in srgb, #3b82f6 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #3b82f6 32%, var(--wb-surface)) !important;
+            color: #2563eb !important;
+        }
+
+        .badge-soft-neutral {
+            background: color-mix(in srgb, #64748b 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #64748b 32%, var(--wb-surface)) !important;
+            color: #475569 !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .consumer-service-status {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.28rem;
+            line-height: 1.1;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            line-height: 1;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge i {
+            font-size: 0.95em;
+            line-height: 1;
+        }
+
+        .consumer-status-sub {
+            display: inline-block;
+            padding-left: 0.1rem;
+            color: var(--wb-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .consumer-status-sub-success {
+            color: #15803d;
+        }
+
+        .consumer-status-sub-neutral {
+            color: #64748b;
+        }
+
+        .consumer-status-sub-warning {
+            color: #b45309;
+        }
+
+        .consumer-status-sub-danger {
+            color: #b91c1c;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            line-height: 1;
+        }
+
+        .status-badge::before {
+            content: "";
+            width: 0.48rem;
+            height: 0.48rem;
+            border-radius: 50%;
+            background: currentColor;
+            flex: 0 0 auto;
+        }
+
+        .table {
+            color: var(--wb-text);
+        }
+
+        .table thead th {
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+            font-weight: 800;
+        }
+
+        .table tbody td,
+        .table tbody th {
+            border-color: var(--wb-border) !important;
+        }
+
+        .text-danger,
+        .text-warning,
+        .text-warning-emphasis,
+        .text-success,
+        .text-info,
+        .text-primary {
+            color: var(--wb-primary) !important;
+        }
+
+        .bg-white,
+        .bg-light,
+        .dropdown-menu,
+        .list-group-item {
+            background-color: var(--wb-surface) !important;
+        }
+
+        .bg-primary,
+        .bg-secondary,
+        .bg-success,
+        .bg-danger,
+        .bg-warning,
+        .bg-info,
+        .bg-dark,
+        .bg-body-tertiary {
+            background-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .table-primary,
+        .table-secondary,
+        .table-success,
+        .table-danger,
+        .table-warning,
+        .table-info,
+        .table-light {
+            --bs-table-bg: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            --bs-table-color: var(--wb-text);
+            --bs-table-border-color: var(--wb-border);
+        }
+
+        .progress,
+        .progress-stacked {
+            background: color-mix(in srgb, var(--wb-primary) 8%, var(--wb-surface)) !important;
+        }
+
+        .progress-bar,
+        .password-indicator-fill,
+        .password-indicator-fill.is-fair,
+        .password-indicator-fill.is-good,
+        .password-indicator-fill.is-strong {
+            background: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .link-primary,
+        .link-secondary,
+        .link-success,
+        .link-danger,
+        .link-warning,
+        .link-info,
+        a {
+            color: var(--wb-primary);
+        }
+
+        .border-primary,
+        .border-secondary,
+        .border-success,
+        .border-danger,
+        .border-warning,
+        .border-info {
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        .badge,
+        .alert,
+        .form-control,
+        .form-select,
+        .input-group-text,
+        .modal-content,
+        .dropdown-menu,
+        .list-group-item,
+        .table,
+        .card,
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card {
+            --bs-primary-rgb: 15, 110, 140;
+            --bs-secondary-rgb: 31, 42, 55;
+            --bs-success-rgb: 15, 110, 140;
+            --bs-info-rgb: 15, 110, 140;
+            --bs-warning-rgb: 15, 110, 140;
+            --bs-danger-rgb: 15, 110, 140;
+            --bs-light-rgb: 255, 255, 255;
+            --bs-dark-rgb: 31, 42, 55;
+        }
+
+        .border,
+        .border-top,
+        .border-bottom,
+        .border-start,
+        .border-end {
+            border-color: var(--wb-border) !important;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: var(--wb-border) !important;
+        }
+
+        .pagination {
+            gap: 0.3rem;
+        }
+
+        .page-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 0.7rem !important;
+            font-weight: 800;
+        }
+
+        .active > .page-link,
+        .page-link.active {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-page,
+        .role-login-page,
+        .role-register-page,
+        .register-step-page,
+        .auth-wrapper {
+            position: relative;
+            isolation: isolate;
+            background: linear-gradient(135deg, rgba(6, 37, 49, 0.52), rgba(15, 110, 140, 0.18)) !important;
+            overflow: hidden;
+        }
+
+        .role-select-page::before,
+        .role-login-page::before,
+        .role-register-page::before,
+        .register-step-page::before,
+        .auth-wrapper::before {
+            content: "";
+            position: fixed;
+            inset: -0.75rem;
+            z-index: -1;
+            background: url('http://127.0.0.1:8000/images/BGfinal.jpg') center/cover no-repeat;
+            filter: blur(2px);
+            transform: scale(1.02);
+        }
+
+        .role-select-shell,
+        .role-login-shell,
+        .role-register-shell,
+        .register-step-shell {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-visual,
+        .role-login-visual {
+            background: var(--wb-primary) !important;
+        }
+
+        .role-select-visual::before,
+        .role-login-visual::before {
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text)) !important;
+            backdrop-filter: none !important;
+        }
+
+        .role-select-visual-copy,
+        .role-login-visual-copy,
+        .role-select-visual-copy p,
+        .role-login-visual-copy p {
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-visual-logo,
+        .role-login-visual-logo {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary)) !important;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, var(--wb-primary)) !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-panel,
+        .role-login-panel,
+        .role-register-panel {
+            background: var(--wb-surface) !important;
+        }
+
+        .role-select-card h2,
+        .role-login-card h2,
+        .role-register-card h1,
+        .register-step-head h1,
+        .role-register-section-title,
+        .register-section-title,
+        .register-step-title,
+        .role-register-progress-title,
+        .role-select-label,
+        .role-login-label,
+        .role-register-label {
+            color: var(--wb-text) !important;
+        }
+
+        .role-select-subtitle,
+        .role-login-subtitle,
+        .role-login-remember,
+        .role-register-subtitle,
+        .role-register-section-copy,
+        .register-step-copy,
+        .register-section-copy,
+        .register-step-meta {
+            color: var(--wb-muted) !important;
+        }
+
+        .role-select-primary,
+        .role-login-primary,
+        .role-register-primary,
+        .register-step-primary {
+            background: var(--wb-primary) !important;
+            border: 1px solid var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .role-register-secondary {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-select-input,
+        .role-login-input,
+        .role-login-password,
+        .role-login-toggle,
+        .role-register-input,
+        .role-register-select,
+        .role-register-textarea {
+            border-color: var(--wb-border) !important;
+            background: var(--wb-surface) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-input:focus,
+        .role-login-input:focus,
+        .role-login-password:focus,
+        .role-register-input:focus,
+        .role-register-select:focus,
+        .role-register-textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .role-login-badge,
+        .role-register-step-pill,
+        .role-register-badge,
+        .register-step-pill {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-login-change,
+        .role-login-footer-link,
+        .role-register-change,
+        .role-register-footer-link {
+            color: var(--wb-primary) !important;
+        }
+
+        .role-register-section,
+        .register-section,
+        .register-step-card,
+        .register-choice-card {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text) !important;
+        }
+
+        .role-register-section.is-borderless {
+            border: 0 !important;
+            background: var(--wb-surface) !important;
+            padding-inline: 0 !important;
+        }
+
+        .register-step-option:checked + .register-step-card,
+        .register-choice-input:checked + .register-choice-card {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;
+        }
+
+        .role-register-progress::before {
+            background: var(--wb-border) !important;
+        }
+
+        .role-register-progress-fill,
+        .role-register-progress-item.is-active .role-register-progress-marker,
+        .role-register-progress-item.is-complete .role-register-progress-marker {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+        }
+
+        .role-register-progress-marker {
+            background: var(--wb-surface) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+        }
+
+        @media (max-width: 767.98px) {
+            html {
+                font-size: 15px;
+            }
+
+            .content-wrapper {
+                padding: 0.85rem;
+            }
+
+            .page-heading h1 {
+                font-size: 1.55rem;
+            }
+
+            .page-heading .btn,
+            .page-heading button.btn,
+            .page-heading a.btn {
+                width: 100%;
+            }
+
+            .topbar {
+                padding-inline: 0.75rem !important;
+            }
+
+            .topbar .container-fluid > div:first-of-type {
+                min-width: 0;
+                flex: 1 1 0;
+            }
+
+            .topbar .container-fluid > .d-flex.ms-auto {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.5rem !important;
+                margin-left: 0 !important;
+            }
+
+            .topbar .dropdown {
+                min-width: 0;
+            }
+
+            .topbar .dropdown > .btn {
+                max-width: 100%;
+            }
+
+            .btn,
+            button.btn,
+            a.btn {
+                white-space: normal;
+            }
+
+            .panel-card,
+            .dashboard-card,
+            .announcement-card,
+            .modal-content,
+            .card {
+                border-radius: 0.9rem !important;
+            }
+
+            .table {
+                min-width: 640px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .content-wrapper {
+                padding: 0.75rem;
+            }
+
+            .topbar .container-fluid,
+            .topbar .row,
+            .topbar .col,
+            .topbar .d-flex {
+                min-width: 0;
+            }
+        }
+    </style>
+            <style>
+        .consumer-section-controls { display: flow-root; }
+
+        #disconnection-records .table-danger > td {
+            --bs-table-bg: #f8d7da;
+            --bs-table-color: #842029;
+            background-color: #f8d7da !important;
+            color: #842029 !important;
+        }
+
+        #disconnection-records .table-danger .bg-danger {
+            background-color: #b02a37 !important;
+            color: #fff !important;
+        }
+    </style>
+        <style>
+            html.admin-one-scroll, html.admin-one-scroll body { height: 100%; overflow: hidden; }
+            html.admin-one-scroll.admin-fallback-scroll { scrollbar-gutter: auto; }
+            .admin-scroll-shell { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+            .admin-scroll-shell > .topbar { flex-shrink: 0; }
+            .admin-scroll-path { display: flex !important; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; }
+            .admin-scroll-path > :not(.admin-scroll-path):not(.admin-records-area) { flex-shrink: 0; }
+            .admin-records-area { flex: 1 1 auto; min-height: 0; min-width: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+            .admin-area-first { margin-top: var(--admin-first-top, 0px) !important; margin-left: 0 !important; margin-right: 0 !important; }
+            .admin-area-item {
+                margin-left: calc(var(--admin-item-original-left) - var(--admin-area-original-left)) !important;
+                margin-right: calc(var(--admin-item-original-right) - var(--admin-area-original-right)) !important;
+            }
+            .admin-records-area .admin-natural-records { height: auto !important; max-height: none !important; overflow-y: visible !important; }
+            .admin-records-area .admin-records-surface { padding: 1.5rem !important; border: 1px solid var(--wb-border); border-radius: 1rem; background: var(--wb-surface); min-width: 0; }
+            .admin-records-area .admin-table-viewport { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; }
+            .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-records-area .admin-table-heading th { position: static; }
+            .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-records-area.has-scrolled [data-admin-freeze]::before {
+                content: ''; position: absolute; z-index: -1; pointer-events: none;
+                top: calc(-1 * var(--admin-freeze-cover-top, 0px));
+                left: calc(-1 * var(--admin-freeze-cover-left, 0px));
+                right: calc(-1 * var(--admin-freeze-cover-right, 0px));
+                bottom: calc(-1 * var(--admin-freeze-cover-bottom, 0px));
+                background: var(--admin-freeze-background, var(--wb-surface));
+                border: var(--admin-freeze-border, 0);
+                border-bottom: 0;
+                border-radius: var(--admin-freeze-radius, 0) var(--admin-freeze-radius, 0) 0 0;
+            }
+            .admin-content-scroll .content-wrapper { display: block !important; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
+            .admin-content-scroll > .topbar { margin-right: var(--admin-window-gutter, 0px); }
+            .modal-open .admin-records-area, .modal-open .admin-content-scroll .content-wrapper { overflow-y: hidden; }
+            .admin-content-scroll .content-wrapper .admin-scroll-path { display: var(--admin-path-display, block) !important; flex: initial; min-height: initial; }
+            .admin-content-scroll .admin-records-area { display: contents; }
+            .admin-content-scroll .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+            .admin-content-scroll .admin-area-first {
+                margin-top: var(--admin-original-top) !important;
+                margin-left: var(--admin-original-left) !important;
+                margin-right: var(--admin-original-right) !important;
+            }
+            .admin-content-scroll [data-admin-freeze] { position: static; }
+            .admin-content-scroll .admin-primary-freeze { transform: none; }
+            .admin-content-scroll .admin-table-heading { transform: none; }
+            .admin-content-scroll .admin-record-part { clip-path: none !important; }
+            .admin-content-scroll [data-admin-freeze]::before { display: none; }
+            html.admin-consumer-page-scroll, html.admin-consumer-page-scroll body { height: 100%; min-height: 100%; overflow: hidden; }
+            .admin-consumer-page-scroll .admin-scroll-shell { height: 100dvh; min-height: 0; display: flex; flex-direction: column; overflow: visible; }
+            .admin-consumer-page-scroll .admin-scroll-shell > .topbar { position: fixed; top: 0 !important; left: var(--sidebar-width); right: 0; z-index: 1040; transform: none; }
+            .admin-consumer-page-scroll .sidebar-collapsed .topbar { left: 0; }
+            .admin-consumer-page-scroll .admin-scroll-path { display: flex !important; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+            .admin-consumer-page-scroll .content-wrapper { height: calc(100dvh - var(--consumer-topbar-height, 80px)); max-height: calc(100dvh - var(--consumer-topbar-height, 80px)); overflow: hidden; margin-top: var(--consumer-topbar-height, 80px); }
+            .admin-consumer-page-scroll .admin-records-area { min-height: 0; overflow-y: auto; }
+            .admin-consumer-page-scroll .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-consumer-page-scroll .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading th { position: static; }
+            .admin-consumer-page-scroll .admin-records-area.has-scrolled [data-admin-freeze]::before { content: ''; position: absolute; z-index: -1; pointer-events: none; inset: calc(-1 * var(--admin-freeze-cover-top, 0px)) calc(-1 * var(--admin-freeze-cover-right, 0px)) calc(-1 * var(--admin-freeze-cover-bottom, 0px)) calc(-1 * var(--admin-freeze-cover-left, 0px)); background: var(--admin-freeze-background, #fff); }
+            @media (max-width: 991.98px) { .admin-consumer-page-scroll .admin-scroll-shell > .topbar { left: 0; } }
+            @media print {
+                html.admin-one-scroll, html.admin-one-scroll body { height: auto; overflow: visible; }
+                .admin-scroll-shell { height: auto; display: block; overflow: visible; }
+                .admin-scroll-path { display: var(--admin-path-display, block) !important; }
+                .admin-records-area { display: contents; }
+                .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+                .admin-area-first { margin-top: var(--admin-original-top) !important; margin-left: var(--admin-original-left) !important; margin-right: var(--admin-original-right) !important; }
+                .admin-records-area [data-admin-freeze] { position: static; }
+                .admin-records-area .admin-primary-freeze { transform: none; }
+                .admin-records-area .admin-table-heading { transform: none; }
+                .admin-record-part { clip-path: none !important; }
+                .admin-records-area [data-admin-freeze]::before { display: none; }
+            }
+        </style>
+    </head>
+<body>
+    <div class="app-shell d-lg-flex">
+    <aside
+    class="sidebar p-3"
+    id="sidebarMenu"
+    aria-label="Main navigation"
+>
+    <a href="http://127.0.0.1:8000/dashboard" class="sidebar-brand d-flex align-items-center gap-3 mb-4">
+        <span class="feature-icon bg-white text-primary rounded-4">
+            <i class="bi bi-droplet-fill"></i>
+        </span>
+        <span>
+            <span class="d-block fw-bold fs-5">ViaFlow System</span>
+            <span class="small opacity-75">Billing and Loan Suite</span>
+        </span>
+    </a>
+
+    <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+        <div class="small text-uppercase opacity-75 fw-semibold">Main Navigation</div>
+        <button
+            type="button"
+            class="sidebar-nav-toggle"
+            id="sidebarCollapseToggle"
+            aria-expanded="true"
+            aria-controls="sidebarMenu"
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar"
+        >
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                                    <a href="/dashboard" class="nav-link ">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/staff" class="nav-link ">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Staff</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row active">
+                        <a href="http://127.0.0.1:8000/consumers" class="nav-link active">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Consumers</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#consumerSubmenu"
+                            aria-expanded="true"
+                            aria-controls="consumerSubmenu"
+                            aria-label="Toggle consumer categories"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse show" id="consumerSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="all"                                     >
+                                        <span>All Consumers</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=pending"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center active"
+                                        data-consumer-category="pending"  aria-current="page"                                     >
+                                        <span>Pending Accounts</span>
+                                                                                    <span class="badge rounded-pill bg-warning text-dark ms-2" title="2 pending reschedule request(s)">2</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=rejected"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="rejected"                                     >
+                                        <span>Rejected Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=active"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="active"                                     >
+                                        <span>Active Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=inactive"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="inactive"                                     >
+                                        <span>Inactive (Disconnected)</span>
+                                                                            </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/billing" class="nav-link ">
+                        <i class="bi bi-droplet-half"></i>
+                        <span>Billing</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/payments" class="nav-link ">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Payments</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/loans" class="nav-link ">
+                        <i class="bi bi-bank"></i>
+                        <span>Loans</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/incidents" class="nav-link ">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span>Incidents</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/reports" class="nav-link ">
+                        <i class="bi bi-bar-chart-fill"></i>
+                        <span>Reports</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8000/dss/incidents" class="nav-link ">
+                            <i class="bi bi-diagram-3-fill"></i>
+                            <span>DSS</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#dssSubmenu"
+                            aria-expanded="false"
+                            aria-controls="dssSubmenu"
+                            aria-label="Toggle DSS modules"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse " id="dssSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8000/dss/incidents"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Incident DSS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8000/dss/loans"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Loan DSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/announcements" class="nav-link ">
+                        <i class="bi bi-megaphone-fill"></i>
+                        <span>Announcements</span>
+                    </a>
+                            </li>
+            </ul>
+</aside>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+<button
+    type="button"
+    class="sidebar-reopen-toggle"
+    id="sidebarReopenToggle"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Open sidebar"
+    title="Open sidebar"
+>
+    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+</button>
+
+    <main class="main-content flex-grow-1">
+        <nav class="navbar navbar-expand-lg topbar px-3 px-lg-4 sticky-top">
+    <div class="container-fluid p-0">
+        <button class="btn btn-outline-secondary d-lg-none me-2" type="button" id="sidebarMobileToggle" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Open sidebar" title="Open sidebar">
+            <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+
+        <div>
+            <span class="text-uppercase small fw-bold text-secondary">System Overview</span>
+            <div class="fw-semibold">Water Billing and Loan Management</div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            <div class="d-none d-md-flex align-items-center gap-2 text-secondary">
+                <i class="bi bi-calendar3"></i>
+                <span>November 06, 2026</span>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border position-relative" data-bs-toggle="dropdown" type="button">
+                    <i class="bi bi-bell"></i>
+                                    </button>
+                <div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-0 notification-menu">
+                    <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                        <strong>Notifications</strong>
+                                            </div>
+                    <div class="py-2" style="max-height: 340px; overflow-y: auto;">
+                                                    <div class="px-3 py-3 text-secondary small">No notifications yet.</div>
+                                            </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" type="button">
+                    <span class="rounded-circle bg-info-subtle text-info fw-bold d-inline-flex align-items-center justify-content-center avatar-badge">KA</span>
+                    <span class="text-start d-none d-md-block">
+                        <span class="d-block fw-semibold text-dark">Kaela Heller</span>
+                        <span class="small text-secondary">Admin</span>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/profile">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="http://127.0.0.1:8000/logout">
+                            <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                            <button type="submit" class="dropdown-item text-danger">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+        <div class="content-wrapper">
+            <div class="page-heading">
+                <div>
+                    <h1>Consumer Management</h1>
+                    <p>Browse, search, and maintain consumer account records with a simple table workflow.</p>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                        <i class="bi bi-person-plus me-2"></i>Add Consumer
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-card p-4" data-admin-records-root data-admin-page-scroll data-admin-freeze-section >
+                
+                
+                
+                
+                
+                                
+                <form method="GET" id="account-filters" action="http://127.0.0.1:8000/consumers" class="row g-2 mb-3 align-items-end" data-admin-freeze data-auto-filter data-auto-filter-debounce="450">
+                                                                <input type="hidden" name="account_category" value="pending">
+                                                                <input type="hidden" name="pending_type" value="reschedules">
+                                                            <div class="col-md-6">
+                        <label class="form-label fw-semibold small text-secondary" for="search">Search</label>
+                        <input type="text" class="form-control" id="search" name="search" value="" placeholder="Search by name, account, or meter number">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold small text-secondary" for="membership">Membership</label>
+                        <select class="form-select" id="membership" name="membership">
+                                                            <option value="" selected>All Membership Records</option>
+                                                            <option value="member" >Member</option>
+                                                            <option value="non_member" >Non-Member</option>
+                                                    </select>
+                    </div>
+                    <div class="col-md-2 d-flex gap-2">
+                        <noscript>
+                            <button type="submit" class="btn btn-primary w-100">Apply filters</button>
+                        </noscript>
+                        <a href="http://127.0.0.1:8000/consumers?account_category=pending" class="btn btn-light border w-100">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>Clear
+                        </a>
+                    </div>
+                </form>
+
+                                    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap" data-admin-freeze>
+                        <span class="small fw-bold text-secondary text-uppercase me-1">Pending Type:</span>
+                        <a href="http://127.0.0.1:8000/consumers?account_category=pending&amp;pending_type=all"
+                           class="btn btn-sm btn-outline-secondary">
+                            All Pending (22)
+                        </a>
+                        <a href="http://127.0.0.1:8000/consumers?account_category=pending&amp;pending_type=applications"
+                           class="btn btn-sm btn-outline-secondary">
+                            Connection Applications (20)
+                        </a>
+                        <a href="http://127.0.0.1:8000/consumers?account_category=pending&amp;pending_type=reschedules"
+                           class="btn btn-sm btn-primary">
+                            <i class="bi bi-calendar-event me-1"></i>Reschedule Requests (2)
+                        </a>
+                    </div>
+                
+                
+                                <div class="table-responsive">
+                    <table class="table align-middle" id="consumer-accounts-table">
+                        <thead>
+                                                            <tr><th>Application</th><th>Account No</th><th>Membership</th><th>Standing</th><th>Status</th><th class="text-end">Actions</th></tr>
+                                                    </thead>
+                        <tbody>
+                                                                                            <tr>
+                                                                        <td>
+                                        <div class="fw-semibold">Consumer 002 Sample Resident</div>
+                                        <div class="small text-primary fw-semibold">VVA-20261106-POYTARGX</div>
+                                                                                    <div class="small text-secondary">
+                                                Block 12, Lot 8, Via Vida, Panabo City
+                                                                                                    <span class="mx-1">•</span>09171234567
+                                                                                            </div>
+                                                                            </td>
+                                    <td>VV-2026-00002</td>
+                                    <td>
+                                        <div class="fw-semibold">
+                                            Non-Member
+                                                                                    </div>
+                                                                                <div class="small text-secondary">Meter MTR-000002</div>
+                                                                                    <div class="small text-secondary">sample2@example.test</div>
+                                                                                <div class="small text-secondary">
+                                            Association: Member
+                                            <span class="mx-1">•</span>Officially registered
+                                                                                    </div>
+                                    </td>
+                                    <td>
+                                                                                <span class="d-inline-flex align-items-center gap-1">
+                                            <span class="rag-dot rag-amber"></span>
+                                            <span class="rag-amber-text" style="font-size:0.82rem;">Attention</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span title="The account is approved and the water service is currently connected." class="consumer-service-status">
+    <span class="badge consumer-status-badge badge-soft-success">
+        <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+        <span>Active</span>
+    </span>
+    <span class="consumer-status-sub consumer-status-sub-success">Connected</span>
+</span>
+                                                                                                                                                                                                                                                                                            <div class="small mt-2 mb-3" data-reschedule-used="0" data-reschedule-remaining="3">
+    <strong>0 of 3 used</strong>
+    &middot; 3 reschedule attempts remaining.
+    </div>
+                                                                                                                            <div class="mt-1">
+                                                <span class="badge bg-info text-dark">
+                                                    <i class="bi bi-calendar-event me-1"></i>Reschedule Request: Connection
+                                                </span>
+                                                <div class="small text-secondary" title="Sample installation reschedule request">
+                                                    Reason: Sample installation reschedule requ...
+                                                </div>
+                                            </div>
+                                                                            </td>
+                                                                        <td class="text-end">
+                                                                                                                                                                        <button
+                                                type="button"
+                                                class="btn btn-sm btn-info text-white me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#adminReviewRescheduleModal"
+                                                data-reschedule="eyJpZCI6MSwiY29uc3VtZXJfaWQiOjIsImNvbnN1bWVyX25hbWUiOiJDb25zdW1lciAwMDIgU2FtcGxlIFJlc2lkZW50IiwiYWNjb3VudF9udW1iZXIiOiJWVi0yMDI2LTAwMDAyIiwicmVzY2hlZHVsZV90eXBlIjoiY29ubmVjdGlvbiIsImlzX2xvYW4iOmZhbHNlLCJpc19yZWNvbm5lY3Rpb24iOmZhbHNlLCJwcmVmZXJyZWRfZGF0ZSI6bnVsbCwicHJlZmVycmVkX3RpbWUiOiIiLCJwcmVmZXJyZWRfc2NoZWR1bGUiOm51bGwsInVzYWdlIjp7InVzZWQiOjAsImxpbWl0IjozLCJyZW1haW5pbmciOjMsImF2YWlsYWJsZSI6dHJ1ZX0sIm9yaWdpbmFsX2RhdGUiOiIyMDI2LTExLTA3Iiwib3JpZ2luYWxfc2NoZWR1bGVfZm9ybWF0dGVkIjoiTm92ZW1iZXIgMDcsIDIwMjYgYXQgOTowMCBBTSIsIm9yaWdpbmFsX3RpbWUiOiIwOTowMCIsInJlYXNvbiI6IlNhbXBsZSBpbnN0YWxsYXRpb24gcmVzY2hlZHVsZSByZXF1ZXN0IiwiY3JlYXRlZF9hdCI6Ik5vdiAwNiwgMjAyNiAyOjUwIEFNIiwiYXNzaWduX3VybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9pbnN0YWxsYXRpb24tcmVzY2hlZHVsZXNcLzFcL2Fzc2lnbiIsImhpc3RvcnkiOlt7InN0YXR1cyI6IlBlbmRpbmciLCJvcmlnaW5hbCI6Ik5vdmVtYmVyIDA3LCAyMDI2IGF0IDk6MDAgQU0iLCJuZXciOm51bGwsInJlYXNvbiI6IlNhbXBsZSBpbnN0YWxsYXRpb24gcmVzY2hlZHVsZSByZXF1ZXN0IiwiYWRtaW5fbm90ZXMiOm51bGwsInJldmlld2VkX2F0IjpudWxsfV19"
+                                                title="Assign a new installation date and time"
+                                                                                            >
+                                                <i class="bi bi-calendar2-check me-1"></i>Assign New Schedule
+                                            </button>
+                                                                                                                                                                                                                                                    
+                                                                                                                            <button
+                                                type="button"
+                                                class="btn btn-sm btn-outline-secondary me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#consumerEditModal"
+                                                data-consumer='eyJpZCI6MiwiYXBwbGljYXRpb25fcmVmZXJlbmNlIjoiVlZBLTIwMjYxMTA2LVBPWVRBUkdYIiwiZnVsbF9uYW1lIjoiQ29uc3VtZXIgMDAyIFNhbXBsZSBSZXNpZGVudCIsImVtYWlsIjoic2FtcGxlMkBleGFtcGxlLnRlc3QiLCJhY2NvdW50X251bWJlciI6IlZWLTIwMjYtMDAwMDIiLCJtZXRlcl9udW1iZXIiOiJNVFItMDAwMDAyIiwibWV0ZXJfaGlzdG9yeSI6W3sibWV0ZXJfbnVtYmVyIjoiTVRSLTAwMDAwMiIsImFzc2lnbmVkX2F0IjoiMjAyNi0xMS0wNiIsInJldGlyZWRfYXQiOm51bGx9XSwibWVtYmVyc2hpcF90eXBlIjoiTm9uLU1lbWJlciIsInJlcXVlc3RlZF9tZW1iZXJzaGlwX3R5cGUiOiJOb24tTWVtYmVyIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fc3RhdHVzIjoiTm90IFJlcXVpcmVkIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fbm90ZXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9zdGF0dXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9hZG1pbl9ub3RlcyI6bnVsbCwic3RhdHVzIjoiQWN0aXZlIiwic3RhdHVzX2Rpc3BsYXkiOnsia2V5IjoiYWN0aXZlIiwibGFiZWwiOiJBY3RpdmUiLCJzdWJfbGFiZWwiOiJDb25uZWN0ZWQiLCJiYWRnZV9jbGFzcyI6ImJhZGdlLXNvZnQtc3VjY2VzcyIsInN1Yl9jbGFzcyI6ImNvbnN1bWVyLXN0YXR1cy1zdWItc3VjY2VzcyIsImljb24iOiJiaS1jaGVjay1jaXJjbGUtZmlsbCIsImRlc2NyaXB0aW9uIjoiVGhlIGFjY291bnQgaXMgYXBwcm92ZWQgYW5kIHRoZSB3YXRlciBzZXJ2aWNlIGlzIGN1cnJlbnRseSBjb25uZWN0ZWQuIn0sInByb3BlcnR5X3R5cGUiOm51bGwsIm93bmVyc2hpcF9zdGF0dXMiOm51bGwsInZhbGlkX2lkX3ByZXNlbnRlZCI6bnVsbCwic2VydmljZV9hZGRyZXNzIjoiQmxvY2sgMTIsIExvdCA4LCBWaWEgVmlkYSwgUGFuYWJvIENpdHkiLCJhZGRyZXNzX2Jsb2NrIjoiQmxvY2sgMTIiLCJhZGRyZXNzX3N0cmVldCI6IlZpYSBWaWRhIFN0cmVldCIsImNvbnRhY3RfbnVtYmVyIjoiMDkxNzEyMzQ1NjciLCJtZW1iZXJzaGlwX3JlbmV3YWxfZGF0ZSI6bnVsbCwicmVjb25uZWN0aW9uX2RhdGUiOm51bGwsImluc3RhbGxhdGlvbl9kYXRlIjoiMjAyNi0xMS0wNyIsImhvdXNpbmdfcmlnaHRzX2RvY3VtZW50ZWQiOmZhbHNlLCJyZXNpZGVudF9vZl9jb21tdW5pdHkiOmZhbHNlLCJhc3NvY2lhdGlvbl9tZW1iZXIiOnRydWUsImFzc29jaWF0aW9uX3JlZ2lzdGVyZWQiOnRydWUsImhvdXNpbmdfbG9hbl9jb250cmFjdF9zdWJtaXR0ZWQiOmZhbHNlLCJ2YWxpZF9pZF9zdWJtaXR0ZWQiOmZhbHNlLCJwcm9vZl9vZl9yZXNpZGVuY3lfc3VibWl0dGVkIjpmYWxzZSwibWVtYmVyc2hpcF9kb2N1bWVudF90eXBlIjpudWxsLCJvdGhlcl9kb2N1bWVudF9kZXRhaWxzIjpudWxsLCJyZWplY3Rpb25fcmVhc29uIjpudWxsLCJyZWplY3Rpb25fZmllbGRzIjpbIlZhbGlkIElEIiwiUHJvb2Ygb2YgT3duZXJzaGlwXC9SZXNpZGVuY3kiLCJCbG9jayIsIlN0cmVldCIsIkNvbnRhY3QgTnVtYmVyIl0sInJlamVjdGVkX2F0IjpudWxsLCJyZXN1Ym1pdHRlZF9hdCI6bnVsbCwidmFsaWRfaWRfdXJsIjpudWxsLCJwcm9vZl9vZl9yZXNpZGVuY3lfdXJsIjpudWxsLCJtZW1iZXJzaGlwX2RvY3VtZW50X3VybHMiOltdLCJvdGhlcl9kb2N1bWVudF91cmwiOm51bGx9'
+                                            >
+                                                Edit
+                                            </button>
+                                                                                                                                                                    <button
+                                                type="button"
+                                                class="btn btn-sm btn-outline-info me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#consumerMeterModal"
+                                                data-consumer="eyJpZCI6MiwiYXBwbGljYXRpb25fcmVmZXJlbmNlIjoiVlZBLTIwMjYxMTA2LVBPWVRBUkdYIiwiZnVsbF9uYW1lIjoiQ29uc3VtZXIgMDAyIFNhbXBsZSBSZXNpZGVudCIsImVtYWlsIjoic2FtcGxlMkBleGFtcGxlLnRlc3QiLCJhY2NvdW50X251bWJlciI6IlZWLTIwMjYtMDAwMDIiLCJtZXRlcl9udW1iZXIiOiJNVFItMDAwMDAyIiwibWV0ZXJfaGlzdG9yeSI6W3sibWV0ZXJfbnVtYmVyIjoiTVRSLTAwMDAwMiIsImFzc2lnbmVkX2F0IjoiMjAyNi0xMS0wNiIsInJldGlyZWRfYXQiOm51bGx9XSwibWVtYmVyc2hpcF90eXBlIjoiTm9uLU1lbWJlciIsInJlcXVlc3RlZF9tZW1iZXJzaGlwX3R5cGUiOiJOb24tTWVtYmVyIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fc3RhdHVzIjoiTm90IFJlcXVpcmVkIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fbm90ZXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9zdGF0dXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9hZG1pbl9ub3RlcyI6bnVsbCwic3RhdHVzIjoiQWN0aXZlIiwic3RhdHVzX2Rpc3BsYXkiOnsia2V5IjoiYWN0aXZlIiwibGFiZWwiOiJBY3RpdmUiLCJzdWJfbGFiZWwiOiJDb25uZWN0ZWQiLCJiYWRnZV9jbGFzcyI6ImJhZGdlLXNvZnQtc3VjY2VzcyIsInN1Yl9jbGFzcyI6ImNvbnN1bWVyLXN0YXR1cy1zdWItc3VjY2VzcyIsImljb24iOiJiaS1jaGVjay1jaXJjbGUtZmlsbCIsImRlc2NyaXB0aW9uIjoiVGhlIGFjY291bnQgaXMgYXBwcm92ZWQgYW5kIHRoZSB3YXRlciBzZXJ2aWNlIGlzIGN1cnJlbnRseSBjb25uZWN0ZWQuIn0sInByb3BlcnR5X3R5cGUiOm51bGwsIm93bmVyc2hpcF9zdGF0dXMiOm51bGwsInZhbGlkX2lkX3ByZXNlbnRlZCI6bnVsbCwic2VydmljZV9hZGRyZXNzIjoiQmxvY2sgMTIsIExvdCA4LCBWaWEgVmlkYSwgUGFuYWJvIENpdHkiLCJhZGRyZXNzX2Jsb2NrIjoiQmxvY2sgMTIiLCJhZGRyZXNzX3N0cmVldCI6IlZpYSBWaWRhIFN0cmVldCIsImNvbnRhY3RfbnVtYmVyIjoiMDkxNzEyMzQ1NjciLCJtZW1iZXJzaGlwX3JlbmV3YWxfZGF0ZSI6bnVsbCwicmVjb25uZWN0aW9uX2RhdGUiOm51bGwsImluc3RhbGxhdGlvbl9kYXRlIjoiMjAyNi0xMS0wNyIsImhvdXNpbmdfcmlnaHRzX2RvY3VtZW50ZWQiOmZhbHNlLCJyZXNpZGVudF9vZl9jb21tdW5pdHkiOmZhbHNlLCJhc3NvY2lhdGlvbl9tZW1iZXIiOnRydWUsImFzc29jaWF0aW9uX3JlZ2lzdGVyZWQiOnRydWUsImhvdXNpbmdfbG9hbl9jb250cmFjdF9zdWJtaXR0ZWQiOmZhbHNlLCJ2YWxpZF9pZF9zdWJtaXR0ZWQiOmZhbHNlLCJwcm9vZl9vZl9yZXNpZGVuY3lfc3VibWl0dGVkIjpmYWxzZSwibWVtYmVyc2hpcF9kb2N1bWVudF90eXBlIjpudWxsLCJvdGhlcl9kb2N1bWVudF9kZXRhaWxzIjpudWxsLCJyZWplY3Rpb25fcmVhc29uIjpudWxsLCJyZWplY3Rpb25fZmllbGRzIjpbIlZhbGlkIElEIiwiUHJvb2Ygb2YgT3duZXJzaGlwXC9SZXNpZGVuY3kiLCJCbG9jayIsIlN0cmVldCIsIkNvbnRhY3QgTnVtYmVyIl0sInJlamVjdGVkX2F0IjpudWxsLCJyZXN1Ym1pdHRlZF9hdCI6bnVsbCwidmFsaWRfaWRfdXJsIjpudWxsLCJwcm9vZl9vZl9yZXNpZGVuY3lfdXJsIjpudWxsLCJtZW1iZXJzaGlwX2RvY3VtZW50X3VybHMiOltdLCJvdGhlcl9kb2N1bWVudF91cmwiOm51bGx9"
+                                                title="Assign a newly issued meter number"
+                                            >
+                                                <i class="bi bi-speedometer2 me-1"></i>Assign Meter
+                                            </button>
+                                                                                                                        <form method="POST" action="http://127.0.0.1:8000/consumers/2" class="d-inline">
+                                            <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                                            <input type="hidden" name="_method" value="DELETE">                                            <button type="submit" class="btn btn-sm btn-light border text-danger" onclick="return confirm('Delete this consumer?')">Delete</button>
+                                        </form>
+                                                                            </td>
+                                </tr>
+                                                                                                                            <tr>
+                                                                        <td>
+                                        <div class="fw-semibold">Consumer 004 Sample Resident</div>
+                                        <div class="small text-primary fw-semibold">VVA-20261106-BFY7S2QC</div>
+                                                                                    <div class="small text-secondary">
+                                                Block 12, Lot 8, Via Vida, Panabo City
+                                                                                                    <span class="mx-1">•</span>09171234567
+                                                                                            </div>
+                                                                            </td>
+                                    <td>VV-2026-00004</td>
+                                    <td>
+                                        <div class="fw-semibold">
+                                            Non-Member
+                                                                                    </div>
+                                                                                <div class="small text-secondary">Meter MTR-000004</div>
+                                                                                    <div class="small text-secondary">sample4@example.test</div>
+                                                                                <div class="small text-secondary">
+                                            Association: Member
+                                            <span class="mx-1">•</span>Officially registered
+                                                                                    </div>
+                                    </td>
+                                    <td>
+                                                                                <span class="d-inline-flex align-items-center gap-1">
+                                            <span class="rag-dot rag-amber"></span>
+                                            <span class="rag-amber-text" style="font-size:0.82rem;">Attention</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span title="The account is approved and the water service is currently connected." class="consumer-service-status">
+    <span class="badge consumer-status-badge badge-soft-success">
+        <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+        <span>Active</span>
+    </span>
+    <span class="consumer-status-sub consumer-status-sub-success">Connected</span>
+</span>
+                                                                                                                                                                                                                                                                                            <div class="small mt-2 mb-3" data-reschedule-used="0" data-reschedule-remaining="3">
+    <strong>0 of 3 used</strong>
+    &middot; 3 reschedule attempts remaining.
+    </div>
+                                                                                                                            <div class="mt-1">
+                                                <span class="badge bg-info text-dark">
+                                                    <i class="bi bi-calendar-event me-1"></i>Reschedule Request: Connection
+                                                </span>
+                                                <div class="small text-secondary" title="Sample installation reschedule request">
+                                                    Reason: Sample installation reschedule requ...
+                                                </div>
+                                            </div>
+                                                                            </td>
+                                                                        <td class="text-end">
+                                                                                                                                                                        <button
+                                                type="button"
+                                                class="btn btn-sm btn-info text-white me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#adminReviewRescheduleModal"
+                                                data-reschedule="eyJpZCI6MiwiY29uc3VtZXJfaWQiOjQsImNvbnN1bWVyX25hbWUiOiJDb25zdW1lciAwMDQgU2FtcGxlIFJlc2lkZW50IiwiYWNjb3VudF9udW1iZXIiOiJWVi0yMDI2LTAwMDA0IiwicmVzY2hlZHVsZV90eXBlIjoiY29ubmVjdGlvbiIsImlzX2xvYW4iOmZhbHNlLCJpc19yZWNvbm5lY3Rpb24iOmZhbHNlLCJwcmVmZXJyZWRfZGF0ZSI6bnVsbCwicHJlZmVycmVkX3RpbWUiOiIiLCJwcmVmZXJyZWRfc2NoZWR1bGUiOm51bGwsInVzYWdlIjp7InVzZWQiOjAsImxpbWl0IjozLCJyZW1haW5pbmciOjMsImF2YWlsYWJsZSI6dHJ1ZX0sIm9yaWdpbmFsX2RhdGUiOiIyMDI2LTExLTA3Iiwib3JpZ2luYWxfc2NoZWR1bGVfZm9ybWF0dGVkIjoiTm92ZW1iZXIgMDcsIDIwMjYgYXQgOTowMCBBTSIsIm9yaWdpbmFsX3RpbWUiOiIwOTowMCIsInJlYXNvbiI6IlNhbXBsZSBpbnN0YWxsYXRpb24gcmVzY2hlZHVsZSByZXF1ZXN0IiwiY3JlYXRlZF9hdCI6Ik5vdiAwNiwgMjAyNiAyOjUwIEFNIiwiYXNzaWduX3VybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9pbnN0YWxsYXRpb24tcmVzY2hlZHVsZXNcLzJcL2Fzc2lnbiIsImhpc3RvcnkiOlt7InN0YXR1cyI6IlBlbmRpbmciLCJvcmlnaW5hbCI6Ik5vdmVtYmVyIDA3LCAyMDI2IGF0IDk6MDAgQU0iLCJuZXciOm51bGwsInJlYXNvbiI6IlNhbXBsZSBpbnN0YWxsYXRpb24gcmVzY2hlZHVsZSByZXF1ZXN0IiwiYWRtaW5fbm90ZXMiOm51bGwsInJldmlld2VkX2F0IjpudWxsfV19"
+                                                title="Assign a new installation date and time"
+                                                                                            >
+                                                <i class="bi bi-calendar2-check me-1"></i>Assign New Schedule
+                                            </button>
+                                                                                                                                                                                                                                                    
+                                                                                                                            <button
+                                                type="button"
+                                                class="btn btn-sm btn-outline-secondary me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#consumerEditModal"
+                                                data-consumer='eyJpZCI6NCwiYXBwbGljYXRpb25fcmVmZXJlbmNlIjoiVlZBLTIwMjYxMTA2LUJGWTdTMlFDIiwiZnVsbF9uYW1lIjoiQ29uc3VtZXIgMDA0IFNhbXBsZSBSZXNpZGVudCIsImVtYWlsIjoic2FtcGxlNEBleGFtcGxlLnRlc3QiLCJhY2NvdW50X251bWJlciI6IlZWLTIwMjYtMDAwMDQiLCJtZXRlcl9udW1iZXIiOiJNVFItMDAwMDA0IiwibWV0ZXJfaGlzdG9yeSI6W3sibWV0ZXJfbnVtYmVyIjoiTVRSLTAwMDAwNCIsImFzc2lnbmVkX2F0IjoiMjAyNi0xMS0wNiIsInJldGlyZWRfYXQiOm51bGx9XSwibWVtYmVyc2hpcF90eXBlIjoiTm9uLU1lbWJlciIsInJlcXVlc3RlZF9tZW1iZXJzaGlwX3R5cGUiOiJOb24tTWVtYmVyIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fc3RhdHVzIjoiTm90IFJlcXVpcmVkIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fbm90ZXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9zdGF0dXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9hZG1pbl9ub3RlcyI6bnVsbCwic3RhdHVzIjoiQWN0aXZlIiwic3RhdHVzX2Rpc3BsYXkiOnsia2V5IjoiYWN0aXZlIiwibGFiZWwiOiJBY3RpdmUiLCJzdWJfbGFiZWwiOiJDb25uZWN0ZWQiLCJiYWRnZV9jbGFzcyI6ImJhZGdlLXNvZnQtc3VjY2VzcyIsInN1Yl9jbGFzcyI6ImNvbnN1bWVyLXN0YXR1cy1zdWItc3VjY2VzcyIsImljb24iOiJiaS1jaGVjay1jaXJjbGUtZmlsbCIsImRlc2NyaXB0aW9uIjoiVGhlIGFjY291bnQgaXMgYXBwcm92ZWQgYW5kIHRoZSB3YXRlciBzZXJ2aWNlIGlzIGN1cnJlbnRseSBjb25uZWN0ZWQuIn0sInByb3BlcnR5X3R5cGUiOm51bGwsIm93bmVyc2hpcF9zdGF0dXMiOm51bGwsInZhbGlkX2lkX3ByZXNlbnRlZCI6bnVsbCwic2VydmljZV9hZGRyZXNzIjoiQmxvY2sgMTIsIExvdCA4LCBWaWEgVmlkYSwgUGFuYWJvIENpdHkiLCJhZGRyZXNzX2Jsb2NrIjoiQmxvY2sgMTIiLCJhZGRyZXNzX3N0cmVldCI6IlZpYSBWaWRhIFN0cmVldCIsImNvbnRhY3RfbnVtYmVyIjoiMDkxNzEyMzQ1NjciLCJtZW1iZXJzaGlwX3JlbmV3YWxfZGF0ZSI6bnVsbCwicmVjb25uZWN0aW9uX2RhdGUiOm51bGwsImluc3RhbGxhdGlvbl9kYXRlIjoiMjAyNi0xMS0wNyIsImhvdXNpbmdfcmlnaHRzX2RvY3VtZW50ZWQiOmZhbHNlLCJyZXNpZGVudF9vZl9jb21tdW5pdHkiOmZhbHNlLCJhc3NvY2lhdGlvbl9tZW1iZXIiOnRydWUsImFzc29jaWF0aW9uX3JlZ2lzdGVyZWQiOnRydWUsImhvdXNpbmdfbG9hbl9jb250cmFjdF9zdWJtaXR0ZWQiOmZhbHNlLCJ2YWxpZF9pZF9zdWJtaXR0ZWQiOmZhbHNlLCJwcm9vZl9vZl9yZXNpZGVuY3lfc3VibWl0dGVkIjpmYWxzZSwibWVtYmVyc2hpcF9kb2N1bWVudF90eXBlIjpudWxsLCJvdGhlcl9kb2N1bWVudF9kZXRhaWxzIjpudWxsLCJyZWplY3Rpb25fcmVhc29uIjpudWxsLCJyZWplY3Rpb25fZmllbGRzIjpbIlZhbGlkIElEIiwiUHJvb2Ygb2YgT3duZXJzaGlwXC9SZXNpZGVuY3kiLCJCbG9jayIsIlN0cmVldCIsIkNvbnRhY3QgTnVtYmVyIl0sInJlamVjdGVkX2F0IjpudWxsLCJyZXN1Ym1pdHRlZF9hdCI6bnVsbCwidmFsaWRfaWRfdXJsIjpudWxsLCJwcm9vZl9vZl9yZXNpZGVuY3lfdXJsIjpudWxsLCJtZW1iZXJzaGlwX2RvY3VtZW50X3VybHMiOltdLCJvdGhlcl9kb2N1bWVudF91cmwiOm51bGx9'
+                                            >
+                                                Edit
+                                            </button>
+                                                                                                                                                                    <button
+                                                type="button"
+                                                class="btn btn-sm btn-outline-info me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#consumerMeterModal"
+                                                data-consumer="eyJpZCI6NCwiYXBwbGljYXRpb25fcmVmZXJlbmNlIjoiVlZBLTIwMjYxMTA2LUJGWTdTMlFDIiwiZnVsbF9uYW1lIjoiQ29uc3VtZXIgMDA0IFNhbXBsZSBSZXNpZGVudCIsImVtYWlsIjoic2FtcGxlNEBleGFtcGxlLnRlc3QiLCJhY2NvdW50X251bWJlciI6IlZWLTIwMjYtMDAwMDQiLCJtZXRlcl9udW1iZXIiOiJNVFItMDAwMDA0IiwibWV0ZXJfaGlzdG9yeSI6W3sibWV0ZXJfbnVtYmVyIjoiTVRSLTAwMDAwNCIsImFzc2lnbmVkX2F0IjoiMjAyNi0xMS0wNiIsInJldGlyZWRfYXQiOm51bGx9XSwibWVtYmVyc2hpcF90eXBlIjoiTm9uLU1lbWJlciIsInJlcXVlc3RlZF9tZW1iZXJzaGlwX3R5cGUiOiJOb24tTWVtYmVyIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fc3RhdHVzIjoiTm90IFJlcXVpcmVkIiwibWVtYmVyc2hpcF92ZXJpZmljYXRpb25fbm90ZXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9zdGF0dXMiOm51bGwsImNvbm5lY3Rpb25fcmVxdWVzdF9hZG1pbl9ub3RlcyI6bnVsbCwic3RhdHVzIjoiQWN0aXZlIiwic3RhdHVzX2Rpc3BsYXkiOnsia2V5IjoiYWN0aXZlIiwibGFiZWwiOiJBY3RpdmUiLCJzdWJfbGFiZWwiOiJDb25uZWN0ZWQiLCJiYWRnZV9jbGFzcyI6ImJhZGdlLXNvZnQtc3VjY2VzcyIsInN1Yl9jbGFzcyI6ImNvbnN1bWVyLXN0YXR1cy1zdWItc3VjY2VzcyIsImljb24iOiJiaS1jaGVjay1jaXJjbGUtZmlsbCIsImRlc2NyaXB0aW9uIjoiVGhlIGFjY291bnQgaXMgYXBwcm92ZWQgYW5kIHRoZSB3YXRlciBzZXJ2aWNlIGlzIGN1cnJlbnRseSBjb25uZWN0ZWQuIn0sInByb3BlcnR5X3R5cGUiOm51bGwsIm93bmVyc2hpcF9zdGF0dXMiOm51bGwsInZhbGlkX2lkX3ByZXNlbnRlZCI6bnVsbCwic2VydmljZV9hZGRyZXNzIjoiQmxvY2sgMTIsIExvdCA4LCBWaWEgVmlkYSwgUGFuYWJvIENpdHkiLCJhZGRyZXNzX2Jsb2NrIjoiQmxvY2sgMTIiLCJhZGRyZXNzX3N0cmVldCI6IlZpYSBWaWRhIFN0cmVldCIsImNvbnRhY3RfbnVtYmVyIjoiMDkxNzEyMzQ1NjciLCJtZW1iZXJzaGlwX3JlbmV3YWxfZGF0ZSI6bnVsbCwicmVjb25uZWN0aW9uX2RhdGUiOm51bGwsImluc3RhbGxhdGlvbl9kYXRlIjoiMjAyNi0xMS0wNyIsImhvdXNpbmdfcmlnaHRzX2RvY3VtZW50ZWQiOmZhbHNlLCJyZXNpZGVudF9vZl9jb21tdW5pdHkiOmZhbHNlLCJhc3NvY2lhdGlvbl9tZW1iZXIiOnRydWUsImFzc29jaWF0aW9uX3JlZ2lzdGVyZWQiOnRydWUsImhvdXNpbmdfbG9hbl9jb250cmFjdF9zdWJtaXR0ZWQiOmZhbHNlLCJ2YWxpZF9pZF9zdWJtaXR0ZWQiOmZhbHNlLCJwcm9vZl9vZl9yZXNpZGVuY3lfc3VibWl0dGVkIjpmYWxzZSwibWVtYmVyc2hpcF9kb2N1bWVudF90eXBlIjpudWxsLCJvdGhlcl9kb2N1bWVudF9kZXRhaWxzIjpudWxsLCJyZWplY3Rpb25fcmVhc29uIjpudWxsLCJyZWplY3Rpb25fZmllbGRzIjpbIlZhbGlkIElEIiwiUHJvb2Ygb2YgT3duZXJzaGlwXC9SZXNpZGVuY3kiLCJCbG9jayIsIlN0cmVldCIsIkNvbnRhY3QgTnVtYmVyIl0sInJlamVjdGVkX2F0IjpudWxsLCJyZXN1Ym1pdHRlZF9hdCI6bnVsbCwidmFsaWRfaWRfdXJsIjpudWxsLCJwcm9vZl9vZl9yZXNpZGVuY3lfdXJsIjpudWxsLCJtZW1iZXJzaGlwX2RvY3VtZW50X3VybHMiOltdLCJvdGhlcl9kb2N1bWVudF91cmwiOm51bGx9"
+                                                title="Assign a newly issued meter number"
+                                            >
+                                                <i class="bi bi-speedometer2 me-1"></i>Assign Meter
+                                            </button>
+                                                                                                                        <form method="POST" action="http://127.0.0.1:8000/consumers/4" class="d-inline">
+                                            <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                                            <input type="hidden" name="_method" value="DELETE">                                            <button type="submit" class="btn btn-sm btn-light border text-danger" onclick="return confirm('Delete this consumer?')">Delete</button>
+                                        </form>
+                                                                            </td>
+                                </tr>
+                                                                                    </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mt-3">
+                    <p class="text-secondary mb-0">
+                                                    Showing 1 to 2 of 2 consumers
+                                            </p>
+                    
+                </div>
+                            </div>
+        </div>
+    </main>
+</div>
+
+
+
+<div class="modal fade" id="consumerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5">Add Consumer</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="http://127.0.0.1:8000/consumers" id="consumerCreateForm">
+                    <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="full_name">Full Name</label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" value="" placeholder="Enter consumer name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="account_number">Account Number</label>
+                            <input type="text" class="form-control" id="account_number" name="account_number" value="" placeholder="Leave blank to auto-generate 1, 2, 3...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="meter_number">Meter Number</label>
+                            <input type="text" class="form-control" id="meter_number" name="meter_number" value="" placeholder="MT-78455" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="membership_type">Membership Type</label>
+                            <select class="form-select" id="membership_type" name="membership_type" required>
+                                                                    <option value="Member" >Member</option>
+                                                                    <option value="Non-Member" selected>Non-Member</option>
+                                                            </select>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label fw-semibold" for="service_address">Service Address</label>
+                            <input type="text" class="form-control" id="service_address" name="service_address" value="" placeholder="Enter service address">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="contact_number">Contact Number</label>
+                            <input type="text" inputmode="numeric" pattern="[0-9]{10,15}" class="form-control js-digits-only" id="contact_number" name="contact_number" value="" placeholder="09XXXXXXXXX">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="address_block">Block</label>
+                            <input type="text" class="form-control" id="address_block" name="address_block" value="" placeholder="e.g. Block 12">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="address_street">Street</label>
+                            <input type="text" class="form-control" id="address_street" name="address_street" value="" placeholder="e.g. Maharlika Street">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-4 pt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="housing_rights_documented" name="housing_rights_documented" >
+                                <label class="form-check-label" for="housing_rights_documented">Pag-IBIG / house rights documented</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-4 pt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="association_member" name="association_member" >
+                                <label class="form-check-label" for="association_member">Local association member</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-4 pt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="association_registered" name="association_registered" >
+                                <label class="form-check-label" for="association_registered">Officially registered</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="membership_renewal_date">Membership Date</label>
+                            <input type="date" class="form-control" id="membership_renewal_date" name="membership_renewal_date" value="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="consumerCreateForm" class="btn btn-primary">Save Consumer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="consumerEditModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title fs-5">Edit Consumer</h2>
+                    <div class="mt-1" id="consumerEditStatusBadge"></div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="#" id="consumerEditForm">
+                    <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                    <input type="hidden" name="_method" value="PATCH">                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="edit_full_name">Full Name</label>
+                            <input type="text" class="form-control" id="edit_full_name" name="full_name" value="" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="edit_email">Email</label>
+                            <input type="email" class="form-control" id="edit_email" name="email" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_account_number">Account Number</label>
+                            <input type="text" class="form-control" id="edit_account_number" name="account_number" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_meter_number">Meter Number</label>
+                            <input type="text" class="form-control" id="edit_meter_number" name="meter_number" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_status">Status</label>
+                            <select class="form-select" id="edit_status" name="status" required data-status-locked-on="Disconnected,For Reconnection">
+                                                                    <option value="Pending Verification">Pending Verification</option>
+                                                                    <option value="Active">Active</option>
+                                                                    <option value="For Review">For Review</option>
+                                                                    <option value="Disconnected">Disconnected</option>
+                                                                    <option value="For Reconnection">For Reconnection</option>
+                                                                    <option value="Rejected">Rejected</option>
+                                                            </select>
+                            <div class="form-text d-none" id="edit_status_locked_note">
+                                Status is locked while the account is awaiting reconnection.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_membership_type">Membership Type</label>
+                            <select class="form-select" id="edit_membership_type" name="membership_type" required>
+                                                                    <option value="Member">Member</option>
+                                                                    <option value="Non-Member">Non-Member</option>
+                                                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_property_type">Property Type</label>
+                            <select class="form-select" id="edit_property_type" name="property_type">
+                                <option value="">Select property type</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_ownership_status">Ownership Status</label>
+                            <select class="form-select" id="edit_ownership_status" name="ownership_status">
+                                <option value="">Select ownership status</option>
+                                <option value="Owner">Owner</option>
+                                <option value="Tenant">Tenant</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold" for="edit_membership_verification_notes">Membership Verification Notes</label>
+                            <textarea class="form-control" id="edit_membership_verification_notes" name="membership_verification_notes" rows="2" maxlength="1000" placeholder="Optional: record what was checked or why the membership claim was not verified."></textarea>
+                            <div class="form-text">Changing the membership type records a new verification decision with your account and the current time.</div>
+                        </div>
+                        <div class="col-12 d-none" id="edit_membership_pending_panel">
+                            <div class="alert alert-warning mb-0">
+                                <div class="fw-semibold"><i class="bi bi-person-check me-1"></i>VIOHOA membership verification pending</div>
+                                <div class="small mt-1">
+                                    Choosing <strong>Member</strong> verifies the existing membership and unlocks member benefits.
+                                    Choosing <strong>Non-Member</strong> records the claim as not verified.
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" value="1" id="edit_membership_verification_confirmed" name="membership_verification_confirmed" >
+                                    <label class="form-check-label" for="edit_membership_verification_confirmed">
+                                        I reviewed the membership evidence and confirm this decision.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_address_block">Block</label>
+                            <input type="text" class="form-control" id="edit_address_block" name="address_block" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_address_street">Street</label>
+                            <input type="text" class="form-control" id="edit_address_street" name="address_street" value="">
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label fw-semibold" for="edit_service_address">Service Address</label>
+                            <input type="text" class="form-control" id="edit_service_address" name="service_address" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold" for="edit_contact_number">Contact Number</label>
+                            <input type="text" inputmode="numeric" pattern="[0-9]{10,15}" class="form-control js-digits-only" id="edit_contact_number" name="contact_number" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold" for="edit_valid_id_presented">Valid ID Presented</label>
+                            <input type="text" class="form-control" id="edit_valid_id_presented" name="valid_id_presented" value="">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-semibold" for="edit_reconnection_date">Reconnection Date</label>
+                            <input type="date" class="form-control" id="edit_reconnection_date" name="reconnection_date" value="">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-semibold" for="edit_installation_date">Installation Date</label>
+                            <input type="date" class="form-control" id="edit_installation_date" name="installation_date" value="">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold" for="edit_other_document_details">Other Document Details</label>
+                            <input type="text" class="form-control" id="edit_other_document_details" name="other_document_details" value="">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_housing_rights_documented" name="housing_rights_documented" >
+                                <label class="form-check-label" for="edit_housing_rights_documented">Housing rights documented</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_resident_of_community" name="resident_of_community" >
+                                <label class="form-check-label" for="edit_resident_of_community">Resident of community</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_association_member" name="association_member" >
+                                <label class="form-check-label" for="edit_association_member">Association member</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_association_registered" name="association_registered" >
+                                <label class="form-check-label" for="edit_association_registered">Association registered</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_housing_loan_contract_submitted" name="housing_loan_contract_submitted" >
+                                <label class="form-check-label" for="edit_housing_loan_contract_submitted">Housing loan contract submitted</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_valid_id_submitted" name="valid_id_submitted" >
+                                <label class="form-check-label" for="edit_valid_id_submitted">Valid ID submitted</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="edit_proof_of_residency_submitted" name="proof_of_residency_submitted" >
+                                <label class="form-check-label" for="edit_proof_of_residency_submitted">Proof of residency submitted</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="consumerEditForm" class="btn btn-primary">Update Consumer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="consumerActivateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-0 rounded-4">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title fs-5">Review Application &amp; Verify Account</h2>
+                    <div class="mt-1" id="consumerActivateStatusBadge"></div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="activateInfoContent" class="mb-4">
+                    <div class="text-center text-secondary py-3">Loading applicant information...</div>
+                </div>
+
+                <hr>
+
+                <form method="POST" action="#" id="consumerActivateForm">
+                    <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                    <input type="hidden" name="_method" value="PATCH">                    <h6 class="fw-bold mb-3">Activation &amp; Membership Decision</h6>
+                    <p class="small text-secondary mb-3">
+                        Approving here activates the account, records the membership decision, and marks the linked water connection request as approved.
+                    </p>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold" for="activation_membership_type">Membership Type</label>
+                        <select class="form-select" id="activation_membership_type" name="membership_type" required>
+                                                            <option value="Member" >Member</option>
+                                                            <option value="Non-Member" >Non-Member</option>
+                                                    </select>
+                        <div class="form-text" id="activation_membership_type_help"></div>
+                    </div>
+                    <div class="alert alert-warning d-none" id="activation_membership_pending_alert">
+                        <div class="fw-semibold"><i class="bi bi-person-check me-1"></i>This applicant declared existing VIOHOA membership.</div>
+                        <div class="small mt-1">Activating as <strong>Member</strong> verifies the existing membership and applies member billing rates. Activating as <strong>Non-Member</strong> records the claim as not verified. The water connection request is marked approved either way.</div>
+                    </div>
+                    <div class="border rounded-3 p-3 mb-3 d-none" id="activation_membership_confirmation">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" id="activation_membership_verification_confirmed" name="membership_verification_confirmed" >
+                            <label class="form-check-label fw-semibold" for="activation_membership_verification_confirmed">
+                                I reviewed the membership claim and supporting documents and confirm this applicant is an officially registered association member.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold" for="activation_membership_verification_notes">Membership Verification Notes</label>
+                        <textarea class="form-control" id="activation_membership_verification_notes" name="membership_verification_notes" rows="2" maxlength="1000" placeholder="Optional: record what was checked or why a claim was not verified."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold" for="activation_meter_number">Meter Number</label>
+                        <input type="text" class="form-control" id="activation_meter_number" name="meter_number" value="" placeholder="Assign meter number" required>
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label fw-semibold" for="activation_installation_date">Installation Date</label>
+                        <input type="date" class="form-control" id="activation_installation_date" name="installation_date" value="" required>
+                    </div>
+                </form>
+
+                <hr>
+
+                <div id="activateRejectSection">
+                    <h6 class="fw-bold mb-3 text-danger">
+                        <i class="bi bi-exclamation-triangle me-1"></i>Reject Application
+                    </h6>
+                    <p class="small text-secondary">
+                        Rejecting the application marks the water connection request as rejected. A still-pending membership claim is also recorded as not verified; an already-verified membership is retained.
+                    </p>
+                    <form method="POST" action="#" id="consumerRejectForm">
+                        <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                        <input type="hidden" name="_method" value="PATCH">                        <div class="mb-3">
+                            <label class="form-label fw-semibold d-block">Requirements to Correct <span class="text-danger">*</span></label>
+                            <div class="row g-2">
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="valid_id_file"
+                                                id="correction_field_valid_id_file"
+                                                                                                 required                                             >
+                                            <label class="form-check-label" for="correction_field_valid_id_file">Valid ID</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="proof_of_residency_file"
+                                                id="correction_field_proof_of_residency_file"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_proof_of_residency_file">Proof of Ownership/Residency</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="address_block"
+                                                id="correction_field_address_block"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_address_block">Block</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="address_street"
+                                                id="correction_field_address_street"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_address_street">Street</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="contact_number"
+                                                id="correction_field_contact_number"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_contact_number">Contact Number</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="full_name"
+                                                id="correction_field_full_name"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_full_name">Full Name</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="email"
+                                                id="correction_field_email"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_email">Email Address</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="service_purok"
+                                                id="correction_field_service_purok"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_service_purok">Purok</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="property_type"
+                                                id="correction_field_property_type"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_property_type">Property Type</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="ownership_status"
+                                                id="correction_field_ownership_status"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_ownership_status">Ownership Status</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="valid_id_presented"
+                                                id="correction_field_valid_id_presented"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_valid_id_presented">Valid ID Presented</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="other_document_details"
+                                                id="correction_field_other_document_details"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_other_document_details">Other Document Details</label>
+                                        </div>
+                                    </div>
+                                                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="correction_fields[]"
+                                                value="other_document_file"
+                                                id="correction_field_other_document_file"
+                                                                                                                                            >
+                                            <label class="form-check-label" for="correction_field_other_document_file">Other Document</label>
+                                        </div>
+                                    </div>
+                                                            </div>
+                            <div class="form-text">
+                                Only the selected fields and documents can be edited by the applicant when they resubmit.
+                                Requirements named in the reason below are added automatically.
+                            </div>
+                        </div>
+                        <div class="mb-0">
+                            <label class="form-label fw-semibold" for="rejection_reason">Rejection Reason <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="rejection_reason" name="rejection_reason" rows="3" placeholder="Explain why this connection request is being rejected..." required></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="submit" form="consumerRejectForm" class="btn btn-outline-danger">Reject Application</button>
+                <div>
+                    <button type="button" class="btn btn-light border me-2" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="consumerActivateForm" class="btn btn-success">Verify and Activate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="consumerMeterModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4">
+            <form method="POST" id="consumerMeterForm">
+                <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                <div class="modal-header">
+                    <h2 class="modal-title fs-5">Assign New Meter Number</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Consumer</label>
+                        <div class="fw-semibold" id="meter_consumer_name">&mdash;</div>
+                        <div class="small text-secondary" id="meter_consumer_account"></div>
+                    </div>
+
+                    <div class="alert alert-warning d-flex align-items-start gap-2">
+                        <i class="bi bi-info-circle mt-1"></i>
+                        <div class="small">
+                            Assigning a new meter immediately replaces the current meter number on this account, so the
+                            Meter Reader module will use the new number for every future reading.
+                            The previous meter number and its readings are kept on record for auditing.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold" for="assign_current_meter">Current Meter Number</label>
+                        <input type="text" class="form-control" id="assign_current_meter" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold" for="assign_meter_number">
+                            New Meter Number <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control " id="assign_meter_number" name="meter_number" value="" placeholder="MT-90210" required autocomplete="off">
+                        <div class="form-text">Must not already belong to another active consumer account.</div>
+                                            </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold" for="assign_meter_reason">Reason (optional)</label>
+                        <input type="text" class="form-control" id="assign_meter_reason" name="reason" value="" maxlength="255" placeholder="e.g. Defective meter replaced">
+                    </div>
+
+                    <div id="assign_meter_history"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light border me-2" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-info">Assign Meter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="adminReviewRescheduleModal" tabindex="-1" aria-labelledby="assign-reschedule-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <form method="POST" id="assignRescheduleForm" class="modal-content">
+            <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">            <input type="hidden" name="_method" value="PATCH">            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="assign-reschedule-title">Assign New Schedule</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong id="arr_consumer_name"></strong> &middot; <span id="arr_account"></span></p>
+                <p><span id="arr_type_badge"></span> &middot; Current schedule: <strong id="arr_original_schedule"></strong></p>
+                <p id="arr_usage" class="fw-semibold"></p>
+                <div id="arr_reason" class="alert alert-info"></div>
+                <p>Assign a new installation date and time. The consumer will receive the updated schedule by email. Only a successful assignment uses a reschedule attempt.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="arr_new_date">New Installation Date</label>
+                        <input type="date" class="form-control" id="arr_new_date" name="new_installation_date" min="2026-11-06" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="arr_new_time">New Installation Time</label>
+                        <input type="time" class="form-control" id="arr_new_time" name="new_installation_time" required>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="arr_assign_notes">Administrator Notes (Optional)</label>
+                        <textarea id="arr_assign_notes" name="admin_notes" class="form-control" rows="2" maxlength="1000"></textarea>
+                    </div>
+                </div>
+                <div id="arr_history_container" class="mt-3 d-none">
+                    <h3 class="h6">Reschedule History</h3>
+                    <div id="arr_history_list" class="small"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" id="assignRescheduleButton" class="btn btn-primary">Assign New Schedule</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('form[data-auto-filter]').forEach(function (form) {
+                let timer = null;
+
+                const clearTimer = function () {
+                    if (timer !== null) {
+                        window.clearTimeout(timer);
+                        timer = null;
+                    }
+                };
+
+                const submit = function () {
+                    clearTimer();
+
+                    if (typeof form.requestSubmit === 'function') {
+                        form.requestSubmit();
+                    } else {
+                        form.submit();
+                    }
+                };
+
+                const scheduleSubmit = function () {
+                    clearTimer();
+
+                    const configuredDelay = Number(form.dataset.autoFilterDebounce);
+                    const delay = Number.isFinite(configuredDelay) && configuredDelay >= 0
+                        ? configuredDelay
+                        : 450;
+
+                    timer = window.setTimeout(submit, delay);
+                };
+
+                form.querySelectorAll('select, input[type="month"], input[type="date"], input[type="week"], input[type="time"], input[type="checkbox"], input[type="radio"]').forEach(function (control) {
+                    control.addEventListener('change', submit);
+                });
+
+                form.querySelectorAll('input[type="search"], input[type="text"]').forEach(function (input) {
+                    input.addEventListener('input', scheduleSubmit);
+                    input.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            submit();
+                        }
+                    });
+                });
+
+                form.addEventListener('submit', clearTimer);
+
+                form.querySelectorAll('a').forEach(function (link) {
+                    link.addEventListener('click', clearTimer);
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!form.contains(event.target)) {
+                        clearTimer();
+                    }
+                }, true);
+
+                window.addEventListener('pagehide', clearTimer);
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const appShell = document.querySelector('.app-shell');
+        const sidebar = document.getElementById('sidebarMenu');
+        const collapseToggle = document.getElementById('sidebarCollapseToggle');
+        const reopenToggle = document.getElementById('sidebarReopenToggle');
+        const mobileToggle = document.getElementById('sidebarMobileToggle');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const mainContent = document.querySelector('.main-content');
+
+        if (!appShell || !sidebar) {
+            return;
+        }
+
+        const mobileQuery = window.matchMedia('(max-width: 991.98px)');
+        const toggles = [collapseToggle, reopenToggle, mobileToggle].filter(Boolean);
+
+        const isMobile = function () {
+            return mobileQuery.matches;
+        };
+
+        const isSidebarOpen = function () {
+            return isMobile()
+                ? appShell.classList.contains('sidebar-mobile-open')
+                : !appShell.classList.contains('sidebar-collapsed');
+        };
+
+        const syncState = function () {
+            const open = isSidebarOpen();
+
+            toggles.forEach(function (toggle) {
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            if (collapseToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                collapseToggle.setAttribute('aria-label', label);
+                collapseToggle.setAttribute('title', label);
+            }
+
+            if (reopenToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                reopenToggle.setAttribute('aria-label', label);
+                reopenToggle.setAttribute('title', label);
+            }
+
+            if (mobileToggle) {
+                const label = open ? 'Close sidebar' : 'Open sidebar';
+
+                mobileToggle.setAttribute('aria-label', label);
+                mobileToggle.setAttribute('title', label);
+            }
+
+            sidebar.toggleAttribute('inert', !open);
+
+            if (mainContent) {
+                mainContent.toggleAttribute('inert', isMobile() && open);
+            }
+        };
+
+        const openSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.add('sidebar-mobile-open');
+            } else {
+                appShell.classList.remove('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const firstLink = sidebar.querySelector('.nav-link:not(.sidebar-subnav-link)')
+                || sidebar.querySelector('.nav-link');
+
+            if (firstLink) {
+                window.setTimeout(function () {
+                    firstLink.focus();
+                }, 0);
+            }
+        };
+
+        const closeSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.remove('sidebar-mobile-open');
+            } else {
+                appShell.classList.add('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const focusTarget = isMobile() && mobileToggle ? mobileToggle : reopenToggle;
+
+            if (focusTarget) {
+                window.setTimeout(function () {
+                    focusTarget.focus();
+                }, 0);
+            }
+        };
+
+        const toggleSidebar = function () {
+            if (isSidebarOpen()) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        };
+
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener('click', toggleSidebar);
+        });
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSidebar);
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && isMobile() && isSidebarOpen()) {
+                closeSidebar();
+            }
+        });
+
+        const handleBreakpointChange = function () {
+            appShell.classList.remove('sidebar-mobile-open', 'sidebar-collapsed');
+            syncState();
+        };
+
+        if (typeof mobileQuery.addEventListener === 'function') {
+            mobileQuery.addEventListener('change', handleBreakpointChange);
+        } else if (typeof mobileQuery.addListener === 'function') {
+            mobileQuery.addListener(handleBreakpointChange);
+        }
+
+        syncState();
+    });
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('[data-inactive-details-toggle]').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const details = document.getElementById(button.getAttribute('aria-controls'));
+                    if (! details) return;
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    details.classList.toggle('d-none', expanded);
+                    button.setAttribute('aria-expanded', String(! expanded));
+                    button.textContent = expanded ? 'View More ▼' : 'View Less ▲';
+                });
+            });
+
+            const activateModal = document.getElementById('consumerActivateModal');
+            const activateForm = document.getElementById('consumerActivateForm');
+            const editModal = document.getElementById('consumerEditModal');
+            const editForm = document.getElementById('consumerEditForm');
+            const rejectForm = document.getElementById('consumerRejectForm');
+            const meterModal = document.getElementById('consumerMeterModal');
+            const meterForm = document.getElementById('consumerMeterForm');
+
+            const renderConsumerStatusBadge = function (elementId, display) {
+                const target = document.getElementById(elementId);
+
+                if (! target) {
+                    return;
+                }
+
+                target.innerHTML = '';
+
+                if (! display || ! display.label) {
+                    return;
+                }
+
+                const wrapper = document.createElement('span');
+                wrapper.className = 'consumer-service-status';
+
+                if (display.description) {
+                    wrapper.title = display.description;
+                }
+
+                const badge = document.createElement('span');
+                badge.className = 'badge consumer-status-badge ' + (display.badge_class || 'badge-soft-primary');
+
+                const icon = document.createElement('i');
+                icon.className = 'bi ' + (display.icon || 'bi-info-circle');
+                icon.setAttribute('aria-hidden', 'true');
+
+                const label = document.createElement('span');
+                label.textContent = display.label;
+
+                badge.append(icon, label);
+
+                const subLabel = document.createElement('span');
+                subLabel.className = 'consumer-status-sub ' + (display.sub_class || '');
+                subLabel.textContent = display.sub_label || '';
+
+                wrapper.append(badge, subLabel);
+                target.appendChild(wrapper);
+            };
+
+            if (meterModal && meterForm) {
+                meterModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+
+                    if (! button) {
+                        return;
+                    }
+
+                    const payload = JSON.parse(atob(button.getAttribute('data-consumer') || 'e30='));
+
+                    meterForm.action = `http://127.0.0.1:8000/consumers/${payload.id}/assign-meter`;
+                    document.getElementById('meter_consumer_name').textContent = payload.full_name || '';
+                    document.getElementById('meter_consumer_account').textContent = payload.account_number || 'No account number';
+                    document.getElementById('assign_current_meter').value = payload.meter_number || '';
+                    document.getElementById('assign_meter_number').value = null || '';
+                    document.getElementById('assign_meter_reason').value = null || '';
+
+                    const history = Array.isArray(payload.meter_history) ? payload.meter_history : [];
+                    const historyEl = document.getElementById('assign_meter_history');
+
+                    if (history.length > 1) {
+                        let html = '<h6 class="fw-bold mt-3 mb-2">Meter History</h6><ul class="list-group list-group-flush small">';
+
+                        history.forEach(function (entry) {
+                            html += '<li class="list-group-item px-0 d-flex justify-content-between"><span>MT ' + entry.meter_number + '</span><span class="text-secondary">' + (entry.retired_at ? 'Retired ' + entry.retired_at : 'Active') + '</span></li>';
+                        });
+
+                        html += '</ul>';
+                        historyEl.innerHTML = html;
+                    } else {
+                        historyEl.innerHTML = '';
+                    }
+                });
+            }
+
+            // Contact numbers accept numeric digits only.
+            document.querySelectorAll('.js-digits-only').forEach(function (input) {
+                input.addEventListener('input', function () {
+                    const cleaned = input.value.replace(/[^0-9]/g, '').slice(0, 15);
+
+                    if (cleaned !== input.value) {
+                        input.value = cleaned;
+                    }
+                });
+            });
+
+            if (activateModal && activateForm) {
+                activateModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+
+                    if (! button) {
+                        return;
+                    }
+
+                    const payload = JSON.parse(atob(button.getAttribute('data-consumer') || 'e30='));
+                    const consumerId = payload.id;
+
+                    renderConsumerStatusBadge('consumerActivateStatusBadge', payload.status_display);
+
+                    activateForm.action = `http://127.0.0.1:8000/consumers/${consumerId}/activate`;
+
+                    const membershipSelect = document.getElementById('activation_membership_type');
+                    membershipSelect.value = null || payload.requested_membership_type || payload.membership_type || 'Non-Member';
+
+                    const membershipNotes = document.getElementById('activation_membership_verification_notes');
+                    membershipNotes.value = null || payload.membership_verification_notes || '';
+
+                    const membershipConfirmed = document.getElementById('activation_membership_verification_confirmed');
+                    membershipConfirmed.checked = Boolean(null);
+
+                    const membershipPending = payload.requested_membership_type === 'Member'
+                        && payload.membership_verification_status === 'Pending';
+                    const membershipPendingAlert = document.getElementById('activation_membership_pending_alert');
+                    const membershipConfirmation = document.getElementById('activation_membership_confirmation');
+                    const membershipHelp = document.getElementById('activation_membership_type_help');
+
+                    const syncMembershipVerificationUi = function () {
+                        const selectedMembership = membershipSelect.value;
+                        const needsConfirmation = membershipPending && selectedMembership === 'Member';
+
+                        membershipPendingAlert.classList.toggle('d-none', ! membershipPending);
+                        membershipConfirmation.classList.toggle('d-none', ! needsConfirmation);
+                        membershipConfirmed.required = needsConfirmation;
+
+                        if (selectedMembership === 'Member') {
+                            membershipHelp.textContent = membershipPending
+                                ? 'Approving this existing VIOHOA membership verifies it and applies member billing rates.'
+                                : 'This account will be recorded as a verified member.';
+                        } else {
+                            membershipHelp.textContent = membershipPending
+                                ? 'Selecting Non-Member records the existing membership claim as not verified and uses the non-member rate.'
+                                : 'This account will be recorded as a non-member.';
+                        }
+                    };
+
+                    membershipSelect.onchange = syncMembershipVerificationUi;
+                    syncMembershipVerificationUi();
+
+                    document.getElementById('activation_meter_number').value = null || payload.meter_number || '';
+                    document.getElementById('activation_installation_date').value = null || '';
+
+                    if (rejectForm) {
+                        rejectForm.action = `http://127.0.0.1:8000/consumers/${consumerId}/reject`;
+                        document.getElementById('rejection_reason').value = '';
+                        rejectForm.querySelectorAll('input[name="correction_fields[]"]').forEach(function (checkbox) {
+                            checkbox.checked = false;
+                        });
+                    }
+
+                    const infoContent = document.getElementById('activateInfoContent');
+
+                    if (infoContent) {
+                        const boolYesNo = function (value) { return value ? 'Yes' : 'No'; };
+
+                        const fields = [
+                            { key: 'full_name', label: 'Full Name' },
+                            { key: 'email', label: 'Email' },
+                            { key: 'contact_number', label: 'Contact Number' },
+                            { key: 'service_address', label: 'Service Address' },
+                            { key: 'requested_membership_type', label: 'Declared VIOHOA Membership' },
+                            { key: 'membership_type', label: 'Effective Classification' },
+                            { key: 'membership_verification_status', label: 'Membership Verification' },
+                            { key: 'membership_verification_notes', label: 'Membership Verification Notes' },
+                            { key: 'connection_request_status', label: 'Water Connection Request' },
+                            { key: 'connection_request_admin_notes', label: 'Connection Request Notes' },
+                            { key: 'property_type', label: 'Property Type' },
+                            { key: 'ownership_status', label: 'Ownership Status' },
+                            { key: 'valid_id_presented', label: 'Valid ID Presented' },
+                            { key: 'rejection_reason', label: 'Previous Rejection Reason' },
+                            { key: 'rejection_fields', label: 'Requirements to Correct', type: 'list' },
+                            { key: 'resubmitted_at', label: 'Resubmitted On' },
+                            { key: 'housing_rights_documented', label: 'Housing Rights Documented', type: 'bool' },
+                            { key: 'resident_of_community', label: 'Resident of Community', type: 'bool' },
+                            { key: 'association_member', label: 'Association Member', type: 'bool' },
+                            { key: 'association_registered', label: 'Association Registered', type: 'bool' },
+                            { key: 'housing_loan_contract_submitted', label: 'Housing Loan Contract Submitted', type: 'bool' },
+                            { key: 'membership_document_type', label: 'Selected Document Type' },
+                            { key: 'other_document_details', label: 'Other Document Details' },
+                        ];
+
+                        let html = '<h6 class="fw-bold mb-3">Applicant Information</h6><div class="row g-3">';
+
+                        for (const field of fields) {
+                            let value = payload[field.key];
+
+                            if (value === null || value === undefined || value === '') {
+                                value = '<span class="text-secondary">Not provided</span>';
+                            } else if (field.type === 'bool') {
+                                value = boolYesNo(value);
+                            } else if (field.type === 'list') {
+                                value = (Array.isArray(value) && value.length > 0)
+                                    ? value.join(', ')
+                                    : '<span class="text-secondary">None recorded</span>';
+                            }
+
+                            html += '<div class="col-md-6"><div class="mb-1"><div class="small text-secondary fw-semibold text-uppercase" style="font-size:0.7rem;">' + field.label + '</div><div class="fw-medium">' + value + '</div></div></div>';
+                        }
+
+                        html += '</div>';
+
+                        html += '<h6 class="fw-bold mt-4 mb-3">Valid ID Document</h6>';
+
+                        if (payload.valid_id_url) {
+                            html += '<div class="mb-3"><a href="' + payload.valid_id_url + '" target="_blank" rel="noopener" class="btn btn-outline-primary"><i class="bi bi-eye me-2"></i>View Valid ID</a><div class="small text-secondary mt-2">Opens the uploaded identification document in a new tab for review.</div></div>';
+                        } else {
+                            html += '<div class="text-secondary small fst-italic mb-3">No valid ID uploaded</div>';
+                        }
+
+                        html += '<h6 class="fw-bold mt-3 mb-2">Proof of Ownership/Residency</h6>';
+
+                        if (payload.proof_of_residency_url) {
+                            html += '<div class="mb-3"><a href="' + payload.proof_of_residency_url + '" target="_blank" rel="noopener" class="btn btn-outline-primary"><i class="bi bi-eye me-2"></i>View Proof of Ownership/Residency</a></div>';
+                        } else {
+                            html += '<div class="text-secondary small fst-italic mb-3">No proof of ownership/residency uploaded</div>';
+                        }
+
+                        html += '<h6 class="fw-bold mt-3 mb-2">Membership Document Photos</h6>';
+                        html += '<div class="small text-secondary mb-2">Selected document type: <strong>' + (payload.membership_document_type || 'Not provided') + '</strong></div>';
+
+                        const membershipDocumentUrls = Array.isArray(payload.membership_document_urls) ? payload.membership_document_urls : [];
+
+                        if (membershipDocumentUrls.length > 0) {
+                            html += '<div class="row g-3">';
+                            membershipDocumentUrls.forEach(function (url, index) {
+                                const label = (payload.membership_document_type || 'Membership Document') + ' Photo ' + (index + 1);
+                                html += '<div class="col-md-6"><a href="' + url + '" target="_blank" rel="noopener"><img src="' + url + '" alt="' + label + '" class="img-fluid border rounded-3" style="max-height:220px;width:100%;object-fit:contain;cursor:pointer;background:#f8f9fa;" onerror="this.style.display=\'none\'"></a></div>';
+                            });
+                            html += '</div>';
+                        } else {
+                            html += '<div class="text-secondary small fst-italic mb-3">No membership document photos uploaded</div>';
+                        }
+
+                        if (payload.other_document_url) {
+                            html += '<h6 class="fw-bold mt-3 mb-2">Other Document</h6>';
+                            html += '<a href="' + payload.other_document_url + '" target="_blank" rel="noopener"><img src="' + payload.other_document_url + '" alt="Other Document" class="img-fluid border rounded-3" style="max-height:200px;width:100%;object-fit:contain;cursor:pointer;background:#f8f9fa;" onerror="this.style.display=\'none\'"></a>';
+                        }
+
+                        infoContent.innerHTML = html;
+                    }
+                });
+            }
+
+            if (editModal && editForm) {
+                editModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+
+                    if (! button) {
+                        return;
+                    }
+
+                    const payload = JSON.parse(atob(button.getAttribute('data-consumer') || 'e30='));
+
+                    renderConsumerStatusBadge('consumerEditStatusBadge', payload.status_display);
+
+                    editForm.action = `http://127.0.0.1:8000/consumers/${payload.id}`;
+                    document.getElementById('edit_full_name').value = null || payload.full_name || '';
+                    document.getElementById('edit_email').value = null || payload.email || '';
+                    document.getElementById('edit_account_number').value = null || payload.account_number || '';
+                    document.getElementById('edit_meter_number').value = null || payload.meter_number || '';
+                    document.getElementById('edit_status').value = null || payload.status || 'Active';
+                    document.getElementById('edit_status').dataset.previousValue = payload.status || 'Active';
+                    document.getElementById('edit_status').disabled = false;
+                    document.getElementById('edit_status_locked_note').classList.add('d-none');
+                    document.getElementById('edit_membership_type').value = null || payload.membership_type || 'Non-Member';
+                    document.getElementById('edit_membership_verification_notes').value = null || payload.membership_verification_notes || '';
+
+                    const editMembershipPending = payload.membership_verification_status === 'Pending';
+                    const editMembershipPendingPanel = document.getElementById('edit_membership_pending_panel');
+                    const editMembershipConfirmed = document.getElementById('edit_membership_verification_confirmed');
+
+                    if (editMembershipPendingPanel) {
+                        editMembershipPendingPanel.classList.toggle('d-none', ! editMembershipPending);
+                    }
+
+                    if (editMembershipConfirmed) {
+                        editMembershipConfirmed.checked = editMembershipPending
+                            && Boolean(null);
+                        editMembershipConfirmed.required = editMembershipPending;
+                    }
+
+                    document.getElementById('edit_property_type').value = null || payload.property_type || '';
+                    document.getElementById('edit_ownership_status').value = null || payload.ownership_status || '';
+                    document.getElementById('edit_service_address').value = null || payload.service_address || '';
+                    document.getElementById('edit_address_block').value = null || payload.address_block || '';
+                    document.getElementById('edit_address_street').value = null || payload.address_street || '';
+                    document.getElementById('edit_contact_number').value = null || payload.contact_number || '';
+                    document.getElementById('edit_valid_id_presented').value = null || payload.valid_id_presented || '';
+                    document.getElementById('edit_reconnection_date').value = null || payload.reconnection_date || '';
+                    document.getElementById('edit_installation_date').value = null || payload.installation_date || '';
+
+                    // Accounts awaiting reconnection keep their status locked.
+                    const lockedStatuses = (document.getElementById('edit_status').dataset.statusLockedOn || '').split(',').map((value) => value.trim());
+                    const statusHidden = document.getElementById('edit_status_hidden');
+                    if (statusHidden) {
+                        statusHidden.remove();
+                    }
+                    if (lockedStatuses.includes(payload.status)) {
+                        document.getElementById('edit_status').disabled = true;
+                        document.getElementById('edit_status_locked_note').classList.remove('d-none');
+                        // A disabled select is not submitted, so mirror the value.
+                        document.getElementById('edit_status').form.appendChild(Object.assign(document.createElement('input'), {
+                            type: 'hidden',
+                            name: 'status',
+                            id: 'edit_status_hidden',
+                            value: payload.status,
+                        }));
+                    }
+                    document.getElementById('edit_other_document_details').value = null || payload.other_document_details || '';
+                    document.getElementById('edit_housing_rights_documented').checked = Boolean(null || payload.housing_rights_documented);
+                    document.getElementById('edit_resident_of_community').checked = Boolean(null || payload.resident_of_community);
+                    document.getElementById('edit_association_member').checked = Boolean(null || payload.association_member);
+                    document.getElementById('edit_association_registered').checked = Boolean(null || payload.association_registered);
+                    document.getElementById('edit_housing_loan_contract_submitted').checked = Boolean(null || payload.housing_loan_contract_submitted);
+                    document.getElementById('edit_valid_id_submitted').checked = Boolean(null || payload.valid_id_submitted);
+                    document.getElementById('edit_proof_of_residency_submitted').checked = Boolean(null || payload.proof_of_residency_submitted);
+                });
+            }
+
+            const assignmentModal = document.getElementById('adminReviewRescheduleModal');
+            if (assignmentModal) {
+                assignmentModal.addEventListener('show.bs.modal', function (event) {
+                    const trigger = event.relatedTarget;
+                    if (!trigger) return;
+                    const payload = JSON.parse(atob(trigger.getAttribute('data-reschedule') || 'e30='));
+                    const form = document.getElementById('assignRescheduleForm');
+                    form.reset();
+                    form.action = payload.assign_url;
+                    document.getElementById('arr_consumer_name').textContent = payload.consumer_name || '';
+                    document.getElementById('arr_account').textContent = payload.account_number || '';
+                    document.getElementById('arr_type_badge').textContent = payload.is_reconnection ? 'Reconnection' : (payload.is_loan ? 'Loan Installation' : 'Connection Installation');
+                    document.getElementById('arr_original_schedule').textContent = payload.original_schedule_formatted || '';
+                    document.getElementById('arr_reason').textContent = (payload.reason || '') + (payload.preferred_schedule ? ' Preferred schedule: ' + payload.preferred_schedule : '');
+                    document.getElementById('arr_new_date').value = payload.preferred_date || '';
+                    document.getElementById('arr_new_time').value = payload.preferred_time || '';
+                    const usage = payload.usage;
+                    document.getElementById('arr_usage').textContent = usage.used + ' of ' + usage.limit + ' used; ' + usage.remaining + ' attempts remaining.';
+                    document.getElementById('assignRescheduleButton').disabled = !usage.available;
+                    const historyList = document.getElementById('arr_history_list');
+                    historyList.replaceChildren();
+                    const history = payload.history || [];
+                    document.getElementById('arr_history_container').classList.toggle('d-none', history.length === 0);
+                    history.forEach(function (entry) {
+                        const item = document.createElement('p');
+                        item.textContent = entry.status + ': ' + entry.original + (entry.new ? ' → ' + entry.new : '') + '. Reason: ' + entry.reason + (entry.admin_notes ? '. Notes: ' + entry.admin_notes : '');
+                        historyList.appendChild(item);
+                    });
+                });
+            }
+        });
+    </script>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const main = document.querySelector('.main-content');
+                const content = main?.querySelector('.content-wrapper');
+                if (!content) return;
+                main.style.setProperty('--admin-window-gutter', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+
+                const consumerPage = content.querySelector('[data-admin-page-scroll]');
+                const first = content.querySelector('[data-admin-records-root]')
+                    || [...content.children].find(element => !element.matches('.page-heading, .modal, script, style'));
+                if (!first) return;
+                if (consumerPage) {
+                    main.classList.add('admin-scroll-shell');
+                    document.documentElement.classList.add('admin-consumer-page-scroll');
+                    const topbar = main.querySelector('.topbar');
+                    const setTopbarHeight = function () {
+                        main.style.setProperty('--consumer-topbar-height', topbar.getBoundingClientRect().height + 'px');
+                    };
+                    setTopbarHeight();
+                    new ResizeObserver(setTopbarHeight).observe(topbar);
+                }
+                const sectionScroll = first.hasAttribute('data-admin-section-scroll') || Boolean(consumerPage);
+
+                const parent = first.parentElement;
+                const margins = window.getComputedStyle(first);
+                const area = document.createElement('div');
+                area.className = 'admin-records-area';
+                area.setAttribute('role', 'region');
+                area.setAttribute('aria-label', 'Admin records and page content');
+                area.tabIndex = 0;
+                ['Top', 'Left', 'Right'].forEach(function (side) {
+                    const value = margins['margin' + side];
+                    first.style.setProperty('--admin-original-' + side.toLowerCase(), value);
+                    if (side === 'Top' && parseFloat(value) < 0) {
+                        first.style.setProperty('--admin-first-top', value);
+                        area.style.marginTop = '0px';
+                    } else {
+                        area.style['margin' + side] = value;
+                    }
+                });
+                area.style.setProperty('--admin-area-original-left', margins.marginLeft);
+                area.style.setProperty('--admin-area-original-right', margins.marginRight);
+                parent.insertBefore(area, first);
+                while (area.nextSibling) area.appendChild(area.nextSibling);
+                [...area.children].filter(element => !element.matches('.modal, script, style')).forEach(function (element) {
+                    const styles = window.getComputedStyle(element);
+                    element.style.setProperty('--admin-item-original-left', styles.marginLeft);
+                    element.style.setProperty('--admin-item-original-right', styles.marginRight);
+                    element.classList.add('admin-area-item');
+                });
+                first.classList.add('admin-area-first');
+
+                for (let ancestor = parent; ancestor && ancestor !== main; ancestor = ancestor.parentElement) {
+                    ancestor.style.setProperty('--admin-path-display', window.getComputedStyle(ancestor).display);
+                    ancestor.classList.add('admin-scroll-path');
+                }
+                main.classList.add('admin-scroll-shell');
+                document.documentElement.classList.add('admin-one-scroll');
+
+                const tableHeadings = [];
+                area.querySelectorAll('table').forEach(function (table) {
+                    if (table.closest('.modal')) return;
+                    table.closest('.panel-card, .billing-card')?.classList.add('admin-records-surface');
+                    if (table.tHead) {
+                        table.tHead.classList.add('admin-table-heading');
+                        if (! (consumerPage && table.closest('#active-disconnection-notices'))) tableHeadings.push(table.tHead);
+                    }
+                    const wrapper = table.parentElement;
+                    const styles = window.getComputedStyle(wrapper);
+                    if (['auto', 'scroll'].includes(styles.overflowX) || ['auto', 'scroll'].includes(styles.overflowY)) {
+                        if (wrapper.scrollHeight > wrapper.clientHeight + 1) wrapper.style.scrollbarGutter = 'stable';
+                        wrapper.classList.add('admin-natural-records', 'admin-table-viewport');
+                        wrapper.style.removeProperty('max-height');
+                        wrapper.style.removeProperty('height');
+                    }
+                });
+                area.querySelectorAll('*').forEach(function (element) {
+                    if (element.matches('textarea, select') || element.closest('.modal, .dropdown-menu')) return;
+                    const styles = window.getComputedStyle(element);
+                    if (['auto', 'scroll'].includes(styles.overflowY) && styles.maxHeight !== 'none') {
+                        element.classList.add('admin-natural-records');
+                    }
+                });
+
+                const frozen = [...area.querySelectorAll('[data-admin-freeze]')];
+                const recordParts = [];
+                const collectRecords = function (element) {
+                    if (element.matches('[data-admin-freeze], .modal, script, style')) return;
+                    if (element.querySelector('[data-admin-freeze], .modal')) {
+                        [...element.children].forEach(collectRecords);
+                    } else {
+                        element.classList.add('admin-record-part');
+                        recordParts.push(element);
+                    }
+                };
+                [...area.children].forEach(collectRecords);
+                frozen.forEach(function (element) {
+                    for (let ancestor = element.parentElement; ancestor && ancestor !== area; ancestor = ancestor.parentElement) {
+                        const styles = window.getComputedStyle(ancestor);
+                        if (['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowY)
+                            || ['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowX)) ancestor.style.overflow = 'visible';
+                    }
+                });
+
+                let frame = null;
+                let paintFrame = null;
+                const paintRecords = function () {
+                    paintFrame = null;
+                    if (main.classList.contains('admin-content-scroll')) return;
+                    const areaTop = area.getBoundingClientRect().top;
+                    if (consumerPage) {
+                        const activeTitle = area.querySelector('#active-accounts > .consumer-section-controls');
+                        const activeFilters = area.querySelector('#account-filters');
+                        if (activeTitle) activeTitle.style.setProperty('--admin-freeze-top', '0px');
+                        if (activeTitle && activeFilters) activeFilters.style.setProperty('--admin-freeze-top', activeTitle.getBoundingClientRect().height + 'px');
+                    }
+                    const primary = frozen.filter(element => element.classList.contains('admin-primary-freeze'));
+                    primary.forEach(element => element.style.setProperty('--admin-extra-shift', '0px'));
+                    const offsets = primary.map(element => Math.max(0,
+                        areaTop + parseFloat(element.style.getPropertyValue('--admin-freeze-top')) - element.getBoundingClientRect().top));
+                    primary.forEach((element, index) => element.style.setProperty('--admin-extra-shift', offsets[index] + 'px'));
+                    const headers = frozen.map(element => ({ element, box: element.getBoundingClientRect(),
+                        margin: parseFloat(window.getComputedStyle(element).marginBottom) || 0 }))
+                        .filter(({ box }) => box.height > 0 && box.bottom > areaTop);
+                    const visibleBottom = headers.filter(({ element, box }) => Math.abs(box.top - areaTop
+                        - parseFloat(element.style.getPropertyValue('--admin-freeze-top'))) < 1)
+                        .reduce((bottom, { box, margin }) => Math.max(bottom, box.bottom - areaTop + margin), 0);
+                    area.style.scrollPaddingTop = visibleBottom + 'px';
+                    tableHeadings.forEach(function (heading) {
+                        const box = heading.getBoundingClientRect();
+                        const oldShift = parseFloat(heading.style.getPropertyValue('--admin-table-header-shift')) || 0;
+                        const naturalTop = box.top - oldShift;
+                        let boundary = Math.max(areaTop, naturalTop);
+                        headers.forEach(function ({ element, box: header, margin }) {
+                            if ((element.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING)
+                                && header.left < box.right - 1 && header.right > box.left + 1) {
+                                boundary = Math.max(boundary, header.bottom + margin);
+                            }
+                        });
+                        const tableBottom = heading.closest('table').getBoundingClientRect().bottom;
+                        const shift = Math.max(0, Math.min(boundary - naturalTop, tableBottom - naturalTop - box.height));
+                        heading.style.setProperty('--admin-table-header-shift', shift + 'px');
+                    });
+                    recordParts.forEach(function (part) {
+                        const box = part.getBoundingClientRect();
+                        let boundary = box.top;
+                        headers.forEach(function ({ element, box: header, margin }) {
+                            if ((element.compareDocumentPosition(part) & Node.DOCUMENT_POSITION_FOLLOWING)
+                                && header.left < box.right - 1 && header.right > box.left + 1) {
+                                boundary = Math.max(boundary, header.bottom + margin);
+                            }
+                        });
+                        const inset = Math.min(box.height, Math.max(0, boundary - box.top));
+                        part.style.clipPath = inset > 0 ? 'inset(' + inset + 'px 0 0)' : '';
+                    });
+                };
+                const layout = function () {
+                    frame = null;
+                    const oldScroll = main.classList.contains('admin-content-scroll') ? content.scrollTop : area.scrollTop;
+                    main.classList.remove('admin-content-scroll');
+                    document.documentElement.classList.remove('admin-fallback-scroll');
+                    content.scrollTop = 0;
+                    area.scrollTop = 0;
+                    area.classList.remove('has-scrolled');
+                    tableHeadings.forEach(heading => heading.style.setProperty('--admin-table-header-shift', '0px'));
+                    frozen.forEach(function (element) {
+                        element.style.setProperty('--admin-extra-shift', '0px');
+                        element.style.setProperty('--admin-freeze-top', '0px');
+                        element.classList.remove('admin-primary-freeze');
+                    });
+                    const areaBox = area.getBoundingClientRect();
+                    let frozenBottom = 0;
+                    const sectionEnds = new Map();
+                    const initialHeaders = frozen.filter(element => element.getBoundingClientRect().bottom <= areaBox.bottom);
+                    initialHeaders.filter(element => !sectionScroll || element.closest('[data-admin-freeze-section]') === first)
+                        .forEach(element => element.classList.add('admin-primary-freeze'));
+                    const sectionInset = parseFloat(window.getComputedStyle(first).paddingTop)
+                        + parseFloat(window.getComputedStyle(first).borderTopWidth);
+                    const sectionTop = frozen.filter(element => element.closest('[data-admin-freeze-section]') === first)
+                        .reduce((bottom, element) => Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), sectionInset);
+                    const globalBottom = initialHeaders
+                        .reduce((bottom, element) => Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), 0);
+                    let consumerFrozenBottom = 0;
+
+                    frozen.forEach(function (element) {
+                        if (!element.getClientRects().length) return;
+                        const section = element.closest('[data-admin-freeze-section]')
+                            || element.closest('.panel-card, .billing-card, .card') || first;
+                        const sectionBox = section.getBoundingClientRect();
+                        const box = element.getBoundingClientRect();
+                        const sectionOffset = sectionBox.top - areaBox.top;
+                        const startsVisible = sectionOffset < area.clientHeight;
+                        const naturalOffset = box.top - areaBox.top;
+                        const activeTitle = consumerPage && area.querySelector('#active-accounts > .consumer-section-controls');
+                        const top = consumerPage && first.hasAttribute('data-admin-section-scroll') && activeTitle && element === activeTitle
+                            ? 0
+                            : consumerPage && first.hasAttribute('data-admin-section-scroll') && element === area.querySelector('#account-filters')
+                                ? activeTitle.getBoundingClientRect().height
+                                : consumerPage && first.hasAttribute('data-admin-section-scroll') ? consumerFrozenBottom : consumerPage ? 0
+                            : sectionScroll && section !== first ? sectionTop + box.top - sectionBox.top
+                                : (startsVisible ? Math.max(0, sectionOffset) : globalBottom) + box.top - sectionBox.top;
+                        element.style.setProperty('--admin-freeze-top', top + 'px');
+                        if (consumerPage) consumerFrozenBottom = top + box.height + (parseFloat(window.getComputedStyle(element).marginBottom) || 0);
+                        if (startsVisible) frozenBottom = Math.max(frozenBottom, top + box.height);
+
+                        let background = element.parentElement;
+                        while (background !== area && window.getComputedStyle(background).backgroundColor === 'rgba(0, 0, 0, 0)') {
+                            background = background.parentElement;
+                        }
+                        if (background === area) background = element;
+                        const backgroundBox = background.getBoundingClientRect();
+                        const backgroundStyles = window.getComputedStyle(background);
+                        const ownStyles = window.getComputedStyle(element);
+                        const firstInSection = !sectionEnds.has(section);
+                        const previousBottom = sectionEnds.get(section) ?? Math.max(backgroundBox.top, sectionBox.top);
+                        sectionEnds.set(section, box.bottom);
+                        element.style.setProperty('--admin-freeze-background', backgroundStyles.backgroundColor === 'rgba(0, 0, 0, 0)' ? 'var(--wb-surface)' : backgroundStyles.backgroundColor);
+                        element.style.setProperty('--admin-freeze-cover-top', Math.max(0, box.top - previousBottom) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-left', Math.max(0, box.left - backgroundBox.left) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-right', Math.max(0, backgroundBox.right - box.right) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-bottom', (parseFloat(ownStyles.marginBottom) || 0) + 'px');
+                        const continuesFrame = firstInSection && background === section;
+                        element.style.setProperty('--admin-freeze-border', continuesFrame ? backgroundStyles.border : '0');
+                        element.style.setProperty('--admin-freeze-radius', continuesFrame ? backgroundStyles.borderTopLeftRadius : '0px');
+                    });
+
+                    const lineHeight = parseFloat(window.getComputedStyle(content).lineHeight) || 24;
+                    if (area.clientHeight - frozenBottom < lineHeight * 2) {
+                        main.classList.add('admin-content-scroll');
+                        document.documentElement.classList.add('admin-fallback-scroll');
+                        content.scrollTop = oldScroll;
+                    } else {
+                        const scrollbar = area.offsetWidth - area.clientWidth;
+                        const originalRight = parseFloat(first.style.getPropertyValue('--admin-original-right')) || 0;
+                        area.style.marginRight = (originalRight - scrollbar) + 'px';
+                        area.scrollTop = oldScroll;
+                        area.classList.toggle('has-scrolled', oldScroll > 0);
+                    }
+                    paintRecords();
+                };
+                const scheduleLayout = function () {
+                    if (frame === null) frame = window.requestAnimationFrame(layout);
+                };
+                area.addEventListener('scroll', function () {
+                    area.classList.toggle('has-scrolled', area.scrollTop > 0);
+                    if (paintFrame === null) paintFrame = window.requestAnimationFrame(paintRecords);
+                }, { passive: true });
+                window.addEventListener('resize', scheduleLayout);
+                document.addEventListener('shown.bs.tab', scheduleLayout);
+                document.addEventListener('shown.bs.collapse', scheduleLayout);
+                document.addEventListener('hidden.bs.collapse', scheduleLayout);
+                document.addEventListener('closed.bs.alert', scheduleLayout);
+                document.addEventListener('toggle', scheduleLayout, true);
+                document.fonts?.ready.then(scheduleLayout);
+                let lastWidth = main.clientWidth;
+                let lastHeight = main.clientHeight;
+                new ResizeObserver(function () {
+                    if (main.clientWidth !== lastWidth || main.clientHeight !== lastHeight) {
+                        lastWidth = main.clientWidth;
+                        lastHeight = main.clientHeight;
+                        scheduleLayout();
+                    }
+                }).observe(main);
+                layout();
+            });
+        </script>
+    </body>
+</html>

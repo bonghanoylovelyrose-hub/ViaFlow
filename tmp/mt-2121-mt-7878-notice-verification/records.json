@@ -1,0 +1,34 @@
+{
+    "MT-7878": {
+        "account": "19",
+        "name": "Serna Mosa",
+        "meter": "MT-7878",
+        "loan": 15,
+        "notice": 22,
+        "balance": 439,
+        "final_due": "November 19, 2026",
+        "issued": "November 20, 2026 4:13 PM",
+        "deadline": "November 23, 2026 4:13 PM",
+        "issued_ui": "Nov 20, 2026",
+        "deadline_ui": "Nov 23, 2026 4:13 PM",
+        "status": "Ready for Disconnection",
+        "reason": "Meter Loan Overdue",
+        "account_status": "Active"
+    },
+    "MT-2121": {
+        "account": "15",
+        "name": "Leonel Martinez",
+        "meter": "MT-2121",
+        "loan": 14,
+        "notice": 21,
+        "balance": 439,
+        "final_due": "November 19, 2026",
+        "issued": "November 20, 2026 4:13 PM",
+        "deadline": "November 23, 2026 4:13 PM",
+        "issued_ui": "Nov 20, 2026",
+        "deadline_ui": "Nov 23, 2026 4:13 PM",
+        "status": "Ready for Disconnection",
+        "reason": "Meter Loan Overdue",
+        "account_status": "Active"
+    }
+}

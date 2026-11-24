@@ -1,0 +1,14 @@
+[
+  {
+    "file": "001.eml",
+    "recipient": "mt-0909@viaflow.test",
+    "receivedAt": "2026-11-24T04:02:41.628Z",
+    "outstanding": "936.00"
+  },
+  {
+    "file": "002.eml",
+    "recipient": "mt-9191@viaflow.test",
+    "receivedAt": "2026-11-24T04:02:41.680Z",
+    "outstanding": "1,116.00"
+  }
+]

@@ -1,0 +1,2945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan DSS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --wb-primary: #0f6e8c;
+            --wb-text: #1f2a37;
+            --wb-surface: #ffffff;
+            --wb-primary-dark: var(--wb-primary);
+            --wb-accent: var(--wb-primary);
+            --wb-bg: var(--wb-surface);
+            --wb-muted: color-mix(in srgb, var(--wb-text) 62%, var(--wb-surface));
+            --wb-border: color-mix(in srgb, var(--wb-primary) 18%, var(--wb-surface));
+            --wb-danger: var(--wb-primary);
+            --wb-warning: var(--wb-primary);
+            --wb-success: var(--wb-primary);
+            --wb-info: var(--wb-primary);
+            --sidebar-width: 244px;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            color: var(--wb-text);
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .auth-wrapper { min-height: 100vh; }
+        .auth-card, .dashboard-card, .panel-card, .announcement-card {
+            background: var(--wb-surface);
+            border: 1px solid var(--wb-border);
+            border-radius: 1rem;
+            box-shadow: none;
+        }
+
+        .app-shell {
+            min-height: 100vh;
+            overflow-x: clip;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1035;
+            width: var(--sidebar-width);
+            max-width: var(--sidebar-width);
+            height: 100vh;
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .app-shell.sidebar-collapsed .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-brand { color: var(--wb-surface); text-decoration: none; }
+        .sidebar .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 78%, var(--wb-primary));
+            border-radius: 0.8rem;
+            padding: 0.68rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: translateX(2px);
+        }
+
+        .sidebar .feature-icon,
+        .sidebar .nav-link i {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .sidebar-nav-row {
+            display: flex;
+            align-items: center;
+            border-radius: 0.8rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-nav-row > .nav-link {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .sidebar-nav-row:hover,
+        .sidebar-nav-row.active {
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: translateX(2px);
+        }
+
+        .sidebar-nav-row > .nav-link:hover,
+        .sidebar-nav-row > .nav-link.active {
+            background: transparent;
+            transform: none;
+        }
+
+        .sidebar-submenu-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 0.65rem;
+            background: transparent;
+            color: var(--wb-surface);
+            padding: 0.55rem 0.7rem;
+        }
+
+        .sidebar-submenu-toggle:hover,
+        .sidebar-submenu-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, transparent);
+        }
+
+        .sidebar-submenu-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-submenu-toggle .bi {
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar-submenu-toggle[aria-expanded="true"] .bi {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 2.25rem;
+            height: 2.25rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-radius: 0.65rem;
+            background: color-mix(in srgb, var(--wb-surface) 8%, transparent);
+            color: var(--wb-surface);
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .sidebar-nav-toggle:hover,
+        .sidebar-nav-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 16%, transparent);
+            border-color: color-mix(in srgb, var(--wb-surface) 38%, transparent);
+        }
+
+        .sidebar-nav-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-nav-toggle .bi {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-reopen-toggle {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            z-index: 1034;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 3rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-left: 0;
+            border-radius: 0 0.65rem 0.65rem 0;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-0.5rem);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+            cursor: pointer;
+        }
+
+        .app-shell.sidebar-collapsed .sidebar-reopen-toggle {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .sidebar-reopen-toggle:hover,
+        .sidebar-reopen-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary));
+        }
+
+        .sidebar-reopen-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: -4px;
+        }
+
+        .sidebar-reopen-toggle .bi {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1030;
+            background: rgba(15, 23, 42, 0.42);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .sidebar-subnav {
+            gap: 0.15rem;
+            margin: 0.3rem 0 0 2.35rem;
+            padding-left: 0.65rem;
+            border-left: 1px solid color-mix(in srgb, var(--wb-surface) 22%, transparent);
+        }
+
+        .sidebar-subnav .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 72%, var(--wb-primary));
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.45rem 0.65rem;
+        }
+
+        .sidebar-subnav .nav-link:hover,
+        .sidebar-subnav .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 18%, var(--wb-primary));
+            transform: none;
+        }
+
+        .sidebar-footer {
+            background: color-mix(in srgb, var(--wb-surface) 10%, var(--wb-primary));
+            border-radius: 0.9rem;
+        }
+
+        .main-content {
+            flex: 1 1 auto;
+            min-width: 0;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 0.3s ease;
+        }
+
+        .app-shell.sidebar-collapsed .main-content {
+            margin-left: 0;
+        }
+        .topbar {
+            background: var(--wb-surface);
+            border-bottom: 1px solid var(--wb-border);
+        }
+
+        .topbar .container-fluid {
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .content-wrapper { padding: 1.5rem; }
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-heading h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+        }
+
+        .page-heading p { color: var(--wb-muted); margin-bottom: 0; }
+        .metric-icon, .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .metric-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .feature-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .section-title { font-size: 1rem; font-weight: 800; margin-bottom: 1rem; }
+        .table thead th {
+            color: var(--wb-muted);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            border-bottom-width: 1px;
+        }
+
+        .table td, .table th { vertical-align: middle; }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        img,
+        svg,
+        canvas,
+        iframe {
+            max-width: 100%;
+        }
+
+        .row > * {
+            min-width: 0;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .announcement-card,
+        .modal-content,
+        .card {
+            min-width: 0;
+        }
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface));
+            border: 1px solid color-mix(in srgb, var(--wb-primary) 20%, var(--wb-surface));
+            color: var(--wb-primary);
+            font-weight: 800;
+        }
+
+        .chart-bars { display: flex; align-items: end; gap: 0.75rem; height: 220px; }
+        .chart-bar {
+            flex: 1;
+            border-radius: 1rem 1rem 0.45rem 0.45rem;
+            background: var(--wb-primary);
+            position: relative;
+        }
+
+        .chart-label {
+            display: block;
+            margin-top: 0.65rem;
+            text-align: center;
+            color: var(--wb-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 0.9rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--wb-border);
+        }
+
+        .timeline-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+        .danger-strip { border-left: 4px solid var(--wb-primary); }
+        .avatar-badge {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+
+        .chart-62 { height: 62%; }
+        .chart-68 { height: 68%; }
+        .chart-74 { height: 74%; }
+        .chart-84 { height: 84%; }
+        .chart-88 { height: 88%; }
+        .chart-95 { height: 95%; }
+
+        .notification-menu {
+            width: 340px;
+            max-width: min(340px, calc(100vw - 2rem));
+        }
+
+        .notification-item,
+        .notification-item-body,
+        .notification-item-title,
+        .notification-item-message {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .notification-item-title,
+        .notification-item-message {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .rag-indicator { white-space: nowrap; }
+        .rag-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-sm { width: 0.45rem; height: 0.45rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-lg { width: 0.85rem; height: 0.85rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-green { background: #22c55e; }
+        .rag-amber { background: #f59e0b; }
+        .rag-red { background: #ef4444; }
+        .rag-orange { background: #f97316; }
+        .rag-yellow { background: #eab308; }
+        .rag-blue { background: #3b82f6; }
+        .rag-green-text { color: #16a34a; font-weight: 700; }
+        .rag-amber-text { color: #d97706; font-weight: 700; }
+        .rag-red-text { color: #dc2626; font-weight: 700; }
+        .rag-orange-text { color: #ea580c; font-weight: 700; }
+        .rag-yellow-text { color: #ca8a04; font-weight: 700; }
+        .rag-blue-text { color: #2563eb; font-weight: 700; }
+
+        @media (max-width: 991.98px) {
+            .app-shell {
+                display: block !important;
+            }
+
+            .sidebar {
+                width: min(85vw, var(--sidebar-width));
+                max-width: min(85vw, var(--sidebar-width));
+                min-height: 100vh;
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-collapsed .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar {
+                transform: translateX(0);
+            }
+
+            .main-content,
+            .app-shell.sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-reopen-toggle {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateY(-50%) translateX(0);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-reopen-toggle {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(-50%) translateX(-0.5rem);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-backdrop {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .content-wrapper { padding: 1rem; }
+            .page-heading {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-heading > * {
+                max-width: 100%;
+            }
+
+            .topbar .container-fluid {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar,
+            .main-content,
+            .sidebar-reopen-toggle,
+            .sidebar-backdrop {
+                transition: none;
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --bs-primary: var(--wb-primary);
+            --bs-secondary: var(--wb-text);
+            --bs-success: var(--wb-primary);
+            --bs-info: var(--wb-primary);
+            --bs-warning: var(--wb-primary);
+            --bs-danger: var(--wb-primary);
+            --bs-light: var(--wb-surface);
+            --bs-dark: var(--wb-text);
+            --bs-body-color: var(--wb-text);
+            --bs-body-bg: var(--wb-surface);
+            --bs-border-color: var(--wb-border);
+            --bs-link-color: var(--wb-primary);
+            --bs-link-hover-color: var(--wb-primary);
+        }
+
+        body,
+        .main-content,
+        .content-wrapper {
+            color: var(--wb-text);
+        }
+
+        body * {
+            letter-spacing: 0;
+        }
+
+        .page-heading {
+            align-items: end;
+        }
+
+        .page-heading h1 {
+            color: var(--wb-text);
+            font-size: 1.85rem;
+            line-height: 1.15;
+        }
+
+        .page-heading p,
+        .text-secondary,
+        .text-muted,
+        .form-text,
+        .small.text-secondary {
+            color: var(--wb-muted) !important;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card,
+        .modal-content,
+        .card,
+        [class*="summary-card"],
+        [class*="stat-card"],
+        [class*="focus-card"],
+        [class*="preview-card"],
+        [class*="qr-card"],
+        [class*="table-card"],
+        [class*="filter-card"],
+        [class*="indicator"],
+        [class*="open-item"],
+        [class*="history-item"],
+        .role-register-section,
+        [class*="role-card"] {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text);
+        }
+
+        [class*="dropzone"],
+        [class*="upload"],
+        [class*="empty-state"],
+        [class*="workspace"],
+        [class*="summary-row"],
+        [class*="toolbar"],
+        [class*="topline"],
+        [class*="meter-phone-frame"],
+        [class*="receipt-phone-frame"],
+        [class*="org-qr-box"],
+        [class*="password-indicator"],
+        [class*="chart"] {
+            border-color: var(--wb-border) !important;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        [class*="icon"],
+        [class*="avatar"],
+        .status-dot {
+            background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)) !important;
+            color: var(--wb-primary) !important;
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        button.btn,
+        a.btn {
+            min-height: 2.6rem;
+            border-radius: 0.8rem !important;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .btn-sm {
+            min-height: 2.25rem;
+            border-radius: 0.7rem !important;
+        }
+
+        .btn-primary,
+        .btn-success,
+        .btn-danger,
+        .btn-warning,
+        .btn-info {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light,
+        .btn-close,
+        .minimal-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light {
+            background: var(--wb-surface) !important;
+        }
+
+        .btn:hover,
+        .minimal-link:hover {
+            filter: none;
+            opacity: 0.92;
+        }
+
+        .form-control,
+        .form-select,
+        .input-group-text,
+        textarea {
+            min-height: 2.7rem;
+            border-color: var(--wb-border) !important;
+            border-radius: 0.8rem !important;
+            color: var(--wb-text) !important;
+            background-color: var(--wb-surface) !important;
+            font-weight: 600;
+        }
+
+        .input-group .form-control,
+        .input-group .form-select,
+        .input-group .input-group-text {
+            border-radius: 0.8rem !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus,
+        textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .alert,
+        .alert-success,
+        .alert-danger,
+        .alert-warning,
+        .alert-info {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            color: var(--wb-text) !important;
+            font-weight: 700;
+        }
+
+        .alert-success {
+            background: color-mix(in srgb, #16a34a 11%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #16a34a 34%, var(--wb-surface)) !important;
+            color: #166534 !important;
+        }
+
+        .alert-success i {
+            color: #16a34a !important;
+        }
+
+        .alert-danger {
+            background: color-mix(in srgb, #ef4444 10%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #991b1b !important;
+        }
+
+        .alert-danger i {
+            color: #dc2626 !important;
+        }
+
+        .badge,
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .badge-soft-success {
+            background: color-mix(in srgb, #16a34a 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #16a34a 32%, var(--wb-surface)) !important;
+            color: #15803d !important;
+        }
+
+        .badge-soft-warning {
+            background: color-mix(in srgb, #f59e0b 14%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #f59e0b 36%, var(--wb-surface)) !important;
+            color: #b45309 !important;
+        }
+
+        .badge-soft-danger {
+            background: color-mix(in srgb, #ef4444 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #dc2626 !important;
+        }
+
+        .badge-soft-info {
+            background: color-mix(in srgb, #3b82f6 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #3b82f6 32%, var(--wb-surface)) !important;
+            color: #2563eb !important;
+        }
+
+        .badge-soft-neutral {
+            background: color-mix(in srgb, #64748b 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #64748b 32%, var(--wb-surface)) !important;
+            color: #475569 !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .consumer-service-status {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.28rem;
+            line-height: 1.1;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            line-height: 1;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge i {
+            font-size: 0.95em;
+            line-height: 1;
+        }
+
+        .consumer-status-sub {
+            display: inline-block;
+            padding-left: 0.1rem;
+            color: var(--wb-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .consumer-status-sub-success {
+            color: #15803d;
+        }
+
+        .consumer-status-sub-neutral {
+            color: #64748b;
+        }
+
+        .consumer-status-sub-warning {
+            color: #b45309;
+        }
+
+        .consumer-status-sub-danger {
+            color: #b91c1c;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            line-height: 1;
+        }
+
+        .status-badge::before {
+            content: "";
+            width: 0.48rem;
+            height: 0.48rem;
+            border-radius: 50%;
+            background: currentColor;
+            flex: 0 0 auto;
+        }
+
+        .table {
+            color: var(--wb-text);
+        }
+
+        .table thead th {
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+            font-weight: 800;
+        }
+
+        .table tbody td,
+        .table tbody th {
+            border-color: var(--wb-border) !important;
+        }
+
+        .text-danger,
+        .text-warning,
+        .text-warning-emphasis,
+        .text-success,
+        .text-info,
+        .text-primary {
+            color: var(--wb-primary) !important;
+        }
+
+        .bg-white,
+        .bg-light,
+        .dropdown-menu,
+        .list-group-item {
+            background-color: var(--wb-surface) !important;
+        }
+
+        .bg-primary,
+        .bg-secondary,
+        .bg-success,
+        .bg-danger,
+        .bg-warning,
+        .bg-info,
+        .bg-dark,
+        .bg-body-tertiary {
+            background-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .table-primary,
+        .table-secondary,
+        .table-success,
+        .table-danger,
+        .table-warning,
+        .table-info,
+        .table-light {
+            --bs-table-bg: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            --bs-table-color: var(--wb-text);
+            --bs-table-border-color: var(--wb-border);
+        }
+
+        .progress,
+        .progress-stacked {
+            background: color-mix(in srgb, var(--wb-primary) 8%, var(--wb-surface)) !important;
+        }
+
+        .progress-bar,
+        .password-indicator-fill,
+        .password-indicator-fill.is-fair,
+        .password-indicator-fill.is-good,
+        .password-indicator-fill.is-strong {
+            background: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .link-primary,
+        .link-secondary,
+        .link-success,
+        .link-danger,
+        .link-warning,
+        .link-info,
+        a {
+            color: var(--wb-primary);
+        }
+
+        .border-primary,
+        .border-secondary,
+        .border-success,
+        .border-danger,
+        .border-warning,
+        .border-info {
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        .badge,
+        .alert,
+        .form-control,
+        .form-select,
+        .input-group-text,
+        .modal-content,
+        .dropdown-menu,
+        .list-group-item,
+        .table,
+        .card,
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card {
+            --bs-primary-rgb: 15, 110, 140;
+            --bs-secondary-rgb: 31, 42, 55;
+            --bs-success-rgb: 15, 110, 140;
+            --bs-info-rgb: 15, 110, 140;
+            --bs-warning-rgb: 15, 110, 140;
+            --bs-danger-rgb: 15, 110, 140;
+            --bs-light-rgb: 255, 255, 255;
+            --bs-dark-rgb: 31, 42, 55;
+        }
+
+        .border,
+        .border-top,
+        .border-bottom,
+        .border-start,
+        .border-end {
+            border-color: var(--wb-border) !important;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: var(--wb-border) !important;
+        }
+
+        .pagination {
+            gap: 0.3rem;
+        }
+
+        .page-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 0.7rem !important;
+            font-weight: 800;
+        }
+
+        .active > .page-link,
+        .page-link.active {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-page,
+        .role-login-page,
+        .role-register-page,
+        .register-step-page,
+        .auth-wrapper {
+            position: relative;
+            isolation: isolate;
+            background: linear-gradient(135deg, rgba(6, 37, 49, 0.52), rgba(15, 110, 140, 0.18)) !important;
+            overflow: hidden;
+        }
+
+        .role-select-page::before,
+        .role-login-page::before,
+        .role-register-page::before,
+        .register-step-page::before,
+        .auth-wrapper::before {
+            content: "";
+            position: fixed;
+            inset: -0.75rem;
+            z-index: -1;
+            background: url('http://127.0.0.1:8000/images/BGfinal.jpg') center/cover no-repeat;
+            filter: blur(2px);
+            transform: scale(1.02);
+        }
+
+        .role-select-shell,
+        .role-login-shell,
+        .role-register-shell,
+        .register-step-shell {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-visual,
+        .role-login-visual {
+            background: var(--wb-primary) !important;
+        }
+
+        .role-select-visual::before,
+        .role-login-visual::before {
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text)) !important;
+            backdrop-filter: none !important;
+        }
+
+        .role-select-visual-copy,
+        .role-login-visual-copy,
+        .role-select-visual-copy p,
+        .role-login-visual-copy p {
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-visual-logo,
+        .role-login-visual-logo {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary)) !important;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, var(--wb-primary)) !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-panel,
+        .role-login-panel,
+        .role-register-panel {
+            background: var(--wb-surface) !important;
+        }
+
+        .role-select-card h2,
+        .role-login-card h2,
+        .role-register-card h1,
+        .register-step-head h1,
+        .role-register-section-title,
+        .register-section-title,
+        .register-step-title,
+        .role-register-progress-title,
+        .role-select-label,
+        .role-login-label,
+        .role-register-label {
+            color: var(--wb-text) !important;
+        }
+
+        .role-select-subtitle,
+        .role-login-subtitle,
+        .role-login-remember,
+        .role-register-subtitle,
+        .role-register-section-copy,
+        .register-step-copy,
+        .register-section-copy,
+        .register-step-meta {
+            color: var(--wb-muted) !important;
+        }
+
+        .role-select-primary,
+        .role-login-primary,
+        .role-register-primary,
+        .register-step-primary {
+            background: var(--wb-primary) !important;
+            border: 1px solid var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .role-register-secondary {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-select-input,
+        .role-login-input,
+        .role-login-password,
+        .role-login-toggle,
+        .role-register-input,
+        .role-register-select,
+        .role-register-textarea {
+            border-color: var(--wb-border) !important;
+            background: var(--wb-surface) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-input:focus,
+        .role-login-input:focus,
+        .role-login-password:focus,
+        .role-register-input:focus,
+        .role-register-select:focus,
+        .role-register-textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .role-login-badge,
+        .role-register-step-pill,
+        .role-register-badge,
+        .register-step-pill {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-login-change,
+        .role-login-footer-link,
+        .role-register-change,
+        .role-register-footer-link {
+            color: var(--wb-primary) !important;
+        }
+
+        .role-register-section,
+        .register-section,
+        .register-step-card,
+        .register-choice-card {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text) !important;
+        }
+
+        .role-register-section.is-borderless {
+            border: 0 !important;
+            background: var(--wb-surface) !important;
+            padding-inline: 0 !important;
+        }
+
+        .register-step-option:checked + .register-step-card,
+        .register-choice-input:checked + .register-choice-card {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;
+        }
+
+        .role-register-progress::before {
+            background: var(--wb-border) !important;
+        }
+
+        .role-register-progress-fill,
+        .role-register-progress-item.is-active .role-register-progress-marker,
+        .role-register-progress-item.is-complete .role-register-progress-marker {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+        }
+
+        .role-register-progress-marker {
+            background: var(--wb-surface) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+        }
+
+        @media (max-width: 767.98px) {
+            html {
+                font-size: 15px;
+            }
+
+            .content-wrapper {
+                padding: 0.85rem;
+            }
+
+            .page-heading h1 {
+                font-size: 1.55rem;
+            }
+
+            .page-heading .btn,
+            .page-heading button.btn,
+            .page-heading a.btn {
+                width: 100%;
+            }
+
+            .topbar {
+                padding-inline: 0.75rem !important;
+            }
+
+            .topbar .container-fluid > div:first-of-type {
+                min-width: 0;
+                flex: 1 1 0;
+            }
+
+            .topbar .container-fluid > .d-flex.ms-auto {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.5rem !important;
+                margin-left: 0 !important;
+            }
+
+            .topbar .dropdown {
+                min-width: 0;
+            }
+
+            .topbar .dropdown > .btn {
+                max-width: 100%;
+            }
+
+            .btn,
+            button.btn,
+            a.btn {
+                white-space: normal;
+            }
+
+            .panel-card,
+            .dashboard-card,
+            .announcement-card,
+            .modal-content,
+            .card {
+                border-radius: 0.9rem !important;
+            }
+
+            .table {
+                min-width: 640px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .content-wrapper {
+                padding: 0.75rem;
+            }
+
+            .topbar .container-fluid,
+            .topbar .row,
+            .topbar .col,
+            .topbar .d-flex {
+                min-width: 0;
+            }
+        }
+    </style>
+        <style>
+    .dss-filter-card {
+        border-radius: 1.25rem;
+        border: 1px solid rgba(148, 163, 184, .22);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .dss-filter-card .form-label {
+        color: #64748b;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+    }
+
+    .dss-kpi {
+        height: 100%;
+        border: 1px solid rgba(148, 163, 184, .18);
+        border-radius: 1.1rem;
+        background: #fff;
+        box-shadow: 0 14px 34px rgba(15, 23, 42, .055);
+    }
+
+    .dss-kpi-label {
+        color: #64748b;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+    }
+
+    .dss-kpi-value {
+        color: #0f172a;
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .dss-chart-card {
+        height: 100%;
+    }
+
+    .dss-chart-wrap {
+        height: 280px;
+        position: relative;
+    }
+
+    .dss-empty-state {
+        align-items: center;
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 1rem;
+        color: #64748b;
+        display: flex;
+        justify-content: center;
+        min-height: 190px;
+        padding: 1.25rem;
+        text-align: center;
+    }
+
+    .dss-recommendation {
+        align-items: flex-start;
+        background: #f8fafc;
+        border-left: 4px solid #94a3b8;
+        border-radius: .9rem;
+        display: flex;
+        gap: .85rem;
+        padding: .95rem 1rem;
+    }
+
+    .dss-recommendation + .dss-recommendation {
+        margin-top: .75rem;
+    }
+
+    .dss-recommendation-critical {
+        background: #fff5f5;
+        border-left-color: #dc3545;
+    }
+
+    .dss-recommendation-warning {
+        background: #fffbeb;
+        border-left-color: #f59e0b;
+    }
+
+    .dss-recommendation-info {
+        background: #eff6ff;
+        border-left-color: #3b82f6;
+    }
+
+    .dss-recommendation-success {
+        background: #f0fdf4;
+        border-left-color: #22c55e;
+    }
+
+    .dss-recommendation-icon {
+        align-items: center;
+        background: rgba(255, 255, 255, .85);
+        border-radius: .75rem;
+        display: flex;
+        flex: 0 0 2.25rem;
+        height: 2.25rem;
+        justify-content: center;
+        width: 2.25rem;
+    }
+
+    .dss-mini-label {
+        color: #64748b;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+    .dss-table td,
+    .dss-table th {
+        vertical-align: middle;
+    }
+
+    .dss-progress {
+        height: .48rem;
+        background: #eef2f7;
+        border-radius: 999px;
+    }
+</style>
+        <style>
+            html.admin-one-scroll, html.admin-one-scroll body { height: 100%; overflow: hidden; }
+            html.admin-one-scroll.admin-fallback-scroll { scrollbar-gutter: auto; }
+            .admin-scroll-shell { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+            .admin-scroll-shell > .topbar { flex-shrink: 0; }
+            .admin-scroll-path { display: flex !important; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; }
+            .admin-scroll-path > :not(.admin-scroll-path):not(.admin-records-area) { flex-shrink: 0; }
+            .admin-records-area { flex: 1 1 auto; min-height: 0; min-width: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+            .admin-area-first { margin-top: var(--admin-first-top, 0px) !important; margin-left: 0 !important; margin-right: 0 !important; }
+            .admin-area-item {
+                margin-left: calc(var(--admin-item-original-left) - var(--admin-area-original-left)) !important;
+                margin-right: calc(var(--admin-item-original-right) - var(--admin-area-original-right)) !important;
+            }
+            .admin-records-area .admin-natural-records { height: auto !important; max-height: none !important; overflow-y: visible !important; }
+            .admin-records-area .admin-records-surface { padding: 1.5rem !important; border: 1px solid var(--wb-border); border-radius: 1rem; background: var(--wb-surface); min-width: 0; }
+            .admin-records-area .admin-table-viewport { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; }
+            .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-records-area .admin-table-heading th { position: static; }
+            .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-records-area.has-scrolled [data-admin-freeze]::before {
+                content: ''; position: absolute; z-index: -1; pointer-events: none;
+                top: calc(-1 * var(--admin-freeze-cover-top, 0px));
+                left: calc(-1 * var(--admin-freeze-cover-left, 0px));
+                right: calc(-1 * var(--admin-freeze-cover-right, 0px));
+                bottom: calc(-1 * var(--admin-freeze-cover-bottom, 0px));
+                background: var(--admin-freeze-background, var(--wb-surface));
+                border: var(--admin-freeze-border, 0);
+                border-bottom: 0;
+                border-radius: var(--admin-freeze-radius, 0) var(--admin-freeze-radius, 0) 0 0;
+            }
+            .admin-content-scroll .content-wrapper { display: block !important; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
+            .admin-content-scroll > .topbar { margin-right: var(--admin-window-gutter, 0px); }
+            .modal-open .admin-records-area, .modal-open .admin-content-scroll .content-wrapper { overflow-y: hidden; }
+            .admin-content-scroll .content-wrapper .admin-scroll-path { display: var(--admin-path-display, block) !important; flex: initial; min-height: initial; }
+            .admin-content-scroll .admin-records-area { display: contents; }
+            .admin-content-scroll .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+            .admin-content-scroll .admin-area-first {
+                margin-top: var(--admin-original-top) !important;
+                margin-left: var(--admin-original-left) !important;
+                margin-right: var(--admin-original-right) !important;
+            }
+            .admin-content-scroll [data-admin-freeze] { position: static; }
+            .admin-content-scroll .admin-primary-freeze { transform: none; }
+            .admin-content-scroll .admin-table-heading { transform: none; }
+            .admin-content-scroll .admin-record-part { clip-path: none !important; }
+            .admin-content-scroll [data-admin-freeze]::before { display: none; }
+            html.admin-consumer-page-scroll, html.admin-consumer-page-scroll body { height: 100%; min-height: 100%; overflow: hidden; }
+            .admin-consumer-page-scroll .admin-scroll-shell { height: 100dvh; min-height: 0; display: flex; flex-direction: column; overflow: visible; }
+            .admin-consumer-page-scroll .admin-scroll-shell > .topbar { position: fixed; top: 0 !important; left: var(--sidebar-width); right: 0; z-index: 1040; transform: none; }
+            .admin-consumer-page-scroll .sidebar-collapsed .topbar { left: 0; }
+            .admin-consumer-page-scroll .admin-scroll-path { display: flex !important; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+            .admin-consumer-page-scroll .content-wrapper { height: calc(100dvh - var(--consumer-topbar-height, 80px)); max-height: calc(100dvh - var(--consumer-topbar-height, 80px)); overflow: hidden; margin-top: var(--consumer-topbar-height, 80px); }
+            .admin-consumer-page-scroll .admin-records-area { min-height: 0; overflow-y: auto; }
+            .admin-consumer-page-scroll .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-consumer-page-scroll .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading th { position: static; }
+            .admin-consumer-page-scroll .admin-records-area.has-scrolled [data-admin-freeze]::before { content: ''; position: absolute; z-index: -1; pointer-events: none; inset: calc(-1 * var(--admin-freeze-cover-top, 0px)) calc(-1 * var(--admin-freeze-cover-right, 0px)) calc(-1 * var(--admin-freeze-cover-bottom, 0px)) calc(-1 * var(--admin-freeze-cover-left, 0px)); background: var(--admin-freeze-background, #fff); }
+            @media (max-width: 991.98px) { .admin-consumer-page-scroll .admin-scroll-shell > .topbar { left: 0; } }
+            @media print {
+                html.admin-one-scroll, html.admin-one-scroll body { height: auto; overflow: visible; }
+                .admin-scroll-shell { height: auto; display: block; overflow: visible; }
+                .admin-scroll-path { display: var(--admin-path-display, block) !important; }
+                .admin-records-area { display: contents; }
+                .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+                .admin-area-first { margin-top: var(--admin-original-top) !important; margin-left: var(--admin-original-left) !important; margin-right: var(--admin-original-right) !important; }
+                .admin-records-area [data-admin-freeze] { position: static; }
+                .admin-records-area .admin-primary-freeze { transform: none; }
+                .admin-records-area .admin-table-heading { transform: none; }
+                .admin-record-part { clip-path: none !important; }
+                .admin-records-area [data-admin-freeze]::before { display: none; }
+            }
+        </style>
+    </head>
+<body>
+    <div class="app-shell d-lg-flex">
+    <aside
+    class="sidebar p-3"
+    id="sidebarMenu"
+    aria-label="Main navigation"
+>
+    <a href="http://127.0.0.1:8000/dashboard" class="sidebar-brand d-flex align-items-center gap-3 mb-4">
+        <span class="feature-icon bg-white text-primary rounded-4">
+            <i class="bi bi-droplet-fill"></i>
+        </span>
+        <span>
+            <span class="d-block fw-bold fs-5">ViaFlow System</span>
+            <span class="small opacity-75">Billing and Loan Suite</span>
+        </span>
+    </a>
+
+    <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+        <div class="small text-uppercase opacity-75 fw-semibold">Main Navigation</div>
+        <button
+            type="button"
+            class="sidebar-nav-toggle"
+            id="sidebarCollapseToggle"
+            aria-expanded="true"
+            aria-controls="sidebarMenu"
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar"
+        >
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                                    <a href="/dashboard" class="nav-link ">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/staff" class="nav-link ">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Staff</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8000/consumers" class="nav-link ">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Consumers</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#consumerSubmenu"
+                            aria-expanded="false"
+                            aria-controls="consumerSubmenu"
+                            aria-label="Toggle consumer categories"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse " id="consumerSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="all"                                     >
+                                        <span>All Consumers</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=pending"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="pending"                                     >
+                                        <span>Pending Accounts</span>
+                                                                                    <span class="badge rounded-pill bg-warning text-dark ms-2" title="2 pending reschedule request(s)">2</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=rejected"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="rejected"                                     >
+                                        <span>Rejected Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=active"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="active"                                     >
+                                        <span>Active Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8000/consumers?account_category=inactive"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="inactive"                                     >
+                                        <span>Inactive (Disconnected)</span>
+                                                                            </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/billing" class="nav-link ">
+                        <i class="bi bi-droplet-half"></i>
+                        <span>Billing</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/payments" class="nav-link ">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Payments</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/loans" class="nav-link ">
+                        <i class="bi bi-bank"></i>
+                        <span>Loans</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/incidents" class="nav-link ">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span>Incidents</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/reports" class="nav-link ">
+                        <i class="bi bi-bar-chart-fill"></i>
+                        <span>Reports</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row active">
+                        <a href="http://127.0.0.1:8000/dss/incidents" class="nav-link active">
+                            <i class="bi bi-diagram-3-fill"></i>
+                            <span>DSS</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#dssSubmenu"
+                            aria-expanded="true"
+                            aria-controls="dssSubmenu"
+                            aria-label="Toggle DSS modules"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse show" id="dssSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8000/dss/incidents"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Incident DSS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8000/dss/loans"
+                                    class="nav-link sidebar-subnav-link active"
+                                     aria-current="page"                                 >Loan DSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/announcements" class="nav-link ">
+                        <i class="bi bi-megaphone-fill"></i>
+                        <span>Announcements</span>
+                    </a>
+                            </li>
+            </ul>
+</aside>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+<button
+    type="button"
+    class="sidebar-reopen-toggle"
+    id="sidebarReopenToggle"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Open sidebar"
+    title="Open sidebar"
+>
+    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+</button>
+
+    <main class="main-content flex-grow-1">
+        <nav class="navbar navbar-expand-lg topbar px-3 px-lg-4 sticky-top">
+    <div class="container-fluid p-0">
+        <button class="btn btn-outline-secondary d-lg-none me-2" type="button" id="sidebarMobileToggle" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Open sidebar" title="Open sidebar">
+            <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+
+        <div>
+            <span class="text-uppercase small fw-bold text-secondary">System Overview</span>
+            <div class="fw-semibold">Water Billing and Loan Management</div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            <div class="d-none d-md-flex align-items-center gap-2 text-secondary">
+                <i class="bi bi-calendar3"></i>
+                <span>November 06, 2026</span>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border position-relative" data-bs-toggle="dropdown" type="button">
+                    <i class="bi bi-bell"></i>
+                                    </button>
+                <div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-0 notification-menu">
+                    <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                        <strong>Notifications</strong>
+                                            </div>
+                    <div class="py-2" style="max-height: 340px; overflow-y: auto;">
+                                                    <div class="px-3 py-3 text-secondary small">No notifications yet.</div>
+                                            </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" type="button">
+                    <span class="rounded-circle bg-info-subtle text-info fw-bold d-inline-flex align-items-center justify-content-center avatar-badge">KA</span>
+                    <span class="text-start d-none d-md-block">
+                        <span class="d-block fw-semibold text-dark">Kaela Heller</span>
+                        <span class="small text-secondary">Admin</span>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/profile">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="http://127.0.0.1:8000/logout">
+                            <input type="hidden" name="_token" value="LX1JIFWnLl0UDbWHfho7A4QgBwZVF4wsvjxziQLc" autocomplete="off">                            <button type="submit" class="dropdown-item text-danger">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+        <div class="content-wrapper">
+            <div class="page-heading">
+                <div>
+                    <h1>Loan DSS</h1>
+                    <p>Decision support for loan approvals, portfolio exposure, repayment performance, and delinquency. Showing 2026 (All Months).</p>
+                </div>
+                <a href="http://127.0.0.1:8000/dss/incidents" class="btn btn-outline-primary">
+                    <i class="bi bi-exclamation-triangle me-2"></i>Incident DSS
+                </a>
+            </div>
+
+            <div class="panel-card dss-filter-card p-3 p-lg-4 mb-4">
+                <div class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-3">
+                    <div>
+                        <div class="dss-mini-label">Automatic filters</div>
+                        <div class="small text-secondary">Every filter updates the analysis immediately. No Apply button is needed.</div>
+                    </div>
+                    <a href="http://127.0.0.1:8000/dss/loans" class="btn btn-sm btn-light border">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
+                    </a>
+                </div>
+
+                <form method="GET" action="http://127.0.0.1:8000/dss/loans" data-auto-filter data-auto-filter-debounce="450">
+                    <div class="row g-2 align-items-end">
+                        <div class="col-6 col-lg-2">
+                            <label class="form-label" for="loan_dss_year">Year</label>
+                            <select class="form-select" id="loan_dss_year" name="year">
+                                                                    <option value="2026" selected>2026</option>
+                                                            </select>
+                        </div>
+                        <div class="col-6 col-lg-2">
+                            <label class="form-label" for="loan_dss_month">Month</label>
+                            <select class="form-select" id="loan_dss_month" name="month">
+                                <option value="" selected>All months</option>
+                                                                    <option value="1" >January</option>
+                                                                    <option value="2" >February</option>
+                                                                    <option value="3" >March</option>
+                                                                    <option value="4" >April</option>
+                                                                    <option value="5" >May</option>
+                                                                    <option value="6" >June</option>
+                                                                    <option value="7" >July</option>
+                                                                    <option value="8" >August</option>
+                                                                    <option value="9" >September</option>
+                                                                    <option value="10" >October</option>
+                                                                    <option value="11" >November</option>
+                                                                    <option value="12" >December</option>
+                                                            </select>
+                        </div>
+                        <div class="col-6 col-lg-2">
+                            <label class="form-label" for="loan_dss_status">Status</label>
+                            <select class="form-select" id="loan_dss_status" name="status">
+                                <option value="">All statuses</option>
+                                                                    <option value="Pending Review" >Pending Review</option>
+                                                                    <option value="Approved" >Approved</option>
+                                                                    <option value="Active" >Active</option>
+                                                                    <option value="Ongoing" >Ongoing</option>
+                                                                    <option value="Completed" >Completed</option>
+                                                                    <option value="Rejected" >Rejected</option>
+                                                            </select>
+                        </div>
+                        <div class="col-6 col-lg-2">
+                            <label class="form-label" for="loan_dss_risk">Risk level</label>
+                            <select class="form-select" id="loan_dss_risk" name="risk">
+                                <option value="">All risk levels</option>
+                                                                    <option value="Low Risk" >Low Risk</option>
+                                                                    <option value="Medium Risk" >Medium Risk</option>
+                                                                    <option value="High Risk" >High Risk</option>
+                                                                    <option value="__unspecified__" >Not assessed</option>
+                                                            </select>
+                        </div>
+                        <div class="col-6 col-lg-2">
+                            <label class="form-label" for="loan_dss_term">Term</label>
+                            <select class="form-select" id="loan_dss_term" name="term">
+                                <option value="">All terms</option>
+                                                                    <option value="3" >3 months</option>
+                                                                    <option value="6" >6 months</option>
+                                                                    <option value="12" >12 months</option>
+                                                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-4">
+                    <div class="dss-kpi p-3 p-lg-4">
+                        <div class="dss-kpi-label">Applications</div>
+                        <div class="dss-kpi-value mt-2">30</div>
+                        <div class="small text-secondary mt-1">30 pending review</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="dss-kpi p-3 p-lg-4">
+                        <div class="dss-kpi-label">Approval rate</div>
+                        <div class="dss-kpi-value mt-2">N/A</div>
+                        <div class="small text-secondary mt-1">
+                            0 approved of 0 decided
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="dss-kpi p-3 p-lg-4">
+                        <div class="dss-kpi-label">Rejection rate</div>
+                        <div class="dss-kpi-value mt-2">N/A</div>
+                        <div class="small text-secondary mt-1">
+                            0.0% of applications decided
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="dss-kpi p-3 p-lg-4">
+                        <div class="dss-kpi-label">Outstanding balance</div>
+                        <div class="dss-kpi-value mt-2">₱0.00</div>
+                        <div class="small text-secondary mt-1">0 portfolio loan(s)</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="dss-kpi p-3 p-lg-4">
+                        <div class="dss-kpi-label">Overdue loans</div>
+                        <div class="dss-kpi-value mt-2">0</div>
+                        <div class="small text-secondary mt-1">₱0.00 overdue amount</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="dss-kpi p-3 p-lg-4">
+                        <div class="dss-kpi-label">Collection rate</div>
+                        <div class="dss-kpi-value mt-2">N/A</div>
+                        <div class="small text-secondary mt-1">
+                            No paid installments yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4" data-admin-records-root>
+                <div class="col-xl-4">
+                    <div class="panel-card dss-chart-card p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-1">Application status</h2>
+                                <p class="small text-secondary mb-0">Count of matching applications by current status.</p>
+                            </div>
+                            <i class="bi bi-pie-chart text-primary"></i>
+                        </div>
+                                                    <div class="dss-chart-wrap">
+                                <canvas id="loanStatusChart"></canvas>
+                            </div>
+                                            </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="panel-card dss-chart-card p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-1">Monthly application, approval, and collection trend</h2>
+                                <p class="small text-secondary mb-0">Applications and approvals in 2026, plus recorded repayments for the matching loans.</p>
+                            </div>
+                            <i class="bi bi-bar-chart-line text-primary"></i>
+                        </div>
+                                                    <div class="dss-chart-wrap">
+                                <canvas id="loanMonthlyChart"></canvas>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-xl-6">
+                    <div class="panel-card dss-chart-card p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-1">Portfolio aging</h2>
+                                <p class="small text-secondary mb-0">Outstanding amounts by days past due.</p>
+                            </div>
+                            <i class="bi bi-hourglass-split text-warning"></i>
+                        </div>
+                                                    <div class="dss-empty-state">No outstanding balance to age for the selected filters.</div>
+                                            </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="panel-card h-100 p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-1">Repayment performance</h2>
+                                <p class="small text-secondary mb-0">Collection, on-time payment, and installment coverage.</p>
+                            </div>
+                            <i class="bi bi-cash-stack text-success"></i>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Active principal</span>
+                            <span class="fw-semibold">₱0.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Total repaid</span>
+                            <span class="fw-semibold">₱0.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Collection rate</span>
+                            <span class="fw-semibold">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">On-time payment rate</span>
+                            <span class="fw-semibold">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Average days late</span>
+                            <span class="fw-semibold">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Billed / paid installments</span>
+                            <span class="fw-semibold">0 / 0</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <span class="small text-secondary">Overdue installments</span>
+                            <span class="fw-semibold">0</span>
+                        </div>
+
+                                            </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-xl-7">
+                    <div class="panel-card h-100 p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                            <div>
+                                <h2 class="h6 fw-bold mb-1">Recommended actions</h2>
+                                <p class="small text-secondary mb-0">Rule-based recommendations from the current filtered records.</p>
+                            </div>
+                            <i class="bi bi-lightbulb text-warning"></i>
+                        </div>
+
+                                                    <div class="dss-recommendation dss-recommendation-critical">
+                                <div class="dss-recommendation-icon">
+                                    <i class="bi bi-exclamation-octagon-fill text-danger"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">Clear the pending loan review queue</div>
+                                    <div class="small text-secondary mt-1">30 application(s) are still pending review, representing ₱90,000.00 in requested amount. The oldest has waited 0 day(s).</div>
+                                    <div class="small mt-2"><span class="fw-semibold">Next step:</span> Assign reviewers and record a decision or review note for each pending application.</div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                <div class="col-xl-5">
+                    <div class="panel-card p-4 mb-4">
+                        <h2 class="h6 fw-bold mb-3">Status and risk breakdown</h2>
+                        <div class="dss-mini-label mb-2">Status</div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Pending Review</span>
+                                <span class="text-secondary">30</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Approved</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Active</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Ongoing</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Completed</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Rejected</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        
+                        <div class="dss-mini-label mt-3 mb-2">Risk level</div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Low Risk</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Medium Risk</span>
+                                <span class="text-secondary">30</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>High Risk</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                                                    <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span>Not assessed</span>
+                                <span class="text-secondary">0</span>
+                            </div>
+                            <div class="progress dss-progress mb-2">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        
+                                                    <div class="dss-mini-label mt-3 mb-2">Term</div>
+                                                            <div class="d-flex justify-content-between align-items-center small py-1">
+                                    <span>6 months</span>
+                                    <span class="text-secondary">30</span>
+                                </div>
+                                                                        </div>
+
+                    <div class="panel-card p-4">
+                        <h2 class="h6 fw-bold mb-3">Data quality</h2>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Pending requested amount</span>
+                            <span class="fw-semibold">₱90,000.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Oldest pending application</span>
+                            <span class="fw-semibold">0 day(s)</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Average approval lead time</span>
+                            <span class="fw-semibold">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Invalid approval timestamps</span>
+                            <span class="fw-semibold">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                            <span class="small text-secondary">Unassessed risk</span>
+                            <span class="fw-semibold">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <span class="small text-secondary">Approved with zero amount</span>
+                            <span class="fw-semibold">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-card p-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                    <div>
+                        <h2 class="h6 fw-bold mb-1">Loan applications</h2>
+                        <p class="small text-secondary mb-0">Latest 15 matching applications. Amounts are in Philippine pesos.</p>
+                    </div>
+                    <span class="badge bg-primary-subtle text-primary-emphasis">30 matching application(s)</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table dss-table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Applicant</th>
+                                <th class="text-end">Amount</th>
+                                <th>Term</th>
+                                <th>Status</th>
+                                <th>Risk</th>
+                                <th>Applied</th>
+                                <th class="text-end">Outstanding</th>
+                                <th>Repayment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 001 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00001</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 002 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00002</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 003 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00003</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 004 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00004</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 005 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00005</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 006 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00006</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 007 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00007</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 008 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00008</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 009 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00009</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 010 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00010</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 011 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00011</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 012 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00012</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 013 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00013</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 014 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00014</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                                                            <tr>
+                                    <td>
+                                        <div class="fw-semibold">Consumer 015 Sample Resident</div>
+                                                                                    <div class="small text-secondary">VV-2026-00015</div>
+                                                                            </td>
+                                    <td class="text-end">₱3,000.00</td>
+                                    <td>6 mo.</td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Pending Review</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning-emphasis">Medium Risk</span></td>
+                                    <td class="small text-secondary">Nov 06, 2026</td>
+                                    <td class="text-end">
+                                        —
+                                    </td>
+                                    <td>
+                                                                                    <span class="badge bg-light text-secondary border">Not applicable</span>
+                                                                            </td>
+                                </tr>
+                                                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('form[data-auto-filter]').forEach(function (form) {
+                let timer = null;
+
+                const clearTimer = function () {
+                    if (timer !== null) {
+                        window.clearTimeout(timer);
+                        timer = null;
+                    }
+                };
+
+                const submit = function () {
+                    clearTimer();
+
+                    if (typeof form.requestSubmit === 'function') {
+                        form.requestSubmit();
+                    } else {
+                        form.submit();
+                    }
+                };
+
+                const scheduleSubmit = function () {
+                    clearTimer();
+
+                    const configuredDelay = Number(form.dataset.autoFilterDebounce);
+                    const delay = Number.isFinite(configuredDelay) && configuredDelay >= 0
+                        ? configuredDelay
+                        : 450;
+
+                    timer = window.setTimeout(submit, delay);
+                };
+
+                form.querySelectorAll('select, input[type="month"], input[type="date"], input[type="week"], input[type="time"], input[type="checkbox"], input[type="radio"]').forEach(function (control) {
+                    control.addEventListener('change', submit);
+                });
+
+                form.querySelectorAll('input[type="search"], input[type="text"]').forEach(function (input) {
+                    input.addEventListener('input', scheduleSubmit);
+                    input.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            submit();
+                        }
+                    });
+                });
+
+                form.addEventListener('submit', clearTimer);
+
+                form.querySelectorAll('a').forEach(function (link) {
+                    link.addEventListener('click', clearTimer);
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!form.contains(event.target)) {
+                        clearTimer();
+                    }
+                }, true);
+
+                window.addEventListener('pagehide', clearTimer);
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const appShell = document.querySelector('.app-shell');
+        const sidebar = document.getElementById('sidebarMenu');
+        const collapseToggle = document.getElementById('sidebarCollapseToggle');
+        const reopenToggle = document.getElementById('sidebarReopenToggle');
+        const mobileToggle = document.getElementById('sidebarMobileToggle');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const mainContent = document.querySelector('.main-content');
+
+        if (!appShell || !sidebar) {
+            return;
+        }
+
+        const mobileQuery = window.matchMedia('(max-width: 991.98px)');
+        const toggles = [collapseToggle, reopenToggle, mobileToggle].filter(Boolean);
+
+        const isMobile = function () {
+            return mobileQuery.matches;
+        };
+
+        const isSidebarOpen = function () {
+            return isMobile()
+                ? appShell.classList.contains('sidebar-mobile-open')
+                : !appShell.classList.contains('sidebar-collapsed');
+        };
+
+        const syncState = function () {
+            const open = isSidebarOpen();
+
+            toggles.forEach(function (toggle) {
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            if (collapseToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                collapseToggle.setAttribute('aria-label', label);
+                collapseToggle.setAttribute('title', label);
+            }
+
+            if (reopenToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                reopenToggle.setAttribute('aria-label', label);
+                reopenToggle.setAttribute('title', label);
+            }
+
+            if (mobileToggle) {
+                const label = open ? 'Close sidebar' : 'Open sidebar';
+
+                mobileToggle.setAttribute('aria-label', label);
+                mobileToggle.setAttribute('title', label);
+            }
+
+            sidebar.toggleAttribute('inert', !open);
+
+            if (mainContent) {
+                mainContent.toggleAttribute('inert', isMobile() && open);
+            }
+        };
+
+        const openSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.add('sidebar-mobile-open');
+            } else {
+                appShell.classList.remove('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const firstLink = sidebar.querySelector('.nav-link:not(.sidebar-subnav-link)')
+                || sidebar.querySelector('.nav-link');
+
+            if (firstLink) {
+                window.setTimeout(function () {
+                    firstLink.focus();
+                }, 0);
+            }
+        };
+
+        const closeSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.remove('sidebar-mobile-open');
+            } else {
+                appShell.classList.add('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const focusTarget = isMobile() && mobileToggle ? mobileToggle : reopenToggle;
+
+            if (focusTarget) {
+                window.setTimeout(function () {
+                    focusTarget.focus();
+                }, 0);
+            }
+        };
+
+        const toggleSidebar = function () {
+            if (isSidebarOpen()) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        };
+
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener('click', toggleSidebar);
+        });
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSidebar);
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && isMobile() && isSidebarOpen()) {
+                closeSidebar();
+            }
+        });
+
+        const handleBreakpointChange = function () {
+            appShell.classList.remove('sidebar-mobile-open', 'sidebar-collapsed');
+            syncState();
+        };
+
+        if (typeof mobileQuery.addEventListener === 'function') {
+            mobileQuery.addEventListener('change', handleBreakpointChange);
+        } else if (typeof mobileQuery.addListener === 'function') {
+            mobileQuery.addListener(handleBreakpointChange);
+        }
+
+        syncState();
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const chartData = {"has_data":true,"status":{"labels":["Pending Review","Approved","Active","Ongoing","Completed","Rejected"],"counts":[30,0,0,0,0,0]},"risk":{"labels":["Low Risk","Medium Risk","High Risk","Not assessed"],"counts":[0,30,0,0]},"aging":{"labels":["Current","1-30 days","31-60 days","61-90 days","90+ days"],"amounts":[0,0,0,0,0]},"monthly":{"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"applications":[0,0,0,0,0,0,0,0,0,0,30,0],"approvals":[0,0,0,0,0,0,0,0,0,0,0,0],"collections":[0,0,0,0,0,0,0,0,0,0,0,0],"has_data":true}};
+        const defaultColors = ['#0d6efd', '#20c997', '#f59e0b', '#dc3545', '#6f42c1', '#0dcaf0', '#adb5bd'];
+
+        const statusCanvas = document.getElementById('loanStatusChart');
+
+        if (statusCanvas) {
+            new Chart(statusCanvas, {
+                type: 'doughnut',
+                data: {
+                    labels: chartData.status.labels,
+                    datasets: [{
+                        data: chartData.status.counts,
+                        backgroundColor: defaultColors,
+                        borderWidth: 0,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '62%',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } }
+                    }
+                }
+            });
+        }
+
+        const monthlyCanvas = document.getElementById('loanMonthlyChart');
+
+        if (monthlyCanvas) {
+            new Chart(monthlyCanvas, {
+                type: 'bar',
+                data: {
+                    labels: chartData.monthly.labels,
+                    datasets: [
+                        {
+                            type: 'bar',
+                            label: 'Applications',
+                            data: chartData.monthly.applications,
+                            backgroundColor: 'rgba(13, 110, 253, .78)',
+                            borderRadius: 5,
+                            yAxisID: 'y',
+                        },
+                        {
+                            type: 'line',
+                            label: 'Approvals',
+                            data: chartData.monthly.approvals,
+                            borderColor: '#6f42c1',
+                            backgroundColor: 'rgba(111, 66, 193, .12)',
+                            fill: false,
+                            tension: .35,
+                            pointRadius: 3,
+                            borderDash: [5, 4],
+                            yAxisID: 'y',
+                        },
+                        {
+                            type: 'line',
+                            label: 'Collections (₱)',
+                            data: chartData.monthly.collections,
+                            borderColor: '#20c997',
+                            backgroundColor: 'rgba(32, 201, 151, .12)',
+                            fill: false,
+                            tension: .35,
+                            pointRadius: 3,
+                            yAxisID: 'y1',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { precision: 0 }, position: 'left' },
+                        y1: {
+                            beginAtZero: true,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: {
+                                callback: function (value) {
+                                    return '₱' + Number(value).toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } }
+                    }
+                }
+            });
+        }
+
+        const agingCanvas = document.getElementById('loanAgingChart');
+
+        if (agingCanvas) {
+            new Chart(agingCanvas, {
+                type: 'bar',
+                data: {
+                    labels: chartData.aging.labels,
+                    datasets: [{
+                        label: 'Outstanding amount',
+                        data: chartData.aging.amounts,
+                        backgroundColor: ['#20c997', '#0dcaf0', '#f59e0b', '#fd7e14', '#dc3545'],
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return '₱' + Number(value).toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return '₱' + Number(context.raw).toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const main = document.querySelector('.main-content');
+                const content = main?.querySelector('.content-wrapper');
+                if (!content) return;
+                main.style.setProperty('--admin-window-gutter', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+
+                const consumerPage = content.querySelector('[data-admin-page-scroll]');
+                const first = content.querySelector('[data-admin-records-root]')
+                    || [...content.children].find(element => !element.matches('.page-heading, .modal, script, style'));
+                if (!first) return;
+                if (consumerPage) {
+                    main.classList.add('admin-scroll-shell');
+                    document.documentElement.classList.add('admin-consumer-page-scroll');
+                    const topbar = main.querySelector('.topbar');
+                    const setTopbarHeight = function () {
+                        main.style.setProperty('--consumer-topbar-height', topbar.getBoundingClientRect().height + 'px');
+                    };
+                    setTopbarHeight();
+                    new ResizeObserver(setTopbarHeight).observe(topbar);
+                }
+                const sectionScroll = first.hasAttribute('data-admin-section-scroll') || Boolean(consumerPage);
+
+                const parent = first.parentElement;
+                const margins = window.getComputedStyle(first);
+                const area = document.createElement('div');
+                area.className = 'admin-records-area';
+                area.setAttribute('role', 'region');
+                area.setAttribute('aria-label', 'Admin records and page content');
+                area.tabIndex = 0;
+                ['Top', 'Left', 'Right'].forEach(function (side) {
+                    const value = margins['margin' + side];
+                    first.style.setProperty('--admin-original-' + side.toLowerCase(), value);
+                    if (side === 'Top' && parseFloat(value) < 0) {
+                        first.style.setProperty('--admin-first-top', value);
+                        area.style.marginTop = '0px';
+                    } else {
+                        area.style['margin' + side] = value;
+                    }
+                });
+                area.style.setProperty('--admin-area-original-left', margins.marginLeft);
+                area.style.setProperty('--admin-area-original-right', margins.marginRight);
+                parent.insertBefore(area, first);
+                while (area.nextSibling) area.appendChild(area.nextSibling);
+                [...area.children].filter(element => !element.matches('.modal, script, style')).forEach(function (element) {
+                    const styles = window.getComputedStyle(element);
+                    element.style.setProperty('--admin-item-original-left', styles.marginLeft);
+                    element.style.setProperty('--admin-item-original-right', styles.marginRight);
+                    element.classList.add('admin-area-item');
+                });
+                first.classList.add('admin-area-first');
+
+                for (let ancestor = parent; ancestor && ancestor !== main; ancestor = ancestor.parentElement) {
+                    ancestor.style.setProperty('--admin-path-display', window.getComputedStyle(ancestor).display);
+                    ancestor.classList.add('admin-scroll-path');
+                }
+                main.classList.add('admin-scroll-shell');
+                document.documentElement.classList.add('admin-one-scroll');
+
+                const tableHeadings = [];
+                area.querySelectorAll('table').forEach(function (table) {
+                    if (table.closest('.modal')) return;
+                    table.closest('.panel-card, .billing-card')?.classList.add('admin-records-surface');
+                    if (table.tHead) {
+                        table.tHead.classList.add('admin-table-heading');
+                        if (! (consumerPage && table.closest('#active-disconnection-notices'))) tableHeadings.push(table.tHead);
+                    }
+                    const wrapper = table.parentElement;
+                    const styles = window.getComputedStyle(wrapper);
+                    if (['auto', 'scroll'].includes(styles.overflowX) || ['auto', 'scroll'].includes(styles.overflowY)) {
+                        if (wrapper.scrollHeight > wrapper.clientHeight + 1) wrapper.style.scrollbarGutter = 'stable';
+                        wrapper.classList.add('admin-natural-records', 'admin-table-viewport');
+                        wrapper.style.removeProperty('max-height');
+                        wrapper.style.removeProperty('height');
+                    }
+                });
+                area.querySelectorAll('*').forEach(function (element) {
+                    if (element.matches('textarea, select') || element.closest('.modal, .dropdown-menu')) return;
+                    const styles = window.getComputedStyle(element);
+                    if (['auto', 'scroll'].includes(styles.overflowY) && styles.maxHeight !== 'none') {
+                        element.classList.add('admin-natural-records');
+                    }
+                });
+
+                const frozen = [...area.querySelectorAll('[data-admin-freeze]')];
+                const recordParts = [];
+                const collectRecords = function (element) {
+                    if (element.matches('[data-admin-freeze], .modal, script, style')) return;
+                    if (element.querySelector('[data-admin-freeze], .modal')) {
+                        [...element.children].forEach(collectRecords);
+                    } else {
+                        element.classList.add('admin-record-part');
+                        recordParts.push(element);
+                    }
+                };
+                [...area.children].forEach(collectRecords);
+                frozen.forEach(function (element) {
+                    for (let ancestor = element.parentElement; ancestor && ancestor !== area; ancestor = ancestor.parentElement) {
+                        const styles = window.getComputedStyle(ancestor);
+                        if (['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowY)
+                            || ['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowX)) ancestor.style.overflow = 'visible';
+                    }
+                });
+
+                let frame = null;
+                let paintFrame = null;
+                const paintRecords = function () {
+                    paintFrame = null;
+                    if (main.classList.contains('admin-content-scroll')) return;
+                    const areaTop = area.getBoundingClientRect().top;
+                    if (consumerPage) {
+                        const activeTitle = area.querySelector('#active-accounts > .consumer-section-controls');
+                        const activeFilters = area.querySelector('#account-filters');
+                        if (activeTitle) activeTitle.style.setProperty('--admin-freeze-top', '0px');
+                        if (activeTitle && activeFilters) activeFilters.style.setProperty('--admin-freeze-top', activeTitle.getBoundingClientRect().height + 'px');
+                    }
+                    const primary = frozen.filter(element => element.classList.contains('admin-primary-freeze'));
+                    primary.forEach(element => element.style.setProperty('--admin-extra-shift', '0px'));
+                    const offsets = primary.map(element => Math.max(0,
+                        areaTop + parseFloat(element.style.getPropertyValue('--admin-freeze-top')) - element.getBoundingClientRect().top));
+                    primary.forEach((element, index) => element.style.setProperty('--admin-extra-shift', offsets[index] + 'px'));
+                    const headers = frozen.map(element => ({ element, box: element.getBoundingClientRect(),
+                        margin: parseFloat(window.getComputedStyle(element).marginBottom) || 0 }))
+                        .filter(({ box }) => box.height > 0 && box.bottom > areaTop);
+                    const visibleBottom = headers.filter(({ element, box }) => Math.abs(box.top - areaTop
+                        - parseFloat(element.style.getPropertyValue('--admin-freeze-top'))) < 1)
+                        .reduce((bottom, { box, margin }) => Math.max(bottom, box.bottom - areaTop + margin), 0);
+                    area.style.scrollPaddingTop = visibleBottom + 'px';
+                    tableHeadings.forEach(function (heading) {
+                        const box = heading.getBoundingClientRect();
+                        const oldShift = parseFloat(heading.style.getPropertyValue('--admin-table-header-shift')) || 0;
+                        const naturalTop = box.top - oldShift;
+                        let boundary = Math.max(areaTop, naturalTop);
+                        headers.forEach(function ({ element, box: header, margin }) {
+                            if ((element.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING)
+                                && header.left < box.right - 1 && header.right > box.left + 1) {
+                                boundary = Math.max(boundary, header.bottom + margin);
+                            }
+                        });
+                        const tableBottom = heading.closest('table').getBoundingClientRect().bottom;
+                        const shift = Math.max(0, Math.min(boundary - naturalTop, tableBottom - naturalTop - box.height));
+                        heading.style.setProperty('--admin-table-header-shift', shift + 'px');
+                    });
+                    recordParts.forEach(function (part) {
+                        const box = part.getBoundingClientRect();
+                        let boundary = box.top;
+                        headers.forEach(function ({ element, box: header, margin }) {
+                            if ((element.compareDocumentPosition(part) & Node.DOCUMENT_POSITION_FOLLOWING)
+                                && header.left < box.right - 1 && header.right > box.left + 1) {
+                                boundary = Math.max(boundary, header.bottom + margin);
+                            }
+                        });
+                        const inset = Math.min(box.height, Math.max(0, boundary - box.top));
+                        part.style.clipPath = inset > 0 ? 'inset(' + inset + 'px 0 0)' : '';
+                    });
+                };
+                const layout = function () {
+                    frame = null;
+                    const oldScroll = main.classList.contains('admin-content-scroll') ? content.scrollTop : area.scrollTop;
+                    main.classList.remove('admin-content-scroll');
+                    document.documentElement.classList.remove('admin-fallback-scroll');
+                    content.scrollTop = 0;
+                    area.scrollTop = 0;
+                    area.classList.remove('has-scrolled');
+                    tableHeadings.forEach(heading => heading.style.setProperty('--admin-table-header-shift', '0px'));
+                    frozen.forEach(function (element) {
+                        element.style.setProperty('--admin-extra-shift', '0px');
+                        element.style.setProperty('--admin-freeze-top', '0px');
+                        element.classList.remove('admin-primary-freeze');
+                    });
+                    const areaBox = area.getBoundingClientRect();
+                    let frozenBottom = 0;
+                    const sectionEnds = new Map();
+                    const initialHeaders = frozen.filter(element => element.getBoundingClientRect().bottom <= areaBox.bottom);
+                    initialHeaders.filter(element => !sectionScroll || element.closest('[data-admin-freeze-section]') === first)
+                        .forEach(element => element.classList.add('admin-primary-freeze'));
+                    const sectionInset = parseFloat(window.getComputedStyle(first).paddingTop)
+                        + parseFloat(window.getComputedStyle(first).borderTopWidth);
+                    const sectionTop = frozen.filter(element => element.closest('[data-admin-freeze-section]') === first)
+                        .reduce((bottom, element) => Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), sectionInset);
+                    const globalBottom = initialHeaders
+                        .reduce((bottom, element) => Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), 0);
+                    let consumerFrozenBottom = 0;
+
+                    frozen.forEach(function (element) {
+                        if (!element.getClientRects().length) return;
+                        const section = element.closest('[data-admin-freeze-section]')
+                            || element.closest('.panel-card, .billing-card, .card') || first;
+                        const sectionBox = section.getBoundingClientRect();
+                        const box = element.getBoundingClientRect();
+                        const sectionOffset = sectionBox.top - areaBox.top;
+                        const startsVisible = sectionOffset < area.clientHeight;
+                        const naturalOffset = box.top - areaBox.top;
+                        const activeTitle = consumerPage && area.querySelector('#active-accounts > .consumer-section-controls');
+                        const top = consumerPage && first.hasAttribute('data-admin-section-scroll') && activeTitle && element === activeTitle
+                            ? 0
+                            : consumerPage && first.hasAttribute('data-admin-section-scroll') && element === area.querySelector('#account-filters')
+                                ? activeTitle.getBoundingClientRect().height
+                                : consumerPage && first.hasAttribute('data-admin-section-scroll') ? consumerFrozenBottom : consumerPage ? 0
+                            : sectionScroll && section !== first ? sectionTop + box.top - sectionBox.top
+                                : (startsVisible ? Math.max(0, sectionOffset) : globalBottom) + box.top - sectionBox.top;
+                        element.style.setProperty('--admin-freeze-top', top + 'px');
+                        if (consumerPage) consumerFrozenBottom = top + box.height + (parseFloat(window.getComputedStyle(element).marginBottom) || 0);
+                        if (startsVisible) frozenBottom = Math.max(frozenBottom, top + box.height);
+
+                        let background = element.parentElement;
+                        while (background !== area && window.getComputedStyle(background).backgroundColor === 'rgba(0, 0, 0, 0)') {
+                            background = background.parentElement;
+                        }
+                        if (background === area) background = element;
+                        const backgroundBox = background.getBoundingClientRect();
+                        const backgroundStyles = window.getComputedStyle(background);
+                        const ownStyles = window.getComputedStyle(element);
+                        const firstInSection = !sectionEnds.has(section);
+                        const previousBottom = sectionEnds.get(section) ?? Math.max(backgroundBox.top, sectionBox.top);
+                        sectionEnds.set(section, box.bottom);
+                        element.style.setProperty('--admin-freeze-background', backgroundStyles.backgroundColor === 'rgba(0, 0, 0, 0)' ? 'var(--wb-surface)' : backgroundStyles.backgroundColor);
+                        element.style.setProperty('--admin-freeze-cover-top', Math.max(0, box.top - previousBottom) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-left', Math.max(0, box.left - backgroundBox.left) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-right', Math.max(0, backgroundBox.right - box.right) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-bottom', (parseFloat(ownStyles.marginBottom) || 0) + 'px');
+                        const continuesFrame = firstInSection && background === section;
+                        element.style.setProperty('--admin-freeze-border', continuesFrame ? backgroundStyles.border : '0');
+                        element.style.setProperty('--admin-freeze-radius', continuesFrame ? backgroundStyles.borderTopLeftRadius : '0px');
+                    });
+
+                    const lineHeight = parseFloat(window.getComputedStyle(content).lineHeight) || 24;
+                    if (area.clientHeight - frozenBottom < lineHeight * 2) {
+                        main.classList.add('admin-content-scroll');
+                        document.documentElement.classList.add('admin-fallback-scroll');
+                        content.scrollTop = oldScroll;
+                    } else {
+                        const scrollbar = area.offsetWidth - area.clientWidth;
+                        const originalRight = parseFloat(first.style.getPropertyValue('--admin-original-right')) || 0;
+                        area.style.marginRight = (originalRight - scrollbar) + 'px';
+                        area.scrollTop = oldScroll;
+                        area.classList.toggle('has-scrolled', oldScroll > 0);
+                    }
+                    paintRecords();
+                };
+                const scheduleLayout = function () {
+                    if (frame === null) frame = window.requestAnimationFrame(layout);
+                };
+                area.addEventListener('scroll', function () {
+                    area.classList.toggle('has-scrolled', area.scrollTop > 0);
+                    if (paintFrame === null) paintFrame = window.requestAnimationFrame(paintRecords);
+                }, { passive: true });
+                window.addEventListener('resize', scheduleLayout);
+                document.addEventListener('shown.bs.tab', scheduleLayout);
+                document.addEventListener('shown.bs.collapse', scheduleLayout);
+                document.addEventListener('hidden.bs.collapse', scheduleLayout);
+                document.addEventListener('closed.bs.alert', scheduleLayout);
+                document.addEventListener('toggle', scheduleLayout, true);
+                document.fonts?.ready.then(scheduleLayout);
+                let lastWidth = main.clientWidth;
+                let lastHeight = main.clientHeight;
+                new ResizeObserver(function () {
+                    if (main.clientWidth !== lastWidth || main.clientHeight !== lastHeight) {
+                        lastWidth = main.clientWidth;
+                        lastHeight = main.clientHeight;
+                        scheduleLayout();
+                    }
+                }).observe(main);
+                layout();
+            });
+        </script>
+    </body>
+</html>

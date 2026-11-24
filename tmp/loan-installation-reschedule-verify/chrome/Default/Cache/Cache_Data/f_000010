@@ -1,0 +1,3000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="http://127.0.0.1:8027/images/vvthoa-favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root { --vf-navy: #062B80; --vf-royal: #0754C8; --vf-bright: #168DFF; --vf-light: #D8EDFF; --vf-background: #F0F8FF; --vf-white: #FFFFFF; --vf-green: #32A51F; }
+        :root {
+            --wb-primary: var(--vf-royal);
+            --wb-text: var(--vf-navy);
+            --wb-heading: var(--vf-navy);
+            --wb-surface: #ffffff;
+            --wb-primary-dark: var(--wb-primary);
+            --wb-accent: var(--wb-primary);
+            --wb-bg: var(--wb-surface);
+            --wb-muted: var(--vf-navy);
+            --wb-border: color-mix(in srgb, var(--wb-primary) 18%, var(--wb-surface));
+            --wb-danger: var(--wb-primary);
+            --wb-warning: var(--wb-primary);
+            --wb-success: var(--wb-primary);
+            --wb-info: var(--wb-primary);
+            --sidebar-width: 244px;
+            --sidebar-rail-width: 76px;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            color: var(--wb-text);
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .auth-wrapper { min-height: 100vh; }
+        .auth-card, .dashboard-card, .panel-card, .announcement-card {
+            background: var(--wb-surface);
+            border: 1px solid var(--wb-border);
+            border-radius: 1rem;
+            box-shadow: none;
+        }
+
+        .app-shell {
+            min-height: 100vh;
+            overflow-x: clip;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1035;
+            width: var(--sidebar-width);
+            max-width: var(--sidebar-width);
+            height: 100vh;
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: var(--wb-primary);
+            color: var(--wb-surface);
+            transform: translateX(0);
+            box-shadow: 3px 0 18px rgba(6, 43, 128, 0.12);
+            transition: width 280ms ease-in-out, max-width 280ms ease-in-out, transform 280ms ease-in-out;
+        }
+
+        .sidebar-brand {
+            min-width: 0;
+            max-width: 100%;
+            gap: 0.65rem !important;
+            color: var(--wb-surface);
+            text-decoration: none;
+        }
+        .sidebar-brand .organization-logo { width: 2.75rem; height: 2.75rem; flex: 0 0 auto; }
+        .sidebar-brand > span {
+            flex: 1 1 0%;
+            min-width: 0;
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: break-word;
+            opacity: 1;
+            transition: opacity 280ms ease-in-out, max-width 280ms ease-in-out;
+        }
+        .sidebar-brand > span > span { display: block; white-space: normal; overflow-wrap: break-word; }
+        .sidebar .nav-link {
+            color: var(--wb-surface);
+            border-radius: 0.8rem;
+            padding: 0.68rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: none;
+        }
+
+        .sidebar .feature-icon,
+        .sidebar .nav-link i {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .sidebar .small,
+        .sidebar .opacity-75 {
+            color: var(--wb-surface) !important;
+            opacity: 1 !important;
+        }
+
+        .sidebar-nav-row {
+            display: flex;
+            align-items: center;
+            border-radius: 0.8rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-nav-row > .nav-link {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .sidebar-nav-row:hover,
+        .sidebar-nav-row.active {
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));
+            transform: none;
+        }
+
+        .sidebar-nav-row > .nav-link:hover,
+        .sidebar-nav-row > .nav-link.active {
+            background: transparent;
+            transform: none;
+        }
+
+        .sidebar-submenu-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 0.65rem;
+            background: transparent;
+            color: var(--wb-surface);
+            padding: 0.55rem 0.7rem;
+        }
+
+        .sidebar-submenu-toggle:hover,
+        .sidebar-submenu-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 12%, transparent);
+        }
+
+        .sidebar-submenu-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-submenu-toggle .bi {
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar-submenu-toggle[aria-expanded="true"] .bi {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 2.25rem;
+            height: 2.25rem;
+            padding: 0;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);
+            border-radius: 0.65rem;
+            background: color-mix(in srgb, var(--wb-surface) 8%, transparent);
+            color: var(--wb-surface);
+            transition: background-color 280ms ease-in-out, border-color 280ms ease-in-out, box-shadow 280ms ease-in-out, transform 280ms ease-in-out;
+        }
+
+        .sidebar-nav-toggle:hover,
+        .sidebar-nav-toggle:focus-visible {
+            background: color-mix(in srgb, var(--wb-surface) 16%, transparent);
+            border-color: color-mix(in srgb, var(--wb-surface) 38%, transparent);
+            box-shadow: 0 0 12px rgba(22, 141, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .sidebar-nav-toggle:focus-visible {
+            outline: 2px solid var(--wb-surface);
+            outline-offset: 2px;
+        }
+
+        .sidebar-nav-toggle .bi {
+            font-size: 0.9rem;
+            transition: transform 280ms ease-in-out;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1030;
+            background: rgba(6, 43, 128, 0.42);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .sidebar :is(.nav, .nav-item, .sidebar-nav-row, .sidebar .collapse, .sidebar .collapsing) {
+            min-width: 0;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .sidebar .collapsing {
+            transition: height 250ms ease-in-out;
+        }
+
+        .sidebar .sidebar-subnav {
+            min-width: 0;
+            max-width: calc(100% - 2.35rem);
+            box-sizing: border-box;
+            gap: 0.15rem;
+            margin: 0.3rem 0 0 2.35rem;
+            padding-left: 0.65rem;
+            border-left: 1px solid color-mix(in srgb, var(--wb-surface) 22%, transparent);
+        }
+
+        .sidebar-subnav .nav-link {
+            color: color-mix(in srgb, var(--wb-surface) 72%, var(--wb-primary));
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.45rem 0.65rem;
+            min-width: 0;
+            max-width: 100%;
+            box-sizing: border-box;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .sidebar .sidebar-subnav .nav-link > span:not(.badge) {
+            min-width: 0;
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .sidebar-subnav .badge { flex: 0 0 auto; }
+
+        .sidebar-subnav .nav-link:hover,
+        .sidebar-subnav .nav-link.active {
+            color: var(--wb-surface);
+            background: color-mix(in srgb, var(--wb-surface) 18%, var(--wb-primary));
+            transform: none;
+        }
+
+        .sidebar-footer {
+            background: color-mix(in srgb, var(--wb-surface) 10%, var(--wb-primary));
+            border-radius: 0.9rem;
+        }
+
+        .main-content {
+            flex: 1 1 0%;
+            min-width: 0;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 280ms ease-in-out;
+        }
+
+        @media (min-width: 992px) {
+            .app-shell.sidebar-collapsed .sidebar { width: var(--sidebar-rail-width); max-width: var(--sidebar-rail-width); }
+            .app-shell.sidebar-collapsed .main-content { margin-left: var(--sidebar-rail-width); }
+            .sidebar .nav-link > span, .sidebar-nav-heading {
+                white-space: nowrap; overflow: hidden; max-width: 220px; opacity: 1;
+                transition: opacity 280ms ease-in-out, max-width 280ms ease-in-out;
+            }
+            .app-shell.sidebar-collapsed :is(.sidebar .nav-link > span, .sidebar-brand > span, .sidebar-nav-heading) { opacity: 0; max-width: 0; }
+            .app-shell.sidebar-collapsed .sidebar-nav-heading { opacity: 0 !important; }
+            .app-shell.sidebar-collapsed .sidebar-brand { justify-content: center; gap: 0 !important; }
+            .app-shell.sidebar-collapsed .sidebar-brand > span { max-height: 0; overflow: hidden; }
+            .app-shell.sidebar-collapsed .sidebar-brand .organization-logo { width: 2.5rem; height: 2.5rem; }
+            .app-shell.sidebar-collapsed .sidebar-nav-header { justify-content: center !important; gap: 0 !important; }
+            .app-shell.sidebar-collapsed .sidebar-nav-toggle .bi { transform: rotate(180deg); }
+            .app-shell.sidebar-collapsed .sidebar .nav-link { justify-content: center; gap: 0; padding-left: 0; padding-right: 0; }
+            .app-shell.sidebar-collapsed .sidebar-nav-row > .nav-link { min-width: 0; }
+            .app-shell.sidebar-collapsed .sidebar-submenu-toggle { flex: 0 0 1.35rem; padding: 0.55rem 0; }
+            .app-shell.sidebar-collapsed :is(.sidebar-subnav, .sidebar .collapse) { display: none !important; }
+        }
+        .topbar {
+            background: var(--wb-surface);
+            border-bottom: 1px solid var(--wb-border);
+        }
+
+        .topbar .container-fluid {
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .content-wrapper { padding: 1.5rem; }
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-heading h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+        }
+
+        .page-heading p { color: var(--wb-muted); margin-bottom: 0; }
+        .metric-icon, .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .metric-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .feature-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }
+        .section-title { font-size: 1rem; font-weight: 800; margin-bottom: 1rem; }
+        .table thead th {
+            color: var(--wb-muted);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            border-bottom-width: 1px;
+        }
+
+        .table td, .table th { vertical-align: middle; }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        img,
+        svg,
+        canvas,
+        iframe {
+            max-width: 100%;
+        }
+
+        .row > * {
+            min-width: 0;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .announcement-card,
+        .modal-content,
+        .card {
+            min-width: 0;
+        }
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface));
+            border: 1px solid color-mix(in srgb, var(--wb-primary) 20%, var(--wb-surface));
+            color: var(--wb-primary);
+            font-weight: 800;
+        }
+
+        .chart-bars { display: flex; align-items: end; gap: 0.75rem; height: 220px; }
+        .chart-bar {
+            flex: 1;
+            border-radius: 1rem 1rem 0.45rem 0.45rem;
+            background: var(--wb-primary);
+            position: relative;
+        }
+
+        .chart-label {
+            display: block;
+            margin-top: 0.65rem;
+            text-align: center;
+            color: var(--wb-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 0.9rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--wb-border);
+        }
+
+        .timeline-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+        .danger-strip { border-left: 4px solid var(--wb-primary); }
+        .avatar-badge {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+
+        .chart-62 { height: 62%; }
+        .chart-68 { height: 68%; }
+        .chart-74 { height: 74%; }
+        .chart-84 { height: 84%; }
+        .chart-88 { height: 88%; }
+        .chart-95 { height: 95%; }
+
+        .notification-menu {
+            width: 340px;
+            max-width: min(340px, calc(100vw - 2rem));
+        }
+
+        .notification-item,
+        .notification-item-body,
+        .notification-item-title,
+        .notification-item-message {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .notification-item-title,
+        .notification-item-message {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .rag-indicator { white-space: nowrap; }
+        .rag-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-sm { width: 0.45rem; height: 0.45rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-dot-lg { width: 0.85rem; height: 0.85rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .rag-green { background: var(--vf-green); }
+        .rag-amber { background: #f59e0b; }
+        .rag-red { background: #ef4444; }
+        .rag-orange { background: #f97316; }
+        .rag-yellow { background: #eab308; }
+        .rag-blue { background: var(--vf-bright); }
+        .rag-green-text { color: var(--vf-green); font-weight: 700; }
+        .rag-amber-text { color: #d97706; font-weight: 700; }
+        .rag-red-text { color: #dc2626; font-weight: 700; }
+        .rag-orange-text { color: #ea580c; font-weight: 700; }
+        .rag-yellow-text { color: #ca8a04; font-weight: 700; }
+        .rag-blue-text { color: var(--vf-bright); font-weight: 700; }
+
+        @media (max-width: 991.98px) {
+            .app-shell {
+                display: block !important;
+            }
+
+            .sidebar {
+                width: min(85vw, var(--sidebar-width));
+                max-width: min(85vw, var(--sidebar-width));
+                min-height: 100vh;
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-collapsed .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar {
+                transform: translateX(0);
+            }
+
+            .main-content,
+            .app-shell.sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+
+            .app-shell.sidebar-mobile-open .sidebar-backdrop {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .content-wrapper { padding: 1rem; }
+            .page-heading {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-heading > * {
+                max-width: 100%;
+            }
+
+            .topbar .container-fluid {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar,
+            .main-content,
+            .sidebar-backdrop,
+            .sidebar-nav-toggle,
+            .sidebar-nav-toggle .bi,
+            .sidebar .nav-link > span,
+            .sidebar-brand > span,
+            .sidebar-nav-heading,
+            .sidebar .collapsing {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+        .status-filter-display { position: relative; }
+        .status-filter-display .status-filter-value { position: absolute; left: .75rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: #495057; white-space: nowrap; max-width: calc(100% - 6rem); overflow: hidden; text-overflow: ellipsis; }
+</style>
+    <style>
+        :root {
+            --bs-primary: var(--wb-primary);
+            --bs-secondary: var(--wb-text);
+            --bs-success: var(--wb-primary);
+            --bs-info: var(--wb-primary);
+            --bs-warning: var(--wb-primary);
+            --bs-danger: var(--wb-primary);
+            --bs-light: var(--wb-surface);
+            --bs-dark: var(--wb-text);
+            --bs-body-color: var(--wb-text);
+            --bs-body-bg: var(--wb-surface);
+            --bs-border-color: var(--wb-border);
+            --bs-link-color: var(--wb-primary);
+            --bs-link-hover-color: var(--wb-primary);
+        }
+
+        body,
+        .main-content,
+        .content-wrapper {
+            color: var(--wb-text);
+        }
+
+        body * {
+            letter-spacing: 0;
+        }
+
+        .page-heading {
+            align-items: end;
+        }
+
+        .page-heading h1 {
+            color: var(--wb-text);
+            font-size: 1.85rem;
+            line-height: 1.15;
+        }
+
+        .page-heading p,
+        .text-secondary,
+        .text-muted,
+        .form-text,
+        .small.text-secondary {
+            color: var(--wb-muted) !important;
+        }
+
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card,
+        .modal-content,
+        .card,
+        [class*="summary-card"],
+        [class*="stat-card"],
+        [class*="focus-card"],
+        [class*="preview-card"],
+        [class*="qr-card"],
+        [class*="table-card"],
+        [class*="filter-card"],
+        [class*="indicator"],
+        [class*="open-item"],
+        [class*="history-item"],
+        .role-register-section,
+        [class*="role-card"] {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text);
+        }
+
+        [class*="dropzone"],
+        [class*="upload"],
+        [class*="empty-state"],
+        [class*="workspace"],
+        [class*="summary-row"],
+        [class*="toolbar"],
+        [class*="topline"],
+        [class*="meter-phone-frame"],
+        [class*="receipt-phone-frame"],
+        [class*="org-qr-box"],
+        [class*="password-indicator"],
+        [class*="chart"] {
+            border-color: var(--wb-border) !important;
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        [class*="icon"],
+        [class*="avatar"],
+        .status-dot {
+            background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)) !important;
+            color: var(--wb-primary) !important;
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        button.btn,
+        a.btn {
+            min-height: 2.6rem;
+            border-radius: 0.8rem !important;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .btn-sm {
+            min-height: 2.25rem;
+            border-radius: 0.7rem !important;
+        }
+
+        .btn-primary,
+        .btn-success,
+        .btn-danger,
+        .btn-warning,
+        .btn-info {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light,
+        .btn-close,
+        .minimal-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-secondary,
+        .btn-outline-success,
+        .btn-outline-danger,
+        .btn-outline-warning,
+        .btn-outline-info,
+        .btn-light {
+            background: var(--wb-surface) !important;
+        }
+
+        .btn:hover,
+        .minimal-link:hover {
+            filter: none;
+            opacity: 1;
+        }
+
+        .form-control,
+        .form-select,
+        .input-group-text,
+        textarea {
+            min-height: 2.7rem;
+            border-color: var(--wb-border) !important;
+            border-radius: 0.8rem !important;
+            color: var(--wb-text) !important;
+            background-color: var(--wb-surface) !important;
+            font-weight: 600;
+        }
+
+        .input-group .form-control,
+        .input-group .form-select,
+        .input-group .input-group-text {
+            border-radius: 0.8rem !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus,
+        textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .alert,
+        .alert-success,
+        .alert-danger,
+        .alert-warning,
+        .alert-info {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            color: var(--wb-text) !important;
+            font-weight: 700;
+        }
+
+        .alert-success {
+            background: color-mix(in srgb, var(--vf-green) 11%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, var(--vf-green) 34%, var(--wb-surface)) !important;
+            color: var(--vf-green) !important;
+        }
+
+        .alert-success i {
+            color: var(--vf-green) !important;
+        }
+
+        .alert-danger {
+            background: color-mix(in srgb, #ef4444 10%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #991b1b !important;
+        }
+
+        .alert-danger i {
+            color: #dc2626 !important;
+        }
+
+        .badge,
+        .badge-soft-primary,
+        .badge-soft-success,
+        .badge-soft-warning,
+        .badge-soft-danger,
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .badge-soft-success {
+            background: color-mix(in srgb, var(--vf-green) 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, var(--vf-green) 32%, var(--wb-surface)) !important;
+            color: var(--vf-green) !important;
+        }
+
+        .badge-soft-warning {
+            background: color-mix(in srgb, #f59e0b 14%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #f59e0b 36%, var(--wb-surface)) !important;
+            color: #b45309 !important;
+        }
+
+        .badge-soft-danger {
+            background: color-mix(in srgb, #ef4444 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;
+            color: #dc2626 !important;
+        }
+
+        .badge-soft-info {
+            background: color-mix(in srgb, var(--vf-bright) 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, var(--vf-bright) 32%, var(--wb-surface)) !important;
+            color: var(--vf-bright) !important;
+        }
+
+        .badge-soft-neutral {
+            background: color-mix(in srgb, var(--vf-navy) 12%, var(--wb-surface)) !important;
+            border-color: color-mix(in srgb, var(--vf-navy) 32%, var(--wb-surface)) !important;
+            color: var(--vf-navy) !important;
+            border-radius: 999px;
+            font-weight: 800;
+        }
+
+        .consumer-service-status {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.28rem;
+            line-height: 1.1;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            line-height: 1;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .consumer-status-badge i {
+            font-size: 0.95em;
+            line-height: 1;
+        }
+
+        .consumer-status-sub {
+            display: inline-block;
+            padding-left: 0.1rem;
+            color: var(--wb-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .consumer-status-sub-success {
+            color: var(--vf-green);
+        }
+
+        .consumer-status-sub-neutral {
+            color: var(--vf-navy);
+        }
+
+        .consumer-status-sub-warning {
+            color: #b45309;
+        }
+
+        .consumer-status-sub-danger {
+            color: #b91c1c;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            line-height: 1;
+        }
+
+        .status-badge::before {
+            content: "";
+            width: 0.48rem;
+            height: 0.48rem;
+            border-radius: 50%;
+            background: currentColor;
+            flex: 0 0 auto;
+        }
+
+        .table {
+            color: var(--wb-text);
+        }
+
+        .table thead th {
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+            font-weight: 800;
+        }
+
+        .table tbody td,
+        .table tbody th {
+            border-color: var(--wb-border) !important;
+        }
+
+        .text-danger,
+        .text-warning,
+        .text-warning-emphasis,
+        .text-success,
+        .text-info,
+        .text-primary {
+            color: var(--wb-primary) !important;
+        }
+
+        .bg-white,
+        .bg-light,
+        .dropdown-menu,
+        .list-group-item {
+            background-color: var(--wb-surface) !important;
+        }
+
+        .bg-primary,
+        .bg-secondary,
+        .bg-success,
+        .bg-danger,
+        .bg-warning,
+        .bg-info,
+        .bg-dark,
+        .bg-body-tertiary {
+            background-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .table-primary,
+        .table-secondary,
+        .table-success,
+        .table-danger,
+        .table-warning,
+        .table-info,
+        .table-light {
+            --bs-table-bg: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));
+            --bs-table-color: var(--wb-text);
+            --bs-table-border-color: var(--wb-border);
+        }
+
+        .progress,
+        .progress-stacked {
+            background: color-mix(in srgb, var(--wb-primary) 8%, var(--wb-surface)) !important;
+        }
+
+        .progress-bar,
+        .password-indicator-fill,
+        .password-indicator-fill.is-fair,
+        .password-indicator-fill.is-good,
+        .password-indicator-fill.is-strong {
+            background: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .link-primary,
+        .link-secondary,
+        .link-success,
+        .link-danger,
+        .link-warning,
+        .link-info,
+        a {
+            color: var(--wb-primary);
+        }
+
+        .border-primary,
+        .border-secondary,
+        .border-success,
+        .border-danger,
+        .border-warning,
+        .border-info {
+            border-color: var(--wb-border) !important;
+        }
+
+        .btn,
+        .badge,
+        .alert,
+        .form-control,
+        .form-select,
+        .input-group-text,
+        .modal-content,
+        .dropdown-menu,
+        .list-group-item,
+        .table,
+        .card,
+        .panel-card,
+        .dashboard-card,
+        .auth-card,
+        .announcement-card {
+            --bs-primary-rgb: 15, 110, 140;
+            --bs-secondary-rgb: 31, 42, 55;
+            --bs-success-rgb: 15, 110, 140;
+            --bs-info-rgb: 15, 110, 140;
+            --bs-warning-rgb: 15, 110, 140;
+            --bs-danger-rgb: 15, 110, 140;
+            --bs-light-rgb: 255, 255, 255;
+            --bs-dark-rgb: 31, 42, 55;
+        }
+
+        .border,
+        .border-top,
+        .border-bottom,
+        .border-start,
+        .border-end {
+            border-color: var(--wb-border) !important;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: var(--wb-border) !important;
+        }
+
+        .pagination {
+            gap: 0.3rem;
+        }
+
+        .page-link {
+            border-color: var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+            border-radius: 0.7rem !important;
+            font-weight: 800;
+        }
+
+        .active > .page-link,
+        .page-link.active {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-page,
+        .role-register-page,
+        .register-step-page,
+        .auth-wrapper {
+            position: relative;
+            isolation: isolate;
+            background: linear-gradient(135deg, rgba(6, 43, 128, 0.52), rgba(7, 84, 200, 0.18)) !important;
+            overflow: hidden;
+        }
+
+        .role-select-page::before,
+        .role-register-page::before,
+        .register-step-page::before,
+        .auth-wrapper::before {
+            content: "";
+            position: fixed;
+            inset: -0.75rem;
+            z-index: -1;
+            background: url('http://127.0.0.1:8027/images/BGfinal.jpg') center/cover no-repeat;
+            filter: blur(2px);
+            transform: scale(1.02);
+        }
+
+        .role-select-shell,
+        .role-register-shell,
+        .register-step-shell {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 1rem !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-visual,
+        .role-select-visual {
+            background: var(--wb-primary) !important;
+        }
+
+        .role-select-visual::before,
+        .role-select-visual::before {
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text)) !important;
+            backdrop-filter: none !important;
+        }
+
+        .role-select-visual-copy,
+        .role-select-visual-copy,
+        .role-select-visual-copy p {
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-visual-logo,
+        .role-select-visual-logo {
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary)) !important;
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, var(--wb-primary)) !important;
+            box-shadow: none !important;
+            color: var(--wb-surface) !important;
+        }
+
+        .role-select-panel,
+        .role-register-panel {
+            background: var(--wb-surface) !important;
+        }
+
+        .role-select-card h2,
+        .role-register-card h1,
+        .register-step-head h1,
+        .role-register-section-title,
+        .register-section-title,
+        .register-step-title,
+        .role-register-progress-title,
+        .role-select-label,
+        .role-register-label {
+            color: var(--wb-text) !important;
+        }
+
+        .role-select-subtitle,
+        .role-register-subtitle,
+        .role-register-section-copy,
+        .register-step-copy,
+        .register-section-copy,
+        .register-step-meta {
+            color: var(--wb-muted) !important;
+        }
+
+        .role-select-primary,
+        .role-register-primary,
+        .register-step-primary {
+            background: var(--wb-primary) !important;
+            border: 1px solid var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .role-register-secondary {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-select-input,
+        .role-register-input,
+        .role-register-select,
+        .role-register-textarea {
+            border-color: var(--wb-border) !important;
+            background: var(--wb-surface) !important;
+            color: var(--wb-text) !important;
+            box-shadow: none !important;
+        }
+
+        .role-select-input:focus,
+        .role-register-input:focus,
+        .role-register-select:focus,
+        .role-register-textarea:focus {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+        }
+
+        .role-register-step-pill,
+        .role-register-badge,
+        .register-step-pill {
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;
+            border: 1px solid var(--wb-border) !important;
+            color: var(--wb-primary) !important;
+        }
+
+        .role-register-change,
+        .role-register-footer-link {
+            color: var(--wb-primary) !important;
+        }
+
+        .role-register-section,
+        .register-section,
+        .register-step-card,
+        .register-choice-card {
+            background: var(--wb-surface) !important;
+            border: 1px solid var(--wb-border) !important;
+            border-radius: 0.9rem !important;
+            box-shadow: none !important;
+            color: var(--wb-text) !important;
+        }
+
+        .role-register-section.is-borderless {
+            border: 0 !important;
+            background: var(--wb-surface) !important;
+            padding-inline: 0 !important;
+        }
+
+        .register-step-option:checked + .register-step-card,
+        .register-choice-input:checked + .register-choice-card {
+            border-color: var(--wb-primary) !important;
+            box-shadow: none !important;
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;
+        }
+
+        .role-register-progress::before {
+            background: var(--wb-border) !important;
+        }
+
+        .role-register-progress-fill,
+        .role-register-progress-item.is-active .role-register-progress-marker,
+        .role-register-progress-item.is-complete .role-register-progress-marker {
+            background: var(--wb-primary) !important;
+            border-color: var(--wb-primary) !important;
+            color: var(--wb-surface) !important;
+            box-shadow: none !important;
+        }
+
+        .role-register-progress-marker {
+            background: var(--wb-surface) !important;
+            border-color: var(--wb-border) !important;
+            color: var(--wb-muted) !important;
+        }
+
+        @media (max-width: 767.98px) {
+            html {
+                font-size: 15px;
+            }
+
+            .content-wrapper {
+                padding: 0.85rem;
+            }
+
+            .page-heading h1 {
+                font-size: 1.55rem;
+            }
+
+            .page-heading .btn,
+            .page-heading button.btn,
+            .page-heading a.btn {
+                width: 100%;
+            }
+
+            .topbar {
+                padding-inline: 0.75rem !important;
+            }
+
+            .topbar .container-fluid > div:first-of-type {
+                min-width: 0;
+                flex: 1 1 0;
+            }
+
+            .topbar .container-fluid > .d-flex.ms-auto {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.5rem !important;
+                margin-left: 0 !important;
+            }
+
+            .topbar .dropdown {
+                min-width: 0;
+            }
+
+            .topbar .dropdown > .btn {
+                max-width: 100%;
+            }
+
+            .btn,
+            button.btn,
+            a.btn {
+                white-space: normal;
+            }
+
+            .panel-card,
+            .dashboard-card,
+            .announcement-card,
+            .modal-content,
+            .card {
+                border-radius: 0.9rem !important;
+            }
+
+            .table {
+                min-width: 640px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .content-wrapper {
+                padding: 0.75rem;
+            }
+
+            .topbar .container-fluid,
+            .topbar .row,
+            .topbar .col,
+            .topbar .d-flex {
+                min-width: 0;
+            }
+        }
+
+        /* ViaFlow shared UI language: keep role and module pages visually aligned. */
+        :where(.dashboard-card, .panel-card, .announcement-card, .card, .auth-card, .dash-kpi) {
+            border: 1px solid var(--wb-border);
+            border-radius: 1rem;
+            box-shadow: 0 0.75rem 2rem rgba(7, 84, 200, 0.07);
+        }
+
+        :where(.dashboard-card, .panel-card, .announcement-card, .card, .dash-kpi) {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        :where(.dashboard-card, .panel-card, .announcement-card, .card, .dash-kpi):hover {
+            border-color: color-mix(in srgb, var(--wb-primary) 28%, var(--wb-surface));
+            box-shadow: 0 1rem 2.25rem rgba(7, 84, 200, 0.1);
+        }
+
+        :where(h1, h2, h3, h4, h5, h6) {
+            color: var(--wb-heading);
+            letter-spacing: -0.02em;
+        }
+
+        :where(.text-secondary, .text-muted, small, .small) {
+            color: var(--wb-muted) !important;
+        }
+
+        :where(.form-control, .form-select, .input-group-text) {
+            min-height: 2.75rem;
+            border: 1px solid var(--wb-border);
+            border-radius: 0.75rem;
+            color: var(--wb-text);
+            background: var(--wb-surface);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        :where(.form-control, .form-select):focus {
+            border-color: color-mix(in srgb, var(--wb-primary) 52%, var(--wb-surface));
+            box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--wb-primary) 14%, transparent);
+        }
+
+        :where(.input-group) > .form-control,
+        :where(.input-group) > .form-select,
+        :where(.input-group) > .input-group-text {
+            border-radius: 0.75rem;
+        }
+
+        :where(.btn) {
+            border-radius: 0.75rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        :where(.btn-primary, .btn-success, .btn-info) {
+            background: var(--wb-primary);
+            border-color: var(--wb-primary);
+            color: var(--wb-surface);
+        }
+
+        :where(.btn-primary, .btn-success, .btn-info):hover,
+        :where(.btn-primary, .btn-success, .btn-info):focus-visible {
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text));
+            border-color: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text));
+            box-shadow: 0 0.5rem 1.1rem color-mix(in srgb, var(--wb-primary) 20%, transparent);
+            transform: translateY(-1px);
+        }
+
+        :where(.btn-outline-primary, .btn-outline-secondary) {
+            border-color: var(--wb-border);
+            color: var(--wb-primary);
+        }
+
+        :where(.table) {
+            --bs-table-color: var(--wb-text);
+            --bs-table-border-color: var(--wb-border);
+            margin-bottom: 0;
+        }
+
+        :where(.table thead th) {
+            padding: 0.8rem 1rem;
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;
+            color: var(--wb-muted) !important;
+            font-size: 0.73rem;
+            font-weight: 800;
+            letter-spacing: 0.055em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        :where(.table tbody td, .table tbody th) {
+            padding: 0.85rem 1rem;
+            vertical-align: middle;
+        }
+
+        :where(.table tbody tr) {
+            transition: background-color 0.18s ease;
+        }
+
+        :where(.table tbody tr:hover) {
+            background: color-mix(in srgb, var(--wb-primary) 3%, var(--wb-surface));
+        }
+
+        :where(.modal-content) {
+            border: 1px solid var(--wb-border);
+            border-radius: 1rem;
+            box-shadow: 0 1.5rem 4rem rgba(6, 43, 128, 0.18);
+        }
+
+        :where(.modal-header, .modal-footer) {
+            border-color: var(--wb-border);
+        }
+
+        :where(.modal-title) {
+            color: var(--wb-text);
+            font-weight: 800;
+        }
+
+        /* Bootstrap backdrops stay below the dialog, including stacked confirmations. */
+        .modal-backdrop {
+            background-color: rgba(6, 43, 128, 0.42);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-backdrop.fade {
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-backdrop.show {
+            opacity: 1;
+        }
+
+        .modal-backdrop ~ .modal-backdrop {
+            z-index: 1065;
+        }
+
+        #meterReadingSubmitConfirmModal,
+        #duplicateReadingModal,
+        #paymentSubmitConfirmModal {
+            z-index: 1070;
+        }
+
+        .content-wrapper {
+            animation: viaflow-content-in 0.32s ease-out both;
+            opacity: 1;
+        }
+
+        @keyframes viaflow-content-in {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 767.98px) {
+            .content-wrapper {
+                padding: 0.9rem;
+            }
+
+            :where(.table-responsive) {
+                border-radius: 0.75rem;
+            }
+
+            :where(.table-responsive .table) {
+                min-width: 0;
+            }
+
+            :where(.table thead th, .table tbody td, .table tbody th) {
+                padding: 0.7rem 0.75rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .modal-backdrop.fade { transition: none; }
+            .content-wrapper,
+            :where(.dashboard-card, .panel-card, .announcement-card, .card, .dash-kpi),
+            :where(.btn),
+            :where(.form-control, .form-select, .input-group-text) {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+    <style>
+        .organization-logo { display: block; object-fit: contain; flex: none; aspect-ratio: 1; }
+        .organization-logo--sidebar { width: 3rem; height: 3rem; }
+        .organization-logo--auth { width: 4rem; height: 4rem; margin: 0 auto .75rem; }
+        .organization-logo--hero { width: 100%; height: 100%; }
+        @media (max-width: 575.98px) { .organization-logo--auth { width: 3.5rem; height: 3.5rem; } }
+    </style>
+        <style>
+    .application-queue-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        background: #fff !important;
+    }
+
+    .application-queue-filter-form {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-left: auto;
+    }
+
+    .application-queue-filter-form .form-control,
+    .application-queue-filter-form .form-select {
+        width: auto;
+        min-width: 160px;
+        background: #fff !important;
+    }
+
+    .application-queue-filter-form .btn {
+        background: #fff !important;
+    }
+
+    .application-queue-filter-form .form-control[name="search"] {
+        min-width: 240px;
+    }
+
+    .loan-application-flow {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .loan-form-step {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.9rem;
+        padding: 1rem;
+        border: 1px solid rgba(216, 237, 255, 0.95);
+        border-radius: 0.8rem;
+        background: #fff;
+    }
+
+    .loan-step-number {
+        width: 2rem;
+        height: 2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(7, 84, 200, 0.1);
+        color: var(--wb-primary);
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .loan-step-body {
+        min-width: 0;
+    }
+
+    .loan-step-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    .loan-step-copy,
+    .loan-field-help {
+        color: var(--wb-muted);
+        font-size: 0.86rem;
+    }
+
+    .loan-step-copy {
+        margin: 0.15rem 0 0.85rem;
+    }
+
+    .loan-field-help {
+        margin-top: 0.35rem;
+    }
+
+    .loan-form-summary {
+        padding: 0.9rem 1rem;
+        border: 1px solid rgba(7, 84, 200, 0.16);
+        border-radius: 0.8rem;
+        background: rgba(7, 84, 200, 0.05);
+        color: var(--wb-muted);
+        font-size: 0.9rem;
+    }
+
+    .loan-cost-breakdown {
+        display: grid;
+        gap: 0.55rem;
+        padding: 0.9rem 1rem;
+        border: 1px solid rgba(216, 237, 255, 0.95);
+        border-radius: 0.8rem;
+        background: #fff;
+    }
+
+    .loan-cost-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .loan-cost-row.total {
+        padding-top: 0.55rem;
+        border-top: 1px solid rgba(216, 237, 255, 0.95);
+        font-weight: 800;
+    }
+
+    .loan-admin-facts { display: grid; gap: .65rem; }
+    .loan-admin-facts > div { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-bottom: .55rem; border-bottom: 1px solid var(--vf-background); }
+    .loan-admin-facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .loan-admin-facts span { color: var(--wb-muted); }
+    .loan-admin-facts strong { text-align: right; }
+    .loan-operational-table { font-size: .88rem; }
+    .income-proof-preview img { display: block; width: 100%; max-height: 360px; object-fit: contain; border: 1px solid #dee2e6; border-radius: .5rem; background: #f8fafc; }
+    .loan-operational-table thead th { background: #f3f7f8; color: var(--vf-navy); font-size: .75rem; white-space: nowrap; }
+    .loan-operational-table tbody td { vertical-align: middle; }
+
+    .application-queue-table th,
+    .application-queue-table td {
+        white-space: nowrap;
+    }
+
+    .application-queue-table td:first-child,
+    .application-queue-table td:nth-child(2),
+    .application-queue-table td:nth-child(6) {
+        white-space: normal;
+        min-width: 11rem;
+    }
+
+    @media (max-width: 767.98px) {
+        .application-queue-toolbar {
+            align-items: stretch;
+        }
+
+        .application-queue-filter-form {
+            width: 100%;
+            margin-left: 0;
+            justify-content: stretch;
+        }
+
+        .application-queue-filter-form .form-control,
+        .application-queue-filter-form .form-select,
+        .application-queue-filter-form .btn {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .loan-form-step {
+            grid-template-columns: 1fr;
+        }
+    }
+    /* Financial rows share a fixed right edge and tabular figures. */
+    .loan-cost-row, .loan-schedule-row, .loan-income-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        align-items: baseline;
+        gap: 1rem;
+        min-width: 0;
+    }
+    .loan-cost-row > :first-child, .loan-schedule-row > :first-child, .loan-income-row > :first-child { min-width: 0; text-align: left; }
+    .loan-cost-row > :last-child, .loan-schedule-row > :last-child, .loan-income-row > :last-child {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+    .loan-terms > .d-flex { gap: 1rem; }
+    .dss-detail-section + .dss-detail-section { border-top: 1px solid #dbe5f5; margin-top: 1rem; padding-top: 1rem; }
+    .dss-detail-section h3 { color: #12376f; font-size: .95rem; font-weight: 700; }
+    .dss-detail-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+    .dss-detail-grid > div { display:grid; gap:.2rem; min-width:0; }
+    .dss-detail-label { color:#52647c; font-size:.8rem; font-weight:600; }
+    .dss-detail-financial { display:grid; gap:.5rem; }
+    .dss-detail-financial > div { display:grid; grid-template-columns:minmax(0,1fr) max-content; gap:1rem; }
+    .dss-detail-financial dd { margin:0; text-align:right; font-variant-numeric:tabular-nums; }
+    .dss-proof-preview img { max-width:100%; max-height:300px; object-fit:contain; }
+    @media (max-width:575px) { .dss-detail-grid { grid-template-columns:1fr; } }
+    .loan-tab-nav { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+    .loan-tab-nav a { display:inline-block; padding:.5rem 1rem; border:1px solid var(--vf-royal, #164ea0); border-radius:.5rem; color:var(--vf-royal, #164ea0); background:#fff; font-weight:700; text-decoration:none; }
+    .loan-tab-nav a.active { color:#fff; background:var(--vf-royal, #164ea0); }
+    body.loan-details-open .modal-backdrop {
+        background-color: rgba(0, 0, 0, .35);
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+    }
+    #adminLoanDetails, #adminLoanDetails .modal-dialog, #adminLoanDetails .modal-content {
+        filter: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+    #adminLoanDetails { z-index: 1060; }
+    #adminLoanDetails .modal-content { background: #fff; opacity: 1; }
+    .loan-terms strong, .loan-admin-facts strong, .loan-number, input[type=number] { text-align: right; font-variant-numeric: tabular-nums; }
+    .loan-records .table .loan-number, .loan-operational-table .loan-number { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .loan-records .table .loan-number::before { text-align: left; white-space: normal; }
+    @media (max-width: 360px) {
+        .loan-cost-row, .loan-schedule-row, .loan-income-row { gap: .5rem; }
+    }
+</style>
+<style>
+    .consumer-installation-details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        min-width: 0;
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: normal;
+    }
+
+    .consumer-installation-details .badge,
+    .consumer-installation-date,
+    .consumer-installation-details .btn {
+        white-space: nowrap;
+        word-break: keep-all;
+    }
+
+    .consumer-installation-date {
+        color: var(--bs-secondary-color);
+        font-size: 0.8rem;
+        line-height: 1.2;
+    }
+
+    .consumer-installation-details form {
+        margin: 0;
+    }
+</style>
+<style>
+.income-upload-preview { padding: .75rem; border: 1px solid var(--vf-light); border-radius: .75rem; background: var(--vf-background); max-width: 34rem; }
+.income-upload-preview[hidden], .income-upload-preview [hidden] { display: none !important; }
+.income-preview-button { display: block; padding: 0; border: 0; background: transparent; text-align: left; cursor: zoom-in; }
+.income-preview-button img { display: block; max-width: 100%; max-height: 200px; border-radius: .5rem; object-fit: contain; }
+.income-upload-preview iframe { display: block; width: 100%; height: 220px; border: 1px solid var(--vf-light); border-radius: .5rem; background: white; }
+.income-quality-dialog { max-width: min(94vw, 1000px); max-height: 92vh; padding: 1rem; border: 1px solid var(--vf-light); border-radius: 1rem; color: var(--vf-navy); background: white; }
+.income-quality-dialog::backdrop { background: rgba(6,43,128,.5); backdrop-filter: blur(4px); }
+.income-quality-dialog img { display: block; max-width: 100%; max-height: 75vh; object-fit: contain; margin: auto; }
+.income-quality-dialog iframe { width: min(85vw, 900px); height: 75vh; border: 0; }
+.income-quality-dialog [hidden] { display: none !important; }
+</style>
+        <style>
+            html.admin-one-scroll, html.admin-one-scroll body { height: 100%; overflow: hidden; }
+            html.admin-one-scroll.admin-fallback-scroll { scrollbar-gutter: auto; }
+            .admin-scroll-shell { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+            .admin-scroll-shell > .topbar { flex-shrink: 0; }
+            .admin-scroll-path { display: flex !important; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; }
+            .admin-scroll-path > :not(.admin-scroll-path):not(.admin-records-area) { flex-shrink: 0; }
+            .admin-records-area { flex: 1 1 auto; min-height: 0; min-width: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+            .admin-area-first { margin-top: var(--admin-first-top, 0px) !important; margin-left: 0 !important; margin-right: 0 !important; }
+            .admin-area-item {
+                margin-left: calc(var(--admin-item-original-left) - var(--admin-area-original-left)) !important;
+                margin-right: calc(var(--admin-item-original-right) - var(--admin-area-original-right)) !important;
+            }
+            .admin-records-area .admin-natural-records { height: auto !important; max-height: none !important; overflow-y: visible !important; }
+            .admin-records-area .admin-records-surface { padding: 1.5rem !important; border: 1px solid var(--wb-border); border-radius: 1rem; background: var(--wb-surface); min-width: 0; }
+            .admin-records-area .admin-table-viewport { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; }
+            .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-records-area .admin-table-heading th { position: static; }
+            .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-records-area.has-scrolled [data-admin-freeze]::before {
+                content: ''; position: absolute; z-index: -1; pointer-events: none;
+                top: calc(-1 * var(--admin-freeze-cover-top, 0px));
+                left: calc(-1 * var(--admin-freeze-cover-left, 0px));
+                right: calc(-1 * var(--admin-freeze-cover-right, 0px));
+                bottom: calc(-1 * var(--admin-freeze-cover-bottom, 0px));
+                background: var(--admin-freeze-background, var(--wb-surface));
+                border: var(--admin-freeze-border, 0);
+                border-bottom: 0;
+                border-radius: var(--admin-freeze-radius, 0) var(--admin-freeze-radius, 0) 0 0;
+            }
+            .admin-content-scroll .content-wrapper { display: block !important; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }
+            .admin-content-scroll > .topbar { margin-right: var(--admin-window-gutter, 0px); }
+            .modal-open .admin-records-area, .modal-open .admin-content-scroll .content-wrapper { overflow-y: hidden; }
+            .admin-content-scroll .content-wrapper .admin-scroll-path { display: var(--admin-path-display, block) !important; flex: initial; min-height: initial; }
+            .admin-content-scroll .admin-records-area { display: contents; }
+            .admin-content-scroll .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+            .admin-content-scroll .admin-area-first {
+                margin-top: var(--admin-original-top) !important;
+                margin-left: var(--admin-original-left) !important;
+                margin-right: var(--admin-original-right) !important;
+            }
+            .admin-content-scroll [data-admin-freeze] { position: static; }
+            .admin-content-scroll .admin-primary-freeze { transform: none; }
+            .admin-content-scroll .admin-table-heading { transform: none; }
+            .admin-content-scroll .admin-record-part { clip-path: none !important; }
+            .admin-content-scroll [data-admin-freeze]::before { display: none; }
+            html.admin-consumer-page-scroll, html.admin-consumer-page-scroll body { height: 100%; min-height: 100%; overflow: hidden; }
+            .admin-consumer-page-scroll .admin-scroll-shell { height: 100dvh; min-height: 0; display: flex; flex-direction: column; overflow: visible; }
+            .admin-consumer-page-scroll .admin-scroll-shell > .topbar { position: fixed; top: 0 !important; left: var(--sidebar-width); right: 0; z-index: 1040; transform: none; }
+            .admin-consumer-page-scroll .sidebar-collapsed .topbar { left: var(--sidebar-rail-width); }
+            .admin-consumer-page-scroll .admin-scroll-shell > .topbar { transition: left 280ms ease-in-out; }
+            @media (prefers-reduced-motion: reduce) { .admin-consumer-page-scroll .admin-scroll-shell > .topbar { transition: none; } }
+            .admin-consumer-page-scroll .admin-scroll-path { display: flex !important; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+            .admin-consumer-page-scroll .content-wrapper { height: calc(100dvh - var(--consumer-topbar-height, 80px)); max-height: calc(100dvh - var(--consumer-topbar-height, 80px)); overflow: hidden; margin-top: var(--consumer-topbar-height, 80px); }
+            .admin-consumer-page-scroll .admin-records-area { min-height: 0; overflow-y: auto; }
+            .admin-consumer-page-scroll .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }
+            .admin-consumer-page-scroll .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading th { position: static; }
+            .admin-consumer-page-scroll .admin-records-area.has-scrolled [data-admin-freeze]::before { content: ''; position: absolute; z-index: -1; pointer-events: none; inset: calc(-1 * var(--admin-freeze-cover-top, 0px)) calc(-1 * var(--admin-freeze-cover-right, 0px)) calc(-1 * var(--admin-freeze-cover-bottom, 0px)) calc(-1 * var(--admin-freeze-cover-left, 0px)); background: var(--admin-freeze-background, #fff); }
+            @media (max-width: 991.98px) { .admin-consumer-page-scroll .admin-scroll-shell > .topbar, .admin-consumer-page-scroll .sidebar-collapsed .topbar { left: 0; } }
+            @media print {
+                html.admin-one-scroll, html.admin-one-scroll body { height: auto; overflow: visible; }
+                .admin-scroll-shell { height: auto; display: block; overflow: visible; }
+                .admin-scroll-path { display: var(--admin-path-display, block) !important; }
+                .admin-records-area { display: contents; }
+                .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }
+                .admin-area-first { margin-top: var(--admin-original-top) !important; margin-left: var(--admin-original-left) !important; margin-right: var(--admin-original-right) !important; }
+                .admin-records-area [data-admin-freeze] { position: static; }
+                .admin-records-area .admin-primary-freeze { transform: none; }
+                .admin-records-area .admin-table-heading { transform: none; }
+                .admin-record-part { clip-path: none !important; }
+                .admin-records-area [data-admin-freeze]::before { display: none; }
+            }
+        </style>
+        <style>
+    .app-shell:not(.admin-dashboard) { --water-dark: var(--vf-navy); --water-teal: var(--vf-royal); --water-aqua: var(--vf-bright); --water-heading: var(--vf-navy); --water-muted: var(--vf-navy); }
+    .app-shell:not(.admin-dashboard) .sidebar { background: linear-gradient(165deg, var(--vf-navy) 0%, var(--vf-navy) 52%, var(--vf-royal) 100%) !important; isolation: isolate; }
+    .app-shell:not(.admin-dashboard) .sidebar::after { content: ''; position: absolute; z-index: -1; pointer-events: none; left: -55%; right: -45%; bottom: -28px; height: 125px; border-radius: 50% 48% 0 0; background: linear-gradient(165deg, rgba(22, 141, 255, .16) 0 35%, rgba(22, 141, 255, .24) 36% 68%, rgba(22, 141, 255, .13) 69%); }
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link, .sidebar-brand, .sidebar-nav-toggle), .app-shell:not(.admin-dashboard) .sidebar .nav-link i { color: #fff !important; }
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link, .sidebar-nav-row) { transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link:hover, .sidebar-nav-row:hover) { background: rgba(22, 141, 255, .18); }
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link.active, .sidebar-nav-row.active) { background: linear-gradient(110deg, var(--vf-royal), var(--vf-bright)) !important; box-shadow: 0 5px 14px rgba(6, 43, 128, .2); }
+    .app-shell:not(.admin-dashboard) .sidebar-nav-row:is(.active, :hover) > .nav-link { background: transparent !important; box-shadow: none; }
+    .app-shell:not(.admin-dashboard) .main-content { min-width: 0; background: linear-gradient(150deg, var(--vf-background) 0%, var(--vf-background) 55%, #f6fdff 100%); }
+    .app-shell:not(.admin-dashboard) .content-wrapper { position: relative; isolation: isolate; animation: viaflow-water-entrance .4s ease-out both; }
+    .app-shell:not(.admin-dashboard) .content-wrapper::before { content: ''; position: absolute; z-index: -1; top: 0; right: 0; width: min(38vw, 460px); height: 150px; pointer-events: none; background: radial-gradient(ellipse at 100% -30%, rgba(22, 141, 255, .15) 0 35%, transparent 36%), radial-gradient(ellipse at 100% -15%, rgba(7, 84, 200, .08) 0 48%, transparent 49%); }
+    .app-shell:not(.admin-dashboard) :is(.page-heading h1, .panel-card h1, .panel-card h2, .panel-card h3, .dashboard-card h2, .dashboard-card h3, .announcement-card h2, .stat-value, .metric-value) { color: var(--vf-navy); }
+    .app-shell:not(.admin-dashboard) :is(.page-heading p, .text-secondary, .form-text) { color: var(--vf-navy) !important; }
+    .app-shell:not(.admin-dashboard) :is(.panel-card, .dashboard-card, .announcement-card, .billing-card, .dash-kpi) { min-width: 0; background: linear-gradient(145deg, #fff, #f7fdff) !important; border: 1px solid var(--vf-light) !important; border-radius: 16px !important; box-shadow: 0 8px 24px rgba(7, 84, 200, .10) !important; transition: box-shadow .2s ease, border-color .2s ease; }
+    .app-shell:not(.admin-dashboard) :is(.dashboard-card, .announcement-card, .dash-kpi):hover { border-color: var(--vf-bright) !important; box-shadow: 0 13px 28px rgba(7, 84, 200, .16) !important; }
+    .app-shell:not(.admin-dashboard) :is(.dashboard-card, .panel-card) :is(.feature-icon, .metric-icon) { background: linear-gradient(135deg, var(--vf-royal), var(--vf-bright)) !important; color: #fff !important; }
+    .app-shell:not(.admin-dashboard) :is(.table, table) { --bs-table-bg: transparent; --bs-table-border-color: var(--vf-light); color: var(--vf-navy); }
+    .app-shell:not(.admin-dashboard) :is(.table, table) thead th { background: var(--vf-background); color: var(--vf-navy); border-color: var(--vf-light); }
+    .app-shell:not(.admin-dashboard) :is(.form-control, .form-select), body:has(.app-shell:not(.admin-dashboard)) .modal :is(.form-control, .form-select) { border-color: var(--vf-light); border-radius: .65rem; transition: border-color .2s ease, box-shadow .2s ease; }
+    .app-shell:not(.admin-dashboard) :is(.form-control, .form-select):focus, body:has(.app-shell:not(.admin-dashboard)) .modal :is(.form-control, .form-select):focus { border-color: var(--vf-royal) !important; box-shadow: 0 0 0 .2rem rgba(22, 141, 255, .16) !important; }
+    .app-shell:not(.admin-dashboard) .btn-primary, body:has(.app-shell:not(.admin-dashboard)) .modal .btn-primary { background: linear-gradient(120deg, var(--vf-navy), var(--vf-royal)) !important; border-color: var(--vf-royal) !important; color: #fff !important; }
+    .app-shell:not(.admin-dashboard) .btn, body:has(.app-shell:not(.admin-dashboard)) .modal .btn { transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .app-shell:not(.admin-dashboard) .btn:hover, body:has(.app-shell:not(.admin-dashboard)) .modal .btn:hover { box-shadow: 0 6px 14px rgba(6, 43, 128, .15); }
+    body:has(.app-shell:not(.admin-dashboard)) .modal-content { border: 1px solid var(--vf-light) !important; border-radius: 16px !important; box-shadow: 0 16px 42px rgba(6, 43, 128, .18) !important; }
+    body:has(.app-shell:not(.admin-dashboard)) .modal-title { color: var(--vf-navy); }
+    .app-shell:not(.admin-dashboard) .page-link { color: var(--vf-navy); border-color: var(--vf-light); }
+    .app-shell:not(.admin-dashboard) .page-item.active .page-link { color: #fff; background: var(--vf-royal); border-color: var(--vf-royal); }
+    @keyframes viaflow-water-entrance { from { opacity: .98; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 575.98px) { .app-shell:not(.admin-dashboard) .content-wrapper::before { width: 45%; height: 90px; } }
+    @media (prefers-reduced-motion: reduce) { .app-shell:not(.admin-dashboard) .content-wrapper { animation: none !important; } .app-shell:not(.admin-dashboard) :is(.panel-card, .dashboard-card, .announcement-card, .sidebar .nav-link, .sidebar-nav-row, .btn, .form-control, .form-select) { transition: none !important; } }
+</style>
+    <style>
+@media screen {
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) { background: radial-gradient(ellipse at 100% 0,rgba(22, 141, 255, .15),transparent 42%),linear-gradient(150deg,var(--vf-background) 0%,var(--vf-background) 55%,#f6fdff 100%); }
+    :is(.resubmit-shell, .reschedule-card, .disconnection-popup) { background: linear-gradient(145deg,#fff,#f7fdff); border: 1px solid var(--vf-light); border-radius: 16px; box-shadow: 0 8px 24px rgba(7, 84, 200, .10); }
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) :is(h1,h2,h3) { color: var(--vf-navy); }
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) :is(.form-control,.form-select) { border-color: var(--vf-light); border-radius: .65rem; }
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) :is(.form-control,.form-select):focus { border-color: var(--vf-royal); box-shadow: 0 0 0 .2rem rgba(22, 141, 255, .16); }
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) .btn-primary { background: linear-gradient(120deg,var(--vf-navy),var(--vf-royal)); border-color: var(--vf-royal); color: #fff; }
+    @media (max-width: 575.98px) { :is(.resubmit-page, .reschedule-page, .disconnection-screen) { padding: 1rem; } :is(.resubmit-shell, .reschedule-card) { padding: 1.25rem; } }
+}
+</style>
+</head>
+<body>
+    <div class="app-shell d-lg-flex">
+    <aside
+    class="sidebar p-3"
+    id="sidebarMenu"
+    aria-label="Main navigation"
+>
+    <a href="http://127.0.0.1:8027/dashboard" class="sidebar-brand d-flex align-items-center gap-3 mb-4">
+        <img src="http://127.0.0.1:8027/images/vvthoa-logo.png" alt="VVTHOA Water System Services" class="organization-logo organization-logo--sidebar" width="64" height="64">
+        <span>
+            <span class="d-block fw-bold fs-5">ViaFlow System</span>
+            <span class="small">Billing and Loan Suite</span>
+        </span>
+    </a>
+
+    <div class="sidebar-nav-header d-flex justify-content-between align-items-center gap-2 mb-3">
+        <div class="sidebar-nav-heading small text-uppercase fw-semibold">Main Navigation</div>
+        <button
+            type="button"
+            class="sidebar-nav-toggle"
+            id="sidebarCollapseToggle"
+            aria-expanded="true"
+            aria-controls="sidebarMenu"
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar"
+        >
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <ul class="nav flex-column gap-2">
+                    <li class="nav-item">
+                                    <a href="/dashboard" class="nav-link " aria-label="Dashboard" title="Dashboard">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/staff" class="nav-link " aria-label="Staff" title="Staff">
+                        <i class="bi bi-people"></i>
+                        <span>Staff</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8027/consumers" class="nav-link " aria-label="Consumers" title="Consumers">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Consumers</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#consumerSubmenu"
+                            aria-expanded="false"
+                            aria-controls="consumerSubmenu"
+                            aria-label="Toggle consumer categories"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse " id="consumerSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8027/consumers"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="all"                                     >
+                                        <span>All Consumers</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8027/consumers?account_category=pending"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="pending"                                     >
+                                        <span>Pending Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8027/consumers?account_category=rejected"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="rejected"                                     >
+                                        <span>Rejected Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8027/consumers?account_category=active"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="active"                                     >
+                                        <span>Active Accounts</span>
+                                                                            </a>
+                                </li>
+                                                                                            <li class="nav-item">
+                                    <a
+                                        href="http://127.0.0.1:8027/consumers?account_category=inactive"
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "
+                                        data-consumer-category="inactive"                                     >
+                                        <span>Inactive (Disconnected)</span>
+                                                                            </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8027/billing" class="nav-link " aria-label="Billing" title="Billing">
+                            <i class="bi bi-droplet-half"></i>
+                            <span>Billing</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#billingSubmenu"
+                            aria-expanded="false"
+                            aria-controls="billingSubmenu"
+                            aria-label="Toggle billing submodules"
+                        ><i class="bi bi-chevron-down"></i></button>
+                    </div>
+                    <div class="collapse " id="billingSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                            <li class="nav-item">
+                                <a href="http://127.0.0.1:8027/billing" class="nav-link sidebar-subnav-link " >Water Billing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="http://127.0.0.1:8027/billing/loan" class="nav-link sidebar-subnav-link " >Loan Billing</a>
+                            </li>
+                        </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/payments" class="nav-link " aria-label="Payments" title="Payments">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Payments</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/loans" class="nav-link active" aria-label="Loans" title="Loans">
+                        <i class="bi bi-bank"></i>
+                        <span>Loans</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/incidents" class="nav-link " aria-label="Incidents" title="Incidents">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span>Incidents</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/reports" class="nav-link " aria-label="Reports" title="Reports">
+                        <i class="bi bi-bar-chart-fill"></i>
+                        <span>Reports</span>
+                    </a>
+                            </li>
+                    <li class="nav-item">
+                                    <div class="sidebar-nav-row ">
+                        <a href="http://127.0.0.1:8027/dss/incidents" class="nav-link " aria-label="DSS" title="DSS">
+                            <i class="bi bi-diagram-3-fill"></i>
+                            <span>DSS</span>
+                        </a>
+                        <button
+                            type="button"
+                            class="sidebar-submenu-toggle"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#dssSubmenu"
+                            aria-expanded="false"
+                            aria-controls="dssSubmenu"
+                            aria-label="Toggle DSS modules"
+                        >
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="collapse " id="dssSubmenu">
+                        <ul class="nav flex-column sidebar-subnav">
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8027/dss/incidents"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Incident DSS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="http://127.0.0.1:8027/dss/loans"
+                                    class="nav-link sidebar-subnav-link "
+                                                                    >Loan DSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                            </li>
+                    <li class="nav-item">
+                                    <a href="/announcements" class="nav-link " aria-label="Announcements" title="Announcements">
+                        <i class="bi bi-megaphone-fill"></i>
+                        <span>Announcements</span>
+                    </a>
+                            </li>
+            </ul>
+</aside>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+    <main class="main-content flex-grow-1">
+        <nav class="navbar navbar-expand-lg topbar px-3 px-lg-4 sticky-top">
+    <div class="container-fluid p-0">
+        <button class="btn btn-outline-secondary d-lg-none me-2" type="button" id="sidebarMobileToggle" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Open sidebar" title="Open sidebar">
+            <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+
+        <div>
+            <span class="text-uppercase small fw-bold text-secondary">System Overview</span>
+            <div class="fw-semibold">Water Billing and Loan Management</div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            <div class="d-none d-md-flex align-items-center gap-2 text-secondary">
+                <i class="bi bi-calendar3"></i>
+                <span>November 22, 2026</span>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border position-relative" data-bs-toggle="dropdown" type="button">
+                    <i class="bi bi-bell"></i>
+                                    </button>
+                <div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-0 notification-menu">
+                    <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                        <strong>Notifications</strong>
+                                            </div>
+                    <div class="py-2" style="max-height: 340px; overflow-y: auto;">
+                                                    <div class="px-3 py-3 text-secondary small">No notifications yet.</div>
+                                            </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light border dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" type="button">
+                    <span class="rounded-circle bg-info-subtle text-info fw-bold d-inline-flex align-items-center justify-content-center avatar-badge">FA</span>
+                    <span class="text-start d-none d-md-block">
+                        <span class="d-block fw-semibold text-dark">Fay Ziemann</span>
+                        <span class="small text-secondary">Admin</span>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2 profile-dropdown-menu">
+                    <li><a class="dropdown-item px-3 py-2 rounded-3" href="http://127.0.0.1:8027/profile">Profile</a></li>
+                    <li><hr class="dropdown-divider my-1"></li>
+                    <li>
+                        <form method="POST" action="http://127.0.0.1:8027/logout">
+                            <input type="hidden" name="_token" value="GrNPUip97Olugl2PUHePf11xdSqhOlcDaKhMKrJU" autocomplete="off">                            <button type="submit" class="dropdown-item px-3 py-2 rounded-3 text-danger">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+        <div class="content-wrapper">
+            <div class="page-heading" data-admin-records-root>
+                <div>
+                    <h1>Loan Management</h1>
+                    <p>Manage scheduled installations, loan servicing, and repayments. Saved application decisions and evidence remain in DSS Loan.</p>
+                </div>
+            </div>
+
+            <nav class="loan-tab-nav" aria-label="Loan application categories">
+                                    <a href="http://127.0.0.1:8027/loans?tab=all" class="active"  aria-current="page" >ALL</a>
+                                    <a href="http://127.0.0.1:8027/loans?tab=pending" class="" >PENDING</a>
+                                    <a href="http://127.0.0.1:8027/loans?tab=costs" class="" >SET COST</a>
+                            </nav>
+                                                                                        <div class="alert alert-success" role="status">Meter and installation schedule saved. The confirmation email has been sent.</div>
+                        <section class="panel-card p-3 p-lg-4 mb-4" aria-labelledby="loan-management-title">
+                <h2 id="loan-management-title" class="section-title mb-3">Loan Application Management</h2>
+                <form method="GET" action="http://127.0.0.1:8027/loans" class="row g-2 align-items-end mb-3" id="loan-application-filters" data-auto-filter data-auto-filter-debounce="450">
+                    <input type="hidden" name="tab" value="all">
+                    <div class="col-md-4 col-12">
+                        <label class="form-label fw-semibold small text-secondary" for="application-search">Search</label>
+                        <input class="form-control" id="application-search" type="search" name="application_search" value="" placeholder="Consumer name or account number">
+                    </div>
+                    <div class="col-md-3 col-12">
+                        <label class="form-label fw-semibold small text-secondary" for="application-status">Loan Status</label>
+                        <select class="form-select" id="application-status" name="application_status">
+                                                            <option value="all" selected>All Statuses</option>
+                                                            <option value="approved" >Approved</option>
+                                                            <option value="rejected" >Rejected</option>
+                                                    </select>
+                    </div>
+                    <div class="col-md-3 col-12">
+                        <label class="form-label fw-semibold small text-secondary" for="installation_status">Installation Status</label>
+                        <select class="form-select" id="installation_status" name="installation_status">
+                            <option value="all" selected>All Installations</option>
+                            <option value="pending" >Pending Installation</option>
+                            <option value="completed" >Completed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 col-12 d-flex gap-2">
+                        <noscript><button type="submit" class="btn btn-primary w-100">Apply filters</button></noscript>
+                        <a href="http://127.0.0.1:8027/loans?tab=all" class="btn btn-light border w-100"><i class="bi bi-arrow-counterclockwise me-1"></i>Clear filters</a>
+                    </div>
+                </form>
+                <div class="table-responsive"><table class="table table-hover align-middle mb-0" style="min-width: 760px">
+                    <thead><tr><th>Account Number</th><th>Consumer Name</th><th>Loan Status</th><th>Income Verification Status</th><th>Installation Status</th><th>Actions</th></tr></thead><tbody>
+                                                                                                                    <tr><td>VIAFLOW-LOAN-SAMPLE</td><td>Loan Installation Sample</td><td>Approved</td><td>Verified</td>
+                        <td>
+                            <div class="consumer-installation-details">
+                                <span class="badge bg-primary">Pending Installation</span>
+    <span class="consumer-installation-date">Scheduled Date: Nov 25, 2026</span>
+            <form method="POST" action="http://127.0.0.1:8027/loans/1/installation-status" class="installation-completion-form" data-consumer-name="Loan Installation Sample" data-account-number="VIAFLOW-LOAN-SAMPLE" data-scheduled-date="Nov 25, 2026" data-installation-status="Pending Installation">
+            <input type="hidden" name="_token" value="GrNPUip97Olugl2PUHePf11xdSqhOlcDaKhMKrJU" autocomplete="off">                            <input type="hidden" name="_method" value="PATCH">                <input type="hidden" name="installation_status" value="Completed">
+                <input type="hidden" name="physical_installation_confirmed" value="">
+                        <button type="button" class="btn btn-sm btn-outline-success" data-installation-complete-trigger>Mark Complete</button>
+        </form>
+                                </div>
+                        </td>
+                        <td><div class="d-flex flex-wrap gap-1">
+                            <button type="button" class="btn btn-sm btn-outline-primary" data-admin-loan="1">View Details</button>
+                                                                                </div></td></tr>
+                                                <template id="admin-loan-details-1"><div class="dss-detail-section">
+    <h3>Applicant Information</h3>
+    <div class="dss-detail-grid">
+        <div><span class="dss-detail-label">Applicant Name</span><strong class="dss-detail-value">Loan Installation Sample</strong></div>
+        <div><span class="dss-detail-label">Account Number</span><strong class="dss-detail-value">VIAFLOW-LOAN-SAMPLE</strong></div>
+                    <div><span class="dss-detail-label">Application Date</span><strong class="dss-detail-value">Nov 19, 2026 3:11 PM</strong></div>
+            </div>
+</div>
+
+<div class="dss-detail-section">
+    <h3>Loan Financial Details</h3>
+    <div class="dss-detail-subheading">Installation Cost Breakdown</div>
+    <dl class="dss-detail-financial">
+        <div><dt>Approved Loan Amount</dt><dd>₱600.00</dd></div>
+        <div><dt>Water Meter</dt><dd>₱300.00</dd></div>
+        <div><dt>Hose</dt><dd>₱200.00</dd></div>
+        <div><dt>Other Materials</dt><dd>₱100.00</dd></div>
+        <div class="dss-detail-total"><dt>Total Installation Cost</dt><dd>₱600.00</dd></div>
+        <div><dt>Repayment Term</dt><dd>3 months</dd></div>
+        <div><dt>Monthly Installment</dt><dd>₱200.00</dd></div>
+        <div><dt>Amount Paid</dt><dd>₱0.00</dd></div>
+        <div><dt>Remaining Balance</dt><dd>₱600.00</dd></div>
+    </dl>
+</div>
+
+<div class="dss-detail-section">
+    <h3>Application Status</h3>
+    <div class="dss-detail-grid">
+        <div><span class="dss-detail-label">Approval or Rejection Status</span><strong class="dss-detail-value">Approved</strong></div>
+                    <div><span class="dss-detail-label">DSS Review Status</span><strong class="dss-detail-value">Approved</strong></div>
+                <div><span class="dss-detail-label">Income Verification Status</span><strong class="dss-detail-value">Verified</strong></div>
+                    <div><span class="dss-detail-label">Approval Date</span><strong class="dss-detail-value">Nov 21, 2026 3:11 PM</strong></div>
+                            </div>
+</div>
+
+
+<div class="dss-detail-section">
+    <h3>Installation Information</h3>
+    <div class="dss-detail-grid">
+        <div><span class="dss-detail-label">Assigned Meter Number</span><strong class="dss-detail-value">NEW-SAMPLE-METER</strong></div>
+                    <div><span class="dss-detail-label">Installation Date</span><strong class="dss-detail-value">Nov 25, 2026</strong></div>
+                            <div><span class="dss-detail-label">Installation Time</span><strong class="dss-detail-value">2:30 PM</strong></div>
+                <div><span class="dss-detail-label">Installation Status</span><strong class="dss-detail-value">Scheduled</strong></div>
+                    <div><span class="dss-detail-label">Installation Notes</span><strong class="dss-detail-value">Call at the gate</strong></div>
+            </div>
+</div>
+
+    <div class="dss-detail-section">
+        <h3>Installment Schedule and Loan Agreement</h3>
+                    <p>Schedule released Nov 22, 2026 3:14 PM.</p>
+            <p>Agreement email sent.</p>
+                        </div>
+
+
+
+<div class="dss-detail-section">
+    <h3>Proof of Income</h3>
+            <p class="small text-secondary mb-3">No uploaded proof of income is available.</p>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+        <span class="dss-detail-label">Verification Status:</span>
+        <span class="badge bg-success">Approved</span>
+    </div>
+</div>
+
+</template>
+                                        </tbody></table></div>
+                <div class="mt-3"></div>
+            </section>
+            <div class="modal fade" id="installationCompletionModal" tabindex="-1" aria-labelledby="installationCompletionTitle" aria-describedby="installationCompletionPrompt" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow rounded-4">
+            <div class="modal-header border-0 pb-2">
+                <div>
+                    <h2 class="modal-title fs-5 fw-bold" id="installationCompletionTitle">Complete Installation?</h2>
+                    <p class="small text-secondary mb-0" id="installationCompletionPrompt">Confirm that the meter has been physically installed.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-2">
+                <dl class="row small mb-0">
+                    <dt class="col-5 text-secondary">Consumer Name</dt><dd class="col-7 fw-semibold" id="installationCompletionConsumer"></dd>
+                    <dt class="col-5 text-secondary">Account Number</dt><dd class="col-7" id="installationCompletionAccount"></dd>
+                    <dt class="col-5 text-secondary">Scheduled Date / Time</dt><dd class="col-7" id="installationCompletionDate"></dd>
+                    <dt class="col-5 text-secondary">Current Status</dt><dd class="col-7" id="installationCompletionStatus"></dd>
+                </dl>
+            </div>
+            <div class="modal-footer border-0 pt-2">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="installationCompletionCancel">Cancel</button>
+                <button type="button" class="btn btn-primary" id="installationCompletionConfirm">
+                    <span class="spinner-border spinner-border-sm me-2 d-none" aria-hidden="true"></span>
+                    <span>Confirm Complete</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                        <div class="modal fade" id="adminLoanDetails" tabindex="-1" aria-labelledby="adminLoanDetailsTitle" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h2 class="modal-title fs-5" id="adminLoanDetailsTitle">Application Details</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body" id="adminLoanDetailsBody"></div><div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>
+                                                                                                
+        </div>
+    </main>
+</div>
+
+    <div class="modal fade" id="incomeVerificationModal" tabindex="-1" aria-labelledby="incomeVerificationModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content border-0 rounded-4">
+            <div class="modal-header"><div><h2 class="modal-title fs-5" id="incomeVerificationModalTitle">Verify Proof of Income</h2><div class="small text-secondary" id="incomeVerificationModalSubtitle"></div></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body" id="incomeVerificationModalBody"></div>
+        </div></div>
+    </div>
+    <div class="modal fade" id="incomeRejectionModal" tabindex="-1" aria-labelledby="incomeRejectionModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+            <form method="POST" id="incomeRejectionForm">
+                <input type="hidden" name="_token" value="GrNPUip97Olugl2PUHePf11xdSqhOlcDaKhMKrJU" autocomplete="off">                <input type="hidden" name="decision" value="reject">
+                <div class="modal-header"><h2 class="modal-title fs-5" id="incomeRejectionModalTitle">Reject Verification</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body"><label class="form-label" for="income-rejection-reason">Reason for rejecting proof of income</label><textarea class="form-control" id="income-rejection-reason" name="rejection_reason" minlength="8" maxlength="2000" required></textarea><div class="form-text">The consumer will receive this reason by email.</div></div>
+                <div class="modal-footer"><button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-danger">Reject Verification</button></div>
+            </form>
+        </div></div>
+    </div>
+                <div class="modal fade" id="loanRepaymentModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 rounded-4">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5">Post Loan Repayment</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <div class="fw-semibold" id="loan_repayment_borrower">-</div>
+                            <div class="small text-secondary loan-cost-row"><span>Remaining balance:</span><strong id="loan_repayment_balance">₱0.00</strong></div>
+                        </div>
+                        <form method="POST" id="loanRepaymentForm">
+                            <input type="hidden" name="_token" value="GrNPUip97Olugl2PUHePf11xdSqhOlcDaKhMKrJU" autocomplete="off">                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold" for="repayment_amount">Amount</label>
+                                    <input type="number" class="form-control" id="repayment_amount" name="amount" min="0.01" step="0.01" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold" for="repayment_payment_date">Payment Date</label>
+                                    <input type="date" class="form-control" id="repayment_payment_date" name="payment_date" value="2026-11-22" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold" for="repayment_notes">Notes</label>
+                                    <input type="text" class="form-control" id="repayment_notes" name="notes" placeholder="Optional repayment note">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" form="loanRepaymentForm" class="btn btn-primary">Post Repayment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <dialog class="income-quality-dialog" id="incomeProofDialog" aria-labelledby="incomeProofDialogTitle">
+    <div class="d-flex justify-content-between align-items-center gap-3 mb-2"><h2 class="h6 mb-0" id="incomeProofDialogTitle">Proof of Income</h2><button type="button" class="btn-close" aria-label="Close preview" data-close-income-dialog></button></div>
+    <img alt="Enlarged proof of income" hidden><iframe title="Enlarged proof of income PDF" hidden></iframe>
+</dialog>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('select[data-clearable-filter]').forEach(function (select, index) {
+                if (!Array.from(select.options).some(function (option) { return option.hasAttribute('selected'); })) {
+                    select.selectedIndex = -1;
+                }
+                const defaults = {
+                    status: 'All Status', application_status: 'All Status', notice_status: 'All Status',
+                    channel: 'All Methods', payment_type: 'All Types', type: 'All Types',
+                    category: 'All Categories', month: 'All Months', year: 'All Years',
+                    membership: 'All Memberships', notice_membership: 'All Memberships'
+                };
+                const label = select.dataset.filterDefault || defaults[select.name];
+                if (!label) return;
+                const value = document.createElement('span');
+                value.className = 'status-filter-value';
+                value.id = 'filter-default-' + index;
+                value.textContent = label;
+                value.style.fontSize = window.getComputedStyle(select).fontSize;
+                select.parentElement.classList.add('status-filter-display');
+                select.insertAdjacentElement('afterend', value);
+                const update = function () {
+                    const empty = select.selectedIndex < 0;
+                    value.hidden = !empty;
+                    if (empty) select.setAttribute('aria-describedby', value.id);
+                    else select.removeAttribute('aria-describedby');
+                };
+                select.addEventListener('change', update);
+                update();
+            });
+            document.querySelectorAll('form[data-auto-filter]').forEach(function (form) {
+                let timer = null;
+
+                const clearTimer = function () {
+                    if (timer !== null) {
+                        window.clearTimeout(timer);
+                        timer = null;
+                    }
+                };
+
+                const submit = function () {
+                    clearTimer();
+
+                    if (typeof form.requestSubmit === 'function') {
+                        form.requestSubmit();
+                    } else {
+                        form.submit();
+                    }
+                };
+
+                const scheduleSubmit = function () {
+                    clearTimer();
+
+                    const configuredDelay = Number(form.dataset.autoFilterDebounce);
+                    const delay = Number.isFinite(configuredDelay) && configuredDelay >= 0
+                        ? configuredDelay
+                        : 450;
+
+                    timer = window.setTimeout(submit, delay);
+                };
+
+                form.querySelectorAll('select, input[type="month"], input[type="date"], input[type="week"], input[type="time"], input[type="checkbox"], input[type="radio"]').forEach(function (control) {
+                    control.addEventListener('change', submit);
+                });
+
+                form.querySelectorAll('input[type="search"], input[type="text"]').forEach(function (input) {
+                    input.addEventListener('input', scheduleSubmit);
+                    input.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            submit();
+                        }
+                    });
+                });
+
+                form.addEventListener('submit', clearTimer);
+
+                form.querySelectorAll('a').forEach(function (link) {
+                    link.addEventListener('click', clearTimer);
+                });
+
+                document.addEventListener('click', function (event) {
+                    if (!form.contains(event.target)) {
+                        clearTimer();
+                    }
+                }, true);
+
+                window.addEventListener('pagehide', clearTimer);
+            });
+        });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const element = document.getElementById('adminLoanDetails');
+    if (!element || !window.bootstrap) return;
+    document.body.appendChild(element);
+    element.addEventListener('show.bs.modal', () => document.body.classList.add('loan-details-open'));
+    element.addEventListener('hidden.bs.modal', () => document.body.classList.remove('loan-details-open'));
+    const modal = bootstrap.Modal.getOrCreateInstance(element), body = document.getElementById('adminLoanDetailsBody');
+    document.querySelectorAll('[data-admin-loan]').forEach(button => button.addEventListener('click', function () {
+        const id = button.dataset.adminLoan, template = document.getElementById('admin-loan-details-' + id);
+        if (!template) return;
+        body.replaceChildren(template.content.cloneNode(true));
+        element.dataset.focusTarget = button.dataset.adminFocus ? button.dataset.adminFocus + id : '';
+        modal.show();
+    }));
+    element.addEventListener('shown.bs.modal', function () { if (element.dataset.focusTarget) document.getElementById(element.dataset.focusTarget)?.focus(); });
+    document.querySelectorAll('template[data-combined-modal]').forEach(template => document.body.append(template.content.cloneNode(true)));
+    document.querySelectorAll('.combined-loan-form').forEach(form => form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const button = form.querySelector('button[type=submit]'), error = form.querySelector('[role=alert]');
+        button.disabled = true; error.hidden = true;
+        try {
+            const response = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json', 'X-Requested-With':'XMLHttpRequest' }, credentials:'same-origin' });
+            const result = await response.json();
+            if (!response.ok) { error.textContent = result.errors ? Object.values(result.errors).flat().join(' ') : (result.message || 'Could not save the assignment.'); error.hidden = false; button.disabled = false; return; }
+            window.location.reload();
+        } catch (_) { error.textContent = 'Could not confirm the result. Refresh the page before trying again.'; error.hidden = false; button.disabled = false; }
+    }));
+    const reopen = null;
+    if (reopen) document.querySelector('[data-admin-loan="' + String(reopen).replace(/[^0-9]/g, '') + '"][data-admin-focus="meter-number-"]')?.click();
+});
+</script>
+            <script>
+            const incomeVerificationModal = document.getElementById('incomeVerificationModal');
+            if (incomeVerificationModal && window.bootstrap) {
+                const incomeModal = window.bootstrap.Modal.getOrCreateInstance(incomeVerificationModal);
+                const incomeModalTitle = document.getElementById('incomeVerificationModalTitle');
+                const incomeModalSubtitle = document.getElementById('incomeVerificationModalSubtitle');
+                const incomeModalBody = document.getElementById('incomeVerificationModalBody');
+                document.querySelectorAll('[data-income-verification]').forEach(button => button.addEventListener('click', () => {
+                    const loanId = button.getAttribute('data-income-verification');
+                    const template = document.getElementById('income-verification-template-' + loanId);
+                    if (!template) return;
+                    incomeModalTitle.textContent = 'Verify Proof of Income';
+                    incomeModalSubtitle.textContent = (button.getAttribute('data-income-name') || 'Loan applicant') + ' · Loan #' + loanId;
+                    incomeModalBody.replaceChildren(template.content.cloneNode(true));
+                    const proof = incomeModalBody.querySelector('[data-admin-income-proof]');
+                    const proofImage = proof?.querySelector('img');
+                    const proofFrame = proof?.querySelector('iframe');
+                    if (proofImage) window.assessIncomeProof(proofImage, proof.querySelector('[data-admin-quality]'));
+                    proof?.querySelector('[data-admin-enlarge]')?.addEventListener('click', () => window.openIncomeProofPreview(proofImage?.src || proofFrame?.src, Boolean(proofFrame)));
+                    incomeModalBody.querySelector('[data-reject-income-url]')?.addEventListener('click', event => {
+                        document.getElementById('incomeRejectionForm').action = event.currentTarget.dataset.rejectIncomeUrl;
+                        document.getElementById('income-rejection-reason').value = '';
+                        incomeVerificationModal.addEventListener('hidden.bs.modal', () => {
+                            window.bootstrap.Modal.getOrCreateInstance(document.getElementById('incomeRejectionModal')).show();
+                        }, { once: true });
+                        incomeModal.hide();
+                    });
+                    incomeModal.show();
+                }));
+                const focusedLoanId = 1;
+                if (focusedLoanId) {
+                    document.querySelector(`[data-income-verification="${focusedLoanId}"]`)?.click();
+                }
+            }
+
+        </script>
+
+                    <script>
+                const loanRepaymentModal = document.getElementById('loanRepaymentModal');
+
+                if (loanRepaymentModal) {
+                    loanRepaymentModal.addEventListener('show.bs.modal', (event) => {
+                        const button = event.relatedTarget;
+                        const loanId = button.getAttribute('data-loan-id');
+                        const balance = button.getAttribute('data-loan-balance') || '0.00';
+                        const installment = button.getAttribute('data-loan-installment') || '';
+
+                        document.getElementById('loan_repayment_borrower').textContent = button.getAttribute('data-loan-borrower') || '-';
+                        document.getElementById('loan_repayment_balance').textContent = `₱${Number(balance).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                        document.getElementById('repayment_amount').value = installment;
+                        document.getElementById('loanRepaymentForm').action = `/loans/${loanId}/repayments`;
+                    });
+                }
+            </script>
+            
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const appShell = document.querySelector('.app-shell');
+        const sidebar = document.getElementById('sidebarMenu');
+        const collapseToggle = document.getElementById('sidebarCollapseToggle');
+        const mobileToggle = document.getElementById('sidebarMobileToggle');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const mainContent = document.querySelector('.main-content');
+
+        if (!appShell || !sidebar) {
+            return;
+        }
+
+        const mobileQuery = window.matchMedia('(max-width: 991.98px)');
+        const toggles = [collapseToggle, mobileToggle].filter(Boolean);
+
+        const isMobile = function () {
+            return mobileQuery.matches;
+        };
+
+        const isSidebarOpen = function () {
+            return isMobile()
+                ? appShell.classList.contains('sidebar-mobile-open')
+                : !appShell.classList.contains('sidebar-collapsed');
+        };
+
+        const syncState = function () {
+            const open = isSidebarOpen();
+
+            toggles.forEach(function (toggle) {
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            if (collapseToggle) {
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';
+
+                collapseToggle.setAttribute('aria-label', label);
+                collapseToggle.setAttribute('title', label);
+            }
+
+            if (mobileToggle) {
+                const label = open ? 'Close sidebar' : 'Open sidebar';
+
+                mobileToggle.setAttribute('aria-label', label);
+                mobileToggle.setAttribute('title', label);
+            }
+
+            sidebar.toggleAttribute('inert', isMobile() && !open);
+
+            if (mainContent) {
+                mainContent.toggleAttribute('inert', isMobile() && open);
+            }
+        };
+
+        const openSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.add('sidebar-mobile-open');
+            } else {
+                appShell.classList.remove('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const firstLink = sidebar.querySelector('.nav-link:not(.sidebar-subnav-link)')
+                || sidebar.querySelector('.nav-link');
+
+            if (isMobile() && firstLink) {
+                window.setTimeout(function () {
+                    firstLink.focus();
+                }, 0);
+            }
+        };
+
+        const closeSidebar = function () {
+            if (isMobile()) {
+                appShell.classList.remove('sidebar-mobile-open');
+            } else {
+                appShell.classList.add('sidebar-collapsed');
+            }
+
+            syncState();
+
+            const focusTarget = isMobile() && mobileToggle ? mobileToggle : collapseToggle;
+
+            if (focusTarget) {
+                window.setTimeout(function () {
+                    focusTarget.focus();
+                }, 0);
+            }
+        };
+
+        const toggleSidebar = function () {
+            if (isSidebarOpen()) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        };
+
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener('click', toggleSidebar);
+        });
+
+        sidebar.querySelectorAll('.sidebar-submenu-toggle').forEach(function (toggle) {
+            toggle.addEventListener('click', function (event) {
+                if (!isMobile() && appShell.classList.contains('sidebar-collapsed')) {
+                    const submenu = document.getElementById(toggle.getAttribute('aria-controls'));
+                    openSidebar();
+                    // An already-open submenu becomes visible as the rail expands.
+                    if (submenu && submenu.classList.contains('show')) event.stopPropagation();
+                }
+            });
+        });
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSidebar);
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && isMobile() && isSidebarOpen()) {
+                closeSidebar();
+            }
+        });
+
+        const handleBreakpointChange = function () {
+            appShell.classList.remove('sidebar-mobile-open', 'sidebar-collapsed');
+            syncState();
+        };
+
+        if (typeof mobileQuery.addEventListener === 'function') {
+            mobileQuery.addEventListener('change', handleBreakpointChange);
+        } else if (typeof mobileQuery.addListener === 'function') {
+            mobileQuery.addListener(handleBreakpointChange);
+        }
+
+        syncState();
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const modalElement = document.getElementById('installationCompletionModal');
+    if (!modalElement || !window.bootstrap) return;
+
+    document.body.appendChild(modalElement);
+    const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+    const confirmButton = document.getElementById('installationCompletionConfirm');
+    let selectedForm;
+    let trigger;
+
+    document.addEventListener('click', function (event) {
+        const button = event.target.closest('[data-installation-complete-trigger]');
+        if (!button || confirmButton.disabled) return;
+
+        selectedForm = button.closest('.installation-completion-form');
+        trigger = button;
+        const isReconnection = selectedForm.hasAttribute('data-reconnection');
+        document.getElementById('installationCompletionTitle').textContent = isReconnection ? 'Complete Reconnection?' : 'Complete Installation?';
+        document.getElementById('installationCompletionPrompt').textContent = isReconnection
+            ? 'Confirm that water service has been physically reconnected.'
+            : 'Confirm that the meter has been physically installed.';
+        document.getElementById('installationCompletionConsumer').textContent = selectedForm.dataset.consumerName;
+        document.getElementById('installationCompletionAccount').textContent = selectedForm.dataset.accountNumber;
+        document.getElementById('installationCompletionDate').textContent = selectedForm.dataset.scheduledDate;
+        document.getElementById('installationCompletionStatus').textContent = selectedForm.dataset.installationStatus;
+        modal.show(button);
+    });
+
+    confirmButton.addEventListener('click', function () {
+        if (!selectedForm || confirmButton.disabled) return;
+
+        const confirmation = selectedForm.elements.namedItem('physical_installation_confirmed');
+        if (confirmation) confirmation.value = '1';
+        confirmButton.disabled = true;
+        confirmButton.querySelector('.spinner-border').classList.remove('d-none');
+        confirmButton.querySelector('span:last-child').textContent = 'Saving…';
+        selectedForm.requestSubmit();
+    });
+
+    modalElement.addEventListener('hidden.bs.modal', function () {
+        if (confirmButton.disabled) return;
+        selectedForm = null;
+        trigger?.focus();
+    });
+});
+</script>
+<script>
+(() => {
+    const dialog = document.getElementById('incomeProofDialog');
+    const dialogImage = dialog?.querySelector('img');
+    const dialogPdf = dialog?.querySelector('iframe');
+    dialog?.querySelector('[data-close-income-dialog]')?.addEventListener('click', () => dialog.close());
+    dialog?.addEventListener('keydown', (event) => { if (event.key === 'Escape') event.stopPropagation(); });
+    dialog?.addEventListener('close', () => { dialogImage.removeAttribute('src'); dialogPdf.removeAttribute('src'); });
+    function enlarge(url, pdf = false) {
+        if (!dialog || !url) return;
+        const activeModal = document.querySelector('.modal.show');
+        (activeModal || document.body).append(dialog);
+        dialogImage.hidden = pdf; dialogPdf.hidden = !pdf;
+        (pdf ? dialogPdf : dialogImage).src = url;
+        dialog.showModal();
+    }
+    async function assess(image) {
+      if (!image.complete) await new Promise((resolve,reject)=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true})});
+      const W=image.naturalWidth,H=image.naturalHeight;if(!W||!H)throw new Error('The image is unreadable or corrupted.');
+      // Allow the checking indicator to paint before sampling original-resolution tiles.
+      await new Promise(resolve => setTimeout(resolve, 0));
+      const tile=128, cols=Math.ceil(W/tile),rows=Math.ceil(H/tile), stride=Math.max(1,Math.ceil(Math.sqrt(cols*rows/400)));
+      const canvas=document.createElement('canvas');canvas.width=tile;canvas.height=tile;const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)throw new Error('Image analysis is unavailable.');
+      const regions=[];let globalL=0,globalN=0;
+      for(let ty=0;ty<rows;ty+=stride)for(let tx=0;tx<cols;tx+=stride){
+        const sx=tx*tile,sy=ty*tile,w=Math.min(tile,W-sx),h=Math.min(tile,H-sy);if(w<24||h<24)continue;
+        ctx.clearRect(0,0,tile,tile);ctx.drawImage(image,sx,sy,w,h,0,0,w,h);const data=ctx.getImageData(0,0,w,h).data,g=new Float32Array(w*h),sat=new Uint8Array(w*h),hist=new Uint32Array(256);let sum=0;
+        for(let i=0;i<g.length;i++){let k=i*4,a=data[k+3]/255,r=data[k]*a+255*(1-a),gr=data[k+1]*a+255*(1-a),b=data[k+2]*a+255*(1-a);let v=.299*r+.587*gr+.114*b;g[i]=v;hist[Math.round(v)]++;sum+=v;sat[i]=(Math.max(r,gr,b)-Math.min(r,gr,b)>75)?1:0;}
+        globalL+=sum;globalN+=g.length;let lo=0,hi=255,cum=0;for(let k=0;k<256;k++){cum+=hist[k];if(cum>=g.length*.01){lo=k;break}}cum=0;for(let k=255;k>=0;k--){cum+=hist[k];if(cum>=g.length*.01){hi=k;break}}
+        let n=0,strong=0,gradSum=0,lapSum=0,nx=0,ny=0,satEdge=0;const cells=new Set(),xbins=new Set(),ybins=new Set();
+        for(let y=1;y<h-1;y+=2)for(let x=1;x<w-1;x+=2){let i=y*w+x,dx=Math.abs(g[i+1]-g[i-1])/2,dy=Math.abs(g[i+w]-g[i-w])/2,grad=Math.max(dx,dy);if(grad<7)continue;n++;gradSum+=grad;lapSum+=Math.abs(4*g[i]-g[i-1]-g[i+1]-g[i-w]-g[i+w]);if(grad>=35)strong++;if(dx>=7)nx++;if(dy>=7)ny++;satEdge+=sat[i];cells.add((Math.floor(y/16)*8)+Math.floor(x/16));xbins.add(Math.floor(x/8));ybins.add(Math.floor(y/8));}
+        const pixels=Math.ceil((w-2)/2)*Math.ceil((h-2)/2),density=n/pixels,axis=Math.min(nx,ny)/Math.max(1,Math.max(nx,ny));
+        if(n>=28 && density>.004 && density<.38 && cells.size>=3 && xbins.size>=3 && ybins.size>=2 && axis>.12 && satEdge/n<.7 && hi-lo>=12) regions.push({x:sx,y:sy,n,density,contrast:hi-lo,gradient:gradSum/n,strong:strong/n,lap:lapSum/n,mean:sum/g.length,axis});
+      }
+      const median=(arr)=>{arr.sort((a,b)=>a-b);return arr[Math.floor(arr.length/2)]||0};
+      // Only tiles with distributed, two-directional, mostly neutral edges enter the score.
+      // A decorative border, flat margin, or a single large line is not text evidence.
+      const unable = ['Unable to Determine', 'The image could not be assessed confidently. Please inspect the full-size preview before submitting.', 'info'];
+      if (Math.min(W,H) < 400) return ['Unable to Determine', 'The image resolution is low. Please inspect the full-size preview or choose a higher-resolution copy.', 'info'];
+      if (regions.length < 2) {
+        if (globalN && globalL/globalN < 15) return ['Poor Quality', 'The image appears extremely dark. Please consider replacing it.', 'danger'];
+        return unable;
+      }
+      const gradient=median(regions.map(r=>r.gradient));
+      const strong=median(regions.map(r=>r.strong));
+      const detail=median(regions.map(r=>r.lap));
+      const contrast=median(regions.map(r=>r.contrast));
+      const brightness=median(regions.map(r=>r.mean));
+      // Multiple independent measures must agree before issuing a blur warning.
+      if (contrast >= 25 && gradient < 17 && strong < .04 && detail < 12)
+        return ['Poor Quality', 'The content appears substantially blurred. Please inspect the full-size preview and consider replacing it.', 'danger'];
+      if (contrast >= 25 && gradient < 30 && strong < .23 && detail < 35)
+        return ['Possibly Blurry', 'Some content may be difficult to read. Please check the full-size preview.', 'warning'];
+      if ((brightness < 45 || brightness > 250) && contrast < 35) return unable;
+      if (contrast >= 35 && gradient >= 40 && strong >= .35 && detail >= 45)
+        return ['Clear Image', 'Image quality appears sufficient for review.', 'success'];
+      return unable;
+    }
+        function showQuality(node, result) { node.textContent=''; const badge=document.createElement('span'); badge.className='badge badge-soft-'+result[2]+' me-2'; const icon=document.createElement('i'); icon.className='bi '+({success:'bi-check-circle-fill',warning:'bi-exclamation-triangle-fill',danger:'bi-x-circle-fill'}[result[2]] || 'bi-info-circle')+' me-1'; icon.setAttribute('aria-hidden','true'); badge.append(icon, document.createTextNode(result[0])); node.append(badge, document.createTextNode(result[1])); }
+    window.assessIncomeProof = async (img, status) => { status.textContent='Checking image quality…'; try { showQuality(status, await assess(img)); } catch (_) { showQuality(status, ['Unable to Determine', 'Please inspect the original carefully.', 'info']); } };
+    window.openIncomeProofPreview = enlarge;
+    document.querySelectorAll('[data-income-upload]').forEach(root => {
+        const input=root.querySelector('input[type=file]'), preview=root.querySelector('[data-preview]'), metadata=root.querySelector('[data-metadata]'), img=root.querySelector('[data-image]'), pdf=root.querySelector('[data-pdf]'), zoom=root.querySelector('[data-enlarge]'), quality=root.querySelector('[data-quality]'), error=root.querySelector('[data-error]');
+        let url=null, generation=0;
+        root.querySelector('[data-replace]').addEventListener('click',()=>input.click());
+        zoom.addEventListener('click',()=>enlarge(url));
+        input.addEventListener('change', async () => {
+            const version=++generation, file=input.files[0];
+            if(url) URL.revokeObjectURL(url); url=null; img.removeAttribute('src'); pdf.removeAttribute('src'); preview.hidden=true; error.textContent=''; input.setCustomValidity('');
+            if(!file) return;
+            const ext=file.name.toLowerCase().split('.').pop();
+            const fail=message=>{ if(version!==generation)return; error.textContent=message; input.setCustomValidity(message); preview.hidden=true; };
+            if(!['jpg','jpeg','png','pdf'].includes(ext) || !['image/jpeg','image/png','application/pdf',''].includes(file.type)) return fail('Choose a JPG, PNG, or PDF file.');
+            if(file.size>10*1024*1024 || !file.size) return fail('Choose a non-empty file no larger than 10 MB.');
+            input.setCustomValidity('Please wait for the file check to finish.');
+            preview.hidden=false; metadata.textContent=`${file.name} · ${ext.toUpperCase()} · ${(file.size/1024/1024).toFixed(2)} MB`; quality.textContent='Checking file…';
+            try {
+                if(ext==='pdf') {
+                    const head=new TextDecoder('latin1').decode(await file.slice(0,8).arrayBuffer()), tail=new TextDecoder('latin1').decode(await file.slice(Math.max(0,file.size-2048)).arrayBuffer());
+                    if(!head.startsWith('%PDF-') || !tail.includes('%%EOF') || !tail.includes('startxref')) throw new Error('The PDF is incomplete or unreadable.');
+                    if(version!==generation)return; url=URL.createObjectURL(file); pdf.src=url; pdf.hidden=false; zoom.hidden=true; quality.textContent='PDF preview available. Image quality is not automatically assessed for PDFs.';
+                } else {
+                    url=URL.createObjectURL(file); pdf.hidden=true; zoom.hidden=false; img.src=url;
+                    try { const result=await assess(img); if(version!==generation)return; showQuality(quality,result); } catch (assessmentError) { if(version!==generation)return; if(!img.naturalWidth || !img.naturalHeight) throw assessmentError; showQuality(quality, ['Unable to Determine', 'Please inspect the full-size preview.', 'info']); }
+                }
+                if(version===generation) input.setCustomValidity('');
+            } catch(e) { fail(e.message || 'This file could not be read.'); }
+        });
+    });
+})();
+</script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const main = document.querySelector('.main-content');
+                const content = main?.querySelector('.content-wrapper');
+                if (!content) return;
+                if (content.querySelector('[data-admin-natural-page-scroll]')) return;
+                main.style.setProperty('--admin-window-gutter', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+
+                const consumerPage = content.querySelector('[data-admin-page-scroll]');
+                const first = content.querySelector('[data-admin-records-root]')
+                    || [...content.children].find(element => !element.matches('.page-heading, .modal, script, style'));
+                if (!first) return;
+                if (consumerPage) {
+                    main.classList.add('admin-scroll-shell');
+                    document.documentElement.classList.add('admin-consumer-page-scroll');
+                    const topbar = main.querySelector('.topbar');
+                    const setTopbarHeight = function () {
+                        main.style.setProperty('--consumer-topbar-height', topbar.getBoundingClientRect().height + 'px');
+                    };
+                    setTopbarHeight();
+                    new ResizeObserver(setTopbarHeight).observe(topbar);
+                }
+                const sectionScroll = first.hasAttribute('data-admin-section-scroll') || Boolean(consumerPage);
+
+                const parent = first.parentElement;
+                const margins = window.getComputedStyle(first);
+                const area = document.createElement('div');
+                area.className = 'admin-records-area';
+                area.setAttribute('role', 'region');
+                area.setAttribute('aria-label', 'Admin records and page content');
+                area.tabIndex = 0;
+                ['Top', 'Left', 'Right'].forEach(function (side) {
+                    const value = margins['margin' + side];
+                    first.style.setProperty('--admin-original-' + side.toLowerCase(), value);
+                    if (side === 'Top' && parseFloat(value) < 0) {
+                        first.style.setProperty('--admin-first-top', value);
+                        area.style.marginTop = '0px';
+                    } else {
+                        area.style['margin' + side] = value;
+                    }
+                });
+                area.style.setProperty('--admin-area-original-left', margins.marginLeft);
+                area.style.setProperty('--admin-area-original-right', margins.marginRight);
+                parent.insertBefore(area, first);
+                while (area.nextSibling) area.appendChild(area.nextSibling);
+                [...area.children].filter(element => !element.matches('.modal, script, style')).forEach(function (element) {
+                    const styles = window.getComputedStyle(element);
+                    element.style.setProperty('--admin-item-original-left', styles.marginLeft);
+                    element.style.setProperty('--admin-item-original-right', styles.marginRight);
+                    element.classList.add('admin-area-item');
+                });
+                first.classList.add('admin-area-first');
+
+                for (let ancestor = parent; ancestor && ancestor !== main; ancestor = ancestor.parentElement) {
+                    ancestor.style.setProperty('--admin-path-display', window.getComputedStyle(ancestor).display);
+                    ancestor.classList.add('admin-scroll-path');
+                }
+                main.classList.add('admin-scroll-shell');
+                document.documentElement.classList.add('admin-one-scroll');
+
+                const tableHeadings = [];
+                area.querySelectorAll('table').forEach(function (table) {
+                    if (table.closest('.modal')) return;
+                    table.closest('.panel-card, .billing-card')?.classList.add('admin-records-surface');
+                    if (table.tHead) {
+                        table.tHead.classList.add('admin-table-heading');
+                        if (! (consumerPage && table.closest('#active-disconnection-notices'))) tableHeadings.push(table.tHead);
+                    }
+                    const wrapper = table.parentElement;
+                    const styles = window.getComputedStyle(wrapper);
+                    if (['auto', 'scroll'].includes(styles.overflowX) || ['auto', 'scroll'].includes(styles.overflowY)) {
+                        if (wrapper.scrollHeight > wrapper.clientHeight + 1) wrapper.style.scrollbarGutter = 'stable';
+                        wrapper.classList.add('admin-natural-records', 'admin-table-viewport');
+                        wrapper.style.removeProperty('max-height');
+                        wrapper.style.removeProperty('height');
+                    }
+                });
+                area.querySelectorAll('*').forEach(function (element) {
+                    if (element.matches('textarea, select') || element.closest('.modal, .dropdown-menu')) return;
+                    const styles = window.getComputedStyle(element);
+                    if (['auto', 'scroll'].includes(styles.overflowY) && styles.maxHeight !== 'none') {
+                        element.classList.add('admin-natural-records');
+                    }
+                });
+
+                const frozen = [...area.querySelectorAll('[data-admin-freeze]')];
+                const recordParts = [];
+                const collectRecords = function (element) {
+                    if (element.matches('[data-admin-freeze], .modal, script, style')) return;
+                    if (element.querySelector('[data-admin-freeze], .modal')) {
+                        [...element.children].forEach(collectRecords);
+                    } else {
+                        element.classList.add('admin-record-part');
+                        recordParts.push(element);
+                    }
+                };
+                [...area.children].forEach(collectRecords);
+                frozen.forEach(function (element) {
+                    for (let ancestor = element.parentElement; ancestor && ancestor !== area; ancestor = ancestor.parentElement) {
+                        const styles = window.getComputedStyle(ancestor);
+                        if (['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowY)
+                            || ['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowX)) ancestor.style.overflow = 'visible';
+                    }
+                });
+
+                let frame = null;
+                let paintFrame = null;
+                const paintRecords = function () {
+                    paintFrame = null;
+                    if (main.classList.contains('admin-content-scroll')) return;
+                    const areaTop = area.getBoundingClientRect().top;
+                    if (consumerPage) {
+                        const activeTitle = area.querySelector('#active-accounts > .consumer-section-controls');
+                        const activeFilters = area.querySelector('#account-filters');
+                        if (activeTitle) activeTitle.style.setProperty('--admin-freeze-top', '0px');
+                        if (activeTitle && activeFilters) activeFilters.style.setProperty('--admin-freeze-top', activeTitle.getBoundingClientRect().height + 'px');
+                    }
+                    const primary = frozen.filter(element => element.classList.contains('admin-primary-freeze'));
+                    primary.forEach(element => element.style.setProperty('--admin-extra-shift', '0px'));
+                    const offsets = primary.map(element => Math.max(0,
+                        areaTop + parseFloat(element.style.getPropertyValue('--admin-freeze-top')) - element.getBoundingClientRect().top));
+                    primary.forEach((element, index) => element.style.setProperty('--admin-extra-shift', offsets[index] + 'px'));
+                    const headers = frozen.map(element => ({ element, box: element.getBoundingClientRect(),
+                        margin: parseFloat(window.getComputedStyle(element).marginBottom) || 0 }))
+                        .filter(({ box }) => box.height > 0 && box.bottom > areaTop);
+                    const visibleBottom = headers.filter(({ element, box }) => Math.abs(box.top - areaTop
+                        - parseFloat(element.style.getPropertyValue('--admin-freeze-top'))) < 1)
+                        .reduce((bottom, { box, margin }) => Math.max(bottom, box.bottom - areaTop + margin), 0);
+                    area.style.scrollPaddingTop = visibleBottom + 'px';
+                    tableHeadings.forEach(function (heading) {
+                        const box = heading.getBoundingClientRect();
+                        const oldShift = parseFloat(heading.style.getPropertyValue('--admin-table-header-shift')) || 0;
+                        const naturalTop = box.top - oldShift;
+                        let boundary = Math.max(areaTop, naturalTop);
+                        headers.forEach(function ({ element, box: header, margin }) {
+                            if ((element.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING)
+                                && header.left < box.right - 1 && header.right > box.left + 1) {
+                                boundary = Math.max(boundary, header.bottom + margin);
+                            }
+                        });
+                        const tableBottom = heading.closest('table').getBoundingClientRect().bottom;
+                        const shift = Math.max(0, Math.min(boundary - naturalTop, tableBottom - naturalTop - box.height));
+                        heading.style.setProperty('--admin-table-header-shift', shift + 'px');
+                    });
+                    recordParts.forEach(function (part) {
+                        const box = part.getBoundingClientRect();
+                        let boundary = box.top;
+                        headers.forEach(function ({ element, box: header, margin }) {
+                            if ((element.compareDocumentPosition(part) & Node.DOCUMENT_POSITION_FOLLOWING)
+                                && header.left < box.right - 1 && header.right > box.left + 1) {
+                                boundary = Math.max(boundary, header.bottom + margin);
+                            }
+                        });
+                        const inset = Math.min(box.height, Math.max(0, boundary - box.top));
+                        part.style.clipPath = inset > 0 ? 'inset(' + inset + 'px 0 0)' : '';
+                    });
+                };
+                const layout = function () {
+                    frame = null;
+                    const oldScroll = main.classList.contains('admin-content-scroll') ? content.scrollTop : area.scrollTop;
+                    main.classList.remove('admin-content-scroll');
+                    document.documentElement.classList.remove('admin-fallback-scroll');
+                    content.scrollTop = 0;
+                    area.scrollTop = 0;
+                    area.classList.remove('has-scrolled');
+                    tableHeadings.forEach(heading => heading.style.setProperty('--admin-table-header-shift', '0px'));
+                    frozen.forEach(function (element) {
+                        element.style.setProperty('--admin-extra-shift', '0px');
+                        element.style.setProperty('--admin-freeze-top', '0px');
+                        element.classList.remove('admin-primary-freeze');
+                    });
+                    const areaBox = area.getBoundingClientRect();
+                    let frozenBottom = 0;
+                    const sectionEnds = new Map();
+                    const initialHeaders = frozen.filter(element => element.getBoundingClientRect().bottom <= areaBox.bottom);
+                    initialHeaders.filter(element => !sectionScroll || element.closest('[data-admin-freeze-section]') === first)
+                        .forEach(element => element.classList.add('admin-primary-freeze'));
+                    const sectionInset = parseFloat(window.getComputedStyle(first).paddingTop)
+                        + parseFloat(window.getComputedStyle(first).borderTopWidth);
+                    const sectionTop = frozen.filter(element => element.closest('[data-admin-freeze-section]') === first)
+                        .reduce((bottom, element) => Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), sectionInset);
+                    const globalBottom = initialHeaders
+                        .reduce((bottom, element) => Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), 0);
+                    let consumerFrozenBottom = 0;
+
+                    frozen.forEach(function (element) {
+                        if (!element.getClientRects().length) return;
+                        const section = element.closest('[data-admin-freeze-section]')
+                            || element.closest('.panel-card, .billing-card, .card') || first;
+                        const sectionBox = section.getBoundingClientRect();
+                        const box = element.getBoundingClientRect();
+                        const sectionOffset = sectionBox.top - areaBox.top;
+                        const startsVisible = sectionOffset < area.clientHeight;
+                        const naturalOffset = box.top - areaBox.top;
+                        const activeTitle = consumerPage && area.querySelector('#active-accounts > .consumer-section-controls');
+                        const top = consumerPage && first.hasAttribute('data-admin-section-scroll') && activeTitle && element === activeTitle
+                            ? 0
+                            : consumerPage && first.hasAttribute('data-admin-section-scroll') && element === area.querySelector('#account-filters')
+                                ? activeTitle.getBoundingClientRect().height
+                                : consumerPage && first.hasAttribute('data-admin-section-scroll') ? consumerFrozenBottom : consumerPage ? 0
+                            : sectionScroll && section !== first ? sectionTop + box.top - sectionBox.top
+                                : (startsVisible ? Math.max(0, sectionOffset) : globalBottom) + box.top - sectionBox.top;
+                        element.style.setProperty('--admin-freeze-top', top + 'px');
+                        if (consumerPage) consumerFrozenBottom = top + box.height + (parseFloat(window.getComputedStyle(element).marginBottom) || 0);
+                        if (startsVisible) frozenBottom = Math.max(frozenBottom, top + box.height);
+
+                        let background = element.parentElement;
+                        while (background !== area && window.getComputedStyle(background).backgroundColor === 'rgba(0, 0, 0, 0)') {
+                            background = background.parentElement;
+                        }
+                        if (background === area) background = element;
+                        const backgroundBox = background.getBoundingClientRect();
+                        const backgroundStyles = window.getComputedStyle(background);
+                        const ownStyles = window.getComputedStyle(element);
+                        const firstInSection = !sectionEnds.has(section);
+                        const previousBottom = sectionEnds.get(section) ?? Math.max(backgroundBox.top, sectionBox.top);
+                        sectionEnds.set(section, box.bottom);
+                        element.style.setProperty('--admin-freeze-background', backgroundStyles.backgroundColor === 'rgba(0, 0, 0, 0)' ? 'var(--wb-surface)' : backgroundStyles.backgroundColor);
+                        element.style.setProperty('--admin-freeze-cover-top', Math.max(0, box.top - previousBottom) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-left', Math.max(0, box.left - backgroundBox.left) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-right', Math.max(0, backgroundBox.right - box.right) + 'px');
+                        element.style.setProperty('--admin-freeze-cover-bottom', (parseFloat(ownStyles.marginBottom) || 0) + 'px');
+                        const continuesFrame = firstInSection && background === section;
+                        element.style.setProperty('--admin-freeze-border', continuesFrame ? backgroundStyles.border : '0');
+                        element.style.setProperty('--admin-freeze-radius', continuesFrame ? backgroundStyles.borderTopLeftRadius : '0px');
+                    });
+
+                    const lineHeight = parseFloat(window.getComputedStyle(content).lineHeight) || 24;
+                    if (area.clientHeight - frozenBottom < lineHeight * 2) {
+                        main.classList.add('admin-content-scroll');
+                        document.documentElement.classList.add('admin-fallback-scroll');
+                        content.scrollTop = oldScroll;
+                    } else {
+                        const scrollbar = area.offsetWidth - area.clientWidth;
+                        const originalRight = parseFloat(first.style.getPropertyValue('--admin-original-right')) || 0;
+                        area.style.marginRight = (originalRight - scrollbar) + 'px';
+                        area.scrollTop = oldScroll;
+                        area.classList.toggle('has-scrolled', oldScroll > 0);
+                    }
+                    paintRecords();
+                };
+                const scheduleLayout = function () {
+                    if (frame === null) frame = window.requestAnimationFrame(layout);
+                };
+                area.addEventListener('scroll', function () {
+                    area.classList.toggle('has-scrolled', area.scrollTop > 0);
+                    if (paintFrame === null) paintFrame = window.requestAnimationFrame(paintRecords);
+                }, { passive: true });
+                window.addEventListener('resize', scheduleLayout);
+                document.addEventListener('shown.bs.tab', scheduleLayout);
+                document.addEventListener('shown.bs.collapse', scheduleLayout);
+                document.addEventListener('hidden.bs.collapse', scheduleLayout);
+                document.addEventListener('closed.bs.alert', scheduleLayout);
+                document.addEventListener('toggle', scheduleLayout, true);
+                document.fonts?.ready.then(scheduleLayout);
+                let lastWidth = main.clientWidth;
+                let lastHeight = main.clientHeight;
+                new ResizeObserver(function () {
+                    if (main.clientWidth !== lastWidth || main.clientHeight !== lastHeight) {
+                        lastWidth = main.clientWidth;
+                        lastHeight = main.clientHeight;
+                        scheduleLayout();
+                    }
+                }).observe(main);
+                layout();
+            });
+        </script>
+    </body>
+</html>

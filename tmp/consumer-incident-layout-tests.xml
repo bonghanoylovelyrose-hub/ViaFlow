@@ -1,0 +1,3396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\waterbillingsystems\phpunit.xml" tests="76" assertions="514" errors="0" failures="1" skipped="0" time="11.353698">
+    <testsuite name="Unit" tests="48" assertions="144" errors="0" failures="0" skipped="0" time="0.034396">
+      <testsuite name="Tests\Unit\IncidentClassificationServiceTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" tests="48" assertions="144" errors="0" failures="0" skipped="0" time="0.034396">
+        <testsuite name="Tests\Unit\IncidentClassificationServiceTest::test_classification_uses_severity_evidence" tests="48" assertions="144" errors="0" failures="0" skipped="0" time="0.034396">
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;minor leak&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.022385"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;significant leak&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000316"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;several households&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000212"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;burst water main&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000210"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;negated burst&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000196"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;isolated interruption&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000636"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;shared interruption&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000273"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;unaffected neighbours&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000177"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;widespread interruption with no danger&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000246"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;widespread water emergency&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000212"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;hazard with no reported scope&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000231"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;minor discoloration&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.001084"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;odor&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000192"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;unusual odor with negated discoloration&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000218"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;contamination&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000147"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;unsafe drinking water&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000133"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;negated hazards list&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000221"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;routine meter issue&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000665"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;meter interruption&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000216"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;meter safety hazard&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000146"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;meter history fixed&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000213"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;other type supplies severity&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000741"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;other description negates type&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000290"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;other insufficient detail&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000403"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;category alone insufficient&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000182"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano faucet drip&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000153"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino significant leak&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000201"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;mixed Cebuano major burst&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000149"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano negated burst&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000190"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano isolated outage&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000179"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino shared outage&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000187"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano widespread outage without danger&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000164"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino widespread dangerous outage&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000229"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano outage without details&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000228"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano very dirty water&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000171"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano dirty water without severity&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000298"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino mild appearance with negation&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000216"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino unsafe drinking water&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000258"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino illness after drinking&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000168"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;unrelated illness&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000146"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Cebuano meter reading&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000165"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino meter interruption&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000162"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino meter hazard&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000133"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Filipino repaired leak&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000153"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Others with local type and reported severity&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000198"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Others with severity in local type&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000239"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Others with local type contradicted by description&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000250"/>
+          <testcase name="test_classification_uses_severity_evidence with data set &quot;Others without enough detail&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Unit\IncidentClassificationServiceTest.php" line="12" class="Tests\Unit\IncidentClassificationServiceTest" classname="Tests.Unit.IncidentClassificationServiceTest" assertions="3" time="0.000210"/>
+        </testsuite>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="28" assertions="370" errors="0" failures="1" skipped="0" time="11.319302">
+      <testsuite name="Tests\Feature\AutoFilterUiTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\AutoFilterUiTest.php" tests="3" assertions="23" errors="0" failures="1" skipped="0" time="1.313582">
+        <testcase name="test_admin_filter_pages_auto_submit_without_visible_apply_buttons" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\AutoFilterUiTest.php" line="14" class="Tests\Feature\AutoFilterUiTest" classname="Tests.Feature.AutoFilterUiTest" assertions="3" time="1.074446">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\AutoFilterUiTest::test_admin_filter_pages_auto_submit_without_visible_apply_buttons&#13;
+Failed asserting that '&lt;!DOCTYPE html&gt;\n
+&lt;html lang="en"&gt;\n
+&lt;head&gt;\n
+    &lt;meta charset="UTF-8"&gt;\n
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;\n
+    &lt;title&gt;Dashboard&lt;/title&gt;\n
+    &lt;link rel="icon" type="image/png" sizes="64x64" href="http://127.0.0.1:8000/images/vvthoa-favicon.png"&gt;\n
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;\n
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;\n
+    &lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;\n
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;\n
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"&gt;\n
+    &lt;style&gt;\n
+        :root { --vf-navy: #062B80; --vf-royal: #0754C8; --vf-bright: #168DFF; --vf-light: #D8EDFF; --vf-background: #F0F8FF; --vf-white: #FFFFFF; --vf-green: #32A51F; }\n
+        :root {\n
+            --wb-primary: var(--vf-royal);\n
+            --wb-text: var(--vf-navy);\n
+            --wb-heading: var(--vf-navy);\n
+            --wb-surface: #ffffff;\n
+            --wb-primary-dark: var(--wb-primary);\n
+            --wb-accent: var(--wb-primary);\n
+            --wb-bg: var(--wb-surface);\n
+            --wb-muted: var(--vf-navy);\n
+            --wb-border: color-mix(in srgb, var(--wb-primary) 18%, var(--wb-surface));\n
+            --wb-danger: var(--wb-primary);\n
+            --wb-warning: var(--wb-primary);\n
+            --wb-success: var(--wb-primary);\n
+            --wb-info: var(--wb-primary);\n
+            --sidebar-width: 244px;\n
+            --sidebar-rail-width: 76px;\n
+        }\n
+\n
+        html {\n
+            scrollbar-gutter: stable;\n
+        }\n
+\n
+        body {\n
+            font-family: "Plus Jakarta Sans", sans-serif;\n
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));\n
+            color: var(--wb-text);\n
+            overflow-y: scroll;\n
+            overflow-x: hidden;\n
+        }\n
+\n
+        .auth-wrapper { min-height: 100vh; }\n
+        .auth-card, .dashboard-card, .panel-card, .announcement-card {\n
+            background: var(--wb-surface);\n
+            border: 1px solid var(--wb-border);\n
+            border-radius: 1rem;\n
+            box-shadow: none;\n
+        }\n
+\n
+        .app-shell {\n
+            min-height: 100vh;\n
+            overflow-x: clip;\n
+        }\n
+\n
+        .sidebar {\n
+            position: fixed;\n
+            top: 0;\n
+            left: 0;\n
+            z-index: 1035;\n
+            width: var(--sidebar-width);\n
+            max-width: var(--sidebar-width);\n
+            height: 100vh;\n
+            min-height: 100vh;\n
+            overflow-y: auto;\n
+            overflow-x: hidden;\n
+            background: var(--wb-primary);\n
+            color: var(--wb-surface);\n
+            transform: translateX(0);\n
+            box-shadow: 3px 0 18px rgba(6, 43, 128, 0.12);\n
+            transition: width 280ms ease-in-out, max-width 280ms ease-in-out, transform 280ms ease-in-out;\n
+        }\n
+\n
+        .sidebar-brand {\n
+            min-width: 0;\n
+            max-width: 100%;\n
+            gap: 0.65rem !important;\n
+            color: var(--wb-surface);\n
+            text-decoration: none;\n
+        }\n
+        .sidebar-brand .organization-logo { width: 2.75rem; height: 2.75rem; flex: 0 0 auto; }\n
+        .sidebar-brand &gt; span {\n
+            flex: 1 1 0%;\n
+            min-width: 0;\n
+            max-width: 100%;\n
+            white-space: normal;\n
+            overflow-wrap: break-word;\n
+            opacity: 1;\n
+            transition: opacity 280ms ease-in-out, max-width 280ms ease-in-out;\n
+        }\n
+        .sidebar-brand &gt; span &gt; span { display: block; white-space: normal; overflow-wrap: break-word; }\n
+        .sidebar .nav-link {\n
+            color: var(--wb-surface);\n
+            border-radius: 0.8rem;\n
+            padding: 0.68rem 0.8rem;\n
+            display: flex;\n
+            align-items: center;\n
+            gap: 0.6rem;\n
+            font-weight: 600;\n
+            transition: all 0.2s ease;\n
+        }\n
+\n
+        .sidebar .nav-link:hover,\n
+        .sidebar .nav-link.active {\n
+            color: var(--wb-surface);\n
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));\n
+            transform: none;\n
+        }\n
+\n
+        .sidebar .feature-icon,\n
+        .sidebar .nav-link i {\n
+            background: transparent !important;\n
+            border: 0 !important;\n
+            box-shadow: none !important;\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .sidebar .small,\n
+        .sidebar .opacity-75 {\n
+            color: var(--wb-surface) !important;\n
+            opacity: 1 !important;\n
+        }\n
+\n
+        .sidebar-nav-row {\n
+            display: flex;\n
+            align-items: center;\n
+            border-radius: 0.8rem;\n
+            transition: background 0.2s ease, transform 0.2s ease;\n
+        }\n
+\n
+        .sidebar-nav-row &gt; .nav-link {\n
+            flex: 1 1 auto;\n
+            min-width: 0;\n
+        }\n
+\n
+        .sidebar-nav-row:hover,\n
+        .sidebar-nav-row.active {\n
+            background: color-mix(in srgb, var(--wb-surface) 14%, var(--wb-primary));\n
+            transform: none;\n
+        }\n
+\n
+        .sidebar-nav-row &gt; .nav-link:hover,\n
+        .sidebar-nav-row &gt; .nav-link.active {\n
+            background: transparent;\n
+            transform: none;\n
+        }\n
+\n
+        .sidebar-submenu-toggle {\n
+            display: inline-flex;\n
+            align-items: center;\n
+            justify-content: center;\n
+            border: 0;\n
+            border-radius: 0.65rem;\n
+            background: transparent;\n
+            color: var(--wb-surface);\n
+            padding: 0.55rem 0.7rem;\n
+        }\n
+\n
+        .sidebar-submenu-toggle:hover,\n
+        .sidebar-submenu-toggle:focus-visible {\n
+            background: color-mix(in srgb, var(--wb-surface) 12%, transparent);\n
+        }\n
+\n
+        .sidebar-submenu-toggle:focus-visible {\n
+            outline: 2px solid var(--wb-surface);\n
+            outline-offset: 2px;\n
+        }\n
+\n
+        .sidebar-submenu-toggle .bi {\n
+            transition: transform 0.2s ease;\n
+        }\n
+\n
+        .sidebar-submenu-toggle[aria-expanded="true"] .bi {\n
+            transform: rotate(180deg);\n
+        }\n
+\n
+        .sidebar-nav-toggle {\n
+            display: inline-flex;\n
+            align-items: center;\n
+            justify-content: center;\n
+            flex: 0 0 auto;\n
+            width: 2.25rem;\n
+            height: 2.25rem;\n
+            padding: 0;\n
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, transparent);\n
+            border-radius: 0.65rem;\n
+            background: color-mix(in srgb, var(--wb-surface) 8%, transparent);\n
+            color: var(--wb-surface);\n
+            transition: background-color 280ms ease-in-out, border-color 280ms ease-in-out, box-shadow 280ms ease-in-out, transform 280ms ease-in-out;\n
+        }\n
+\n
+        .sidebar-nav-toggle:hover,\n
+        .sidebar-nav-toggle:focus-visible {\n
+            background: color-mix(in srgb, var(--wb-surface) 16%, transparent);\n
+            border-color: color-mix(in srgb, var(--wb-surface) 38%, transparent);\n
+            box-shadow: 0 0 12px rgba(22, 141, 255, 0.5);\n
+            transform: scale(1.05);\n
+        }\n
+\n
+        .sidebar-nav-toggle:focus-visible {\n
+            outline: 2px solid var(--wb-surface);\n
+            outline-offset: 2px;\n
+        }\n
+\n
+        .sidebar-nav-toggle .bi {\n
+            font-size: 0.9rem;\n
+            transition: transform 280ms ease-in-out;\n
+        }\n
+\n
+        .sidebar-backdrop {\n
+            position: fixed;\n
+            inset: 0;\n
+            z-index: 1030;\n
+            background: rgba(6, 43, 128, 0.42);\n
+            backdrop-filter: blur(3px);\n
+            opacity: 0;\n
+            visibility: hidden;\n
+            pointer-events: none;\n
+            transition: opacity 0.3s ease, visibility 0.3s ease;\n
+        }\n
+\n
+        .sidebar :is(.nav, .nav-item, .sidebar-nav-row, .sidebar .collapse, .sidebar .collapsing) {\n
+            min-width: 0;\n
+            max-width: 100%;\n
+            box-sizing: border-box;\n
+        }\n
+\n
+        .sidebar .collapsing {\n
+            transition: height 250ms ease-in-out;\n
+        }\n
+\n
+        .sidebar .sidebar-subnav {\n
+            min-width: 0;\n
+            max-width: calc(100% - 2.35rem);\n
+            box-sizing: border-box;\n
+            gap: 0.15rem;\n
+            margin: 0.3rem 0 0 2.35rem;\n
+            padding-left: 0.65rem;\n
+            border-left: 1px solid color-mix(in srgb, var(--wb-surface) 22%, transparent);\n
+        }\n
+\n
+        .sidebar-subnav .nav-link {\n
+            color: color-mix(in srgb, var(--wb-surface) 72%, var(--wb-primary));\n
+            font-size: 0.88rem;\n
+            font-weight: 500;\n
+            padding: 0.45rem 0.65rem;\n
+            min-width: 0;\n
+            max-width: 100%;\n
+            box-sizing: border-box;\n
+            white-space: normal;\n
+            overflow-wrap: break-word;\n
+        }\n
+\n
+        .sidebar .sidebar-subnav .nav-link &gt; span:not(.badge) {\n
+            min-width: 0;\n
+            max-width: 100%;\n
+            white-space: normal;\n
+            overflow-wrap: break-word;\n
+        }\n
+\n
+        .sidebar-subnav .badge { flex: 0 0 auto; }\n
+\n
+        .sidebar-subnav .nav-link:hover,\n
+        .sidebar-subnav .nav-link.active {\n
+            color: var(--wb-surface);\n
+            background: color-mix(in srgb, var(--wb-surface) 18%, var(--wb-primary));\n
+            transform: none;\n
+        }\n
+\n
+        .sidebar-footer {\n
+            background: color-mix(in srgb, var(--wb-surface) 10%, var(--wb-primary));\n
+            border-radius: 0.9rem;\n
+        }\n
+\n
+        .main-content {\n
+            flex: 1 1 0%;\n
+            min-width: 0;\n
+            margin-left: var(--sidebar-width);\n
+            transition: margin-left 280ms ease-in-out;\n
+        }\n
+\n
+        @media (min-width: 992px) {\n
+            .app-shell.sidebar-collapsed .sidebar { width: var(--sidebar-rail-width); max-width: var(--sidebar-rail-width); }\n
+            .app-shell.sidebar-collapsed .main-content { margin-left: var(--sidebar-rail-width); }\n
+            .sidebar .nav-link &gt; span, .sidebar-nav-heading {\n
+                white-space: nowrap; overflow: hidden; max-width: 220px; opacity: 1;\n
+                transition: opacity 280ms ease-in-out, max-width 280ms ease-in-out;\n
+            }\n
+            .app-shell.sidebar-collapsed :is(.sidebar .nav-link &gt; span, .sidebar-brand &gt; span, .sidebar-nav-heading) { opacity: 0; max-width: 0; }\n
+            .app-shell.sidebar-collapsed .sidebar-nav-heading { opacity: 0 !important; }\n
+            .app-shell.sidebar-collapsed .sidebar-brand { justify-content: center; gap: 0 !important; }\n
+            .app-shell.sidebar-collapsed .sidebar-brand &gt; span { max-height: 0; overflow: hidden; }\n
+            .app-shell.sidebar-collapsed .sidebar-brand .organization-logo { width: 2.5rem; height: 2.5rem; }\n
+            .app-shell.sidebar-collapsed .sidebar-nav-header { justify-content: center !important; gap: 0 !important; }\n
+            .app-shell.sidebar-collapsed .sidebar-nav-toggle .bi { transform: rotate(180deg); }\n
+            .app-shell.sidebar-collapsed .sidebar .nav-link { justify-content: center; gap: 0; padding-left: 0; padding-right: 0; }\n
+            .app-shell.sidebar-collapsed .sidebar-nav-row &gt; .nav-link { min-width: 0; }\n
+            .app-shell.sidebar-collapsed .sidebar-submenu-toggle { flex: 0 0 1.35rem; padding: 0.55rem 0; }\n
+            .app-shell.sidebar-collapsed :is(.sidebar-subnav, .sidebar .collapse) { display: none !important; }\n
+        }\n
+        .topbar {\n
+            background: var(--wb-surface);\n
+            border-bottom: 1px solid var(--wb-border);\n
+        }\n
+\n
+        .topbar .container-fluid {\n
+            gap: 0.75rem;\n
+            min-width: 0;\n
+        }\n
+\n
+        .content-wrapper { padding: 1.5rem; }\n
+        .page-heading {\n
+            display: flex;\n
+            justify-content: space-between;\n
+            align-items: start;\n
+            gap: 1rem;\n
+            margin-bottom: 1.5rem;\n
+        }\n
+\n
+        .page-heading h1 {\n
+            font-size: 1.85rem;\n
+            font-weight: 800;\n
+            margin-bottom: 0.35rem;\n
+        }\n
+\n
+        .page-heading p { color: var(--wb-muted); margin-bottom: 0; }\n
+        .metric-icon, .feature-icon {\n
+            width: 3rem;\n
+            height: 3rem;\n
+            border-radius: 1rem;\n
+            display: inline-flex;\n
+            align-items: center;\n
+            justify-content: center;\n
+            font-size: 1.25rem;\n
+        }\n
+\n
+        .metric-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }\n
+        .feature-icon { background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)); color: var(--wb-primary); }\n
+        .section-title { font-size: 1rem; font-weight: 800; margin-bottom: 1rem; }\n
+        .table thead th {\n
+            color: var(--wb-muted);\n
+            font-size: 0.82rem;\n
+            text-transform: uppercase;\n
+            letter-spacing: 0;\n
+            border-bottom-width: 1px;\n
+        }\n
+\n
+        .table td, .table th { vertical-align: middle; }\n
+        .table-responsive {\n
+            width: 100%;\n
+            overflow-x: auto;\n
+            -webkit-overflow-scrolling: touch;\n
+        }\n
+\n
+        img,\n
+        svg,\n
+        canvas,\n
+        iframe {\n
+            max-width: 100%;\n
+        }\n
+\n
+        .row &gt; * {\n
+            min-width: 0;\n
+        }\n
+\n
+        .panel-card,\n
+        .dashboard-card,\n
+        .announcement-card,\n
+        .modal-content,\n
+        .card {\n
+            min-width: 0;\n
+        }\n
+        .badge-soft-primary,\n
+        .badge-soft-success,\n
+        .badge-soft-warning,\n
+        .badge-soft-danger,\n
+        .badge-soft-info {\n
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface));\n
+            border: 1px solid color-mix(in srgb, var(--wb-primary) 20%, var(--wb-surface));\n
+            color: var(--wb-primary);\n
+            font-weight: 800;\n
+        }\n
+\n
+        .chart-bars { display: flex; align-items: end; gap: 0.75rem; height: 220px; }\n
+        .chart-bar {\n
+            flex: 1;\n
+            border-radius: 1rem 1rem 0.45rem 0.45rem;\n
+            background: var(--wb-primary);\n
+            position: relative;\n
+        }\n
+\n
+        .chart-label {\n
+            display: block;\n
+            margin-top: 0.65rem;\n
+            text-align: center;\n
+            color: var(--wb-muted);\n
+            font-size: 0.85rem;\n
+            font-weight: 600;\n
+        }\n
+\n
+        .status-dot {\n
+            width: 0.65rem;\n
+            height: 0.65rem;\n
+            border-radius: 50%;\n
+            display: inline-block;\n
+        }\n
+\n
+        .timeline-item {\n
+            display: flex;\n
+            gap: 0.9rem;\n
+            padding-bottom: 1rem;\n
+            margin-bottom: 1rem;\n
+            border-bottom: 1px dashed var(--wb-border);\n
+        }\n
+\n
+        .timeline-item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }\n
+        .danger-strip { border-left: 4px solid var(--wb-primary); }\n
+        .avatar-badge {\n
+            width: 2.2rem;\n
+            height: 2.2rem;\n
+        }\n
+\n
+        .chart-62 { height: 62%; }\n
+        .chart-68 { height: 68%; }\n
+        .chart-74 { height: 74%; }\n
+        .chart-84 { height: 84%; }\n
+        .chart-88 { height: 88%; }\n
+        .chart-95 { height: 95%; }\n
+\n
+        .notification-menu {\n
+            width: 340px;\n
+            max-width: min(340px, calc(100vw - 2rem));\n
+        }\n
+\n
+        .notification-item,\n
+        .notification-item-body,\n
+        .notification-item-title,\n
+        .notification-item-message {\n
+            min-width: 0;\n
+            max-width: 100%;\n
+        }\n
+\n
+        .notification-item-title,\n
+        .notification-item-message {\n
+            white-space: normal;\n
+            overflow-wrap: anywhere;\n
+            word-break: break-word;\n
+        }\n
+\n
+        .rag-indicator { white-space: nowrap; }\n
+        .rag-dot { width: 0.65rem; height: 0.65rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }\n
+        .rag-dot-sm { width: 0.45rem; height: 0.45rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }\n
+        .rag-dot-lg { width: 0.85rem; height: 0.85rem; border-radius: 50%; display: inline-block; flex-shrink: 0; }\n
+        .rag-green { background: var(--vf-green); }\n
+        .rag-amber { background: #f59e0b; }\n
+        .rag-red { background: #ef4444; }\n
+        .rag-orange { background: #f97316; }\n
+        .rag-yellow { background: #eab308; }\n
+        .rag-blue { background: var(--vf-bright); }\n
+        .rag-green-text { color: var(--vf-green); font-weight: 700; }\n
+        .rag-amber-text { color: #d97706; font-weight: 700; }\n
+        .rag-red-text { color: #dc2626; font-weight: 700; }\n
+        .rag-orange-text { color: #ea580c; font-weight: 700; }\n
+        .rag-yellow-text { color: #ca8a04; font-weight: 700; }\n
+        .rag-blue-text { color: var(--vf-bright); font-weight: 700; }\n
+\n
+        @media (max-width: 991.98px) {\n
+            .app-shell {\n
+                display: block !important;\n
+            }\n
+\n
+            .sidebar {\n
+                width: min(85vw, var(--sidebar-width));\n
+                max-width: min(85vw, var(--sidebar-width));\n
+                min-height: 100vh;\n
+                transform: translateX(-100%);\n
+            }\n
+\n
+            .app-shell.sidebar-collapsed .sidebar {\n
+                transform: translateX(-100%);\n
+            }\n
+\n
+            .app-shell.sidebar-mobile-open .sidebar {\n
+                transform: translateX(0);\n
+            }\n
+\n
+            .main-content,\n
+            .app-shell.sidebar-collapsed .main-content {\n
+                margin-left: 0;\n
+            }\n
+\n
+            .app-shell.sidebar-mobile-open .sidebar-backdrop {\n
+                opacity: 1;\n
+                visibility: visible;\n
+                pointer-events: auto;\n
+            }\n
+\n
+            .content-wrapper { padding: 1rem; }\n
+            .page-heading {\n
+                flex-direction: column;\n
+                align-items: stretch;\n
+            }\n
+\n
+            .page-heading &gt; * {\n
+                max-width: 100%;\n
+            }\n
+\n
+            .topbar .container-fluid {\n
+                flex-wrap: wrap;\n
+            }\n
+        }\n
+\n
+        @media (prefers-reduced-motion: reduce) {\n
+            .sidebar,\n
+            .main-content,\n
+            .sidebar-backdrop,\n
+            .sidebar-nav-toggle,\n
+            .sidebar-nav-toggle .bi,\n
+            .sidebar .nav-link &gt; span,\n
+            .sidebar-brand &gt; span,\n
+            .sidebar-nav-heading,\n
+            .sidebar .collapsing {\n
+                transition: none !important;\n
+                animation: none !important;\n
+            }\n
+        }\n
+        .status-filter-display { position: relative; }\n
+        .status-filter-display .status-filter-value { position: absolute; left: .75rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: #495057; white-space: nowrap; max-width: calc(100% - 6rem); overflow: hidden; text-overflow: ellipsis; }\n
+&lt;/style&gt;\n
+    &lt;style&gt;\n
+        :root {\n
+            --bs-primary: var(--wb-primary);\n
+            --bs-secondary: var(--wb-text);\n
+            --bs-success: var(--wb-primary);\n
+            --bs-info: var(--wb-primary);\n
+            --bs-warning: var(--wb-primary);\n
+            --bs-danger: var(--wb-primary);\n
+            --bs-light: var(--wb-surface);\n
+            --bs-dark: var(--wb-text);\n
+            --bs-body-color: var(--wb-text);\n
+            --bs-body-bg: var(--wb-surface);\n
+            --bs-border-color: var(--wb-border);\n
+            --bs-link-color: var(--wb-primary);\n
+            --bs-link-hover-color: var(--wb-primary);\n
+        }\n
+\n
+        body,\n
+        .main-content,\n
+        .content-wrapper {\n
+            color: var(--wb-text);\n
+        }\n
+\n
+        body * {\n
+            letter-spacing: 0;\n
+        }\n
+\n
+        .page-heading {\n
+            align-items: end;\n
+        }\n
+\n
+        .page-heading h1 {\n
+            color: var(--wb-text);\n
+            font-size: 1.85rem;\n
+            line-height: 1.15;\n
+        }\n
+\n
+        .page-heading p,\n
+        .text-secondary,\n
+        .text-muted,\n
+        .form-text,\n
+        .small.text-secondary {\n
+            color: var(--wb-muted) !important;\n
+        }\n
+\n
+        .panel-card,\n
+        .dashboard-card,\n
+        .auth-card,\n
+        .announcement-card,\n
+        .modal-content,\n
+        .card,\n
+        [class*="summary-card"],\n
+        [class*="stat-card"],\n
+        [class*="focus-card"],\n
+        [class*="preview-card"],\n
+        [class*="qr-card"],\n
+        [class*="table-card"],\n
+        [class*="filter-card"],\n
+        [class*="indicator"],\n
+        [class*="open-item"],\n
+        [class*="history-item"],\n
+        .role-register-section,\n
+        [class*="role-card"] {\n
+            background: var(--wb-surface) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            border-radius: 1rem !important;\n
+            box-shadow: none !important;\n
+            color: var(--wb-text);\n
+        }\n
+\n
+        [class*="dropzone"],\n
+        [class*="upload"],\n
+        [class*="empty-state"],\n
+        [class*="workspace"],\n
+        [class*="summary-row"],\n
+        [class*="toolbar"],\n
+        [class*="topline"],\n
+        [class*="meter-phone-frame"],\n
+        [class*="receipt-phone-frame"],\n
+        [class*="org-qr-box"],\n
+        [class*="password-indicator"],\n
+        [class*="chart"] {\n
+            border-color: var(--wb-border) !important;\n
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;\n
+            color: var(--wb-text) !important;\n
+            box-shadow: none !important;\n
+        }\n
+\n
+        [class*="icon"],\n
+        [class*="avatar"],\n
+        .status-dot {\n
+            background: color-mix(in srgb, var(--wb-primary) 10%, var(--wb-surface)) !important;\n
+            color: var(--wb-primary) !important;\n
+            border-color: var(--wb-border) !important;\n
+        }\n
+\n
+        .btn,\n
+        button.btn,\n
+        a.btn {\n
+            min-height: 2.6rem;\n
+            border-radius: 0.8rem !important;\n
+            font-weight: 800;\n
+            display: inline-flex;\n
+            align-items: center;\n
+            justify-content: center;\n
+            gap: 0.45rem;\n
+        }\n
+\n
+        .btn-sm {\n
+            min-height: 2.25rem;\n
+            border-radius: 0.7rem !important;\n
+        }\n
+\n
+        .btn-primary,\n
+        .btn-success,\n
+        .btn-danger,\n
+        .btn-warning,\n
+        .btn-info {\n
+            background: var(--wb-primary) !important;\n
+            border-color: var(--wb-primary) !important;\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .btn-outline-primary,\n
+        .btn-outline-secondary,\n
+        .btn-outline-success,\n
+        .btn-outline-danger,\n
+        .btn-outline-warning,\n
+        .btn-outline-info,\n
+        .btn-light,\n
+        .btn-close,\n
+        .minimal-link {\n
+            border-color: var(--wb-border) !important;\n
+            color: var(--wb-primary) !important;\n
+        }\n
+\n
+        .btn-outline-primary,\n
+        .btn-outline-secondary,\n
+        .btn-outline-success,\n
+        .btn-outline-danger,\n
+        .btn-outline-warning,\n
+        .btn-outline-info,\n
+        .btn-light {\n
+            background: var(--wb-surface) !important;\n
+        }\n
+\n
+        .btn:hover,\n
+        .minimal-link:hover {\n
+            filter: none;\n
+            opacity: 1;\n
+        }\n
+\n
+        .form-control,\n
+        .form-select,\n
+        .input-group-text,\n
+        textarea {\n
+            min-height: 2.7rem;\n
+            border-color: var(--wb-border) !important;\n
+            border-radius: 0.8rem !important;\n
+            color: var(--wb-text) !important;\n
+            background-color: var(--wb-surface) !important;\n
+            font-weight: 600;\n
+        }\n
+\n
+        .input-group .form-control,\n
+        .input-group .form-select,\n
+        .input-group .input-group-text {\n
+            border-radius: 0.8rem !important;\n
+        }\n
+\n
+        .form-control:focus,\n
+        .form-select:focus,\n
+        textarea:focus {\n
+            border-color: var(--wb-primary) !important;\n
+            box-shadow: none !important;\n
+        }\n
+\n
+        .alert,\n
+        .alert-success,\n
+        .alert-danger,\n
+        .alert-warning,\n
+        .alert-info {\n
+            background: var(--wb-surface) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            border-radius: 0.9rem !important;\n
+            color: var(--wb-text) !important;\n
+            font-weight: 700;\n
+        }\n
+\n
+        .alert-success {\n
+            background: color-mix(in srgb, var(--vf-green) 11%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, var(--vf-green) 34%, var(--wb-surface)) !important;\n
+            color: var(--vf-green) !important;\n
+        }\n
+\n
+        .alert-success i {\n
+            color: var(--vf-green) !important;\n
+        }\n
+\n
+        .alert-danger {\n
+            background: color-mix(in srgb, #ef4444 10%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;\n
+            color: #991b1b !important;\n
+        }\n
+\n
+        .alert-danger i {\n
+            color: #dc2626 !important;\n
+        }\n
+\n
+        .badge,\n
+        .badge-soft-primary,\n
+        .badge-soft-success,\n
+        .badge-soft-warning,\n
+        .badge-soft-danger,\n
+        .badge-soft-info {\n
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            color: var(--wb-primary) !important;\n
+            border-radius: 999px;\n
+            font-weight: 800;\n
+        }\n
+\n
+        .badge-soft-success {\n
+            background: color-mix(in srgb, var(--vf-green) 12%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, var(--vf-green) 32%, var(--wb-surface)) !important;\n
+            color: var(--vf-green) !important;\n
+        }\n
+\n
+        .badge-soft-warning {\n
+            background: color-mix(in srgb, #f59e0b 14%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, #f59e0b 36%, var(--wb-surface)) !important;\n
+            color: #b45309 !important;\n
+        }\n
+\n
+        .badge-soft-danger {\n
+            background: color-mix(in srgb, #ef4444 12%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, #ef4444 34%, var(--wb-surface)) !important;\n
+            color: #dc2626 !important;\n
+        }\n
+\n
+        .badge-soft-info {\n
+            background: color-mix(in srgb, var(--vf-bright) 12%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, var(--vf-bright) 32%, var(--wb-surface)) !important;\n
+            color: var(--vf-bright) !important;\n
+        }\n
+\n
+        .badge-soft-neutral {\n
+            background: color-mix(in srgb, var(--vf-navy) 12%, var(--wb-surface)) !important;\n
+            border-color: color-mix(in srgb, var(--vf-navy) 32%, var(--wb-surface)) !important;\n
+            color: var(--vf-navy) !important;\n
+            border-radius: 999px;\n
+            font-weight: 800;\n
+        }\n
+\n
+        .consumer-service-status {\n
+            display: inline-flex;\n
+            flex-direction: column;\n
+            align-items: flex-start;\n
+            gap: 0.28rem;\n
+            line-height: 1.1;\n
+            vertical-align: middle;\n
+        }\n
+\n
+        .consumer-status-badge {\n
+            display: inline-flex;\n
+            align-items: center;\n
+            gap: 0.35rem;\n
+            line-height: 1;\n
+            white-space: nowrap;\n
+            vertical-align: middle;\n
+        }\n
+\n
+        .consumer-status-badge i {\n
+            font-size: 0.95em;\n
+            line-height: 1;\n
+        }\n
+\n
+        .consumer-status-sub {\n
+            display: inline-block;\n
+            padding-left: 0.1rem;\n
+            color: var(--wb-muted);\n
+            font-size: 0.78rem;\n
+            font-weight: 700;\n
+            line-height: 1.2;\n
+        }\n
+\n
+        .consumer-status-sub-success {\n
+            color: var(--vf-green);\n
+        }\n
+\n
+        .consumer-status-sub-neutral {\n
+            color: var(--vf-navy);\n
+        }\n
+\n
+        .consumer-status-sub-warning {\n
+            color: #b45309;\n
+        }\n
+\n
+        .consumer-status-sub-danger {\n
+            color: #b91c1c;\n
+        }\n
+\n
+        .status-badge {\n
+            display: inline-flex;\n
+            align-items: center;\n
+            gap: 0.4rem;\n
+            line-height: 1;\n
+        }\n
+\n
+        .status-badge::before {\n
+            content: "";\n
+            width: 0.48rem;\n
+            height: 0.48rem;\n
+            border-radius: 50%;\n
+            background: currentColor;\n
+            flex: 0 0 auto;\n
+        }\n
+\n
+        .table {\n
+            color: var(--wb-text);\n
+        }\n
+\n
+        .table thead th {\n
+            background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface)) !important;\n
+            border-color: var(--wb-border) !important;\n
+            color: var(--wb-muted) !important;\n
+            font-weight: 800;\n
+        }\n
+\n
+        .table tbody td,\n
+        .table tbody th {\n
+            border-color: var(--wb-border) !important;\n
+        }\n
+\n
+        .text-danger,\n
+        .text-warning,\n
+        .text-warning-emphasis,\n
+        .text-success,\n
+        .text-info,\n
+        .text-primary {\n
+            color: var(--wb-primary) !important;\n
+        }\n
+\n
+        .bg-white,\n
+        .bg-light,\n
+        .dropdown-menu,\n
+        .list-group-item {\n
+            background-color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .bg-primary,\n
+        .bg-secondary,\n
+        .bg-success,\n
+        .bg-danger,\n
+        .bg-warning,\n
+        .bg-info,\n
+        .bg-dark,\n
+        .bg-body-tertiary {\n
+            background-color: var(--wb-primary) !important;\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .table-primary,\n
+        .table-secondary,\n
+        .table-success,\n
+        .table-danger,\n
+        .table-warning,\n
+        .table-info,\n
+        .table-light {\n
+            --bs-table-bg: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));\n
+            --bs-table-color: var(--wb-text);\n
+            --bs-table-border-color: var(--wb-border);\n
+        }\n
+\n
+        .progress,\n
+        .progress-stacked {\n
+            background: color-mix(in srgb, var(--wb-primary) 8%, var(--wb-surface)) !important;\n
+        }\n
+\n
+        .progress-bar,\n
+        .password-indicator-fill,\n
+        .password-indicator-fill.is-fair,\n
+        .password-indicator-fill.is-good,\n
+        .password-indicator-fill.is-strong {\n
+            background: var(--wb-primary) !important;\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .link-primary,\n
+        .link-secondary,\n
+        .link-success,\n
+        .link-danger,\n
+        .link-warning,\n
+        .link-info,\n
+        a {\n
+            color: var(--wb-primary);\n
+        }\n
+\n
+        .border-primary,\n
+        .border-secondary,\n
+        .border-success,\n
+        .border-danger,\n
+        .border-warning,\n
+        .border-info {\n
+            border-color: var(--wb-border) !important;\n
+        }\n
+\n
+        .btn,\n
+        .badge,\n
+        .alert,\n
+        .form-control,\n
+        .form-select,\n
+        .input-group-text,\n
+        .modal-content,\n
+        .dropdown-menu,\n
+        .list-group-item,\n
+        .table,\n
+        .card,\n
+        .panel-card,\n
+        .dashboard-card,\n
+        .auth-card,\n
+        .announcement-card {\n
+            --bs-primary-rgb: 15, 110, 140;\n
+            --bs-secondary-rgb: 31, 42, 55;\n
+            --bs-success-rgb: 15, 110, 140;\n
+            --bs-info-rgb: 15, 110, 140;\n
+            --bs-warning-rgb: 15, 110, 140;\n
+            --bs-danger-rgb: 15, 110, 140;\n
+            --bs-light-rgb: 255, 255, 255;\n
+            --bs-dark-rgb: 31, 42, 55;\n
+        }\n
+\n
+        .border,\n
+        .border-top,\n
+        .border-bottom,\n
+        .border-start,\n
+        .border-end {\n
+            border-color: var(--wb-border) !important;\n
+        }\n
+\n
+        .modal-header,\n
+        .modal-footer {\n
+            border-color: var(--wb-border) !important;\n
+        }\n
+\n
+        .pagination {\n
+            gap: 0.3rem;\n
+        }\n
+\n
+        .page-link {\n
+            border-color: var(--wb-border) !important;\n
+            color: var(--wb-primary) !important;\n
+            border-radius: 0.7rem !important;\n
+            font-weight: 800;\n
+        }\n
+\n
+        .active &gt; .page-link,\n
+        .page-link.active {\n
+            background: var(--wb-primary) !important;\n
+            border-color: var(--wb-primary) !important;\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .role-select-page,\n
+        .role-register-page,\n
+        .register-step-page,\n
+        .auth-wrapper {\n
+            position: relative;\n
+            isolation: isolate;\n
+            background: linear-gradient(135deg, rgba(6, 43, 128, 0.52), rgba(7, 84, 200, 0.18)) !important;\n
+            overflow: hidden;\n
+        }\n
+\n
+        .role-select-page::before,\n
+        .role-register-page::before,\n
+        .register-step-page::before,\n
+        .auth-wrapper::before {\n
+            content: "";\n
+            position: fixed;\n
+            inset: -0.75rem;\n
+            z-index: -1;\n
+            background: url('http://127.0.0.1:8000/images/BGfinal.jpg') center/cover no-repeat;\n
+            filter: blur(2px);\n
+            transform: scale(1.02);\n
+        }\n
+\n
+        .role-select-shell,\n
+        .role-register-shell,\n
+        .register-step-shell {\n
+            background: var(--wb-surface) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            border-radius: 1rem !important;\n
+            box-shadow: none !important;\n
+        }\n
+\n
+        .role-select-visual,\n
+        .role-select-visual {\n
+            background: var(--wb-primary) !important;\n
+        }\n
+\n
+        .role-select-visual::before,\n
+        .role-select-visual::before {\n
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text)) !important;\n
+            backdrop-filter: none !important;\n
+        }\n
+\n
+        .role-select-visual-copy,\n
+        .role-select-visual-copy,\n
+        .role-select-visual-copy p {\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .role-select-visual-logo,\n
+        .role-select-visual-logo {\n
+            background: color-mix(in srgb, var(--wb-surface) 12%, var(--wb-primary)) !important;\n
+            border: 1px solid color-mix(in srgb, var(--wb-surface) 24%, var(--wb-primary)) !important;\n
+            box-shadow: none !important;\n
+            color: var(--wb-surface) !important;\n
+        }\n
+\n
+        .role-select-panel,\n
+        .role-register-panel {\n
+            background: var(--wb-surface) !important;\n
+        }\n
+\n
+        .role-select-card h2,\n
+        .role-register-card h1,\n
+        .register-step-head h1,\n
+        .role-register-section-title,\n
+        .register-section-title,\n
+        .register-step-title,\n
+        .role-register-progress-title,\n
+        .role-select-label,\n
+        .role-register-label {\n
+            color: var(--wb-text) !important;\n
+        }\n
+\n
+        .role-select-subtitle,\n
+        .role-register-subtitle,\n
+        .role-register-section-copy,\n
+        .register-step-copy,\n
+        .register-section-copy,\n
+        .register-step-meta {\n
+            color: var(--wb-muted) !important;\n
+        }\n
+\n
+        .role-select-primary,\n
+        .role-register-primary,\n
+        .register-step-primary {\n
+            background: var(--wb-primary) !important;\n
+            border: 1px solid var(--wb-primary) !important;\n
+            color: var(--wb-surface) !important;\n
+            box-shadow: none !important;\n
+            transform: none !important;\n
+        }\n
+\n
+        .role-register-secondary {\n
+            background: var(--wb-surface) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            color: var(--wb-primary) !important;\n
+        }\n
+\n
+        .role-select-input,\n
+        .role-register-input,\n
+        .role-register-select,\n
+        .role-register-textarea {\n
+            border-color: var(--wb-border) !important;\n
+            background: var(--wb-surface) !important;\n
+            color: var(--wb-text) !important;\n
+            box-shadow: none !important;\n
+        }\n
+\n
+        .role-select-input:focus,\n
+        .role-register-input:focus,\n
+        .role-register-select:focus,\n
+        .role-register-textarea:focus {\n
+            border-color: var(--wb-primary) !important;\n
+            box-shadow: none !important;\n
+        }\n
+\n
+        .role-register-step-pill,\n
+        .role-register-badge,\n
+        .register-step-pill {\n
+            background: color-mix(in srgb, var(--wb-primary) 9%, var(--wb-surface)) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            color: var(--wb-primary) !important;\n
+        }\n
+\n
+        .role-register-change,\n
+        .role-register-footer-link {\n
+            color: var(--wb-primary) !important;\n
+        }\n
+\n
+        .role-register-section,\n
+        .register-section,\n
+        .register-step-card,\n
+        .register-choice-card {\n
+            background: var(--wb-surface) !important;\n
+            border: 1px solid var(--wb-border) !important;\n
+            border-radius: 0.9rem !important;\n
+            box-shadow: none !important;\n
+            color: var(--wb-text) !important;\n
+        }\n
+\n
+        .role-register-section.is-borderless {\n
+            border: 0 !important;\n
+            background: var(--wb-surface) !important;\n
+            padding-inline: 0 !important;\n
+        }\n
+\n
+        .register-step-option:checked + .register-step-card,\n
+        .register-choice-input:checked + .register-choice-card {\n
+            border-color: var(--wb-primary) !important;\n
+            box-shadow: none !important;\n
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;\n
+        }\n
+\n
+        .role-register-progress::before {\n
+            background: var(--wb-border) !important;\n
+        }\n
+\n
+        .role-register-progress-fill,\n
+        .role-register-progress-item.is-active .role-register-progress-marker,\n
+        .role-register-progress-item.is-complete .role-register-progress-marker {\n
+            background: var(--wb-primary) !important;\n
+            border-color: var(--wb-primary) !important;\n
+            color: var(--wb-surface) !important;\n
+            box-shadow: none !important;\n
+        }\n
+\n
+        .role-register-progress-marker {\n
+            background: var(--wb-surface) !important;\n
+            border-color: var(--wb-border) !important;\n
+            color: var(--wb-muted) !important;\n
+        }\n
+\n
+        @media (max-width: 767.98px) {\n
+            html {\n
+                font-size: 15px;\n
+            }\n
+\n
+            .content-wrapper {\n
+                padding: 0.85rem;\n
+            }\n
+\n
+            .page-heading h1 {\n
+                font-size: 1.55rem;\n
+            }\n
+\n
+            .page-heading .btn,\n
+            .page-heading button.btn,\n
+            .page-heading a.btn {\n
+                width: 100%;\n
+            }\n
+\n
+            .topbar {\n
+                padding-inline: 0.75rem !important;\n
+            }\n
+\n
+            .topbar .container-fluid &gt; div:first-of-type {\n
+                min-width: 0;\n
+                flex: 1 1 0;\n
+            }\n
+\n
+            .topbar .container-fluid &gt; .d-flex.ms-auto {\n
+                width: 100%;\n
+                justify-content: space-between;\n
+                gap: 0.5rem !important;\n
+                margin-left: 0 !important;\n
+            }\n
+\n
+            .topbar .dropdown {\n
+                min-width: 0;\n
+            }\n
+\n
+            .topbar .dropdown &gt; .btn {\n
+                max-width: 100%;\n
+            }\n
+\n
+            .btn,\n
+            button.btn,\n
+            a.btn {\n
+                white-space: normal;\n
+            }\n
+\n
+            .panel-card,\n
+            .dashboard-card,\n
+            .announcement-card,\n
+            .modal-content,\n
+            .card {\n
+                border-radius: 0.9rem !important;\n
+            }\n
+\n
+            .table {\n
+                min-width: 640px;\n
+            }\n
+        }\n
+\n
+        @media (max-width: 575.98px) {\n
+            .content-wrapper {\n
+                padding: 0.75rem;\n
+            }\n
+\n
+            .topbar .container-fluid,\n
+            .topbar .row,\n
+            .topbar .col,\n
+            .topbar .d-flex {\n
+                min-width: 0;\n
+            }\n
+        }\n
+\n
+        /* ViaFlow shared UI language: keep role and module pages visually aligned. */\n
+        :where(.dashboard-card, .panel-card, .announcement-card, .card, .auth-card, .dash-kpi) {\n
+            border: 1px solid var(--wb-border);\n
+            border-radius: 1rem;\n
+            box-shadow: 0 0.75rem 2rem rgba(7, 84, 200, 0.07);\n
+        }\n
+\n
+        :where(.dashboard-card, .panel-card, .announcement-card, .card, .dash-kpi) {\n
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;\n
+        }\n
+\n
+        :where(.dashboard-card, .panel-card, .announcement-card, .card, .dash-kpi):hover {\n
+            border-color: color-mix(in srgb, var(--wb-primary) 28%, var(--wb-surface));\n
+            box-shadow: 0 1rem 2.25rem rgba(7, 84, 200, 0.1);\n
+        }\n
+\n
+        :where(h1, h2, h3, h4, h5, h6) {\n
+            color: var(--wb-heading);\n
+            letter-spacing: -0.02em;\n
+        }\n
+\n
+        :where(.text-secondary, .text-muted, small, .small) {\n
+            color: var(--wb-muted) !important;\n
+        }\n
+\n
+        :where(.form-control, .form-select, .input-group-text) {\n
+            min-height: 2.75rem;\n
+            border: 1px solid var(--wb-border);\n
+            border-radius: 0.75rem;\n
+            color: var(--wb-text);\n
+            background: var(--wb-surface);\n
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;\n
+        }\n
+\n
+        :where(.form-control, .form-select):focus {\n
+            border-color: color-mix(in srgb, var(--wb-primary) 52%, var(--wb-surface));\n
+            box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--wb-primary) 14%, transparent);\n
+        }\n
+\n
+        :where(.input-group) &gt; .form-control,\n
+        :where(.input-group) &gt; .form-select,\n
+        :where(.input-group) &gt; .input-group-text {\n
+            border-radius: 0.75rem;\n
+        }\n
+\n
+        :where(.btn) {\n
+            border-radius: 0.75rem;\n
+            font-weight: 700;\n
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;\n
+        }\n
+\n
+        :where(.btn-primary, .btn-success, .btn-info) {\n
+            background: var(--wb-primary);\n
+            border-color: var(--wb-primary);\n
+            color: var(--wb-surface);\n
+        }\n
+\n
+        :where(.btn-primary, .btn-success, .btn-info):hover,\n
+        :where(.btn-primary, .btn-success, .btn-info):focus-visible {\n
+            background: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text));\n
+            border-color: color-mix(in srgb, var(--wb-primary) 88%, var(--wb-text));\n
+            box-shadow: 0 0.5rem 1.1rem color-mix(in srgb, var(--wb-primary) 20%, transparent);\n
+            transform: translateY(-1px);\n
+        }\n
+\n
+        :where(.btn-outline-primary, .btn-outline-secondary) {\n
+            border-color: var(--wb-border);\n
+            color: var(--wb-primary);\n
+        }\n
+\n
+        :where(.table) {\n
+            --bs-table-color: var(--wb-text);\n
+            --bs-table-border-color: var(--wb-border);\n
+            margin-bottom: 0;\n
+        }\n
+\n
+        :where(.table thead th) {\n
+            padding: 0.8rem 1rem;\n
+            background: color-mix(in srgb, var(--wb-primary) 6%, var(--wb-surface)) !important;\n
+            color: var(--wb-muted) !important;\n
+            font-size: 0.73rem;\n
+            font-weight: 800;\n
+            letter-spacing: 0.055em;\n
+            text-transform: uppercase;\n
+            white-space: nowrap;\n
+        }\n
+\n
+        :where(.table tbody td, .table tbody th) {\n
+            padding: 0.85rem 1rem;\n
+            vertical-align: middle;\n
+        }\n
+\n
+        :where(.table tbody tr) {\n
+            transition: background-color 0.18s ease;\n
+        }\n
+\n
+        :where(.table tbody tr:hover) {\n
+            background: color-mix(in srgb, var(--wb-primary) 3%, var(--wb-surface));\n
+        }\n
+\n
+        :where(.modal-content) {\n
+            border: 1px solid var(--wb-border);\n
+            border-radius: 1rem;\n
+            box-shadow: 0 1.5rem 4rem rgba(6, 43, 128, 0.18);\n
+        }\n
+\n
+        :where(.modal-header, .modal-footer) {\n
+            border-color: var(--wb-border);\n
+        }\n
+\n
+        :where(.modal-title) {\n
+            color: var(--wb-text);\n
+            font-weight: 800;\n
+        }\n
+\n
+        /* Bootstrap backdrops stay below the dialog, including stacked confirmations. */\n
+        .modal-backdrop {\n
+            background-color: rgba(6, 43, 128, 0.42);\n
+            -webkit-backdrop-filter: blur(5px);\n
+            backdrop-filter: blur(5px);\n
+        }\n
+\n
+        .modal-backdrop.fade {\n
+            transition: opacity 0.25s ease;\n
+        }\n
+\n
+        .modal-backdrop.show {\n
+            opacity: 1;\n
+        }\n
+\n
+        .modal-backdrop ~ .modal-backdrop {\n
+            z-index: 1065;\n
+        }\n
+\n
+        #meterReadingSubmitConfirmModal,\n
+        #duplicateReadingModal,\n
+        #paymentSubmitConfirmModal {\n
+            z-index: 1070;\n
+        }\n
+\n
+        .content-wrapper {\n
+            animation: viaflow-content-in 0.32s ease-out both;\n
+            opacity: 1;\n
+        }\n
+\n
+        @keyframes viaflow-content-in {\n
+            from { opacity: 0; transform: translateY(6px); }\n
+            to { opacity: 1; transform: translateY(0); }\n
+        }\n
+\n
+        @media (max-width: 767.98px) {\n
+            .content-wrapper {\n
+                padding: 0.9rem;\n
+            }\n
+\n
+            :where(.table-responsive) {\n
+                border-radius: 0.75rem;\n
+            }\n
+\n
+            :where(.table-responsive .table) {\n
+                min-width: 0;\n
+            }\n
+\n
+            :where(.table thead th, .table tbody td, .table tbody th) {\n
+                padding: 0.7rem 0.75rem;\n
+            }\n
+        }\n
+\n
+        @media (prefers-reduced-motion: reduce) {\n
+            .modal-backdrop.fade { transition: none; }\n
+            .content-wrapper,\n
+            :where(.dashboard-card, .panel-card, .announcement-card, .card, .dash-kpi),\n
+            :where(.btn),\n
+            :where(.form-control, .form-select, .input-group-text) {\n
+                animation: none !important;\n
+                transition: none !important;\n
+            }\n
+        }\n
+    &lt;/style&gt;\n
+    &lt;style&gt;\n
+        .organization-logo { display: block; object-fit: contain; flex: none; aspect-ratio: 1; }\n
+        .organization-logo--sidebar { width: 3rem; height: 3rem; }\n
+        .organization-logo--auth { width: 4rem; height: 4rem; margin: 0 auto .75rem; }\n
+        .organization-logo--hero { width: 100%; height: 100%; }\n
+        @media (max-width: 575.98px) { .organization-logo--auth { width: 3.5rem; height: 3.5rem; } }\n
+    &lt;/style&gt;\n
+        &lt;style&gt;\n
+    .dash-kpi {\n
+        background: var(--wb-surface);\n
+        border: 1px solid var(--wb-border);\n
+        border-radius: 1rem;\n
+        height: 100%;\n
+        padding: 1rem;\n
+    }\n
+\n
+    .dash-kpi-head {\n
+        align-items: flex-start;\n
+        display: flex;\n
+        gap: 0.75rem;\n
+        justify-content: space-between;\n
+        margin-bottom: 0.8rem;\n
+    }\n
+\n
+    .dash-kpi-icon {\n
+        align-items: center;\n
+        border-radius: 0.8rem;\n
+        display: inline-flex;\n
+        flex: 0 0 auto;\n
+        font-size: 1.05rem;\n
+        height: 2.5rem;\n
+        justify-content: center;\n
+        width: 2.5rem;\n
+    }\n
+\n
+    .dash-tone-primary {\n
+        background: color-mix(in srgb, var(--wb-primary) 11%, var(--wb-surface));\n
+        color: var(--wb-primary);\n
+    }\n
+\n
+    .dash-tone-success {\n
+        background: color-mix(in srgb, var(--vf-green) 12%, var(--wb-surface));\n
+        color: var(--vf-green);\n
+    }\n
+\n
+    .dash-tone-warning {\n
+        background: color-mix(in srgb, #f59e0b 15%, var(--wb-surface));\n
+        color: #b45309;\n
+    }\n
+\n
+    .dash-tone-danger {\n
+        background: color-mix(in srgb, #ef4444 12%, var(--wb-surface));\n
+        color: #dc2626;\n
+    }\n
+\n
+    .dash-tone-info {\n
+        background: color-mix(in srgb, var(--vf-bright) 12%, var(--wb-surface));\n
+        color: var(--vf-bright);\n
+    }\n
+\n
+    .dash-kpi-label {\n
+        color: var(--wb-muted);\n
+        font-size: 0.73rem;\n
+        font-weight: 800;\n
+        letter-spacing: 0.04em;\n
+        text-transform: uppercase;\n
+    }\n
+\n
+    .dash-kpi-value {\n
+        font-size: 1.45rem;\n
+        font-weight: 800;\n
+        line-height: 1.2;\n
+        margin: 0.2rem 0 0.35rem;\n
+    }\n
+\n
+    .dash-kpi-note {\n
+        color: var(--wb-muted);\n
+        font-size: 0.76rem;\n
+        line-height: 1.35;\n
+        min-height: 2.05rem;\n
+    }\n
+\n
+    .dash-change {\n
+        border: 1px solid var(--wb-border);\n
+        border-radius: 999px;\n
+        font-size: 0.7rem;\n
+        font-weight: 800;\n
+        padding: 0.16rem 0.45rem;\n
+        white-space: nowrap;\n
+    }\n
+\n
+    .dash-change-success {\n
+        background: color-mix(in srgb, var(--vf-green) 10%, var(--wb-surface));\n
+        border-color: color-mix(in srgb, var(--vf-green) 30%, var(--wb-surface));\n
+        color: var(--vf-green);\n
+    }\n
+\n
+    .dash-change-danger {\n
+        background: color-mix(in srgb, #ef4444 10%, var(--wb-surface));\n
+        border-color: color-mix(in srgb, #ef4444 30%, var(--wb-surface));\n
+        color: #dc2626;\n
+    }\n
+\n
+    .dash-change-neutral {\n
+        background: color-mix(in srgb, var(--wb-text) 5%, var(--wb-surface));\n
+        color: var(--wb-muted);\n
+    }\n
+\n
+    .dash-panel {\n
+        display: flex;\n
+        flex-direction: column;\n
+        height: 100%;\n
+        padding: 1.15rem;\n
+    }\n
+\n
+    .dash-panel-head {\n
+        align-items: flex-start;\n
+        display: flex;\n
+        gap: 0.75rem;\n
+        justify-content: space-between;\n
+    }\n
+\n
+    .dash-panel-title {\n
+        font-size: 1rem;\n
+        font-weight: 800;\n
+        margin-bottom: 0.15rem;\n
+    }\n
+\n
+    .dash-panel-subtitle {\n
+        color: var(--wb-muted);\n
+        font-size: 0.78rem;\n
+        line-height: 1.4;\n
+    }\n
+\n
+    .dash-panel-link {\n
+        color: var(--wb-primary);\n
+        font-size: 0.78rem;\n
+        font-weight: 800;\n
+        text-decoration: none;\n
+        white-space: nowrap;\n
+    }\n
+\n
+    .dash-summary-grid {\n
+        display: grid;\n
+        gap: 0.55rem;\n
+        grid-template-columns: repeat(2, minmax(0, 1fr));\n
+        margin-top: 0.9rem;\n
+    }\n
+\n
+    .dash-summary-item {\n
+        background: color-mix(in srgb, var(--wb-primary) 4%, var(--wb-surface));\n
+        border: 1px solid var(--wb-border);\n
+        border-radius: 0.7rem;\n
+        min-width: 0;\n
+        padding: 0.6rem 0.7rem;\n
+    }\n
+\n
+    .dash-summary-label {\n
+        color: var(--wb-muted);\n
+        font-size: 0.7rem;\n
+        font-weight: 700;\n
+        line-height: 1.25;\n
+    }\n
+\n
+    .dash-summary-value {\n
+        font-size: 1rem;\n
+        font-weight: 800;\n
+        line-height: 1.25;\n
+        margin-top: 0.15rem;\n
+        overflow-wrap: anywhere;\n
+    }\n
+\n
+    .dash-visual {\n
+        height: 285px;\n
+        margin-top: 0.9rem;\n
+        min-width: 0;\n
+        position: relative;\n
+    }\n
+\n
+    .dash-visual-sm {\n
+        height: 225px;\n
+    }\n
+\n
+    .dash-empty {\n
+        align-items: center;\n
+        background: color-mix(in srgb, var(--wb-primary) 4%, var(--wb-surface));\n
+        border: 1px dashed var(--wb-border);\n
+        border-radius: 0.8rem;\n
+        color: var(--wb-muted);\n
+        display: flex;\n
+        flex-direction: column;\n
+        font-size: 0.82rem;\n
+        gap: 0.35rem;\n
+        justify-content: center;\n
+        margin-top: 0.9rem;\n
+        min-height: 190px;\n
+        padding: 1rem;\n
+        text-align: center;\n
+    }\n
+\n
+    .dash-list {\n
+        display: flex;\n
+        flex-direction: column;\n
+        gap: 0.45rem;\n
+        margin-top: 0.9rem;\n
+    }\n
+\n
+    .dash-list-item {\n
+        align-items: flex-start;\n
+        background: color-mix(in srgb, var(--wb-primary) 4%, var(--wb-surface));\n
+        border: 1px solid var(--wb-border);\n
+        border-radius: 0.7rem;\n
+        display: flex;\n
+        gap: 0.55rem;\n
+        padding: 0.55rem 0.65rem;\n
+    }\n
+\n
+    .dash-list-item-body {\n
+        min-width: 0;\n
+    }\n
+\n
+    .dash-list-item-title {\n
+        font-size: 0.82rem;\n
+        font-weight: 800;\n
+    }\n
+\n
+    .dash-list-item-meta {\n
+        color: var(--wb-muted);\n
+        font-size: 0.73rem;\n
+        line-height: 1.35;\n
+    }\n
+\n
+    .dash-dot {\n
+        border-radius: 50%;\n
+        display: inline-block;\n
+        flex: 0 0 auto;\n
+        height: 0.55rem;\n
+        margin-top: 0.28rem;\n
+        width: 0.55rem;\n
+    }\n
+\n
+    .dash-queue-item {\n
+        align-items: flex-start;\n
+        border: 1px solid var(--wb-border);\n
+        border-radius: 0.8rem;\n
+        color: var(--wb-text);\n
+        display: flex;\n
+        gap: 0.65rem;\n
+        padding: 0.7rem;\n
+        text-decoration: none;\n
+        transition: background-color 0.15s ease, transform 0.15s ease;\n
+    }\n
+\n
+    .dash-queue-item:hover {\n
+        background: color-mix(in srgb, var(--wb-primary) 5%, var(--wb-surface));\n
+        color: var(--wb-text);\n
+        transform: translateX(2px);\n
+    }\n
+\n
+    .dash-queue-icon {\n
+        align-items: center;\n
+        border-radius: 0.7rem;\n
+        display: inline-flex;\n
+        flex: 0 0 auto;\n
+        height: 2rem;\n
+        justify-content: center;\n
+        width: 2rem;\n
+    }\n
+\n
+    .dash-queue-title {\n
+        align-items: center;\n
+        display: flex;\n
+        flex-wrap: wrap;\n
+        font-size: 0.82rem;\n
+        font-weight: 800;\n
+        gap: 0.4rem;\n
+    }\n
+\n
+    .dash-queue-description {\n
+        color: var(--wb-muted);\n
+        font-size: 0.73rem;\n
+        line-height: 1.35;\n
+        margin-top: 0.1rem;\n
+    }\n
+\n
+    .dash-queue-item .min-w-0 {\n
+        min-width: 0;\n
+    }\n
+\n
+    .dash-queue-action {\n
+        color: var(--wb-primary);\n
+        font-size: 0.72rem;\n
+        font-weight: 800;\n
+        margin-top: 0.25rem;\n
+    }\n
+\n
+    .dash-status-legend {\n
+        display: flex;\n
+        flex-wrap: wrap;\n
+        gap: 0.35rem 0.8rem;\n
+        margin-top: 0.8rem;\n
+    }\n
+\n
+    .dash-status-legend-item {\n
+        align-items: center;\n
+        color: var(--wb-muted);\n
+        display: inline-flex;\n
+        font-size: 0.75rem;\n
+        gap: 0.35rem;\n
+    }\n
+\n
+    .dash-note {\n
+        color: var(--wb-muted);\n
+        font-size: 0.72rem;\n
+        line-height: 1.4;\n
+        margin-top: 0.75rem;\n
+    }\n
+\n
+    @media (max-width: 575.98px) {\n
+        .dash-visual {\n
+            height: 245px;\n
+        }\n
+\n
+        .dash-summary-grid {\n
+            grid-template-columns: 1fr;\n
+        }\n
+\n
+    }\n
+    /* Align each KPI's header, title, figure and note across the row. */\n
+    .dashboard-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-left: 0; margin-right: 0; }\n
+    .dashboard-kpi-grid &gt; div { width: auto; min-width: 0; padding: 0; margin: 0; }\n
+    .dash-kpi-label { line-height: 1.3; min-height: 1.9em; }\n
+    .dash-kpi-value, .dash-summary-value, .dash-change, .dash-status-legend-item strong { font-variant-numeric: tabular-nums; }\n
+    .dash-summary-item { min-width: 0; }\n
+    .dash-summary-label { min-height: 2.5em; }\n
+    @supports (grid-template-rows: subgrid) {\n
+        .dashboard-kpi-grid &gt; div { display: grid; grid-row: span 4; grid-template-rows: subgrid; }\n
+        .dashboard-kpi-grid .dash-kpi { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }\n
+    }\n
+    @media (max-width: 1199.98px) { .dashboard-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }\n
+    @media (max-width: 575.98px) { .dashboard-kpi-grid { grid-template-columns: minmax(0, 1fr); } .dash-summary-label { min-height: 0; } }\n
+    /* Compact KPI cards, retaining the shared row alignment. */\n
+    .dashboard-kpi-grid { gap: 0.75rem; }\n
+    .dashboard-kpi-grid .dash-kpi { padding: 0.875rem; min-height: 8.5rem; }\n
+    .dash-kpi-head { margin-bottom: 0.3rem; gap: 0.5rem; }\n
+    .dash-kpi-icon { width: 2.1875rem; height: 2.1875rem; font-size: 1.0625rem; }\n
+    .dash-change { font-size: 0.625rem; line-height: 1.25; padding: 0.15rem 0.4rem; }\n
+    .dash-kpi-label { font-size: 0.6875rem; font-weight: 600; line-height: 1.3; min-height: 1.3em; }\n
+    .dash-kpi-value { font-size: 1.4375rem; line-height: 1.15; margin: 0.15rem 0 0.2rem; font-variant-numeric: tabular-nums; }\n
+    .dash-kpi-note { font-size: 0.6875rem; line-height: 1.3; min-height: 0; }\n
+&lt;/style&gt;\n
+&lt;style&gt;\n
+    .admin-dashboard { --dashboard-dark: var(--vf-navy); --dashboard-teal: var(--vf-royal); --dashboard-aqua: var(--vf-bright); --dashboard-pale: var(--vf-background); --dashboard-heading: var(--vf-navy); --dashboard-muted: var(--vf-navy); }\n
+    .admin-dashboard .sidebar { background: linear-gradient(165deg, var(--vf-navy) 0%, var(--vf-navy) 52%, var(--vf-royal) 100%) !important; isolation: isolate; }\n
+    .admin-dashboard .sidebar::after { content: ''; position: absolute; z-index: -1; pointer-events: none; left: -55%; right: -45%; bottom: -28px; height: 125px; border-radius: 50% 48% 0 0; background: linear-gradient(165deg, rgba(22, 141, 255, .16) 0 35%, rgba(22, 141, 255, .24) 36% 68%, rgba(22, 141, 255, .13) 69%); }\n
+    .admin-dashboard .sidebar :is(.nav-link, .sidebar-brand, .sidebar-nav-toggle) { color: #fff !important; }\n
+    .admin-dashboard .sidebar .nav-link i { color: #fff !important; }\n
+    .admin-dashboard .sidebar .nav-link, .admin-dashboard .sidebar-nav-row { transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }\n
+    .admin-dashboard .sidebar .nav-link:hover, .admin-dashboard .sidebar-nav-row:hover { background: rgba(22, 141, 255, .18); }\n
+    .admin-dashboard .sidebar .nav-link.active, .admin-dashboard .sidebar-nav-row.active { background: linear-gradient(110deg, var(--vf-royal), var(--vf-bright)) !important; box-shadow: 0 5px 14px rgba(6, 43, 128, .2); }\n
+    .admin-dashboard .sidebar-nav-row.active &gt; .nav-link, .admin-dashboard .sidebar-nav-row:hover &gt; .nav-link { background: transparent !important; box-shadow: none; }\n
+    .admin-dashboard .main-content { min-width: 0; background: linear-gradient(150deg, var(--vf-background) 0%, var(--vf-background) 55%, #f6fdff 100%); }\n
+    .admin-dashboard .content-wrapper { position: relative; isolation: isolate; animation: dashboard-water-entrance .4s ease-out both; }\n
+    .admin-dashboard .content-wrapper::before { content: ''; position: absolute; z-index: -1; top: 0; right: 0; width: min(38vw, 460px); height: 150px; pointer-events: none; background: radial-gradient(ellipse at 100% -30%, rgba(22, 141, 255, .15) 0 35%, transparent 36%), radial-gradient(ellipse at 100% -15%, rgba(7, 84, 200, .08) 0 48%, transparent 49%); }\n
+    .admin-dashboard :is(.page-heading h1, .dash-panel-title, .dash-kpi-value, .dash-summary-value, .dash-list-item-title, .dash-queue-title) { color: var(--vf-navy) !important; }\n
+    .admin-dashboard :is(.page-heading p, .dash-kpi-label, .dash-kpi-note, .dash-panel-subtitle, .dash-summary-label, .dash-note, .dash-list-item-meta, .dash-queue-description, .dash-status-legend-item) { color: var(--vf-navy) !important; }\n
+    .admin-dashboard .dash-kpi, .admin-dashboard .dash-panel { min-width: 0; background: linear-gradient(145deg, #fff, #f7fdff) !important; border: 1px solid var(--vf-light) !important; border-radius: 16px !important; box-shadow: 0 8px 24px rgba(7, 84, 200, .10) !important; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }\n
+    .admin-dashboard .dash-kpi:hover, .admin-dashboard .dash-panel:hover { transform: translateY(-3px); border-color: var(--vf-bright) !important; box-shadow: 0 13px 28px rgba(7, 84, 200, .16) !important; }\n
+    .admin-dashboard .dash-kpi-icon { background: linear-gradient(135deg, var(--vf-royal), var(--vf-bright)) !important; color: #fff !important; box-shadow: 0 5px 12px rgba(7, 84, 200, .16); }\n
+    .admin-dashboard .dash-kpi-value, .admin-dashboard .dash-kpi-label, .admin-dashboard .dash-kpi-note { overflow-wrap: anywhere; }\n
+    .admin-dashboard .dash-summary-item { background: var(--vf-background) !important; border: 1px solid var(--vf-light) !important; border-radius: .8rem; }\n
+    .admin-dashboard .dash-panel-link, .admin-dashboard .dash-queue-action { color: var(--vf-navy); }\n
+    .admin-dashboard .content-wrapper .btn { transition: transform .2s ease, box-shadow .2s ease; }\n
+    .admin-dashboard .content-wrapper .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(6, 43, 128, .15); }\n
+    .admin-dashboard .dash-visual canvas { max-width: 100%; }\n
+    @keyframes dashboard-water-entrance { from { opacity: .98; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }\n
+    @media (max-width: 575.98px) { .admin-dashboard .dash-panel-head { flex-wrap: wrap; } .admin-dashboard .content-wrapper::before { width: 45%; height: 90px; } }\n
+    @media (prefers-reduced-motion: reduce) { .admin-dashboard .content-wrapper { animation: none !important; } .admin-dashboard :is(.dash-kpi, .dash-panel, .sidebar .nav-link, .sidebar-nav-row, .content-wrapper .btn) { transition: none !important; } .admin-dashboard :is(.dash-kpi, .dash-panel, .content-wrapper .btn):hover { transform: none; } }\n
+&lt;/style&gt;\n
+        &lt;style&gt;\n
+            html.admin-one-scroll, html.admin-one-scroll body { height: 100%; overflow: hidden; }\n
+            html.admin-one-scroll.admin-fallback-scroll { scrollbar-gutter: auto; }\n
+            .admin-scroll-shell { height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }\n
+            .admin-scroll-shell &gt; .topbar { flex-shrink: 0; }\n
+            .admin-scroll-path { display: flex !important; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; }\n
+            .admin-scroll-path &gt; :not(.admin-scroll-path):not(.admin-records-area) { flex-shrink: 0; }\n
+            .admin-records-area { flex: 1 1 auto; min-height: 0; min-width: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: stable; }\n
+            .admin-area-first { margin-top: var(--admin-first-top, 0px) !important; margin-left: 0 !important; margin-right: 0 !important; }\n
+            .admin-area-item {\n
+                margin-left: calc(var(--admin-item-original-left) - var(--admin-area-original-left)) !important;\n
+                margin-right: calc(var(--admin-item-original-right) - var(--admin-area-original-right)) !important;\n
+            }\n
+            .admin-records-area .admin-natural-records { height: auto !important; max-height: none !important; overflow-y: visible !important; }\n
+            .admin-records-area .admin-records-surface { padding: 1.5rem !important; border: 1px solid var(--wb-border); border-radius: 1rem; background: var(--wb-surface); min-width: 0; }\n
+            .admin-records-area .admin-table-viewport { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; }\n
+            .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }\n
+            .admin-records-area .admin-table-heading th { position: static; }\n
+            .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }\n
+            .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }\n
+            .admin-records-area.has-scrolled [data-admin-freeze]::before {\n
+                content: ''; position: absolute; z-index: -1; pointer-events: none;\n
+                top: calc(-1 * var(--admin-freeze-cover-top, 0px));\n
+                left: calc(-1 * var(--admin-freeze-cover-left, 0px));\n
+                right: calc(-1 * var(--admin-freeze-cover-right, 0px));\n
+                bottom: calc(-1 * var(--admin-freeze-cover-bottom, 0px));\n
+                background: var(--admin-freeze-background, var(--wb-surface));\n
+                border: var(--admin-freeze-border, 0);\n
+                border-bottom: 0;\n
+                border-radius: var(--admin-freeze-radius, 0) var(--admin-freeze-radius, 0) 0 0;\n
+            }\n
+            .admin-content-scroll .content-wrapper { display: block !important; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; }\n
+            .admin-content-scroll &gt; .topbar { margin-right: var(--admin-window-gutter, 0px); }\n
+            .modal-open .admin-records-area, .modal-open .admin-content-scroll .content-wrapper { overflow-y: hidden; }\n
+            .admin-content-scroll .content-wrapper .admin-scroll-path { display: var(--admin-path-display, block) !important; flex: initial; min-height: initial; }\n
+            .admin-content-scroll .admin-records-area { display: contents; }\n
+            .admin-content-scroll .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }\n
+            .admin-content-scroll .admin-area-first {\n
+                margin-top: var(--admin-original-top) !important;\n
+                margin-left: var(--admin-original-left) !important;\n
+                margin-right: var(--admin-original-right) !important;\n
+            }\n
+            .admin-content-scroll [data-admin-freeze] { position: static; }\n
+            .admin-content-scroll .admin-primary-freeze { transform: none; }\n
+            .admin-content-scroll .admin-table-heading { transform: none; }\n
+            .admin-content-scroll .admin-record-part { clip-path: none !important; }\n
+            .admin-content-scroll [data-admin-freeze]::before { display: none; }\n
+            html.admin-consumer-page-scroll, html.admin-consumer-page-scroll body { height: 100%; min-height: 100%; overflow: hidden; }\n
+            .admin-consumer-page-scroll .admin-scroll-shell { height: 100dvh; min-height: 0; display: flex; flex-direction: column; overflow: visible; }\n
+            .admin-consumer-page-scroll .admin-scroll-shell &gt; .topbar { position: fixed; top: 0 !important; left: var(--sidebar-width); right: 0; z-index: 1040; transform: none; }\n
+            .admin-consumer-page-scroll .sidebar-collapsed .topbar { left: var(--sidebar-rail-width); }\n
+            .admin-consumer-page-scroll .admin-scroll-shell &gt; .topbar { transition: left 280ms ease-in-out; }\n
+            @media (prefers-reduced-motion: reduce) { .admin-consumer-page-scroll .admin-scroll-shell &gt; .topbar { transition: none; } }\n
+            .admin-consumer-page-scroll .admin-scroll-path { display: flex !important; flex: 1 1 auto; min-height: 0; overflow: hidden; }\n
+            .admin-consumer-page-scroll .content-wrapper { height: calc(100dvh - var(--consumer-topbar-height, 80px)); max-height: calc(100dvh - var(--consumer-topbar-height, 80px)); overflow: hidden; margin-top: var(--consumer-topbar-height, 80px); }\n
+            .admin-consumer-page-scroll .admin-records-area { min-height: 0; overflow-y: auto; }\n
+            .admin-consumer-page-scroll .admin-records-area [data-admin-freeze] { position: sticky; top: var(--admin-freeze-top, 0px); z-index: 10; isolation: isolate; }\n
+            .admin-consumer-page-scroll .admin-records-area .admin-primary-freeze { transform: translateY(var(--admin-extra-shift, 0px)); }\n
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading { position: relative; z-index: 5; background: var(--wb-surface); transform: translateY(var(--admin-table-header-shift, 0px)); }\n
+            .admin-consumer-page-scroll .admin-records-area .admin-table-heading th { position: static; }\n
+            .admin-consumer-page-scroll .admin-records-area.has-scrolled [data-admin-freeze]::before { content: ''; position: absolute; z-index: -1; pointer-events: none; inset: calc(-1 * var(--admin-freeze-cover-top, 0px)) calc(-1 * var(--admin-freeze-cover-right, 0px)) calc(-1 * var(--admin-freeze-cover-bottom, 0px)) calc(-1 * var(--admin-freeze-cover-left, 0px)); background: var(--admin-freeze-background, #fff); }\n
+            @media (max-width: 991.98px) { .admin-consumer-page-scroll .admin-scroll-shell &gt; .topbar, .admin-consumer-page-scroll .sidebar-collapsed .topbar { left: 0; } }\n
+            @media print {\n
+                html.admin-one-scroll, html.admin-one-scroll body { height: auto; overflow: visible; }\n
+                .admin-scroll-shell { height: auto; display: block; overflow: visible; }\n
+                .admin-scroll-path { display: var(--admin-path-display, block) !important; }\n
+                .admin-records-area { display: contents; }\n
+                .admin-area-item { margin-left: var(--admin-item-original-left) !important; margin-right: var(--admin-item-original-right) !important; }\n
+                .admin-area-first { margin-top: var(--admin-original-top) !important; margin-left: var(--admin-original-left) !important; margin-right: var(--admin-original-right) !important; }\n
+                .admin-records-area [data-admin-freeze] { position: static; }\n
+                .admin-records-area .admin-primary-freeze { transform: none; }\n
+                .admin-records-area .admin-table-heading { transform: none; }\n
+                .admin-record-part { clip-path: none !important; }\n
+                .admin-records-area [data-admin-freeze]::before { display: none; }\n
+            }\n
+        &lt;/style&gt;\n
+        &lt;style&gt;\n
+    .app-shell:not(.admin-dashboard) { --water-dark: var(--vf-navy); --water-teal: var(--vf-royal); --water-aqua: var(--vf-bright); --water-heading: var(--vf-navy); --water-muted: var(--vf-navy); }\n
+    .app-shell:not(.admin-dashboard) .sidebar { background: linear-gradient(165deg, var(--vf-navy) 0%, var(--vf-navy) 52%, var(--vf-royal) 100%) !important; isolation: isolate; }\n
+    .app-shell:not(.admin-dashboard) .sidebar::after { content: ''; position: absolute; z-index: -1; pointer-events: none; left: -55%; right: -45%; bottom: -28px; height: 125px; border-radius: 50% 48% 0 0; background: linear-gradient(165deg, rgba(22, 141, 255, .16) 0 35%, rgba(22, 141, 255, .24) 36% 68%, rgba(22, 141, 255, .13) 69%); }\n
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link, .sidebar-brand, .sidebar-nav-toggle), .app-shell:not(.admin-dashboard) .sidebar .nav-link i { color: #fff !important; }\n
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link, .sidebar-nav-row) { transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }\n
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link:hover, .sidebar-nav-row:hover) { background: rgba(22, 141, 255, .18); }\n
+    .app-shell:not(.admin-dashboard) .sidebar :is(.nav-link.active, .sidebar-nav-row.active) { background: linear-gradient(110deg, var(--vf-royal), var(--vf-bright)) !important; box-shadow: 0 5px 14px rgba(6, 43, 128, .2); }\n
+    .app-shell:not(.admin-dashboard) .sidebar-nav-row:is(.active, :hover) &gt; .nav-link { background: transparent !important; box-shadow: none; }\n
+    .app-shell:not(.admin-dashboard) .main-content { min-width: 0; background: linear-gradient(150deg, var(--vf-background) 0%, var(--vf-background) 55%, #f6fdff 100%); }\n
+    .app-shell:not(.admin-dashboard) .content-wrapper { position: relative; isolation: isolate; animation: viaflow-water-entrance .4s ease-out both; }\n
+    .app-shell:not(.admin-dashboard) .content-wrapper::before { content: ''; position: absolute; z-index: -1; top: 0; right: 0; width: min(38vw, 460px); height: 150px; pointer-events: none; background: radial-gradient(ellipse at 100% -30%, rgba(22, 141, 255, .15) 0 35%, transparent 36%), radial-gradient(ellipse at 100% -15%, rgba(7, 84, 200, .08) 0 48%, transparent 49%); }\n
+    .app-shell:not(.admin-dashboard) :is(.page-heading h1, .panel-card h1, .panel-card h2, .panel-card h3, .dashboard-card h2, .dashboard-card h3, .announcement-card h2, .stat-value, .metric-value) { color: var(--vf-navy); }\n
+    .app-shell:not(.admin-dashboard) :is(.page-heading p, .text-secondary, .form-text) { color: var(--vf-navy) !important; }\n
+    .app-shell:not(.admin-dashboard) :is(.panel-card, .dashboard-card, .announcement-card, .billing-card, .dash-kpi) { min-width: 0; background: linear-gradient(145deg, #fff, #f7fdff) !important; border: 1px solid var(--vf-light) !important; border-radius: 16px !important; box-shadow: 0 8px 24px rgba(7, 84, 200, .10) !important; transition: box-shadow .2s ease, border-color .2s ease; }\n
+    .app-shell:not(.admin-dashboard) :is(.dashboard-card, .announcement-card, .dash-kpi):hover { border-color: var(--vf-bright) !important; box-shadow: 0 13px 28px rgba(7, 84, 200, .16) !important; }\n
+    .app-shell:not(.admin-dashboard) :is(.dashboard-card, .panel-card) :is(.feature-icon, .metric-icon) { background: linear-gradient(135deg, var(--vf-royal), var(--vf-bright)) !important; color: #fff !important; }\n
+    .app-shell:not(.admin-dashboard) :is(.table, table) { --bs-table-bg: transparent; --bs-table-border-color: var(--vf-light); color: var(--vf-navy); }\n
+    .app-shell:not(.admin-dashboard) :is(.table, table) thead th { background: var(--vf-background); color: var(--vf-navy); border-color: var(--vf-light); }\n
+    .app-shell:not(.admin-dashboard) :is(.form-control, .form-select), body:has(.app-shell:not(.admin-dashboard)) .modal :is(.form-control, .form-select) { border-color: var(--vf-light); border-radius: .65rem; transition: border-color .2s ease, box-shadow .2s ease; }\n
+    .app-shell:not(.admin-dashboard) :is(.form-control, .form-select):focus, body:has(.app-shell:not(.admin-dashboard)) .modal :is(.form-control, .form-select):focus { border-color: var(--vf-royal) !important; box-shadow: 0 0 0 .2rem rgba(22, 141, 255, .16) !important; }\n
+    .app-shell:not(.admin-dashboard) .btn-primary, body:has(.app-shell:not(.admin-dashboard)) .modal .btn-primary { background: linear-gradient(120deg, var(--vf-navy), var(--vf-royal)) !important; border-color: var(--vf-royal) !important; color: #fff !important; }\n
+    .app-shell:not(.admin-dashboard) .btn, body:has(.app-shell:not(.admin-dashboard)) .modal .btn { transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease; }\n
+    .app-shell:not(.admin-dashboard) .btn:hover, body:has(.app-shell:not(.admin-dashboard)) .modal .btn:hover { box-shadow: 0 6px 14px rgba(6, 43, 128, .15); }\n
+    body:has(.app-shell:not(.admin-dashboard)) .modal-content { border: 1px solid var(--vf-light) !important; border-radius: 16px !important; box-shadow: 0 16px 42px rgba(6, 43, 128, .18) !important; }\n
+    body:has(.app-shell:not(.admin-dashboard)) .modal-title { color: var(--vf-navy); }\n
+    .app-shell:not(.admin-dashboard) .page-link { color: var(--vf-navy); border-color: var(--vf-light); }\n
+    .app-shell:not(.admin-dashboard) .page-item.active .page-link { color: #fff; background: var(--vf-royal); border-color: var(--vf-royal); }\n
+    @keyframes viaflow-water-entrance { from { opacity: .98; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }\n
+    @media (max-width: 575.98px) { .app-shell:not(.admin-dashboard) .content-wrapper::before { width: 45%; height: 90px; } }\n
+    @media (prefers-reduced-motion: reduce) { .app-shell:not(.admin-dashboard) .content-wrapper { animation: none !important; } .app-shell:not(.admin-dashboard) :is(.panel-card, .dashboard-card, .announcement-card, .sidebar .nav-link, .sidebar-nav-row, .btn, .form-control, .form-select) { transition: none !important; } }\n
+&lt;/style&gt;\n
+    &lt;style&gt;\n
+@media screen {\n
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) { background: radial-gradient(ellipse at 100% 0,rgba(22, 141, 255, .15),transparent 42%),linear-gradient(150deg,var(--vf-background) 0%,var(--vf-background) 55%,#f6fdff 100%); }\n
+    :is(.resubmit-shell, .reschedule-card, .disconnection-popup) { background: linear-gradient(145deg,#fff,#f7fdff); border: 1px solid var(--vf-light); border-radius: 16px; box-shadow: 0 8px 24px rgba(7, 84, 200, .10); }\n
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) :is(h1,h2,h3) { color: var(--vf-navy); }\n
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) :is(.form-control,.form-select) { border-color: var(--vf-light); border-radius: .65rem; }\n
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) :is(.form-control,.form-select):focus { border-color: var(--vf-royal); box-shadow: 0 0 0 .2rem rgba(22, 141, 255, .16); }\n
+    :is(.resubmit-page, .reschedule-page, .disconnection-screen) .btn-primary { background: linear-gradient(120deg,var(--vf-navy),var(--vf-royal)); border-color: var(--vf-royal); color: #fff; }\n
+    @media (max-width: 575.98px) { :is(.resubmit-page, .reschedule-page, .disconnection-screen) { padding: 1rem; } :is(.resubmit-shell, .reschedule-card) { padding: 1.25rem; } }\n
+}\n
+&lt;/style&gt;\n
+&lt;/head&gt;\n
+&lt;body&gt;\n
+    &lt;div class="app-shell admin-dashboard d-lg-flex"&gt;\n
+    &lt;aside\n
+    class="sidebar p-3"\n
+    id="sidebarMenu"\n
+    aria-label="Main navigation"\n
+&gt;\n
+    &lt;a href="http://127.0.0.1:8000/dashboard" class="sidebar-brand d-flex align-items-center gap-3 mb-4"&gt;\n
+        &lt;img src="http://127.0.0.1:8000/images/vvthoa-logo.png" alt="VVTHOA Water System Services" class="organization-logo organization-logo--sidebar" width="64" height="64"&gt;\n
+        &lt;span&gt;\n
+            &lt;span class="d-block fw-bold fs-5"&gt;ViaFlow System&lt;/span&gt;\n
+            &lt;span class="small"&gt;Billing and Loan Suite&lt;/span&gt;\n
+        &lt;/span&gt;\n
+    &lt;/a&gt;\n
+\n
+    &lt;div class="sidebar-nav-header d-flex justify-content-between align-items-center gap-2 mb-3"&gt;\n
+        &lt;div class="sidebar-nav-heading small text-uppercase fw-semibold"&gt;Main Navigation&lt;/div&gt;\n
+        &lt;button\n
+            type="button"\n
+            class="sidebar-nav-toggle"\n
+            id="sidebarCollapseToggle"\n
+            aria-expanded="true"\n
+            aria-controls="sidebarMenu"\n
+            aria-label="Collapse sidebar"\n
+            title="Collapse sidebar"\n
+        &gt;\n
+            &lt;i class="bi bi-chevron-left" aria-hidden="true"&gt;&lt;/i&gt;\n
+        &lt;/button&gt;\n
+    &lt;/div&gt;\n
+\n
+    &lt;ul class="nav flex-column gap-2"&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/dashboard" class="nav-link active" aria-label="Dashboard" title="Dashboard"&gt;\n
+                        &lt;i class="bi bi-grid-1x2-fill"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Dashboard&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/staff" class="nav-link " aria-label="Staff" title="Staff"&gt;\n
+                        &lt;i class="bi bi-people"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Staff&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;div class="sidebar-nav-row "&gt;\n
+                        &lt;a href="http://127.0.0.1:8000/consumers" class="nav-link " aria-label="Consumers" title="Consumers"&gt;\n
+                            &lt;i class="bi bi-people-fill"&gt;&lt;/i&gt;\n
+                            &lt;span&gt;Consumers&lt;/span&gt;\n
+                        &lt;/a&gt;\n
+                        &lt;button\n
+                            type="button"\n
+                            class="sidebar-submenu-toggle"\n
+                            data-bs-toggle="collapse"\n
+                            data-bs-target="#consumerSubmenu"\n
+                            aria-expanded="false"\n
+                            aria-controls="consumerSubmenu"\n
+                            aria-label="Toggle consumer categories"\n
+                        &gt;\n
+                            &lt;i class="bi bi-chevron-down"&gt;&lt;/i&gt;\n
+                        &lt;/button&gt;\n
+                    &lt;/div&gt;\n
+\n
+                    &lt;div class="collapse " id="consumerSubmenu"&gt;\n
+                        &lt;ul class="nav flex-column sidebar-subnav"&gt;\n
+                                                                                            &lt;li class="nav-item"&gt;\n
+                                    &lt;a\n
+                                        href="http://127.0.0.1:8000/consumers"\n
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "\n
+                                        data-consumer-category="all"                                     &gt;\n
+                                        &lt;span&gt;All Consumers&lt;/span&gt;\n
+                                                                            &lt;/a&gt;\n
+                                &lt;/li&gt;\n
+                                                                                            &lt;li class="nav-item"&gt;\n
+                                    &lt;a\n
+                                        href="http://127.0.0.1:8000/consumers?account_category=pending"\n
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "\n
+                                        data-consumer-category="pending"                                     &gt;\n
+                                        &lt;span&gt;Pending Accounts&lt;/span&gt;\n
+                                                                            &lt;/a&gt;\n
+                                &lt;/li&gt;\n
+                                                                                            &lt;li class="nav-item"&gt;\n
+                                    &lt;a\n
+                                        href="http://127.0.0.1:8000/consumers?account_category=rejected"\n
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "\n
+                                        data-consumer-category="rejected"                                     &gt;\n
+                                        &lt;span&gt;Rejected Accounts&lt;/span&gt;\n
+                                                                            &lt;/a&gt;\n
+                                &lt;/li&gt;\n
+                                                                                            &lt;li class="nav-item"&gt;\n
+                                    &lt;a\n
+                                        href="http://127.0.0.1:8000/consumers?account_category=active"\n
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "\n
+                                        data-consumer-category="active"                                     &gt;\n
+                                        &lt;span&gt;Active Accounts&lt;/span&gt;\n
+                                                                            &lt;/a&gt;\n
+                                &lt;/li&gt;\n
+                                                                                            &lt;li class="nav-item"&gt;\n
+                                    &lt;a\n
+                                        href="http://127.0.0.1:8000/consumers?account_category=inactive"\n
+                                        class="nav-link sidebar-subnav-link d-flex justify-content-between align-items-center "\n
+                                        data-consumer-category="inactive"                                     &gt;\n
+                                        &lt;span&gt;Inactive (Disconnected)&lt;/span&gt;\n
+                                                                            &lt;/a&gt;\n
+                                &lt;/li&gt;\n
+                                                    &lt;/ul&gt;\n
+                    &lt;/div&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;div class="sidebar-nav-row "&gt;\n
+                        &lt;a href="http://127.0.0.1:8000/billing" class="nav-link " aria-label="Billing" title="Billing"&gt;\n
+                            &lt;i class="bi bi-droplet-half"&gt;&lt;/i&gt;\n
+                            &lt;span&gt;Billing&lt;/span&gt;\n
+                        &lt;/a&gt;\n
+                        &lt;button\n
+                            type="button"\n
+                            class="sidebar-submenu-toggle"\n
+                            data-bs-toggle="collapse"\n
+                            data-bs-target="#billingSubmenu"\n
+                            aria-expanded="false"\n
+                            aria-controls="billingSubmenu"\n
+                            aria-label="Toggle billing submodules"\n
+                        &gt;&lt;i class="bi bi-chevron-down"&gt;&lt;/i&gt;&lt;/button&gt;\n
+                    &lt;/div&gt;\n
+                    &lt;div class="collapse " id="billingSubmenu"&gt;\n
+                        &lt;ul class="nav flex-column sidebar-subnav"&gt;\n
+                            &lt;li class="nav-item"&gt;\n
+                                &lt;a href="http://127.0.0.1:8000/billing" class="nav-link sidebar-subnav-link " &gt;Water Billing&lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                            &lt;li class="nav-item"&gt;\n
+                                &lt;a href="http://127.0.0.1:8000/billing/loan" class="nav-link sidebar-subnav-link " &gt;Loan Billing&lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                        &lt;/ul&gt;\n
+                    &lt;/div&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/payments" class="nav-link " aria-label="Payments" title="Payments"&gt;\n
+                        &lt;i class="bi bi-cash-coin"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Payments&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/loans" class="nav-link " aria-label="Loans" title="Loans"&gt;\n
+                        &lt;i class="bi bi-bank"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Loans&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/incidents" class="nav-link " aria-label="Incidents" title="Incidents"&gt;\n
+                        &lt;i class="bi bi-exclamation-triangle-fill"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Incidents&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/reports" class="nav-link " aria-label="Reports" title="Reports"&gt;\n
+                        &lt;i class="bi bi-bar-chart-fill"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Reports&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;div class="sidebar-nav-row "&gt;\n
+                        &lt;a href="http://127.0.0.1:8000/dss/incidents" class="nav-link " aria-label="DSS" title="DSS"&gt;\n
+                            &lt;i class="bi bi-diagram-3-fill"&gt;&lt;/i&gt;\n
+                            &lt;span&gt;DSS&lt;/span&gt;\n
+                        &lt;/a&gt;\n
+                        &lt;button\n
+                            type="button"\n
+                            class="sidebar-submenu-toggle"\n
+                            data-bs-toggle="collapse"\n
+                            data-bs-target="#dssSubmenu"\n
+                            aria-expanded="false"\n
+                            aria-controls="dssSubmenu"\n
+                            aria-label="Toggle DSS modules"\n
+                        &gt;\n
+                            &lt;i class="bi bi-chevron-down"&gt;&lt;/i&gt;\n
+                        &lt;/button&gt;\n
+                    &lt;/div&gt;\n
+\n
+                    &lt;div class="collapse " id="dssSubmenu"&gt;\n
+                        &lt;ul class="nav flex-column sidebar-subnav"&gt;\n
+                            &lt;li class="nav-item"&gt;\n
+                                &lt;a\n
+                                    href="http://127.0.0.1:8000/dss/incidents"\n
+                                    class="nav-link sidebar-subnav-link "\n
+                                                                    &gt;Incident DSS&lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                            &lt;li class="nav-item"&gt;\n
+                                &lt;a\n
+                                    href="http://127.0.0.1:8000/dss/loans"\n
+                                    class="nav-link sidebar-subnav-link "\n
+                                                                    &gt;Loan DSS&lt;/a&gt;\n
+                            &lt;/li&gt;\n
+                        &lt;/ul&gt;\n
+                    &lt;/div&gt;\n
+                            &lt;/li&gt;\n
+                    &lt;li class="nav-item"&gt;\n
+                                    &lt;a href="/announcements" class="nav-link " aria-label="Announcements" title="Announcements"&gt;\n
+                        &lt;i class="bi bi-megaphone-fill"&gt;&lt;/i&gt;\n
+                        &lt;span&gt;Announcements&lt;/span&gt;\n
+                    &lt;/a&gt;\n
+                            &lt;/li&gt;\n
+            &lt;/ul&gt;\n
+&lt;/aside&gt;\n
+\n
+&lt;div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"&gt;&lt;/div&gt;\n
+\n
+    &lt;main class="main-content flex-grow-1"&gt;\n
+        &lt;nav class="navbar navbar-expand-lg topbar px-3 px-lg-4 sticky-top"&gt;\r\n
+    &lt;div class="container-fluid p-0"&gt;\r\n
+        &lt;button class="btn btn-outline-secondary d-lg-none me-2" type="button" id="sidebarMobileToggle" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Open sidebar" title="Open sidebar"&gt;\r\n
+            &lt;i class="bi bi-list" aria-hidden="true"&gt;&lt;/i&gt;\r\n
+        &lt;/button&gt;\r\n
+\r\n
+        &lt;div&gt;\r\n
+            &lt;span class="text-uppercase small fw-bold text-secondary"&gt;System Overview&lt;/span&gt;\r\n
+            &lt;div class="fw-semibold"&gt;Water Billing and Loan Management&lt;/div&gt;\r\n
+        &lt;/div&gt;\r\n
+\r\n
+        &lt;div class="d-flex align-items-center gap-3 ms-auto"&gt;\r\n
+            &lt;div class="d-none d-md-flex align-items-center gap-2 text-secondary"&gt;\r\n
+                &lt;i class="bi bi-calendar3"&gt;&lt;/i&gt;\r\n
+                &lt;span&gt;November 23, 2026&lt;/span&gt;\r\n
+            &lt;/div&gt;\r\n
+            &lt;div class="dropdown"&gt;\r\n
+                &lt;button class="btn btn-light border position-relative" data-bs-toggle="dropdown" type="button"&gt;\r\n
+                    &lt;i class="bi bi-bell"&gt;&lt;/i&gt;\r\n
+                                    &lt;/button&gt;\r\n
+                &lt;div class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-0 notification-menu"&gt;\r\n
+                    &lt;div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom"&gt;\r\n
+                        &lt;strong&gt;Notifications&lt;/strong&gt;\r\n
+                                            &lt;/div&gt;\r\n
+                    &lt;div class="py-2" style="max-height: 340px; overflow-y: auto;"&gt;\r\n
+                                                    &lt;div class="px-3 py-3 text-secondary small"&gt;No notifications yet.&lt;/div&gt;\r\n
+                                            &lt;/div&gt;\r\n
+                &lt;/div&gt;\r\n
+            &lt;/div&gt;\r\n
+            &lt;div class="dropdown"&gt;\r\n
+                &lt;button class="btn btn-light border dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" type="button"&gt;\r\n
+                    &lt;span class="rounded-circle bg-info-subtle text-info fw-bold d-inline-flex align-items-center justify-content-center avatar-badge"&gt;DA&lt;/span&gt;\r\n
+                    &lt;span class="text-start d-none d-md-block"&gt;\r\n
+                        &lt;span class="d-block fw-semibold text-dark"&gt;Dashawn Stanton&lt;/span&gt;\r\n
+                        &lt;span class="small text-secondary"&gt;Admin&lt;/span&gt;\r\n
+                    &lt;/span&gt;\r\n
+                &lt;/button&gt;\r\n
+                &lt;ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2 profile-dropdown-menu"&gt;\r\n
+                    &lt;li&gt;&lt;a class="dropdown-item px-3 py-2 rounded-3" href="http://127.0.0.1:8000/profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;\r\n
+                    &lt;li&gt;&lt;hr class="dropdown-divider my-1"&gt;&lt;/li&gt;\r\n
+                    &lt;li&gt;\r\n
+                        &lt;form method="POST" action="http://127.0.0.1:8000/logout"&gt;\r\n
+                            &lt;input type="hidden" name="_token" value="rl1AcPhOiGTyBoWX1mJ5L9RHiHhhENAnccib97vO" autocomplete="off"&gt;                            &lt;button type="submit" class="dropdown-item px-3 py-2 rounded-3 text-danger"&gt;Logout&lt;/button&gt;\r\n
+                        &lt;/form&gt;\r\n
+                    &lt;/li&gt;\r\n
+                &lt;/ul&gt;\r\n
+            &lt;/div&gt;\r\n
+        &lt;/div&gt;\r\n
+    &lt;/div&gt;\r\n
+&lt;/nav&gt;\r\n
+\n
+        &lt;div class="content-wrapper"&gt;\n
+            &lt;div class="page-heading"&gt;\n
+                &lt;div&gt;\n
+                    &lt;h1&gt;Dashboard&lt;/h1&gt;\n
+                    &lt;p class="mb-0"&gt;Financial, operational, and community metrics from all available system records.&lt;/p&gt;\n
+                &lt;/div&gt;\n
+            &lt;/div&gt;\n
+\n
+            &lt;div class="row g-3 mb-4 dashboard-kpi-grid"&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-primary"&gt;\n
+                                    &lt;i class="bi bi-receipt"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;New Charges Billed&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;No bills generated in the available records.&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-success"&gt;\n
+                                    &lt;i class="bi bi-cash-stack"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;Verified Collections&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;No verified payments in the available records.&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-primary"&gt;\n
+                                    &lt;i class="bi bi-graph-up-arrow"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    0.0 pts\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;Collection Rate&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;0.0%&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;No new charges to measure collections against.&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-success"&gt;\n
+                                    &lt;i class="bi bi-wallet2"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;Outstanding Balance&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;As of Nov 23, 2026 · 0 accounts · 0 notices&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-info"&gt;\n
+                                    &lt;i class="bi bi-droplet"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;Water Consumption&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;0.00 m³&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;No meter readings in the available records.&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-primary"&gt;\n
+                                    &lt;i class="bi bi-person-plus"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;New Accounts&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;0&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;0 pending membership verifications&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-success"&gt;\n
+                                    &lt;i class="bi bi-exclamation-triangle"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;Incidents Reported&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;0&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;No incidents reported in the available records.&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                                    &lt;div class="col-12 col-sm-6 col-xl-3"&gt;\n
+                        &lt;div class="dash-kpi"&gt;\n
+                            &lt;div class="dash-kpi-head"&gt;\n
+                                &lt;span class="dash-kpi-icon dash-tone-warning"&gt;\n
+                                    &lt;i class="bi bi-bank"&gt;&lt;/i&gt;\n
+                                &lt;/span&gt;\n
+                                &lt;span class="dash-change dash-change-neutral"&gt;\n
+                                    No prior comparison\n
+                                &lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-kpi-label"&gt;Loan Applications&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-value"&gt;0&lt;/div&gt;\n
+                            &lt;div class="dash-kpi-note"&gt;No applications or posted repayments in the available records.&lt;/div&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                            &lt;/div&gt;\n
+\n
+            &lt;div class="row g-4 mb-4" data-admin-natural-page-scroll&gt;\n
+                &lt;div class="col-12"&gt;\n
+                    &lt;div class="panel-card dash-panel"&gt;\n
+                        &lt;div class="dash-panel-head"&gt;\n
+                            &lt;div&gt;\n
+                                &lt;div class="dash-panel-title"&gt;Billing vs. Collections&lt;/div&gt;\n
+                                &lt;div class="dash-panel-subtitle"&gt;\n
+                                    Monthly totals group records from all available years. The line is the collection rate on new charges.\n
+                                &lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;a href="http://127.0.0.1:8000/reports?month=&amp;amp;year=&amp;amp;report=billing" class="dash-panel-link"&gt;\n
+                                Billing report &lt;i class="bi bi-arrow-up-right"&gt;&lt;/i&gt;\n
+                            &lt;/a&gt;\n
+                        &lt;/div&gt;\n
+\n
+                        &lt;div class="dash-summary-grid"&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;New charges&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;Gross billed&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;Collected&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;Carry-forward&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;₱0.00&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                        &lt;/div&gt;\n
+\n
+                                                    &lt;div class="dash-empty"&gt;\n
+                                &lt;i class="bi bi-bar-chart fs-4"&gt;&lt;/i&gt;\n
+                                &lt;span&gt;No billing or collection records are available.&lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                        \n
+                        &lt;div class="dash-note"&gt;\n
+                            Gross billed includes carried arrears. New charges exclude them so the collection rate measures actual billings, not reused debt.\n
+                        &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="col-xl-6"&gt;\n
+                    &lt;div class="panel-card dash-panel"&gt;\n
+                        &lt;div class="dash-panel-head"&gt;\n
+                            &lt;div&gt;\n
+                                &lt;div class="dash-panel-title"&gt;Needs Attention&lt;/div&gt;\n
+                                &lt;div class="dash-panel-subtitle"&gt;Current operational queues, not period metrics.&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;span class="badge badge-soft-warning"&gt;0&lt;/span&gt;\n
+                        &lt;/div&gt;\n
+\n
+                        &lt;div class="dash-list"&gt;\n
+                                                            &lt;div class="dash-empty"&gt;\n
+                                    &lt;i class="bi bi-check2-circle fs-4"&gt;&lt;/i&gt;\n
+                                    &lt;span&gt;No immediate action items right now.&lt;/span&gt;\n
+                                &lt;/div&gt;\n
+                                                    &lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                &lt;/div&gt;\n
+\n
+                &lt;div class="col-xl-6"&gt;\n
+                    &lt;div class="panel-card dash-panel"&gt;\n
+                        &lt;div class="dash-panel-head"&gt;\n
+                            &lt;div&gt;\n
+                                &lt;div class="dash-panel-title"&gt;Consumer Status&lt;/div&gt;\n
+                                &lt;div class="dash-panel-subtitle"&gt;Current snapshot of all registered accounts.&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;span class="badge badge-soft-primary"&gt;Current&lt;/span&gt;\n
+                        &lt;/div&gt;\n
+\n
+                        &lt;div class="dash-summary-grid"&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;Accounts&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;0&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;Verified&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;0&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;New accounts&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;0&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                            &lt;div class="dash-summary-item"&gt;\n
+                                &lt;div class="dash-summary-label"&gt;Members&lt;/div&gt;\n
+                                &lt;div class="dash-summary-value"&gt;0&lt;/div&gt;\n
+                            &lt;/div&gt;\n
+                        &lt;/div&gt;\n
+\n
+                                                    &lt;div class="dash-empty"&gt;\n
+                                &lt;i class="bi bi-people fs-4"&gt;&lt;/i&gt;\n
+                                &lt;span&gt;No consumer accounts found.&lt;/span&gt;\n
+                            &lt;/div&gt;\n
+                        \n
+                        &lt;div class="dash-status-legend"&gt;\n
+                                                            &lt;span class="dash-status-legend-item"&gt;\n
+                                    &lt;span class="dash-dot" style="background: var(--vf-royal);"&gt;&lt;/span&gt;\n
+                                    Active &lt;strong&gt;0&lt;/strong&gt;\n
+                                &lt;/span&gt;\n
+                                                            &lt;span class="dash-status-legend-item"&gt;\n
+                                    &lt;span class="dash-dot" style="background: #f59e0b;"&gt;&lt;/span&gt;\n
+                                    Pending Verification &lt;strong&gt;0&lt;/strong&gt;\n
+                                &lt;/span&gt;\n
+                                                            &lt;span class="dash-status-legend-item"&gt;\n
+                                    &lt;span class="dash-dot" style="background: var(--vf-bright);"&gt;&lt;/span&gt;\n
+                                    For Review &lt;strong&gt;0&lt;/strong&gt;\n
+                                &lt;/span&gt;\n
+                                                            &lt;span class="dash-status-legend-item"&gt;\n
+                                    &lt;span class="dash-dot" style="background: #ef4444;"&gt;&lt;/span&gt;\n
+                                    Disconnected &lt;strong&gt;0&lt;/strong&gt;\n
+                                &lt;/span&gt;\n
+                                                            &lt;span class="dash-status-legend-item"&gt;\n
+                                    &lt;span class="dash-dot" style="background: #8b5cf6;"&gt;&lt;/span&gt;\n
+                                    For Reconnection &lt;strong&gt;0&lt;/strong&gt;\n
+                                &lt;/span&gt;\n
+                                                            &lt;span class="dash-status-legend-item"&gt;\n
+                                    &lt;span class="dash-dot" style="background: var(--vf-royal);"&gt;&lt;/span&gt;\n
+                                    Rejected &lt;strong&gt;0&lt;/strong&gt;\n
+                                &lt;/span&gt;\n
+                                                    &lt;/div&gt;\n
+\n
+                        \n
+                        &lt;div class="dash-note"&gt;Status history is not stored, so this chart is a current snapshot and does not change with the month filter.&lt;/div&gt;\n
+                    &lt;/div&gt;\n
+                &lt;/div&gt;\n
+\n
+            &lt;/div&gt;\n
+\n
+        &lt;/div&gt;\n
+    &lt;/main&gt;\n
+&lt;/div&gt;\n
+\n
+    \n
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;\n
+    &lt;script&gt;\n
+        document.addEventListener('DOMContentLoaded', function () {\n
+            document.querySelectorAll('select[data-clearable-filter]').forEach(function (select, index) {\n
+                if (!Array.from(select.options).some(function (option) { return option.hasAttribute('selected'); })) {\n
+                    select.selectedIndex = -1;\n
+                }\n
+                const defaults = {\n
+                    status: 'All Status', application_status: 'All Status', notice_status: 'All Status',\n
+                    channel: 'All Methods', payment_type: 'All Types', type: 'All Types',\n
+                    category: 'All Categories', month: 'All Months', year: 'All Years',\n
+                    membership: 'All Memberships', notice_membership: 'All Memberships'\n
+                };\n
+                const label = select.dataset.filterDefault || defaults[select.name];\n
+                if (!label) return;\n
+                const value = document.createElement('span');\n
+                value.className = 'status-filter-value';\n
+                value.id = 'filter-default-' + index;\n
+                value.textContent = label;\n
+                value.style.fontSize = window.getComputedStyle(select).fontSize;\n
+                select.parentElement.classList.add('status-filter-display');\n
+                select.insertAdjacentElement('afterend', value);\n
+                const update = function () {\n
+                    const empty = select.selectedIndex &lt; 0;\n
+                    value.hidden = !empty;\n
+                    if (empty) select.setAttribute('aria-describedby', value.id);\n
+                    else select.removeAttribute('aria-describedby');\n
+                };\n
+                select.addEventListener('change', update);\n
+                update();\n
+            });\n
+            document.querySelectorAll('form[data-auto-filter]').forEach(function (form) {\n
+                let timer = null;\n
+\n
+                const clearTimer = function () {\n
+                    if (timer !== null) {\n
+                        window.clearTimeout(timer);\n
+                        timer = null;\n
+                    }\n
+                };\n
+\n
+                const submit = function () {\n
+                    clearTimer();\n
+\n
+                    if (typeof form.requestSubmit === 'function') {\n
+                        form.requestSubmit();\n
+                    } else {\n
+                        form.submit();\n
+                    }\n
+                };\n
+\n
+                const scheduleSubmit = function () {\n
+                    clearTimer();\n
+\n
+                    const configuredDelay = Number(form.dataset.autoFilterDebounce);\n
+                    const delay = Number.isFinite(configuredDelay) &amp;&amp; configuredDelay &gt;= 0\n
+                        ? configuredDelay\n
+                        : 450;\n
+\n
+                    timer = window.setTimeout(submit, delay);\n
+                };\n
+\n
+                form.querySelectorAll('select, input[type="month"], input[type="date"], input[type="week"], input[type="time"], input[type="checkbox"], input[type="radio"]').forEach(function (control) {\n
+                    control.addEventListener('change', submit);\n
+                });\n
+\n
+                form.querySelectorAll('input[type="search"], input[type="text"]').forEach(function (input) {\n
+                    input.addEventListener('input', scheduleSubmit);\n
+                    input.addEventListener('keydown', function (event) {\n
+                        if (event.key === 'Enter') {\n
+                            event.preventDefault();\n
+                            submit();\n
+                        }\n
+                    });\n
+                });\n
+\n
+                form.addEventListener('submit', clearTimer);\n
+                form.addEventListener('period-picker-open', clearTimer);\n
+\n
+                form.querySelectorAll('a').forEach(function (link) {\n
+                    link.addEventListener('click', clearTimer);\n
+                });\n
+\n
+                document.addEventListener('click', function (event) {\n
+                    if (!form.contains(event.target)) {\n
+                        clearTimer();\n
+                    }\n
+                }, true);\n
+\n
+                window.addEventListener('pagehide', clearTimer);\n
+            });\n
+        });\n
+    &lt;/script&gt;\n
+    &lt;script&gt;\n
+    document.addEventListener('DOMContentLoaded', function () {\n
+        const appShell = document.querySelector('.app-shell');\n
+        const sidebar = document.getElementById('sidebarMenu');\n
+        const collapseToggle = document.getElementById('sidebarCollapseToggle');\n
+        const mobileToggle = document.getElementById('sidebarMobileToggle');\n
+        const backdrop = document.getElementById('sidebarBackdrop');\n
+        const mainContent = document.querySelector('.main-content');\n
+\n
+        if (!appShell || !sidebar) {\n
+            return;\n
+        }\n
+\n
+        const mobileQuery = window.matchMedia('(max-width: 991.98px)');\n
+        const toggles = [collapseToggle, mobileToggle].filter(Boolean);\n
+\n
+        const isMobile = function () {\n
+            return mobileQuery.matches;\n
+        };\n
+\n
+        const isSidebarOpen = function () {\n
+            return isMobile()\n
+                ? appShell.classList.contains('sidebar-mobile-open')\n
+                : !appShell.classList.contains('sidebar-collapsed');\n
+        };\n
+\n
+        const syncState = function () {\n
+            const open = isSidebarOpen();\n
+\n
+            toggles.forEach(function (toggle) {\n
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');\n
+            });\n
+\n
+            if (collapseToggle) {\n
+                const label = open ? 'Collapse sidebar' : 'Open sidebar';\n
+\n
+                collapseToggle.setAttribute('aria-label', label);\n
+                collapseToggle.setAttribute('title', label);\n
+            }\n
+\n
+            if (mobileToggle) {\n
+                const label = open ? 'Close sidebar' : 'Open sidebar';\n
+\n
+                mobileToggle.setAttribute('aria-label', label);\n
+                mobileToggle.setAttribute('title', label);\n
+            }\n
+\n
+            sidebar.toggleAttribute('inert', isMobile() &amp;&amp; !open);\n
+\n
+            if (mainContent) {\n
+                mainContent.toggleAttribute('inert', isMobile() &amp;&amp; open);\n
+            }\n
+        };\n
+\n
+        const openSidebar = function () {\n
+            if (isMobile()) {\n
+                appShell.classList.add('sidebar-mobile-open');\n
+            } else {\n
+                appShell.classList.remove('sidebar-collapsed');\n
+            }\n
+\n
+            syncState();\n
+\n
+            const firstLink = sidebar.querySelector('.nav-link:not(.sidebar-subnav-link)')\n
+                || sidebar.querySelector('.nav-link');\n
+\n
+            if (isMobile() &amp;&amp; firstLink) {\n
+                window.setTimeout(function () {\n
+                    firstLink.focus();\n
+                }, 0);\n
+            }\n
+        };\n
+\n
+        const closeSidebar = function () {\n
+            if (isMobile()) {\n
+                appShell.classList.remove('sidebar-mobile-open');\n
+            } else {\n
+                appShell.classList.add('sidebar-collapsed');\n
+            }\n
+\n
+            syncState();\n
+\n
+            const focusTarget = isMobile() &amp;&amp; mobileToggle ? mobileToggle : collapseToggle;\n
+\n
+            if (focusTarget) {\n
+                window.setTimeout(function () {\n
+                    focusTarget.focus();\n
+                }, 0);\n
+            }\n
+        };\n
+\n
+        const toggleSidebar = function () {\n
+            if (isSidebarOpen()) {\n
+                closeSidebar();\n
+            } else {\n
+                openSidebar();\n
+            }\n
+        };\n
+\n
+        toggles.forEach(function (toggle) {\n
+            toggle.addEventListener('click', toggleSidebar);\n
+        });\n
+\n
+        sidebar.querySelectorAll('.sidebar-submenu-toggle').forEach(function (toggle) {\n
+            toggle.addEventListener('click', function (event) {\n
+                if (!isMobile() &amp;&amp; appShell.classList.contains('sidebar-collapsed')) {\n
+                    const submenu = document.getElementById(toggle.getAttribute('aria-controls'));\n
+                    openSidebar();\n
+                    // An already-open submenu becomes visible as the rail expands.\n
+                    if (submenu &amp;&amp; submenu.classList.contains('show')) event.stopPropagation();\n
+                }\n
+            });\n
+        });\n
+\n
+        if (backdrop) {\n
+            backdrop.addEventListener('click', closeSidebar);\n
+        }\n
+\n
+        document.addEventListener('keydown', function (event) {\n
+            if (event.key === 'Escape' &amp;&amp; isMobile() &amp;&amp; isSidebarOpen()) {\n
+                closeSidebar();\n
+            }\n
+        });\n
+\n
+        const handleBreakpointChange = function () {\n
+            appShell.classList.remove('sidebar-mobile-open', 'sidebar-collapsed');\n
+            syncState();\n
+        };\n
+\n
+        if (typeof mobileQuery.addEventListener === 'function') {\n
+            mobileQuery.addEventListener('change', handleBreakpointChange);\n
+        } else if (typeof mobileQuery.addListener === 'function') {\n
+            mobileQuery.addListener(handleBreakpointChange);\n
+        }\n
+\n
+        syncState();\n
+    });\n
+&lt;/script&gt;\n
+&lt;script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"&gt;&lt;/script&gt;\n
+&lt;script&gt;\n
+    document.addEventListener('DOMContentLoaded', () =&gt; {\n
+        if (typeof Chart === 'undefined') {\n
+            return;\n
+        }\n
+\n
+        const chartData = {"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"financial":{"billed":[0,0,0,0,0,0,0,0,0,0,0,0],"collected":[0,0,0,0,0,0,0,0,0,0,0,0],"collection_rate":[null,null,null,null,null,null,null,null,null,null,null,null],"selected_index":null,"has_data":false},"outstanding":{"labels":["Current","1-30 days","31-60 days","61-90 days","90+ days"],"amounts":[0,0,0,0,0],"accounts":[0,0,0,0,0],"has_data":false},"account_status":{"labels":["Active","Pending Verification","For Review","Disconnected","For Reconnection","Rejected"],"counts":[0,0,0,0,0,0],"has_data":false},"consumption":{"totals":[0,0,0,0,0,0,0,0,0,0,0,0],"averages":[0,0,0,0,0,0,0,0,0,0,0,0],"selected_index":null,"has_data":false},"loans":{"applications":[0,0,0,0,0,0,0,0,0,0,0,0],"repayments":[0,0,0,0,0,0,0,0,0,0,0,0],"selected_index":null,"has_data":false},"incidents":{"status_labels":["Pending","Ongoing","For Consumer Confirmation","Resolved"],"status_counts":[0,0,0,0],"category_labels":[],"category_counts":[],"has_data":false}};\n
+        const peso = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 2 });\n
+        const pesoWhole = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 0 });\n
+        const whole = new Intl.NumberFormat('en-PH', { maximumFractionDigits: 0 });\n
+        const decimal = new Intl.NumberFormat('en-PH', { maximumFractionDigits: 1 });\n
+        const selectedColor = '#0f4c81';\n
+        const billedColor = 'rgba(15, 110, 140, 0.55)';\n
+        const collectedColor = 'rgba(22, 163, 74, 0.58)';\n
+        const neutralGrid = 'rgba(15, 110, 140, 0.08)';\n
+\n
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";\n
+        Chart.defaults.color = '#64748b';\n
+        Chart.defaults.borderColor = neutralGrid;\n
+        Chart.defaults.maintainAspectRatio = false;\n
+\n
+        const selectedIndex = chartData.financial.selected_index;\n
+        const financialCanvas = document.getElementById('financialChart');\n
+        if (financialCanvas) {\n
+            const billedColors = chartData.financial.billed.map((_, index) =&gt; index === selectedIndex ? selectedColor : billedColor);\n
+            const collectedColors = chartData.financial.collected.map((_, index) =&gt; index === selectedIndex ? '#15803d' : collectedColor);\n
+\n
+            new Chart(financialCanvas, {\n
+                type: 'bar',\n
+                data: {\n
+                    labels: chartData.labels,\n
+                    datasets: [\n
+                        {\n
+                            type: 'bar',\n
+                            label: 'New charges',\n
+                            data: chartData.financial.billed,\n
+                            backgroundColor: billedColors,\n
+                            borderRadius: 7,\n
+                            maxBarThickness: 30,\n
+                            yAxisID: 'y',\n
+                        },\n
+                        {\n
+                            type: 'bar',\n
+                            label: 'Collections',\n
+                            data: chartData.financial.collected,\n
+                            backgroundColor: collectedColors,\n
+                            borderRadius: 7,\n
+                            maxBarThickness: 30,\n
+                            yAxisID: 'y',\n
+                        },\n
+                        {\n
+                            type: 'line',\n
+                            label: 'Collection rate',\n
+                            data: chartData.financial.collection_rate,\n
+                            borderColor: '#f59e0b',\n
+                            backgroundColor: '#f59e0b',\n
+                            borderWidth: 2,\n
+                            pointRadius: chartData.financial.collection_rate.map((value, index) =&gt; value === null ? 0 : (index === selectedIndex ? 5 : 3)),\n
+                            pointHoverRadius: 5,\n
+                            tension: 0.35,\n
+                            spanGaps: true,\n
+                            yAxisID: 'rate',\n
+                        },\n
+                    ],\n
+                },\n
+                options: {\n
+                    interaction: { intersect: false, mode: 'index' },\n
+                    plugins: {\n
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; context.dataset.yAxisID === 'rate'\n
+                                    ? `${context.dataset.label}: ${context.parsed.y === null ? 'n/a' : decimal.format(context.parsed.y) + '%'}`\n
+                                    : `${context.dataset.label}: ${peso.format(context.parsed.y)}`,\n
+                            },\n
+                        },\n
+                    },\n
+                    scales: {\n
+                        x: { grid: { display: false } },\n
+                        y: { beginAtZero: true, ticks: { callback: (value) =&gt; pesoWhole.format(value) }, grid: { color: neutralGrid } },\n
+                        rate: {\n
+                            beginAtZero: true,\n
+                            position: 'right',\n
+                            suggestedMax: 100,\n
+                            grid: { drawOnChartArea: false },\n
+                            ticks: { callback: (value) =&gt; decimal.format(value) + '%' },\n
+                        },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+\n
+        const outstandingCanvas = document.getElementById('outstandingChart');\n
+        if (outstandingCanvas) {\n
+            new Chart(outstandingCanvas, {\n
+                type: 'bar',\n
+                data: {\n
+                    labels: chartData.outstanding.labels,\n
+                    datasets: [{\n
+                        label: 'Outstanding balance',\n
+                        data: chartData.outstanding.amounts,\n
+                        backgroundColor: ['#16a34a', '#f59e0b', '#f97316', '#ef4444', '#991b1b'],\n
+                        borderRadius: 6,\n
+                        maxBarThickness: 24,\n
+                    }],\n
+                },\n
+                options: {\n
+                    indexAxis: 'y',\n
+                    plugins: {\n
+                        legend: { display: false },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; `${peso.format(context.parsed.x)} · ${whole.format(chartData.outstanding.accounts[context.dataIndex] || 0)} accounts`,\n
+                            },\n
+                        },\n
+                    },\n
+                    scales: {\n
+                        x: { beginAtZero: true, ticks: { callback: (value) =&gt; pesoWhole.format(value) }, grid: { color: neutralGrid } },\n
+                        y: { grid: { display: false } },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+\n
+        const accountStatusCanvas = document.getElementById('accountStatusChart');\n
+        if (accountStatusCanvas) {\n
+            const statusColors = ['#0754C8', '#f59e0b', '#3b82f6', '#ef4444', '#8b5cf6', '#94a3b8'];\n
+            const statusTotal = chartData.account_status.counts.reduce((sum, value) =&gt; sum + Number(value || 0), 0);\n
+\n
+            new Chart(accountStatusCanvas, {\n
+                type: 'doughnut',\n
+                data: {\n
+                    labels: chartData.account_status.labels,\n
+                    datasets: [{\n
+                        data: chartData.account_status.counts,\n
+                        backgroundColor: chartData.account_status.labels.map((_, index) =&gt; statusColors[index] || '#94a3b8'),\n
+                        borderColor: '#ffffff',\n
+                        borderWidth: 2,\n
+                        hoverOffset: 4,\n
+                    }],\n
+                },\n
+                options: {\n
+                    cutout: '66%',\n
+                    plugins: {\n
+                        legend: { display: false },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; {\n
+                                    const value = Number(context.parsed || 0);\n
+                                    const percent = statusTotal &gt; 0 ? (value / statusTotal) * 100 : 0;\n
+\n
+                                    return `${context.label}: ${whole.format(value)} (${decimal.format(percent)}%)`;\n
+                                },\n
+                            },\n
+                        },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+\n
+        const consumptionCanvas = document.getElementById('consumptionChart');\n
+        if (consumptionCanvas) {\n
+            const consumptionColors = chartData.consumption.totals.map((_, index) =&gt; index === chartData.consumption.selected_index ? selectedColor : billedColor);\n
+\n
+            new Chart(consumptionCanvas, {\n
+                type: 'bar',\n
+                data: {\n
+                    labels: chartData.labels,\n
+                    datasets: [\n
+                        {\n
+                            type: 'bar',\n
+                            label: 'Total consumption (m³)',\n
+                            data: chartData.consumption.totals,\n
+                            backgroundColor: consumptionColors,\n
+                            borderRadius: 7,\n
+                            maxBarThickness: 30,\n
+                            yAxisID: 'y',\n
+                        },\n
+                        {\n
+                            type: 'line',\n
+                            label: 'Average per reading (m³)',\n
+                            data: chartData.consumption.averages,\n
+                            borderColor: '#3b82f6',\n
+                            backgroundColor: '#3b82f6',\n
+                            borderWidth: 2,\n
+                            pointRadius: chartData.consumption.averages.map((value, index) =&gt; Number(value) &gt; 0 ? (index === chartData.consumption.selected_index ? 5 : 3) : 0),\n
+                            pointHoverRadius: 5,\n
+                            tension: 0.35,\n
+                            yAxisID: 'avg',\n
+                        },\n
+                    ],\n
+                },\n
+                options: {\n
+                    interaction: { intersect: false, mode: 'index' },\n
+                    plugins: {\n
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; `${context.dataset.label}: ${decimal.format(context.parsed.y)} m³`,\n
+                            },\n
+                        },\n
+                    },\n
+                    scales: {\n
+                        x: { grid: { display: false } },\n
+                        y: { beginAtZero: true, ticks: { callback: (value) =&gt; decimal.format(value) }, grid: { color: neutralGrid } },\n
+                        avg: {\n
+                            beginAtZero: true,\n
+                            position: 'right',\n
+                            grid: { drawOnChartArea: false },\n
+                            ticks: { callback: (value) =&gt; decimal.format(value) + ' m³' },\n
+                        },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+\n
+        const loansCanvas = document.getElementById('loansChart');\n
+        if (loansCanvas) {\n
+            new Chart(loansCanvas, {\n
+                type: 'bar',\n
+                data: {\n
+                    labels: chartData.labels,\n
+                    datasets: [\n
+                        {\n
+                            type: 'bar',\n
+                            label: 'Applications',\n
+                            data: chartData.loans.applications,\n
+                            backgroundColor: chartData.loans.applications.map((_, index) =&gt; index === chartData.loans.selected_index ? selectedColor : billedColor),\n
+                            borderRadius: 7,\n
+                            maxBarThickness: 30,\n
+                            yAxisID: 'count',\n
+                        },\n
+                        {\n
+                            type: 'line',\n
+                            label: 'Repayments posted',\n
+                            data: chartData.loans.repayments,\n
+                            borderColor: '#f59e0b',\n
+                            backgroundColor: '#f59e0b',\n
+                            borderWidth: 2,\n
+                            pointRadius: chartData.loans.repayments.map((value, index) =&gt; Number(value) &gt; 0 ? (index === chartData.loans.selected_index ? 5 : 3) : 0),\n
+                            pointHoverRadius: 5,\n
+                            tension: 0.35,\n
+                            yAxisID: 'money',\n
+                        },\n
+                    ],\n
+                },\n
+                options: {\n
+                    interaction: { intersect: false, mode: 'index' },\n
+                    plugins: {\n
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; context.dataset.yAxisID === 'money'\n
+                                    ? `${context.dataset.label}: ${peso.format(context.parsed.y)}`\n
+                                    : `${context.dataset.label}: ${whole.format(context.parsed.y)}`,\n
+                            },\n
+                        },\n
+                    },\n
+                    scales: {\n
+                        x: { grid: { display: false } },\n
+                        count: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: neutralGrid } },\n
+                        money: {\n
+                            beginAtZero: true,\n
+                            position: 'right',\n
+                            grid: { drawOnChartArea: false },\n
+                            ticks: { callback: (value) =&gt; pesoWhole.format(value) },\n
+                        },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+\n
+        const incidentStatusCanvas = document.getElementById('incidentStatusChart');\n
+        if (incidentStatusCanvas) {\n
+            const incidentStatusColors = {\n
+                'Pending': '#f59e0b',\n
+                'Ongoing': '#3b82f6',\n
+                'For Consumer Confirmation': '#8b5cf6',\n
+                'Resolved': '#16a34a',\n
+            };\n
+\n
+            new Chart(incidentStatusCanvas, {\n
+                type: 'doughnut',\n
+                data: {\n
+                    labels: chartData.incidents.status_labels,\n
+                    datasets: [{\n
+                        data: chartData.incidents.status_counts,\n
+                        backgroundColor: chartData.incidents.status_labels.map((label) =&gt; incidentStatusColors[label] || '#94a3b8'),\n
+                        borderColor: '#ffffff',\n
+                        borderWidth: 2,\n
+                        hoverOffset: 4,\n
+                    }],\n
+                },\n
+                options: {\n
+                    cutout: '64%',\n
+                    plugins: {\n
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8 } },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; `${context.label}: ${whole.format(context.parsed || 0)}`,\n
+                            },\n
+                        },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+\n
+        const incidentCategoryCanvas = document.getElementById('incidentCategoryChart');\n
+        if (incidentCategoryCanvas) {\n
+            new Chart(incidentCategoryCanvas, {\n
+                type: 'bar',\n
+                data: {\n
+                    labels: chartData.incidents.category_labels,\n
+                    datasets: [{\n
+                        label: 'Incidents',\n
+                        data: chartData.incidents.category_counts,\n
+                        backgroundColor: 'rgba(15, 110, 140, 0.65)',\n
+                        borderRadius: 6,\n
+                        maxBarThickness: 24,\n
+                    }],\n
+                },\n
+                options: {\n
+                    indexAxis: 'y',\n
+                    plugins: {\n
+                        legend: { display: false },\n
+                        tooltip: {\n
+                            callbacks: {\n
+                                label: (context) =&gt; `${whole.format(context.parsed.x)} incidents`,\n
+                            },\n
+                        },\n
+                    },\n
+                    scales: {\n
+                        x: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: neutralGrid } },\n
+                        y: { grid: { display: false } },\n
+                    },\n
+                },\n
+            });\n
+        }\n
+    });\n
+&lt;/script&gt;\n
+        &lt;script&gt;\n
+            document.addEventListener('DOMContentLoaded', function () {\n
+                const main = document.querySelector('.main-content');\n
+                const content = main?.querySelector('.content-wrapper');\n
+                if (!content) return;\n
+                if (content.querySelector('[data-admin-natural-page-scroll]')) return;\n
+                main.style.setProperty('--admin-window-gutter', (window.innerWidth - document.documentElement.clientWidth) + 'px');\n
+\n
+                const consumerPage = content.querySelector('[data-admin-page-scroll]');\n
+                const first = content.querySelector('[data-admin-records-root]')\n
+                    || [...content.children].find(element =&gt; !element.matches('.page-heading, .modal, script, style'));\n
+                if (!first) return;\n
+                if (consumerPage) {\n
+                    main.classList.add('admin-scroll-shell');\n
+                    document.documentElement.classList.add('admin-consumer-page-scroll');\n
+                    const topbar = main.querySelector('.topbar');\n
+                    const setTopbarHeight = function () {\n
+                        main.style.setProperty('--consumer-topbar-height', topbar.getBoundingClientRect().height + 'px');\n
+                    };\n
+                    setTopbarHeight();\n
+                    new ResizeObserver(setTopbarHeight).observe(topbar);\n
+                }\n
+                const sectionScroll = first.hasAttribute('data-admin-section-scroll') || Boolean(consumerPage);\n
+\n
+                const parent = first.parentElement;\n
+                const margins = window.getComputedStyle(first);\n
+                const area = document.createElement('div');\n
+                area.className = 'admin-records-area';\n
+                area.setAttribute('role', 'region');\n
+                area.setAttribute('aria-label', 'Admin records and page content');\n
+                area.tabIndex = 0;\n
+                ['Top', 'Left', 'Right'].forEach(function (side) {\n
+                    const value = margins['margin' + side];\n
+                    first.style.setProperty('--admin-original-' + side.toLowerCase(), value);\n
+                    if (side === 'Top' &amp;&amp; parseFloat(value) &lt; 0) {\n
+                        first.style.setProperty('--admin-first-top', value);\n
+                        area.style.marginTop = '0px';\n
+                    } else {\n
+                        area.style['margin' + side] = value;\n
+                    }\n
+                });\n
+                area.style.setProperty('--admin-area-original-left', margins.marginLeft);\n
+                area.style.setProperty('--admin-area-original-right', margins.marginRight);\n
+                parent.insertBefore(area, first);\n
+                while (area.nextSibling) area.appendChild(area.nextSibling);\n
+                [...area.children].filter(element =&gt; !element.matches('.modal, script, style')).forEach(function (element) {\n
+                    const styles = window.getComputedStyle(element);\n
+                    element.style.setProperty('--admin-item-original-left', styles.marginLeft);\n
+                    element.style.setProperty('--admin-item-original-right', styles.marginRight);\n
+                    element.classList.add('admin-area-item');\n
+                });\n
+                first.classList.add('admin-area-first');\n
+\n
+                for (let ancestor = parent; ancestor &amp;&amp; ancestor !== main; ancestor = ancestor.parentElement) {\n
+                    ancestor.style.setProperty('--admin-path-display', window.getComputedStyle(ancestor).display);\n
+                    ancestor.classList.add('admin-scroll-path');\n
+                }\n
+                main.classList.add('admin-scroll-shell');\n
+                document.documentElement.classList.add('admin-one-scroll');\n
+\n
+                const tableHeadings = [];\n
+                area.querySelectorAll('table').forEach(function (table) {\n
+                    if (table.closest('.modal')) return;\n
+                    table.closest('.panel-card, .billing-card')?.classList.add('admin-records-surface');\n
+                    if (table.tHead) {\n
+                        table.tHead.classList.add('admin-table-heading');\n
+                        if (! (consumerPage &amp;&amp; table.closest('#active-disconnection-notices'))) tableHeadings.push(table.tHead);\n
+                    }\n
+                    const wrapper = table.parentElement;\n
+                    const styles = window.getComputedStyle(wrapper);\n
+                    if (['auto', 'scroll'].includes(styles.overflowX) || ['auto', 'scroll'].includes(styles.overflowY)) {\n
+                        if (wrapper.scrollHeight &gt; wrapper.clientHeight + 1) wrapper.style.scrollbarGutter = 'stable';\n
+                        wrapper.classList.add('admin-natural-records', 'admin-table-viewport');\n
+                        wrapper.style.removeProperty('max-height');\n
+                        wrapper.style.removeProperty('height');\n
+                    }\n
+                });\n
+                area.querySelectorAll('*').forEach(function (element) {\n
+                    if (element.matches('textarea, select') || element.closest('.modal, .dropdown-menu')) return;\n
+                    const styles = window.getComputedStyle(element);\n
+                    if (['auto', 'scroll'].includes(styles.overflowY) &amp;&amp; styles.maxHeight !== 'none') {\n
+                        element.classList.add('admin-natural-records');\n
+                    }\n
+                });\n
+\n
+                const frozen = [...area.querySelectorAll('[data-admin-freeze]')];\n
+                const recordParts = [];\n
+                const collectRecords = function (element) {\n
+                    if (element.matches('[data-admin-freeze], .modal, script, style')) return;\n
+                    if (element.querySelector('[data-admin-freeze], .modal')) {\n
+                        [...element.children].forEach(collectRecords);\n
+                    } else {\n
+                        element.classList.add('admin-record-part');\n
+                        recordParts.push(element);\n
+                    }\n
+                };\n
+                [...area.children].forEach(collectRecords);\n
+                frozen.forEach(function (element) {\n
+                    for (let ancestor = element.parentElement; ancestor &amp;&amp; ancestor !== area; ancestor = ancestor.parentElement) {\n
+                        const styles = window.getComputedStyle(ancestor);\n
+                        if (['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowY)\n
+                            || ['auto', 'scroll', 'hidden', 'clip'].includes(styles.overflowX)) ancestor.style.overflow = 'visible';\n
+                    }\n
+                });\n
+\n
+                let frame = null;\n
+                let paintFrame = null;\n
+                const paintRecords = function () {\n
+                    paintFrame = null;\n
+                    if (main.classList.contains('admin-content-scroll')) return;\n
+                    const areaTop = area.getBoundingClientRect().top;\n
+                    if (consumerPage) {\n
+                        const activeTitle = area.querySelector('#active-accounts &gt; .consumer-section-controls');\n
+                        const activeFilters = area.querySelector('#account-filters');\n
+                        if (activeTitle) activeTitle.style.setProperty('--admin-freeze-top', '0px');\n
+                        if (activeTitle &amp;&amp; activeFilters) activeFilters.style.setProperty('--admin-freeze-top', activeTitle.getBoundingClientRect().height + 'px');\n
+                    }\n
+                    const primary = frozen.filter(element =&gt; element.classList.contains('admin-primary-freeze'));\n
+                    primary.forEach(element =&gt; element.style.setProperty('--admin-extra-shift', '0px'));\n
+                    const offsets = primary.map(element =&gt; Math.max(0,\n
+                        areaTop + parseFloat(element.style.getPropertyValue('--admin-freeze-top')) - element.getBoundingClientRect().top));\n
+                    primary.forEach((element, index) =&gt; element.style.setProperty('--admin-extra-shift', offsets[index] + 'px'));\n
+                    const headers = frozen.map(element =&gt; ({ element, box: element.getBoundingClientRect(),\n
+                        margin: parseFloat(window.getComputedStyle(element).marginBottom) || 0 }))\n
+                        .filter(({ box }) =&gt; box.height &gt; 0 &amp;&amp; box.bottom &gt; areaTop);\n
+                    const visibleBottom = headers.filter(({ element, box }) =&gt; Math.abs(box.top - areaTop\n
+                        - parseFloat(element.style.getPropertyValue('--admin-freeze-top'))) &lt; 1)\n
+                        .reduce((bottom, { box, margin }) =&gt; Math.max(bottom, box.bottom - areaTop + margin), 0);\n
+                    area.style.scrollPaddingTop = visibleBottom + 'px';\n
+                    tableHeadings.forEach(function (heading) {\n
+                        const box = heading.getBoundingClientRect();\n
+                        const oldShift = parseFloat(heading.style.getPropertyValue('--admin-table-header-shift')) || 0;\n
+                        const naturalTop = box.top - oldShift;\n
+                        let boundary = Math.max(areaTop, naturalTop);\n
+                        headers.forEach(function ({ element, box: header, margin }) {\n
+                            if ((element.compareDocumentPosition(heading) &amp; Node.DOCUMENT_POSITION_FOLLOWING)\n
+                                &amp;&amp; header.left &lt; box.right - 1 &amp;&amp; header.right &gt; box.left + 1) {\n
+                                boundary = Math.max(boundary, header.bottom + margin);\n
+                            }\n
+                        });\n
+                        const tableBottom = heading.closest('table').getBoundingClientRect().bottom;\n
+                        const shift = Math.max(0, Math.min(boundary - naturalTop, tableBottom - naturalTop - box.height));\n
+                        heading.style.setProperty('--admin-table-header-shift', shift + 'px');\n
+                    });\n
+                    recordParts.forEach(function (part) {\n
+                        const box = part.getBoundingClientRect();\n
+                        let boundary = box.top;\n
+                        headers.forEach(function ({ element, box: header, margin }) {\n
+                            if ((element.compareDocumentPosition(part) &amp; Node.DOCUMENT_POSITION_FOLLOWING)\n
+                                &amp;&amp; header.left &lt; box.right - 1 &amp;&amp; header.right &gt; box.left + 1) {\n
+                                boundary = Math.max(boundary, header.bottom + margin);\n
+                            }\n
+                        });\n
+                        const inset = Math.min(box.height, Math.max(0, boundary - box.top));\n
+                        part.style.clipPath = inset &gt; 0 ? 'inset(' + inset + 'px 0 0)' : '';\n
+                    });\n
+                };\n
+                const layout = function () {\n
+                    frame = null;\n
+                    const oldScroll = main.classList.contains('admin-content-scroll') ? content.scrollTop : area.scrollTop;\n
+                    main.classList.remove('admin-content-scroll');\n
+                    document.documentElement.classList.remove('admin-fallback-scroll');\n
+                    content.scrollTop = 0;\n
+                    area.scrollTop = 0;\n
+                    area.classList.remove('has-scrolled');\n
+                    tableHeadings.forEach(heading =&gt; heading.style.setProperty('--admin-table-header-shift', '0px'));\n
+                    frozen.forEach(function (element) {\n
+                        element.style.setProperty('--admin-extra-shift', '0px');\n
+                        element.style.setProperty('--admin-freeze-top', '0px');\n
+                        element.classList.remove('admin-primary-freeze');\n
+                    });\n
+                    const areaBox = area.getBoundingClientRect();\n
+                    let frozenBottom = 0;\n
+                    const sectionEnds = new Map();\n
+                    const initialHeaders = frozen.filter(element =&gt; element.getBoundingClientRect().bottom &lt;= areaBox.bottom);\n
+                    initialHeaders.filter(element =&gt; !sectionScroll || element.closest('[data-admin-freeze-section]') === first)\n
+                        .forEach(element =&gt; element.classList.add('admin-primary-freeze'));\n
+                    const sectionInset = parseFloat(window.getComputedStyle(first).paddingTop)\n
+                        + parseFloat(window.getComputedStyle(first).borderTopWidth);\n
+                    const sectionTop = frozen.filter(element =&gt; element.closest('[data-admin-freeze-section]') === first)\n
+                        .reduce((bottom, element) =&gt; Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top\n
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), sectionInset);\n
+                    const globalBottom = initialHeaders\n
+                        .reduce((bottom, element) =&gt; Math.max(bottom, element.getBoundingClientRect().bottom - areaBox.top\n
+                            + (parseFloat(window.getComputedStyle(element).marginBottom) || 0)), 0);\n
+                    let consumerFrozenBottom = 0;\n
+\n
+                    frozen.forEach(function (element) {\n
+                        if (!element.getClientRects().length) return;\n
+                        const section = element.closest('[data-admin-freeze-section]')\n
+                            || element.closest('.panel-card, .billing-card, .card') || first;\n
+                        const sectionBox = section.getBoundingClientRect();\n
+                        const box = element.getBoundingClientRect();\n
+                        const sectionOffset = sectionBox.top - areaBox.top;\n
+                        const startsVisible = sectionOffset &lt; area.clientHeight;\n
+                        const naturalOffset = box.top - areaBox.top;\n
+                        const activeTitle = consumerPage &amp;&amp; area.querySelector('#active-accounts &gt; .consumer-section-controls');\n
+                        const top = consumerPage &amp;&amp; first.hasAttribute('data-admin-section-scroll') &amp;&amp; activeTitle &amp;&amp; element === activeTitle\n
+                            ? 0\n
+                            : consumerPage &amp;&amp; first.hasAttribute('data-admin-section-scroll') &amp;&amp; element === area.querySelector('#account-filters')\n
+                                ? activeTitle.getBoundingClientRect().height\n
+                                : consumerPage &amp;&amp; first.hasAttribute('data-admin-section-scroll') ? consumerFrozenBottom : consumerPage ? 0\n
+                            : sectionScroll &amp;&amp; section !== first ? sectionTop + box.top - sectionBox.top\n
+                                : (startsVisible ? Math.max(0, sectionOffset) : globalBottom) + box.top - sectionBox.top;\n
+                        element.style.setProperty('--admin-freeze-top', top + 'px');\n
+                        if (consumerPage) consumerFrozenBottom = top + box.height + (parseFloat(window.getComputedStyle(element).marginBottom) || 0);\n
+                        if (startsVisible) frozenBottom = Math.max(frozenBottom, top + box.height);\n
+\n
+                        let background = element.parentElement;\n
+                        while (background !== area &amp;&amp; window.getComputedStyle(background).backgroundColor === 'rgba(0, 0, 0, 0)') {\n
+                            background = background.parentElement;\n
+                        }\n
+                        if (background === area) background = element;\n
+                        const backgroundBox = background.getBoundingClientRect();\n
+                        const backgroundStyles = window.getComputedStyle(background);\n
+                        const ownStyles = window.getComputedStyle(element);\n
+                        const firstInSection = !sectionEnds.has(section);\n
+                        const previousBottom = sectionEnds.get(section) ?? Math.max(backgroundBox.top, sectionBox.top);\n
+                        sectionEnds.set(section, box.bottom);\n
+                        element.style.setProperty('--admin-freeze-background', backgroundStyles.backgroundColor === 'rgba(0, 0, 0, 0)' ? 'var(--wb-surface)' : backgroundStyles.backgroundColor);\n
+                        element.style.setProperty('--admin-freeze-cover-top', Math.max(0, box.top - previousBottom) + 'px');\n
+                        element.style.setProperty('--admin-freeze-cover-left', Math.max(0, box.left - backgroundBox.left) + 'px');\n
+                        element.style.setProperty('--admin-freeze-cover-right', Math.max(0, backgroundBox.right - box.right) + 'px');\n
+                        element.style.setProperty('--admin-freeze-cover-bottom', (parseFloat(ownStyles.marginBottom) || 0) + 'px');\n
+                        const continuesFrame = firstInSection &amp;&amp; background === section;\n
+                        element.style.setProperty('--admin-freeze-border', continuesFrame ? backgroundStyles.border : '0');\n
+                        element.style.setProperty('--admin-freeze-radius', continuesFrame ? backgroundStyles.borderTopLeftRadius : '0px');\n
+                    });\n
+\n
+                    const lineHeight = parseFloat(window.getComputedStyle(content).lineHeight) || 24;\n
+                    if (area.clientHeight - frozenBottom &lt; lineHeight * 2) {\n
+                        main.classList.add('admin-content-scroll');\n
+                        document.documentElement.classList.add('admin-fallback-scroll');\n
+                        content.scrollTop = oldScroll;\n
+                    } else {\n
+                        const scrollbar = area.offsetWidth - area.clientWidth;\n
+                        const originalRight = parseFloat(first.style.getPropertyValue('--admin-original-right')) || 0;\n
+                        area.style.marginRight = (originalRight - scrollbar) + 'px';\n
+                        area.scrollTop = oldScroll;\n
+                        area.classList.toggle('has-scrolled', oldScroll &gt; 0);\n
+                    }\n
+                    paintRecords();\n
+                };\n
+                const scheduleLayout = function () {\n
+                    if (frame === null) frame = window.requestAnimationFrame(layout);\n
+                };\n
+                area.addEventListener('scroll', function () {\n
+                    area.classList.toggle('has-scrolled', area.scrollTop &gt; 0);\n
+                    if (paintFrame === null) paintFrame = window.requestAnimationFrame(paintRecords);\n
+                }, { passive: true });\n
+                window.addEventListener('resize', scheduleLayout);\n
+                document.addEventListener('shown.bs.tab', scheduleLayout);\n
+                document.addEventListener('shown.bs.collapse', scheduleLayout);\n
+                document.addEventListener('hidden.bs.collapse', scheduleLayout);\n
+                document.addEventListener('closed.bs.alert', scheduleLayout);\n
+                document.addEventListener('toggle', scheduleLayout, true);\n
+                document.fonts?.ready.then(scheduleLayout);\n
+                let lastWidth = main.clientWidth;\n
+                let lastHeight = main.clientHeight;\n
+                new ResizeObserver(function () {\n
+                    if (main.clientWidth !== lastWidth || main.clientHeight !== lastHeight) {\n
+                        lastWidth = main.clientWidth;\n
+                        lastHeight = main.clientHeight;\n
+                        scheduleLayout();\n
+                    }\n
+                }).observe(main);\n
+                layout();\n
+            });\n
+        &lt;/script&gt;\n
+    &lt;/body&gt;\n
+&lt;/html&gt;\n
+' [UTF-8](length: 150426) contains "data-auto-filter-debounce="450"" [ASCII](length: 31).
+&#13;
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:710
+C:\xampp\htdocs\waterbillingsystems\tests\Feature\AutoFilterUiTest.php:36</failure>
+        </testcase>
+        <testcase name="test_consumer_filter_pages_auto_submit_without_visible_apply_buttons" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\AutoFilterUiTest.php" line="42" class="Tests\Feature\AutoFilterUiTest" classname="Tests.Feature.AutoFilterUiTest" assertions="16" time="0.190802"/>
+        <testcase name="test_meter_reader_filter_pages_auto_submit_without_visible_apply_buttons" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\AutoFilterUiTest.php" line="74" class="Tests\Feature\AutoFilterUiTest" classname="Tests.Feature.AutoFilterUiTest" assertions="4" time="0.048334"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\IncidentEvidenceUploadTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" tests="7" assertions="77" errors="0" failures="0" skipped="0" time="0.468814">
+        <testcase name="test_consumer_can_submit_incident_without_attachment" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="17" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="4" time="0.046944"/>
+        <testcase name="test_consumer_can_upload_supported_image_evidence" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="34" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="8" time="0.058111"/>
+        <testcase name="test_consumer_can_upload_supported_video_evidence" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="57" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="8" time="0.065995"/>
+        <testcase name="test_each_supported_evidence_format_can_be_uploaded" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="80" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="36" time="0.115056"/>
+        <testcase name="test_unsupported_evidence_format_is_rejected" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="114" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="5" time="0.050807"/>
+        <testcase name="test_oversized_image_and_video_evidence_are_rejected" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="131" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="9" time="0.066990"/>
+        <testcase name="test_incident_pages_show_photo_or_video_controls" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentEvidenceUploadTest.php" line="156" class="Tests\Feature\IncidentEvidenceUploadTest" classname="Tests.Feature.IncidentEvidenceUploadTest" assertions="7" time="0.064912"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\IncidentOthersTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentOthersTest.php" tests="2" assertions="41" errors="0" failures="0" skipped="0" time="0.199148">
+        <testcase name="test_others_is_rendered_saved_and_filtered_for_both_roles" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentOthersTest.php" line="15" class="Tests\Feature\IncidentOthersTest" classname="Tests.Feature.IncidentOthersTest" assertions="34" time="0.157543"/>
+        <testcase name="test_others_requires_custom_type_and_preserves_input_on_validation_error" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentOthersTest.php" line="54" class="Tests\Feature\IncidentOthersTest" classname="Tests.Feature.IncidentOthersTest" assertions="7" time="0.041605"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\IncidentPriorityTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentPriorityTest.php" tests="5" assertions="154" errors="0" failures="0" skipped="0" time="8.787086">
+        <testcase name="test_consumer_descriptions_are_classified_and_displayed_for_all_five_categories" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentPriorityTest.php" line="17" class="Tests\Feature\IncidentPriorityTest" classname="Tests.Feature.IncidentPriorityTest" assertions="90" time="0.230122"/>
+        <testcase name="test_consumer_report_persists_automatic_evidence_and_admin_can_confirm_or_override_it" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentPriorityTest.php" line="61" class="Tests\Feature\IncidentPriorityTest" classname="Tests.Feature.IncidentPriorityTest" assertions="21" time="0.147237"/>
+        <testsuite name="Tests\Feature\IncidentPriorityTest::test_priority_history_cannot_be_changed_after_resolution" tests="2" assertions="34" errors="0" failures="0" skipped="0" time="8.330950">
+          <testcase name="test_priority_history_cannot_be_changed_after_resolution with data set &quot;admin resolution&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentPriorityTest.php" line="99" class="Tests\Feature\IncidentPriorityTest" classname="Tests.Feature.IncidentPriorityTest" assertions="17" time="6.700845"/>
+          <testcase name="test_priority_history_cannot_be_changed_after_resolution with data set &quot;consumer resolution&quot;" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentPriorityTest.php" line="99" class="Tests\Feature\IncidentPriorityTest" classname="Tests.Feature.IncidentPriorityTest" assertions="17" time="1.630105"/>
+        </testsuite>
+        <testcase name="test_priority_order_and_combined_filters_apply_before_pagination" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentPriorityTest.php" line="154" class="Tests\Feature\IncidentPriorityTest" classname="Tests.Feature.IncidentPriorityTest" assertions="9" time="0.078777"/>
+      </testsuite>
+      <testsuite name="Tests\Feature\IncidentResolutionWorkflowTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" tests="11" assertions="75" errors="0" failures="0" skipped="0" time="0.550672">
+        <testcase name="test_admin_can_resolve_an_incident_and_stamps_the_resolution_time" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="16" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="12" time="0.056951"/>
+        <testcase name="test_admin_cannot_resolve_an_incident_without_resolution_notes" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="53" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="4" time="0.030023"/>
+        <testcase name="test_consumer_cannot_use_the_admin_update_endpoint" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="71" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="2" time="0.034153"/>
+        <testcase name="test_pending_incidents_are_ordered_oldest_first" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="88" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="3" time="0.043257"/>
+        <testcase name="test_resolved_incidents_are_ordered_by_most_recent_resolution_first" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="123" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="2" time="0.043911"/>
+        <testcase name="test_pending_and_resolved_filters_split_the_list" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="153" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="6" time="0.056233"/>
+        <testcase name="test_consumer_can_mark_own_pending_incident_as_resolved" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="182" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="9" time="0.064186"/>
+        <testcase name="test_consumer_resolution_json_updates_without_page_reload" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="212" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="2" time="0.033489"/>
+        <testcase name="test_consumer_cannot_resolve_another_consumers_incident_or_resolve_twice" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="227" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="8" time="0.047744"/>
+        <testcase name="test_incident_category_and_search_filters_narrow_the_list" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="258" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="14" time="0.072229"/>
+        <testcase name="test_consumer_reports_only_renders_the_table_when_results_are_available" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\IncidentResolutionWorkflowTest.php" line="307" class="Tests\Feature\IncidentResolutionWorkflowTest" classname="Tests.Feature.IncidentResolutionWorkflowTest" assertions="13" time="0.068498"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

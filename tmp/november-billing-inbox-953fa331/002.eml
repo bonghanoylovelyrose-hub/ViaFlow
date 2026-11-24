@@ -1,0 +1,97 @@
+From: ViaFlow Water System <viaflow-qa@viaflow.test>
+To: mt-9191@viaflow.test
+Subject: Disconnection Notice - Immediate Payment Required
+Message-ID: <39828d4ecb9b775deac05cabc7161476@viaflow.test>
+MIME-Version: 1.0
+Date: Tue, 24 Nov 2026 04:02:41 +0000
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+    <meta charset=3D"UTF-8"=
+>
+    <title>Disconnection Notice - Immediate Payment Required</title>
+=
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1">
+<style>
+    body { -webkit-text-size-adjust: 100%; -ms-text-size=
+-adjust: 100%; }
+    img { max-width: 100%; height: auto; }
+    p, td, =
+th, div, a { overflow-wrap: anywhere; word-wrap: break-word; word-break: br=
+eak-word; }
+    @media only screen and (max-width: 600px) {
+        bod=
+y { padding: 12px !important; margin: 0 !important; }
+        body > div =
+{ padding: 18px !important; margin: 0 auto !important; }
+        .contain=
+er { margin: 0 auto !important; width: 100% !important; }
+        h1 { fo=
+nt-size: 21px !important; line-height: 1.3 !important; }
+        table { =
+max-width: 100% !important; }
+        .email-detail-label, .email-detail-=
+value { display: block !important; width: auto !important; text-align: left=
+ !important; }
+        .email-detail-value { margin-top: 2px !important; =
+}
+        a[style*=3D"background"] { display: inline-block !important; pa=
+dding: 13px 18px !important; line-height: 1.35 !important; text-align: cent=
+er !important; }
+    }
+</style>
+</head>
+<body style=3D"margin:0;pad=
+ding:24px 12px;background:#fff1f2;color:#451a1a;font-family:Arial,sans-seri=
+f;">
+    <table role=3D"presentation" width=3D"100%" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"max-width:600px;margin:0 auto;background:#fff;bord=
+er:1px solid #fecaca;border-radius:14px;">
+        <tr><td style=3D"paddi=
+ng:20px 24px;background:#991b1b;color:#fff;border-radius:14px 14px 0 0;">=
+
+            <h1 style=3D"font-size:20px;margin:0;">Disconnection Notice =
+- Immediate Payment Required</h1>
+        </td></tr>
+        <tr><td st=
+yle=3D"padding:24px;font-size:15px;line-height:1.6;">
+                   =
+     <p style=3D"margin-top:0;">Hello Development Fixture MT-9191,</p>
+  =
+                          <p>Your account has unpaid water bills past their=
+ payment deadlines. Please settle the balance below to avoid possible disco=
+nnection.</p>
+                        <div style=3D"padding:16px;backgrou=
+nd:#fef2f2;border-left:4px solid #b91c1c;color:#7f1d1d;">
+               =
+ <strong>Account number:</strong> DEMO-MT-9191<br>
+                <stron=
+g>Meter number:</strong> MT-9191<br>
+                <strong>Disconnectio=
+n reason:</strong> Water Billing Overdue<br>
+                <strong>Outs=
+tanding water balance:</strong> PHP 1,116.00<br>
+                        =
+        <strong>Notice issued:</strong> November 25, 2026 9:00 AM<br>
+   =
+             <strong>Payment deadline:</strong> November 28, 2026 9:00 AM P=
+hilippine time
+            </div>
+            <p>Please settle the full=
+ outstanding balance and have the payment verified by the deadline. The pay=
+ment window is three days.</p>
+            <p>Your service remains connec=
+ted unless an administrator confirms physical disconnection.</p>
+        =
+    <p style=3D"margin-bottom:0;color:#694747;">ViaFlow System &middot; Via=
+ Vida Townhomes Homeowners Association</p>
+        </td></tr>
+    </tab=
+le>
+</body>
+</html>
+

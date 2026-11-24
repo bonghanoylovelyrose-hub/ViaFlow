@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\waterbillingsystems\phpunit.xml" tests="15" assertions="238" errors="1" failures="1" skipped="0" time="1.630840">
+    <testsuite name="Feature" tests="15" assertions="238" errors="1" failures="1" skipped="0" time="1.630840">
+      <testsuite name="Tests\Feature\LoanDssTest" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" tests="15" assertions="238" errors="1" failures="1" skipped="0" time="1.630840">
+        <testcase name="test_it_computes_decision_rates_portfolio_overdue_and_repayment_metrics" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="38" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="74" time="0.521982"/>
+        <testcase name="test_schedule_chart_and_location_overdue_use_remaining_amounts_and_due_dates" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="135" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="13" time="0.025514"/>
+        <testcase name="test_unverified_payment_link_is_excluded_until_payment_is_verified" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="185" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="6" time="0.022856"/>
+        <testcase name="test_legacy_filter_values_do_not_restrict_loan_dashboard_data" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="232" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="18" time="0.151960"/>
+        <testcase name="test_missing_repayment_data_is_surfaced_instead_of_reporting_a_false_collection_rate" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="278" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="10" time="0.032378"/>
+        <testcase name="test_zero_amount_and_invalid_approval_timestamp_are_flagged" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="305" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="14" time="0.037681"/>
+        <testcase name="test_page_renders_loan_charts_without_removed_filter_or_notice_panels" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="346" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="27" time="0.063653"/>
+        <testcase name="test_decision_details_and_status_specific_actions_render_inside_modal_templates" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="388" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="4" time="0.143347">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\LoanDssTest::test_decision_details_and_status_specific_actions_render_inside_modal_templates&#13;
+Expected DSS Loan content was missing: Schedule Installation
+Failed asserting that false is true.
+&#13;
+C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php:428</failure>
+        </testcase>
+        <testcase name="test_dashboard_ignores_stale_filters_and_shows_all_final_decisions_across_years" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="442" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="20" time="0.192352"/>
+        <testcase name="test_outcome_chart_excludes_needs_review_and_shows_its_empty_state_when_only_reviews_exist" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="481" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="5" time="0.078213"/>
+        <testcase name="test_new_rejection_status_change_records_its_actual_decision_timestamp" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="497" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="1" time="0.029604"/>
+        <testcase name="test_dss_rejection_persists_specific_rule_evidence_without_changing_admin_decision" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="510" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="9" time="0.085839">
+          <error type="Illuminate\Database\UniqueConstraintViolationException">Tests\Feature\LoanDssTest::test_dss_rejection_persists_specific_rule_evidence_without_changing_admin_decision&#13;
+Illuminate\Database\UniqueConstraintViolationException: SQLSTATE[23000]: Integrity constraint violation: 19 UNIQUE constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "username", "email", "email_verified_at", "password", "remember_token", "role", "updated_at", "created_at") values (Foster Monahan, olson.bette, admin@example.com, 2026-10-22 12:00:00, $2y$04$eiA2x0psonDntdqOeQyGReckzHZ4TZ8YysaMCOeDow.uUO3JV6zk6, t99LdGkF0A, admin, 2026-10-22 12:00:00, 2026-10-22 12:00:00))
+&#13;
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Connection.php:838
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Connection.php:794
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Connection.php:573
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Connection.php:537
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4170
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2237
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1436
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1401
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1240
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:370
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:275
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:365
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:321
+C:\xampp\htdocs\waterbillingsystems\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:315
+C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php:543</error>
+        </testcase>
+        <testcase name="test_pagination_changes_only_the_application_rows_not_report_totals" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="547" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="10" time="0.132255"/>
+        <testcase name="test_incomplete_application_is_saved_as_needs_review_and_rejected_history_is_labeled_reassessment" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="576" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="6" time="0.052741"/>
+        <testcase name="test_empty_dataset_returns_safe_values" file="C:\xampp\htdocs\waterbillingsystems\tests\Feature\LoanDssTest.php" line="597" class="Tests\Feature\LoanDssTest" classname="Tests.Feature.LoanDssTest" assertions="21" time="0.060466"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

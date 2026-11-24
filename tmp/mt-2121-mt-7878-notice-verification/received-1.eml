@@ -1,0 +1,92 @@
+From: ViaFlow Water System <viaflow-development@example.test>
+To: loan-overdue-qa@example.test
+Subject: LOAN OVERDUE =?utf-8?Q?=E2=80=94?= DISCONNECTION NOTICE
+X-To: loan-overdue-qa@example.test
+Message-ID: <26b54e7a031bfaf59370b66928b7cb23@example.test>
+MIME-Version: 1.0
+Date: Mon, 23 Nov 2026 08:14:44 +0000
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+    <meta charset=3D"UTF-8"=
+>
+    <title>LOAN OVERDUE =E2=80=94 DISCONNECTION NOTICE</title>
+    <m=
+eta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1">=
+
+<style>
+    body { -webkit-text-size-adjust: 100%; -ms-text-size-adjus=
+t: 100%; }
+    img { max-width: 100%; height: auto; }
+    p, td, th, di=
+v, a { overflow-wrap: anywhere; word-wrap: break-word; word-break: break-wo=
+rd; }
+    @media only screen and (max-width: 600px) {
+        body { pa=
+dding: 12px !important; margin: 0 !important; }
+        body > div { padd=
+ing: 18px !important; margin: 0 auto !important; }
+        .container { m=
+argin: 0 auto !important; width: 100% !important; }
+        h1 { font-siz=
+e: 21px !important; line-height: 1.3 !important; }
+        table { max-wi=
+dth: 100% !important; }
+        .email-detail-label, .email-detail-value =
+{ display: block !important; width: auto !important; text-align: left !impo=
+rtant; }
+        .email-detail-value { margin-top: 2px !important; }
+  =
+      a[style*=3D"background"] { display: inline-block !important; padding:=
+ 13px 18px !important; line-height: 1.35 !important; text-align: center !im=
+portant; }
+    }
+</style>
+</head>
+<body style=3D"margin:0;padding:2=
+4px 12px;background:#fff1f2;color:#451a1a;font-family:Arial,sans-serif;">=
+
+    <table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"max-width:600px;margin:0 auto;background:#fff;border:1=
+px solid #fecaca;border-radius:14px;">
+        <tr><td style=3D"padding:2=
+0px 24px;background:#991b1b;color:#fff;border-radius:14px 14px 0 0;">
+   =
+         <h1 style=3D"font-size:20px;margin:0;">LOAN OVERDUE =E2=80=94 DISC=
+ONNECTION NOTICE</h1>
+        </td></tr>
+        <tr><td style=3D"paddi=
+ng:24px;font-size:15px;line-height:1.6;">
+            <p style=3D"margin-=
+top:0;">Hello Leonel Martinez,</p>
+            <p>Your meter loan for acc=
+ount 15 reached its final due date on November 19, 2026 with a balance stil=
+l unpaid.</p>
+            <div style=3D"padding:16px;background:#fef2f2;b=
+order-left:4px solid #b91c1c;color:#7f1d1d;">
+                <strong>Out=
+standing loan balance:</strong> PHP 439.00<br>
+                <strong>Ov=
+erdue loan amount:</strong> PHP 439.00<br>
+                <strong>Notice=
+ issued:</strong> November 20, 2026 4:13 PM<br>
+                <strong>P=
+ayment deadline:</strong> November 23, 2026 4:13 PM Philippine time
+     =
+       </div>
+            <p>Please settle the full outstanding meter loa=
+n balance and have the payment verified within three days of this notice to=
+ avoid possible water service disconnection.</p>
+            <p>Your serv=
+ice remains connected unless an administrator confirms physical disconnecti=
+on.</p>
+            <p style=3D"margin-bottom:0;color:#694747;">ViaFlow S=
+ystem &middot; Via Vida Townhomes Homeowners Association</p>
+        </td=
+></tr>
+    </table>
+</body>
+</html>

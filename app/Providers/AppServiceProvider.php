@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Mail\Transport\GmailApiTransport;
+use Illuminate\Support\Facades\Mail;
 use App\Mime\FinfoMimeTypeGuesser;
 use App\Mime\SafeMimeTypeDetector;
 use App\Models\Bill;
@@ -159,6 +161,10 @@ class AppServiceProvider extends ServiceProvider
             ];
             request()->attributes->set($cacheKey, $layoutMeta);
             $view->with('layoutMeta', $layoutMeta);
+        });
+
+            Mail::extend('gmail', function (array $config = []) {
+                return new GmailApiTransport();
         });
     }
 }

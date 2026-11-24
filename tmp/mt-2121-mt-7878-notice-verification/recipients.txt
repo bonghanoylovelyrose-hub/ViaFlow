@@ -1,2 +1,0 @@
-RCPT TO:<loan-overdue-qa@example.test>
-RCPT TO:<loan-overdue-qa@example.test>

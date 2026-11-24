@@ -1,2 +1,0 @@
-RCPT TO:<viaflow.office.wizard.qa@gmail.com>
-RCPT TO:<viaflow.office.wizard.qa@gmail.com>

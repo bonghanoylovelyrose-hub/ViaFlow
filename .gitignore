@@ -1,8 +1,10 @@
+
+# Laravel default exclusions
 *.log
 .DS_Store
 .env
-.env.backup
-.env.production
+.env.*
+!.env.example
 .phpactor.json
 .phpunit.result.cache
 /.fleet
@@ -12,14 +14,29 @@
 /.vscode
 /.zed
 /auth.json
-/node_modules
-/public/build
+/node_modules/
+/public/build/
 /public/hot
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+/vendor/
 /.composer/
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Temporary files and caches
+/tmp/
+/.npm-cache/
+/.composer-cache/
+/.composer-home/
+/%SystemDrive%/
+
+# Local development tools
+/.tools/
+/mingit.zip
+/composer.phar
+
+# Vercel
+/.vercel/

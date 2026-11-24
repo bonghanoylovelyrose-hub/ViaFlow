@@ -1,1 +1,0 @@
-RCPT TO:<reconnection-sample@example.test>
